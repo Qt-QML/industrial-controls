@@ -1,10 +1,10 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/Industrial">
+        <file>qmldir</file>
         <file>JS/helper.js</file>
         <file>Shaders/Hatch.qml</file>
         <file>Shaders/OpacityBorder.qml</file>
         <file>Shaders/Pie.qml</file>
-        <file>Controls/qmldir</file>
         <file>Controls/Shadow.qml</file>
         <file>Controls/ApplicationWindow.qml</file>
         <file>Controls/Pane.qml</file>

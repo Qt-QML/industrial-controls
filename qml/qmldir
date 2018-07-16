@@ -1,0 +1,42 @@
+module Industrial
+plugin industrial_controls
+
+Shadow 1.0 Controls/Shadow.qml
+ApplicationWindow 1.0 Controls/ApplicationWindow.qml
+Pane 1.0 Controls/Pane.qml
+Frame 1.0 Controls/Frame.qml
+ContentItem 1.0 Controls/ContentItem.qml
+BackgroundItem 1.0 Controls/BackgroundItem.qml
+Button 1.0 Controls/Button.qml
+DelayButton 1.0 Controls/DelayButton.qml
+ButtonGroup 1.0 Controls/ButtonGroup.qml
+ButtonBar 1.0 Controls/ButtonBar.qml
+TabButton 1.0 Controls/TabButton.qml
+TabBar 1.0 Controls/TabBar.qml
+BottomBar 1.0 Controls/BottomBar.qml
+CheckBox 1.0 Controls/CheckBox.qml
+Switch 1.0 Controls/Switch.qml
+RadioButton 1.0 Controls/RadioButton.qml
+ToolBar 1.0 Controls/ToolBar.qml
+Label 1.0 Controls/Label.qml
+Link 1.0 Controls/Link.qml
+MenuIndicator 1.0 Controls/MenuIndicator.qml
+Menu 1.0 Controls/Menu.qml
+MenuItem 1.0 Controls/MenuItem.qml
+ProgressBar 1.0 Controls/ProgressBar.qml
+Slider 1.0 Controls/Slider.qml
+ComboBox 1.0 Controls/ComboBox.qml
+TextInput 1.0 Controls/TextInput.qml
+TextField 1.0 Controls/TextField.qml
+FilterField 1.0 Controls/FilterField.qml
+ItemDelegate 1.0 Controls/ItemDelegate.qml
+Popup 1.0 Controls/Popup.qml
+SpinBox 1.0 Controls/SpinBox.qml
+RealSpinBox 1.0 Controls/RealSpinBox.qml
+NumericInput 1.0 Controls/NumericInput.qml
+CoordSpinBox 1.0 Controls/CoordSpinBox.qml
+ScrollBar 1.0 Controls/ScrollBar.qml
+ColoredIcon 1.0 Controls/ColoredIcon.qml
+ToolTip 1.0 Controls/ToolTip.qml
+Dragger 1.0 Controls/Dragger.qml
+Drawer 1.0 Controls/Drawer.qml
