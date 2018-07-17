@@ -1,0 +1,5 @@
+module Industrial.Shaders
+
+Hatch 1.0 Hatch.qml
+OpacityBorder 1.0 OpacityBorder.qml
+Pie 1.0 Pie.qml

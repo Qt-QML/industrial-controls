@@ -1,10 +1,12 @@
 <RCC>
     <qresource prefix="/Industrial">
-        <file>qmldir</file>
-        <file>JS/helper.js</file>
+        <file>JS/qmldir</file>
+        <file>JS/Helper.js</file>
+        <file>Shaders/qmldir</file>
         <file>Shaders/Hatch.qml</file>
         <file>Shaders/OpacityBorder.qml</file>
         <file>Shaders/Pie.qml</file>
+        <file>Controls/qmldir</file>
         <file>Controls/Shadow.qml</file>
         <file>Controls/ApplicationWindow.qml</file>
         <file>Controls/Pane.qml</file>
@@ -47,6 +49,7 @@
         <file>Controls/ToolTip.qml</file>
         <file>Controls/Drawer.qml</file>
         <file>Controls/Dragger.qml</file>
+        <file>Indicators/qmldir</file>
         <file>Indicators/Led.qml</file>
         <file>Indicators/BatteryIndicator.qml</file>
         <file>Indicators/BarIndicator.qml</file>
