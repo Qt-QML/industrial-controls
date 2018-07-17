@@ -60,10 +60,10 @@
         <file>Indicators/PlaneMark.qml</file>
         <file>Indicators/DesiredAnglesMark.qml</file>
         <file>Indicators/TurnIndicator.qml</file>
-        <file>Indicators/Ladders/Ladder.qml</file>
-        <file>Indicators/Ladders/LadderMark.qml</file>
-        <file>Indicators/Ladders/LadderButtons.qml</file>
-        <file>Indicators/Ladders/LadderPicker.qml</file>
+        <file>Indicators/Ladder.qml</file>
+        <file>Indicators/LadderMark.qml</file>
+        <file>Indicators/LadderButtons.qml</file>
+        <file>Indicators/LadderPicker.qml</file>
         <file>Indicators/PitchScale.qml</file>
         <file>Indicators/RollScale.qml</file>
         <file>Indicators/AttitudeIndicator.qml</file>

@@ -4,11 +4,17 @@ ArtificialHorizon 1.0 ArtificialHorizon.qml
 AttitudeDirectorIndicator 1.0 AttitudeDirectorIndicator.qml
 AttitudeIndicator 1.0 AttitudeIndicator.qml
 BarIndicator 1.0 BarIndicator.qml
+BatteryIndicator 1.0 BatteryIndicator.qml
 Compass 1.0 Compass.qml
 DesiredAnglesMark 1.0 DesiredAnglesMark.qml
 DistanceLabel 1.0 DistanceLabel.qml
 EkfIndicator 1.0 EkfIndicator.qml
 Horizon 1.0 Horizon.qml
+Ladder.qml 1.0 Ladder.qml
+LadderButtons.qml 1.0 LadderButtons.qml
+LadderMark.qml 1.0 LadderMark.qml
+LadderPicker.qml 1.0 LadderPicker.qml
+LandingIndicator 1.0 LandingIndicator.qml
 Led 1.0 Led.qml
 MiniPlot 1.0 MiniPlot.qml
 PitchScale 1.0 PitchScale.qml
@@ -20,7 +26,3 @@ SpeedArrow 1.0 SpeedArrow.qml
 TurnIndicator 1.0 TurnIndicator.qml
 ValueLabel 1.0 ValueLabel.qml
 YawIndicator 1.0 YawIndicator.qml
-Ladder.qml 1.0 Ladders/Ladder.qml
-LadderButtons.qml 1.0 Ladders/LadderButtons.qml
-LadderMark.qml 1.0 Ladders/LadderMark.qml
-LadderPicker.qml 1.0 Ladders/LadderPicker.qml

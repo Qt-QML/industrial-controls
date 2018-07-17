@@ -1,8 +1,7 @@
 import QtQuick 2.6
 import JAGCS 1.0
 
-import Industrial.Controls 1.0 as Controls
-import ".."
+import "../Controls" as Controls
 
 Item {
     id: root
