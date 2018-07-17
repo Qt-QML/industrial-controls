@@ -1,6 +1,6 @@
 ﻿import QtQuick 2.6
-import "qrc:/JS/helper.js" as Helper
 
+import "../JS/Helper.js" as Helper
 import "../Controls" as Controls
 
 AttitudeIndicator {

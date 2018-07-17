@@ -2,7 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Templates 2.2 as T
 
-import "../JS/helper.js" as Helper
+import "../JS/Helper.js" as Helper
 
 T.Control {
     id: control

@@ -1,7 +1,7 @@
 import QtQuick 2.6
 
 import "../Controls" as Controls
-import "qrc:/JS/helper.js" as Helper
+import "../JS/Helper.js" as Helper
 
 Item {
     id: root
