@@ -1,8 +1,6 @@
 import QtQuick 2.9
 
-import "./" as Controls
-
-Controls.TextInput {
+TextInput {
     id: root
 
     property bool changed: false
