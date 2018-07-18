@@ -10,10 +10,10 @@ DesiredAnglesMark 1.0 DesiredAnglesMark.qml
 DistanceLabel 1.0 DistanceLabel.qml
 EkfIndicator 1.0 EkfIndicator.qml
 Horizon 1.0 Horizon.qml
-Ladder.qml 1.0 Ladder.qml
-LadderButtons.qml 1.0 LadderButtons.qml
-LadderMark.qml 1.0 LadderMark.qml
-LadderPicker.qml 1.0 LadderPicker.qml
+Ladder 1.0 Ladder.qml
+LadderButtons 1.0 LadderButtons.qml
+LadderMark 1.0 LadderMark.qml
+LadderPicker 1.0 LadderPicker.qml
 LandingIndicator 1.0 LandingIndicator.qml
 Led 1.0 Led.qml
 MiniPlot 1.0 MiniPlot.qml
