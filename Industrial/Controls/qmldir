@@ -1,4 +1,7 @@
 module Industrial.Controls
+depends QtQuick.Templates 2.2
+depends QtQuick.Controls 2.2
+designersupported
 
 Shadow 1.0 Shadow.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
