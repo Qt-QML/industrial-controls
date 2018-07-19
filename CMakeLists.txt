@@ -8,5 +8,13 @@ set(INDUSTRIAL_IMPORT_PATH ${CMAKE_CURRENT_LIST_DIR})
 set(QML_IMPORT_PATH ${INDUSTRIAL_IMPORT_PATH} CACHE TYPE STRING)
 #set(QML2_IMPORT_PATH ${INDUSTRIAL_IMPORT_PATH} CACHE TYPE STRING)
 
-# Industrial sources-resources
-set(INDUSTRIAL_SOURCES "${CMAKE_CURRENT_LIST_DIR}/industrial.qrc")
+# Industrial includes
+set(INDUSTRIAL_INCLUDES "${INDUSTRIAL_IMPORT_PATH}/includes")
+
+# Industrial sources & resources
+file(GLOB_RECURSE INDUSTRIAL_SOURCES
+    "${INDUSTRIAL_IMPORT_PATH}/includes/*.h"
+    "${INDUSTRIAL_IMPORT_PATH}/sources/*.h"
+    "${INDUSTRIAL_IMPORT_PATH}/sources/*.cpp"
+    "${INDUSTRIAL_IMPORT_PATH}/industrial.qrc"
+)
