@@ -7,6 +7,8 @@ import "../Shaders" as Shaders
 T.CheckBox {
     id: control
 
+    property string tipText
+
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: sizings.fontSize
@@ -15,6 +17,7 @@ T.CheckBox {
     spacing: sizings.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
+    hoverEnabled: true
     opacity: enabled ? 1 : 0.33
 
     indicator: Rectangle {
@@ -47,5 +50,11 @@ T.CheckBox {
         font: control.font
         leftPadding: indicator.width + spacing
         verticalAlignment: Text.AlignVCenter
+    }
+
+    ToolTip {
+        visible: (hovered || down) && tipText
+        text: tipText
+        delay: 1000
     }
 }
