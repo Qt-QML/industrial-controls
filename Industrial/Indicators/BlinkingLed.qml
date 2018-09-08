@@ -14,7 +14,6 @@ Led {
     Timer {
         id: timer
         interval: 100
-        onTriggered: blink = false
     }
 }
 
