@@ -16,6 +16,7 @@ LadderMark 1.0 LadderMark.qml
 LadderPicker 1.0 LadderPicker.qml
 LandingIndicator 1.0 LandingIndicator.qml
 Led 1.0 Led.qml
+BlinkingLed 1.0 BlinkingLed.qml
 MiniPlot 1.0 MiniPlot.qml
 PitchScale 1.0 PitchScale.qml
 PlaneMark 1.0 PlaneMark.qml

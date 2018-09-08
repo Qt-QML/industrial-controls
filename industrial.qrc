@@ -62,6 +62,7 @@
         <file>Industrial/Controls/Dragger.qml</file>
         <file>Industrial/Indicators/qmldir</file>
         <file>Industrial/Indicators/Led.qml</file>
+        <file>Industrial/Indicators/BlinkingLed.qml</file>
         <file>Industrial/Indicators/BatteryIndicator.qml</file>
         <file>Industrial/Indicators/BarIndicator.qml</file>
         <file>Industrial/Indicators/RssiIndicator.qml</file>
