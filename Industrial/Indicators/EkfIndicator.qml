@@ -10,7 +10,7 @@ Item {
     property real caution: 0.5
     property real danger: 0.8
 
-    implicitWidth: sizings.controlBaseSize
+    implicitWidth: controlSize.baseSize
     implicitHeight: width
 
     Row {

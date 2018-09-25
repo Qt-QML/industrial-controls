@@ -14,7 +14,7 @@ RowLayout {
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
-    spacing: sizings.spacing
+    spacing: controlSize.spacing
 
     Item {
         Layout.preferredWidth: icon.width
@@ -32,7 +32,7 @@ RowLayout {
 
     Text {
         id: label
-        font.pixelSize: sizings.fontSize
+        font.pixelSize: controlSize.fontSize
         color: enabled ? textColor : customPalette.sunkenColor
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0

@@ -12,9 +12,9 @@ T.SpinBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
-    leftPadding: sizings.controlBaseSize
-    rightPadding: sizings.controlBaseSize
-    font.pixelSize: sizings.fontSize
+    leftPadding: controlSize.baseSize
+    rightPadding: controlSize.baseSize
+    font.pixelSize: controlSize.fontSize
     editable: true
     opacity: enabled ? 1 : 0.33
 
@@ -26,7 +26,7 @@ T.SpinBox {
     background: BackgroundItem {
         id: background
         anchors.fill: parent
-        leftPadding: sizings.controlBaseSize + sizings.padding
+        leftPadding: controlSize.baseSize + controlSize.padding
         color: isValid ? "transparent" : customPalette.dangerColor
         textColor: isValid ? (highlighted ? customPalette.highlightColor :
                                             customPalette.secondaryTextColor) :
@@ -48,7 +48,7 @@ T.SpinBox {
 
     down.indicator: Rectangle {
         x: control.mirrored ? parent.width - width : 0
-        width: sizings.controlBaseSize
+        width: controlSize.baseSize
         height: parent.height - background.radius
         radius: 3
         color: down.pressed ? customPalette.highlightColor : "transparent"
@@ -74,7 +74,7 @@ T.SpinBox {
 
     up.indicator: Rectangle {
         x: control.mirrored ? 0 : parent.width - width
-        width: sizings.controlBaseSize
+        width: controlSize.baseSize
         height: parent.height - background.radius
         radius: 3
         color: up.pressed ? customPalette.highlightColor : "transparent"

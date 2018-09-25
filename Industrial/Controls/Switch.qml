@@ -11,17 +11,17 @@ T.Switch {
     property alias backgroundColor: backgroundItem.color
     property string tipText
 
-    spacing: sizings.spacing
-    font.pixelSize: sizings.fontSize
+    spacing: controlSize.spacing
+    font.pixelSize: controlSize.fontSize
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: sizings.controlBaseSize
+    implicitHeight: controlSize.baseSize
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
     indicator: Rectangle {
         id: backgroundItem
-        implicitWidth: sizings.controlBaseSize
-        implicitHeight: sizings.controlBaseSize / 4
+        implicitWidth: controlSize.baseSize
+        implicitHeight: controlSize.baseSize / 4
         x: control.leftPadding
         y: parent.height / 2 - height / 2
         radius: height / 2
@@ -31,8 +31,8 @@ T.Switch {
         Rectangle {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
-            width: sizings.controlBaseSize / 1.5
-            height: sizings.controlBaseSize / 1.5
+            width: controlSize.baseSize / 1.5
+            height: controlSize.baseSize / 1.5
             radius: height / 2
             color: control.pressed ? customPalette.highlightColor : customPalette.buttonColor;
 

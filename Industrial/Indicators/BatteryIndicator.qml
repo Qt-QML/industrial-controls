@@ -10,7 +10,7 @@ Controls.ColoredIcon {
     readonly property int percentageBordered: Math.max(0, Math.min(percentage, 100))
 
     source: "qrc:/indicators/battery.svg"
-    implicitWidth: sizings.controlBaseSize
+    implicitWidth: controlSize.baseSize
     implicitHeight: width
     color: {
         if (percentage > 50)

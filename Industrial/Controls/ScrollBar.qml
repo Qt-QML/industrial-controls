@@ -5,8 +5,8 @@ T.ScrollBar {
     id: control
 
     interactive: false
-    implicitWidth: sizings.controlBaseSize / 6
-    implicitHeight: sizings.controlBaseSize / 6
+    implicitWidth: controlSize.baseSize / 6
+    implicitHeight: controlSize.baseSize / 6
 
     background: Item { }
 

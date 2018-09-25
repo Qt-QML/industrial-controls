@@ -63,7 +63,7 @@ Item {
     Item {
         anchors.left: mirrored ? undefined : parent.left
         anchors.right: mirrored ? parent.right : undefined
-        width: sizings.controlBaseSize
+        width: controlSize.baseSize
         height: parent.height
 
         Controls.ColoredIcon {
@@ -89,7 +89,7 @@ Item {
         anchors.right: mirrored ? parent.left : undefined
         y: root.height - Math.min(Math.max(root.parent.mapToRange(
                                                inputValue), 0), root.height) - height / 2
-        width: arrowCanvas.width + label.width + sizings.padding
+        width: arrowCanvas.width + label.width + controlSize.padding
         height: label.height
         visible: area.pressed && area.mouseXInLadder
 
@@ -131,7 +131,7 @@ Item {
             id: label
             anchors.right: mirrored ? undefined : parent.right
             anchors.left: mirrored ? parent.left : undefined
-            anchors.margins: sizings.padding / 2
+            anchors.margins: controlSize.padding / 2
             value: inputValue
             color: customPalette.selectedTextColor
         }

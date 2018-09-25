@@ -19,8 +19,8 @@ T.ComboBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
-    font.pixelSize: sizings.fontSize
-    padding: sizings.padding
+    font.pixelSize: controlSize.fontSize
+    padding: controlSize.padding
     opacity: enabled ? 1 : 0.33
     clip: true
     textRole: "text"

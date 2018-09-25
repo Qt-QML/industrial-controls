@@ -74,12 +74,12 @@ T.Control {
     opacity: enabled ? 1 : 0.33
     implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
     implicitHeight: background.implicitHeight
-    font.pixelSize: sizings.fontSize
+    font.pixelSize: controlSize.fontSize
 
     background: BackgroundItem {
         id: background
         anchors.fill: parent
-        leftPadding: sizings.controlBaseSize + sizings.padding
+        leftPadding: controlSize.baseSize + controlSize.padding
         color: isValid ? "transparent" : customPalette.dangerColor
         textColor: isValid ? (highlighted ? customPalette.highlightColor :
                                             customPalette.secondaryTextColor) :
@@ -131,7 +131,7 @@ T.Control {
                 sign: "\u00B0"
                 onIncreaseValue: changeValue(0, 1)
                 onDecreaseValue: changeValue(0, -1)
-                Layout.preferredWidth: sizings.controlBaseSize * (isLongitude ? 1 : 0.75)
+                Layout.preferredWidth: controlSize.baseSize * (isLongitude ? 1 : 0.75)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.bottomMargin: background.offset
@@ -146,7 +146,7 @@ T.Control {
                 sign: "\'"
                 onIncreaseValue: changeValue(1, 1)
                 onDecreaseValue: changeValue(1, -1)
-                Layout.preferredWidth: sizings.controlBaseSize * 0.75
+                Layout.preferredWidth: controlSize.baseSize * 0.75
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.bottomMargin: background.offset
@@ -160,7 +160,7 @@ T.Control {
                 sign: "\""
                 onIncreaseValue: changeValue(2, Math.pow(10, -secondsPrecision))
                 onDecreaseValue: changeValue(2, -Math.pow(10, -secondsPrecision))
-                Layout.preferredWidth: sizings.controlBaseSize * (0.75 + secondsPrecision / 5 * 2)
+                Layout.preferredWidth: controlSize.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.bottomMargin: background.offset

@@ -8,12 +8,12 @@ T.TextField {
 
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
-    font.pixelSize: sizings.fontSize
+    font.pixelSize: controlSize.fontSize
     color: customPalette.textColor
     selectionColor: customPalette.selectionColor
     selectedTextColor: customPalette.selectedTextColor
     selectByMouse: true
-    leftPadding: sizings.padding
+    leftPadding: controlSize.padding
     bottomPadding: background.offset
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom

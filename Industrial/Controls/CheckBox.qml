@@ -11,18 +11,18 @@ T.CheckBox {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: sizings.fontSize
-    height: sizings.controlBaseSize
+    font.pixelSize: controlSize.fontSize
+    height: controlSize.baseSize
     leftPadding: 0
-    spacing: sizings.spacing
+    spacing: controlSize.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
     hoverEnabled: true
     opacity: enabled ? 1 : 0.33
 
     indicator: Rectangle {
-        implicitWidth: sizings.controlBaseSize
-        implicitHeight: sizings.controlBaseSize
+        implicitWidth: controlSize.baseSize
+        implicitHeight: controlSize.baseSize
         x: control.leftPadding
         y: parent.height / 2 - height / 2
         radius: 2

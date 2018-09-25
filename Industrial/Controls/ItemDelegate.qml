@@ -8,10 +8,10 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    font.pixelSize: sizings.fontSize
+    font.pixelSize: controlSize.fontSize
     implicitWidth: content.implicitWidth
-    implicitHeight: sizings.controlBaseSize
-    padding: sizings.padding
+    implicitHeight: controlSize.baseSize
+    padding: controlSize.padding
 
     background: Rectangle {
         visible: control.highlighted

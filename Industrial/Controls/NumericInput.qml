@@ -12,7 +12,7 @@ TextInput {
     onActiveFocusChanged:  if (!activeFocus && changed) finished()
     onEditingFinished: if (changed) finished()
 
-    font.pixelSize: sizings.fontSize
+    font.pixelSize: controlSize.fontSize
     color: customPalette.textColor
     selectedTextColor: customPalette.selectedTextColor
     selectionColor: customPalette.selectionColor

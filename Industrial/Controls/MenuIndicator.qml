@@ -6,7 +6,7 @@ ColoredIcon {
     property bool focused: false
     property bool opened: false
 
-    width: sizings.controlBaseSize / 2
+    width: controlSize.baseSize / 2
     height: width
     source: "qrc:/ui/menu_arrow.svg"
     color: {

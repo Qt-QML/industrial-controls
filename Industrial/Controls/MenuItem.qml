@@ -9,13 +9,13 @@ T.MenuItem {
     property alias iconSource: icon.source
     property color iconColor: label.color
 
-    leftPadding: icon.visible ? icon.width + sizings.padding * 2 : 0
-    font.pixelSize: sizings.fontSize
+    leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : 0
+    font.pixelSize: controlSize.fontSize
     width: parent.width
 
     background: Rectangle {
         anchors.fill: control
-        implicitWidth: sizings.controlBaseSize
+        implicitWidth: controlSize.baseSize
         implicitHeight: implicitWidth
         color: {
             if (control.pressed) return customPalette.highlightColor;
@@ -39,12 +39,12 @@ T.MenuItem {
     }
 
     indicator: ColoredIcon {
-        x: sizings.padding
+        x: controlSize.padding
         id: icon
         color: enabled ? iconColor : customPalette.sunkenColor
         source: control.checked ? "qrc:/ui/ok.svg" : ""
         anchors.verticalCenter: parent.verticalCenter
-        width: sizings.controlBaseSize * 0.6
+        width: controlSize.baseSize * 0.6
         height: width
     }
 

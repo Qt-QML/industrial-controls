@@ -28,7 +28,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: sizings.fontSize * 0.6
+        font.pixelSize: controlSize.fontSize * 0.6
         visible: prefix.length > 0
         text: prefix
     }
@@ -40,7 +40,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: root.color
         font.bold: true
-        font.pixelSize: sizings.secondaryFontSize
+        font.pixelSize: controlSize.secondaryFontSize
         text: isNaN(value) ? "-" : (digits > 0 ? value.toFixed(digits) : Math.floor(value))
     }
 }

@@ -1,16 +1,16 @@
-#ifndef SIZINGS_H
-#define SIZINGS_H
+#ifndef CONTROL_SIZE_H
+#define CONTROL_SIZE_H
 
 // Qt
 #include <QObject>
 
 namespace presentation
 {
-    class Sizings
+    class ControlSize
     {
         Q_GADGET
 
-        Q_PROPERTY(int controlBaseSize READ controlBaseSize WRITE setControlBaseSize)
+        Q_PROPERTY(int baseSize READ baseSize WRITE setBaseSize)
         Q_PROPERTY(int inputControlHeight READ inputControlHeight WRITE setInputControlHeight)
         Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize)
         Q_PROPERTY(int secondaryFontSize READ secondaryFontSize WRITE setSecondaryFontSize)
@@ -20,8 +20,8 @@ namespace presentation
         Q_PROPERTY(int shadowSize READ shadowSize WRITE setShadowSize)
 
     public:
-        int controlBaseSize() const;
-        void setControlBaseSize(int controlBaseSize);
+        int baseSize() const;
+        void setBaseSize(int baseSize);
 
         int inputControlHeight() const;
         void setInputControlHeight(int inputControlHeight);
@@ -45,7 +45,7 @@ namespace presentation
         void setShadowSize(int shadowSize);
 
     private:
-        int m_controlBaseSize;
+        int m_baseSize;
         int m_inputControlHeight;
         int m_fontSize;
         int m_secondaryFontSize;
@@ -56,4 +56,4 @@ namespace presentation
     };
 }
 
-#endif // SIZINGS_H
+#endif // CONTROL_SIZE_H

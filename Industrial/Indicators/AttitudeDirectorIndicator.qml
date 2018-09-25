@@ -29,7 +29,7 @@ AttitudeIndicator {
     Behavior on desiredPitch { PropertyAnimation { duration: 100 } }
     Behavior on desiredRoll { PropertyAnimation { duration: 100 } }
 
-    effectiveHeight: height - sizings.controlBaseSize * 2
+    effectiveHeight: height - controlSize.baseSize * 2
 
     RollScale {
         id: rollScale
@@ -73,7 +73,7 @@ AttitudeIndicator {
     DesiredAnglesMark {
         id: desiredMark
         anchors.fill: parent
-        anchors.margins: sizings.margins
+        anchors.margins: controlSize.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? fd.pitch - desiredPitch : -desiredPitch
         roll: rollInverted ? -desiredRoll : fd.roll - desiredRoll
@@ -82,7 +82,7 @@ AttitudeIndicator {
     PlaneMark {
         id: mark
         anchors.fill: parent
-        anchors.margins: sizings.margins
+        anchors.margins: controlSize.margins
         effectiveHeight: fd.effectiveHeight
         pitch: pitchInverted ? 0 : -fd.pitch
         roll: rollInverted ? -fd.roll : 0

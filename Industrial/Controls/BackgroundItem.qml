@@ -7,14 +7,14 @@ Rectangle {
 
     property bool inputed: true
     property bool highlighted: false
-    property int leftPadding: sizings.padding
+    property int leftPadding: controlSize.padding
     readonly property int offset: radius + 1
 
     property alias text: textItem.text
     property alias textColor: textItem.color
 
-    implicitWidth: Math.max(sizings.controlBaseSize * 4, textItem.implicitWidth)
-    implicitHeight: sizings.inputControlHeight
+    implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
+    implicitHeight: controlSize.inputControlHeight
     color: "transparent"
 
     Rectangle {
@@ -38,6 +38,6 @@ Rectangle {
         height: parent.height
         verticalAlignment: inputed ? Text.AlignTop : Text.AlignVCenter
         color: highlighted ? customPalette.highlightColor : customPalette.secondaryTextColor
-        font.pixelSize: inputed ? sizings.secondaryFontSize: sizings.fontSize
+        font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
     }
 }

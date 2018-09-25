@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2 as T
 T.Pane {
     id: control
 
-    padding: sizings.padding
+    padding: controlSize.padding
 
     background: Rectangle {
         id: rect

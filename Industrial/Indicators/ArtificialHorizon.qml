@@ -8,7 +8,7 @@ AttitudeIndicator {
     PlaneMark {
         id: mark
         anchors.centerIn: parent
-        width: parent.width - sizings.margins
+        width: parent.width - controlSize.margins
         effectiveHeight: ah.effectiveHeight
         pitch: pitchInverted ? 0 : -ah.pitch
         roll: rollInverted ? -ah.roll : 0

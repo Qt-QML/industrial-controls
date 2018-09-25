@@ -8,8 +8,8 @@ T.ProgressBar {
 
     property string text: control.visualPosition
 
-    implicitWidth: sizings.controlBaseSize * 4
-    implicitHeight: sizings.controlBaseSize
+    implicitWidth: controlSize.baseSize * 4
+    implicitHeight: controlSize.baseSize
     opacity: enabled ? 1 : 0.33
 
     background: Rectangle {

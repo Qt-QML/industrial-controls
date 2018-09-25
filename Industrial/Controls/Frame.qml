@@ -6,7 +6,7 @@ T.Frame {
 
     property color backgroundColor: customPalette.raisedColor
 
-    padding: sizings.padding
+    padding: controlSize.padding
 
     background: Rectangle {
         color: backgroundColor

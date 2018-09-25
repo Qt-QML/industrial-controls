@@ -19,9 +19,9 @@ T.Button { // TODO: clickable
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
-    font.pixelSize: sizings.fontSize
-    implicitWidth: Math.max(sizings.controlBaseSize, content.implicitWidth + sizings.padding * 2)
-    implicitHeight: sizings.controlBaseSize
+    font.pixelSize: controlSize.fontSize
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + controlSize.padding * 2)
+    implicitHeight: controlSize.baseSize
     hoverEnabled: true
 
     background: Rectangle {
@@ -77,7 +77,7 @@ T.Button { // TODO: clickable
             ContentItem {
             id: content
             anchors.centerIn: parent
-            height: sizings.controlBaseSize
+            height: controlSize.baseSize
             text: control.text
             font: control.font
             textColor: (control.round && control.activeFocus) ||

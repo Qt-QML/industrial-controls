@@ -9,7 +9,7 @@ Item {
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
-    width: sizings.controlBaseSize
+    width: controlSize.baseSize
     height: width
 
     Image {

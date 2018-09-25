@@ -13,8 +13,8 @@ Item {
 
     property Item contentItem: Item {}
 
-    implicitWidth: contentItem.implicitWidth + sizings.margins * 2
-    implicitHeight: contentItem.implicitHeight + sizings.margins * 2
+    implicitWidth: contentItem.implicitWidth + controlSize.margins * 2
+    implicitHeight: contentItem.implicitHeight + controlSize.margins * 2
 
     Rectangle {
         id: background
@@ -35,8 +35,8 @@ Item {
         iconSource: "qrc:/ui/dots.svg"
         flat: true
         enabled: false
-        width: sizings.controlBaseSize * 0.5
-        height: sizings.controlBaseSize * 0.75
+        width: controlSize.baseSize * 0.5
+        height: controlSize.baseSize * 0.75
         onClicked: menu.open()
 
         Menu {
@@ -61,7 +61,7 @@ Item {
         id: deepButton
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        width: sizings.controlBaseSize * 0.75
+        width: controlSize.baseSize * 0.75
         height: width
 
         source: "qrc:/ui/menu_arrow.svg"
@@ -74,7 +74,7 @@ Item {
         MouseArea {
             id: area
             anchors.centerIn: parent
-            width: sizings.controlBaseSize
+            width: controlSize.baseSize
             height: width
             hoverEnabled: true
             onPressed: deepIn()

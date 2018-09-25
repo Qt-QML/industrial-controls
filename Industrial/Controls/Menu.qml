@@ -6,8 +6,8 @@ T.Menu {
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
     background: Rectangle {
-        implicitWidth: sizings.controlBaseSize * 6
-        implicitHeight: sizings.controlBaseSize
+        implicitWidth: controlSize.baseSize * 6
+        implicitHeight: controlSize.baseSize
         color: customPalette.raisedColor
 
         Shadow {
