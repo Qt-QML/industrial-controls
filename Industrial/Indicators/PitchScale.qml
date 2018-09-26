@@ -1,6 +1,6 @@
 import QtQuick 2.6
-import "../JS/Helper.js" as Helperw
 
+import "../JS/Helper.js" as Helper
 import "../Shaders" as Shaders
 
 Item {
