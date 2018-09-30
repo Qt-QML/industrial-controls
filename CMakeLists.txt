@@ -16,5 +16,9 @@ file(GLOB_RECURSE INDUSTRIAL_SOURCES
     "${INDUSTRIAL_IMPORT_PATH}/includes/*.h"
     "${INDUSTRIAL_IMPORT_PATH}/sources/*.h"
     "${INDUSTRIAL_IMPORT_PATH}/sources/*.cpp"
+)
+
+# Industrial resources
+file(GLOB_RECURSE INDUSTRIAL_RESOURCES
     "${INDUSTRIAL_IMPORT_PATH}/industrial.qrc"
 )

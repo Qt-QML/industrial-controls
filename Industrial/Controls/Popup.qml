@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2 as T
 T.Popup {
     id: control
 
-    property color backgroundColor: customPalette.backgroundColor
+    property color backgroundColor: customPalette.raisedColor
 
     background:  Rectangle {
         color: backgroundColor
