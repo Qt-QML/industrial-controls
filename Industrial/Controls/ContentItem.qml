@@ -14,6 +14,7 @@ Item {
 
     property int spacing: controlSize.spacing
 
+    clip: true
     implicitWidth: {
         if (icon.visible) {
             return label.visible ? (icon.width + spacing + label.implicitWidth) : icon.width;
@@ -39,6 +40,7 @@ Item {
         font.pixelSize: controlSize.fontSize
         width: content.width - (icon.visible ? content.spacing + icon.width : 0)
         color: enabled ? textColor : customPalette.sunkenColor
+        horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0
     }

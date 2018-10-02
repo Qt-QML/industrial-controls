@@ -5,7 +5,7 @@ import "../JS/Helper.js" as Helper
 SpinBox {
     id: control
 
-    property real realValue: NaN
+    property real realValue: 0.0
     property real realFrom: 0
     property real realTo: 100
     property real precision: 0.01

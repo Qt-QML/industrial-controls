@@ -38,7 +38,6 @@ T.TabButton {
 
     contentItem: ContentItem {
         id: content
-        horizontalAlignment: Text.AlignHCenter
         text: control.text
         font: control.font
         textColor: pressed || checked ? customPalette.selectedTextColor: customPalette.textColor

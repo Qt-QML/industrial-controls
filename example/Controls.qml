@@ -9,12 +9,12 @@ Frame {
         anchors.fill: parent
         rowSpacing: controlSize.spacing
         columnSpacing: controlSize.spacing
-        columns: 5
+        columns: 4
 
         Label {
             text: "Buttons"
             Layout.alignment: Qt.AlignHCenter
-            Layout.columnSpan: 5
+            Layout.columnSpan: 4
         }
 
         Button {
@@ -39,11 +39,6 @@ Frame {
             iconSource: "qrc:/ui/up.svg"
             tipText: "Flat icon button"
             flat: true
-        }
-
-        RoundButton {
-            iconSource: "qrc:/ui/dots.svg"
-            Layout.rowSpan: 2
         }
 
         Button {
@@ -75,7 +70,7 @@ Frame {
         Label {
             text: "Checks"
             Layout.alignment: Qt.AlignHCenter
-            Layout.columnSpan: 5
+            Layout.columnSpan: 4
         }
 
         CheckBox {
@@ -96,7 +91,7 @@ Frame {
         Label {
             text: "Combos"
             Layout.alignment: Qt.AlignHCenter
-            Layout.columnSpan: 5
+            Layout.columnSpan: 4
         }
 
         ComboBox {
@@ -110,14 +105,14 @@ Frame {
                 { text: "Up", icon: "qrc:/ui/up.svg" },
                 { text: "Down", icon: "qrc:/ui/down.svg" }
             ]
-            Layout.columnSpan: 3
+            Layout.columnSpan: 2
             Layout.fillWidth: true
         }
 
         Label {
             text: "Inputs"
             Layout.alignment: Qt.AlignHCenter
-            Layout.columnSpan: 5
+            Layout.columnSpan: 4
         }
 
         TextField {
@@ -129,7 +124,7 @@ Frame {
 
         FilterField {
             labelText: "Filter me"
-            Layout.columnSpan: 3
+            Layout.columnSpan: 2
             Layout.fillWidth: true
         }
 
@@ -139,7 +134,7 @@ Frame {
         }
 
         RealSpinBox {
-            Layout.columnSpan: 3
+            Layout.columnSpan: 2
             Layout.fillWidth: true
         }
 

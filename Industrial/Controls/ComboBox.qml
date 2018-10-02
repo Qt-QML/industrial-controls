@@ -55,7 +55,8 @@ T.ComboBox {
     contentItem: ContentItem {
         id: content
         anchors.fill: parent
-        anchors.bottomMargin: background.offset
+        anchors.margins: control.padding
+        anchors.bottomMargin: control.padding + background.offset
         font: control.font
         text: displayText
         iconSource: displayIcon

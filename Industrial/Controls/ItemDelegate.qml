@@ -8,19 +8,20 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    font.pixelSize: controlSize.fontSize
-    implicitWidth: content.implicitWidth
     implicitHeight: controlSize.baseSize
     padding: controlSize.padding
+    font.pixelSize: controlSize.fontSize
 
     background: Rectangle {
+        anchors.fill: parent
         visible: control.highlighted
         color: customPalette.highlightColor
-        anchors.fill: parent
     }
 
     contentItem: ContentItem {
         id: content
+        anchors.fill: parent
+        anchors.margins: control.padding
         font: control.font
         text: control.text
         textColor: control.highlighted ? customPalette.selectedTextColor : customPalette.textColor

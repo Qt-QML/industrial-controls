@@ -18,7 +18,7 @@ T.DelayButton {
 
     delay: 1000
     font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth)
+    implicitWidth: content.implicitWidth + control.padding * 2
     implicitHeight: controlSize.baseSize
 
     background: Rectangle {
@@ -38,8 +38,8 @@ T.DelayButton {
 
         ContentItem {
             id: content
-            anchors.centerIn: parent
-            height: parent.height
+            anchors.fill: parent
+            anchors.margins: control.padding
             text: control.text
             font: control.font
             textColor: customPalette.textColor
@@ -52,14 +52,21 @@ T.DelayButton {
             color: customPalette.highlightColor
             clip: true
 
-            ContentItem {
+            Item {
+                x: (backgroundItem.width - width) / 2
                 anchors.verticalCenter: parent.verticalCenter
                 height: parent.height
-                x: (backgroundItem.width - implicitWidth) / 2
-                text: control.text
-                font: control.font
-                iconSource: control.iconSource
-                textColor: customPalette.selectedTextColor
+                width: content.width + control.padding * 2
+
+                ContentItem {
+                    id: invertedContent
+                    anchors.fill: parent
+                    anchors.margins: control.padding
+                    text: control.text
+                    font: control.font
+                    iconSource: control.iconSource
+                    textColor: customPalette.selectedTextColor
+                }
             }
         }
 
