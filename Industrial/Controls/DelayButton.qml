@@ -19,7 +19,7 @@ T.DelayButton {
     delay: 1000
     font.pixelSize: controlSize.fontSize
     implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth)
-    implicitHeight: Math.max(controlSize.baseSize, content.implicitHeight)
+    implicitHeight: controlSize.baseSize
 
     background: Rectangle {
         id: backgroundItem

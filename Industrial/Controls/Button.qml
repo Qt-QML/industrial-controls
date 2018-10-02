@@ -20,7 +20,7 @@ T.Button { // TODO: clickable
 
     font.pixelSize: controlSize.fontSize
     implicitWidth: content.implicitWidth + control.padding * 2
-    implicitHeight: content.implicitHeight + control.padding * 2
+    implicitHeight: controlSize.baseSize
     hoverEnabled: true
     padding: controlSize.padding
 
