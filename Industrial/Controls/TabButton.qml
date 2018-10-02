@@ -6,6 +6,8 @@ import "../Shaders" as Shaders
 T.TabButton {
     id: control
 
+    property bool flat: false
+
     property alias iconSource: content.iconSource
     property alias iconColor: content.iconColor
     property alias textColor: content.textColor
@@ -36,6 +38,7 @@ T.TabButton {
 
     contentItem: ContentItem {
         id: content
+        horizontalAlignment: Text.AlignHCenter
         text: control.text
         font: control.font
         textColor: pressed || checked ? customPalette.selectedTextColor: customPalette.textColor
