@@ -42,3 +42,4 @@ target_wrapper.*
 # QtCreator CMake
 CMakeLists.txt.user*
 /example/build
+/example/result/example
