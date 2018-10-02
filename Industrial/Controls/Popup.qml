@@ -6,6 +6,8 @@ T.Popup {
 
     property color backgroundColor: customPalette.raisedColor
 
+    padding: controlSize.padding
+
     background:  Rectangle {
         color: backgroundColor
         radius: 2

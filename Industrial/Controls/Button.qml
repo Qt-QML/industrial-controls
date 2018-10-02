@@ -11,7 +11,6 @@ T.Button { // TODO: clickable
     property string tipText
 
     property alias iconSource: content.iconSource
-    property alias iconScaling: content.iconScaling
     property alias iconColor: content.iconColor
     property alias textColor: content.textColor
     property alias hasMenu: menuIndicator.visible
@@ -20,9 +19,10 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + controlSize.padding * 2)
-    implicitHeight: controlSize.baseSize
+    implicitWidth: content.implicitWidth + control.padding * 2
+    implicitHeight: content.implicitHeight + control.padding * 2
     hoverEnabled: true
+    padding: controlSize.padding
 
     background: Rectangle {
         id: backgroundItem
@@ -73,17 +73,15 @@ T.Button { // TODO: clickable
         }
     }
 
-    contentItem: Item {
-            ContentItem {
-            id: content
-            anchors.centerIn: parent
-            height: controlSize.baseSize
-            text: control.text
-            font: control.font
-            textColor: (control.round && control.activeFocus) ||
-                       control.pressed || control.pressedImpl ?
-                           customPalette.selectedTextColor : customPalette.textColor
-            }
+    contentItem: ContentItem {
+        id: content
+        anchors.fill: parent
+        anchors.margins: control.padding
+        text: control.text
+        font: control.font
+        textColor: (control.round && control.activeFocus) ||
+                   control.pressed || control.pressedImpl ?
+                       customPalette.selectedTextColor : customPalette.textColor
     }
 
     ToolTip {

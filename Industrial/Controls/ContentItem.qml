@@ -1,12 +1,10 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.3
 
-RowLayout {
+Item {
     id: content
 
     property color textColor: customPalette.textColor
     property color iconColor: textColor
-    property real iconScaling: 0.6
 
     property alias iconSource: icon.source
     property alias font: label.font
@@ -14,30 +12,34 @@ RowLayout {
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
-    spacing: controlSize.spacing
+    property int spacing: controlSize.spacing
 
-    Item {
-        Layout.preferredWidth: icon.width
-        Layout.fillHeight: true
-        visible: iconSource != ""
-
-        ColoredIcon {
-            id: icon
-            anchors.centerIn: parent
-            width: parent.height * iconScaling
-            height: width
-            color: enabled ? iconColor : customPalette.sunkenColor
+    implicitWidth: {
+        if (icon.visible) {
+            return label.visible ? (icon.width + spacing + label.implicitWidth) : icon.width;
         }
+        return label.implicitWidth
+    }
+    implicitHeight: label.height
+
+    ColoredIcon {
+        id: icon
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        height: content.height
+        width: height
+        color: enabled ? iconColor : customPalette.sunkenColor
+        visible: iconSource != ""
     }
 
     Text {
         id: label
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: controlSize.fontSize
+        width: content.width - (icon.visible ? content.spacing + icon.width : 0)
         color: enabled ? textColor : customPalette.sunkenColor
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0
-        Layout.alignment: Qt.AlignVCenter
-        Layout.fillWidth: true
-        Layout.fillHeight: true
     }
 }
