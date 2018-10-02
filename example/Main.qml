@@ -27,8 +27,8 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            Controls { anchors.fill: parent }
-            Indicators { anchors.fill: parent }
+            Controls { }
+            Indicators { }
         }
     }
 }

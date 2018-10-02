@@ -11,8 +11,6 @@ namespace
 {
     const QString controlSize = "controlSize";
     const QString palette = "customPalette";
-
-    const QString industrialControlsPath = "qrc:/";
 }
 
 int main(int argc, char *argv[])
@@ -22,8 +20,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-
-    engine.addImportPath(::industrialControlsPath);
+    engine.addImportPath(QStringLiteral("../../"));
 
     presentation::ControlSizeFactory controlSize;
     presentation::PaletteFactory palette;
@@ -33,7 +30,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty(::palette,
                                              QVariant::fromValue(palette.createNightPalette()));
 
-    engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
+    engine.load(QStringLiteral("../Main.qml"));
     if (engine.rootObjects().isEmpty()) return -1;
 
     return app.exec();
