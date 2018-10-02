@@ -5,8 +5,15 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    Label {
-        anchors.centerIn: parent
-        text: "No indicators examples yet"
+    padding: controlSize.padding
+
+    RowLayout {
+        anchors.fill: parent
+        spacing: controlSize.spacing
+
+        Label {
+            text: "No indicators examples yet"
+            Layout.alignment: Qt.AlignCenter
+        }
     }
 }

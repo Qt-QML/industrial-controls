@@ -5,8 +5,8 @@ import Industrial.Controls 1.0
 ApplicationWindow {
     visible: true
     title: qsTr("Industrial demo")
-    width: mainColumn.implicitWidth
-    height: mainColumn.implicitHeight
+    width: controlSize.baseSize * 20
+    height: controlSize.baseSize * 16
 
     ColumnLayout {
         id: mainColumn
