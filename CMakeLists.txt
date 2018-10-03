@@ -20,5 +20,5 @@ file(GLOB_RECURSE INDUSTRIAL_SOURCES
 
 # Industrial resources
 file(GLOB_RECURSE INDUSTRIAL_RESOURCES
-    "${INDUSTRIAL_IMPORT_PATH}/industrial.qrc"
+    "${INDUSTRIAL_IMPORT_PATH}/*.qrc"
 )
