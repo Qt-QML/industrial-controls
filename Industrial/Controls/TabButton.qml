@@ -14,9 +14,10 @@ T.TabButton {
     property alias backgroundColor: backgroundItem.color
 
     font.pixelSize: controlSize.fontSize
-    implicitWidth: content.implicitWidth
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: controlSize.baseSize
-    clip: true
+    hoverEnabled: true
+    padding: controlSize.padding
 
     background: Rectangle {
         id: backgroundItem
@@ -25,11 +26,18 @@ T.TabButton {
         color: control.checked ? customPalette.raisedColor : "transparent";
 
         Rectangle {
+            anchors.fill: parent
+            color: customPalette.textColor
+            radius: parent.radius
+            opacity: 0.1
+            visible: control.hovered
+        }
+
+        Rectangle {
             anchors.bottom: parent.bottom
             width: parent.width
             height: 2
-            color: customPalette.highlightColor
-            visible: control.activeFocus
+            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
         }
 
         Shaders.Hatch {

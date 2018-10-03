@@ -6,7 +6,7 @@ import "../Shaders" as Shaders
 T.Button { // TODO: clickable
     id: control
 
-    property bool round: false
+    property bool round: false // TODO: remove round
     property bool pressedImpl: false
     property string tipText
 
@@ -56,8 +56,8 @@ T.Button { // TODO: clickable
             anchors.bottom: parent.bottom
             width: parent.width
             height: 2
-            color: customPalette.highlightColor
-            visible: control.activeFocus && !control.round
+            color: control.activeFocus && !control.round ? customPalette.highlightColor :
+                                                           backgroundItem.color
         }
 
         Shaders.Hatch {

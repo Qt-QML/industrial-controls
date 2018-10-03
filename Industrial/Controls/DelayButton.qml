@@ -26,7 +26,6 @@ T.DelayButton {
     background: Rectangle {
         id: backgroundItem
         anchors.fill: parent
-        border.color: control.activeFocus ? customPalette.highlightColor : "transparent"
         radius: 2
         color: control.flat ? "transparent" : customPalette.buttonColor
 
@@ -36,6 +35,13 @@ T.DelayButton {
             radius: parent.radius
             opacity: 0.1
             visible: control.hovered
+        }
+
+        Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: 2
+            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
         }
 
         ContentItem {
