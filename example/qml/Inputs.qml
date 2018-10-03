@@ -12,7 +12,7 @@ Frame {
         spacing: controlSize.spacing
 
         Label {
-            text: "No indicators examples yet"
+            text: "No inputs examples yet"
             Layout.alignment: Qt.AlignCenter
         }
     }
