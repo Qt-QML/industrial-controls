@@ -21,12 +21,15 @@ T.TabButton {
     background: Rectangle {
         id: backgroundItem
         anchors.fill: parent
-        border.color: control.activeFocus ? customPalette.highlightColor : "transparent"
         radius: 3
-        color: {
-            if (control.checked || control.highlighted) return customPalette.selectionColor;
-            if (control.pressed) return customPalette.highlightColor;
-            return control.flat ? "transparent" : customPalette.buttonColor;
+        color: control.checked ? customPalette.raisedColor : "transparent";
+
+        Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: 2
+            color: customPalette.highlightColor
+            visible: control.activeFocus
         }
 
         Shaders.Hatch {
@@ -40,7 +43,6 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: pressed || checked ? customPalette.selectedTextColor: customPalette.textColor
+        textColor: customPalette.textColor
     }
 }
-

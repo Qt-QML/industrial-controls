@@ -19,14 +19,13 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     font.pixelSize: controlSize.fontSize
-    implicitWidth: content.implicitWidth + control.padding * 2
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: controlSize.baseSize
     hoverEnabled: true
     padding: controlSize.padding
 
     background: Rectangle {
         id: backgroundItem
-        border.color: !control.flat && control.activeFocus ? customPalette.highlightColor : "transparent"
         radius: round ? Math.min(width, height) / 2 : 2
         color: {
             if ((control.round && !control.flat && control.activeFocus) ||
@@ -85,7 +84,7 @@ T.Button { // TODO: clickable
     }
 
     ToolTip {
-        visible: (hovered || down) && tipText
+        visible: (control.hovered || control.down) && tipText
         text: tipText
         delay: 1000
     }

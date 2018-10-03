@@ -16,10 +16,12 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    delay: 1000
     font.pixelSize: controlSize.fontSize
-    implicitWidth: content.implicitWidth + control.padding * 2
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: controlSize.baseSize
+    hoverEnabled: true
+    padding: controlSize.padding
+    delay: 1000
 
     background: Rectangle {
         id: backgroundItem
@@ -85,7 +87,7 @@ T.DelayButton {
     contentItem: Item {}
 
     ToolTip {
-        visible: (hovered || down) && tipText
+        visible: control.hovered && tipText
         text: tipText
         delay: 1000
     }
