@@ -2,6 +2,55 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0
 
+ColumnLayout {
+    id: root
+
+    spacing: 0
+
+    TabBar {
+        id: tabBar
+        Layout.fillWidth: true
+        Layout.rightMargin: controlSize.baseSize + controlSize.padding
+
+        TabButton { text: "Buttons"; flat: true }
+        TabButton { text: "Inputs"; flat: true }
+        TabButton { text: "Sliders & Checkers"; flat: true }
+    }
+
+    Pane {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+    }
+}
+/*
+Frame {
+    id: root
+
+}
+
+ColumnLayout {
+    id: mainColumn
+    spacing: controlSize.spacing
+
+    TabBar {
+        id: tabBar
+        Layout.fillWidth: true
+
+        TabButton { text: "Controls"; flat: true }
+        TabButton { text: "Indicators"; flat: true }
+    }
+
+    StackLayout {
+        currentIndex: tabBar.currentIndex
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
+        Controls { }
+        Indicators { }
+    }
+}
+
+
 Frame {
     id: root
 
@@ -140,4 +189,4 @@ Frame {
 
         Item { Layout.fillHeight: true }
     }
-}
+}*/
