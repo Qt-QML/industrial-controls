@@ -15,7 +15,7 @@ ColumnLayout {
 
         TabButton { text: "Buttons"; flat: true }
         TabButton { text: "Inputs"; flat: true }
-        TabButton { text: "Sliders & Checkers"; flat: true }
+        TabButton { text: "Switchs & Sliders"; flat: true }
     }
 
     StackLayout {
@@ -25,6 +25,6 @@ ColumnLayout {
 
         Buttons {}
         Inputs {}
-        SlidersCheckers {}
+        SwitchsNSliders {}
     }
 }
