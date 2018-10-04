@@ -13,6 +13,7 @@ ControlSize ControlSizeFactory::createControlSize(int baseSize)
     controlSize.setSpacing(baseSize / 2);
     controlSize.setMargins(baseSize / 4);
     controlSize.setPadding(baseSize / 6);
+    controlSize.setRounding(3);
     controlSize.setShadowSize(3);
 
     return controlSize;

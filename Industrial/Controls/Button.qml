@@ -26,7 +26,7 @@ T.Button { // TODO: clickable
 
     background: Rectangle {
         id: backgroundItem
-        radius: round ? Math.min(width, height) / 2 : 2
+        radius: round ? Math.min(width, height) / 2 : controlSize.rounding
         color: {
             if ((control.round && !control.flat && control.activeFocus) ||
                     control.pressed || control.pressedImpl)
@@ -45,19 +45,19 @@ T.Button { // TODO: clickable
         }
 
         Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: backgroundItem.radius
+            color: control.activeFocus && !control.round ? customPalette.highlightColor :
+                                                           backgroundItem.color
+        }
+
+        Rectangle {
             anchors.fill: parent
             color: customPalette.textColor
             radius: parent.radius
             opacity: 0.1
             visible: control.hovered
-        }
-
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: 2
-            color: control.activeFocus && !control.round ? customPalette.highlightColor :
-                                                           backgroundItem.color
         }
 
         Shaders.Hatch {

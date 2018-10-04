@@ -26,21 +26,13 @@ T.DelayButton {
     background: Rectangle {
         id: backgroundItem
         anchors.fill: parent
-        radius: 2
+        radius: controlSize.rounding
         color: control.flat ? "transparent" : customPalette.buttonColor
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: control.hovered
-        }
 
         Rectangle {
             anchors.bottom: parent.bottom
             width: parent.width
-            height: 2
+            height: backgroundItem.radius
             color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
         }
 
@@ -76,6 +68,14 @@ T.DelayButton {
                     textColor: customPalette.selectedTextColor
                 }
             }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: customPalette.textColor
+            radius: parent.radius
+            opacity: 0.1
+            visible: control.hovered
         }
 
         Shaders.Hatch {

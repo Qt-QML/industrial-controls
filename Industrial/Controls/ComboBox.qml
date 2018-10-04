@@ -77,6 +77,7 @@ T.ComboBox {
 
     popup: Popup {
         y: control.height
+        backgroundColor: background.color
         width: control.width
         implicitHeight: contentItem.implicitHeight
         padding: 1

@@ -16,12 +16,13 @@ Rectangle {
 
     implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
     implicitHeight: controlSize.inputControlHeight
-    color: isValid ? "transparent" : customPalette.dangerColor
+    color: isValid ? customPalette.backgroundColor : customPalette.dangerColor
+    radius: controlSize.rounding
 
     Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
-        height: control.highlighted ? 2 : 1
+        height: control.radius
         color: control.highlighted ? customPalette.highlightColor : customPalette.controlColor
         visible: enabled
     }
