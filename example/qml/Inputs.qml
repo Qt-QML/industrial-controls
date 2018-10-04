@@ -7,13 +7,102 @@ Frame {
 
     padding: controlSize.padding
 
-    RowLayout {
+    GridLayout {
         anchors.fill: parent
-        spacing: controlSize.spacing
+        anchors.margins: controlSize.padding
+        rowSpacing: controlSize.spacing
+        columnSpacing: controlSize.spacing
+        columns: 3
+
+        Label {}
 
         Label {
-            text: "No inputs examples yet"
-            Layout.alignment: Qt.AlignCenter
+            text: qsTr("Enabled")
+            font.pixelSize: controlSize.secondaryFontSize
+            Layout.alignment: Qt.AlignHCenter
         }
+
+        Label {
+            text: qsTr("Disabled")
+            font.pixelSize: controlSize.secondaryFontSize
+            Layout.alignment: Qt.AlignHCenter
+        }
+
+        Label { text: qsTr("Text field"); font.pixelSize: controlSize.secondaryFontSize }
+
+        TextField {
+            labelText: qsTr("Text edit")
+            text: qsTr("Example text")
+            Layout.fillWidth: true
+        }
+
+        TextField {
+            labelText: qsTr("Blocked Text edit")
+            text: qsTr("Example text")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Comboboxes"); font.pixelSize: controlSize.secondaryFontSize }
+
+        ComboBox {
+            labelText: qsTr("Combobox")
+            model: [
+                { text: "Up", icon: "qrc:/ui/up.svg" },
+                { text: "Down", icon: "qrc:/ui/down.svg" },
+                { text: "Left", icon: "qrc:/ui/left.svg" },
+                { text: "Right", icon: "qrc:/ui/right.svg" }
+            ]
+            Layout.fillWidth: true
+        }
+
+        ComboBox {
+            labelText: qsTr("Disabled combobox")
+            model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combo") ]
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
+
+        SpinBox {
+            labelText: qsTr("Spinbox")
+            Layout.fillWidth: true
+        }
+
+        SpinBox {
+            labelText: qsTr("Disabled spinbox")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Real spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
+
+        RealSpinBox {
+            labelText: qsTr("Real spinbox")
+            Layout.fillWidth: true
+        }
+
+        RealSpinBox {
+            labelText: qsTr("Disabled real spinbox")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Coord spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
+
+        CoordSpinBox {
+            labelText: qsTr("Coord spinbox")
+            Layout.fillWidth: true
+        }
+
+        CoordSpinBox {
+            labelText: qsTr("Disabled coord spinbox")
+            isLongitude: true
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Item { Layout.fillHeight: true }
     }
 }
