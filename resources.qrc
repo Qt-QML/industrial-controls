@@ -11,6 +11,8 @@
         <file>ui/minus.svg</file>
         <file>ui/up.svg</file>
         <file>ui/down.svg</file>
+        <file>ui/left.svg</file>
+        <file>ui/right.svg</file>
         <file>ui/cancel.svg</file>
         <file>ui/erase.svg</file>
         <file>ui/refresh.svg</file>
