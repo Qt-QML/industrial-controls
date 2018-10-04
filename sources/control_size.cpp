@@ -72,6 +72,16 @@ void ControlSize::setPadding(int padding)
     m_padding = padding;
 }
 
+int ControlSize::rounding() const
+{
+    return m_rounding;
+}
+
+void ControlSize::setRounding(int rounding)
+{
+    m_rounding = rounding;
+}
+
 int ControlSize::shadowSize() const
 {
     return m_shadowSize;

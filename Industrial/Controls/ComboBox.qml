@@ -10,7 +10,7 @@ T.ComboBox {
     property string displayIcon: currentItem && currentItem[control.iconRole] !== undefined ?
                                       currentItem[control.iconRole] : ""
 
-    // TODO: move all features to special comboboxes
+    property alias isValid: background.isValid
     property alias labelText: background.text
     property alias labelColor: background.textColor
     property alias backgroundColor: background.color
@@ -37,6 +37,10 @@ T.ComboBox {
     background: BackgroundItem {
         id: background
         anchors.fill: parent
+        leftPadding: {
+            if (displayIcon.length == 0) return controlSize.padding;
+            return content.height + controlSize.padding + controlSize.margins;
+        }
         inputed: displayText.length > 0
         highlighted: control.activeFocus
     }
@@ -55,16 +59,25 @@ T.ComboBox {
     contentItem: ContentItem {
         id: content
         anchors.fill: parent
-        anchors.bottomMargin: background.offset
+        anchors.leftMargin: control.padding
+        anchors.rightMargin: control.padding
+        anchors.topMargin: background.height - controlSize.baseSize + control.padding
+        anchors.bottomMargin: control.padding
         font: control.font
         text: displayText
         iconSource: displayIcon
-        horizontalAlignment: Text.AlignHCenter
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+        textColor: {
+            if (!control.enabled) return customPalette.sunkenColor;
+            if (!control.isValid) return customPalette.selectedTextColor
+
+            return customPalette.textColor;
+        }
     }
 
     popup: Popup {
         y: control.height
+        backgroundColor: background.color
         width: control.width
         implicitHeight: contentItem.implicitHeight
         padding: 1

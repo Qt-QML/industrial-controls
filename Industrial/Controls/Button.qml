@@ -6,12 +6,11 @@ import "../Shaders" as Shaders
 T.Button { // TODO: clickable
     id: control
 
-    property bool round: false
+    property bool round: false // TODO: remove round
     property bool pressedImpl: false
     property string tipText
 
     property alias iconSource: content.iconSource
-    property alias iconScaling: content.iconScaling
     property alias iconColor: content.iconColor
     property alias textColor: content.textColor
     property alias hasMenu: menuIndicator.visible
@@ -20,14 +19,14 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + controlSize.padding * 2)
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: controlSize.baseSize
     hoverEnabled: true
+    padding: controlSize.padding
 
     background: Rectangle {
         id: backgroundItem
-        border.color: !control.flat && control.activeFocus ? customPalette.highlightColor : "transparent"
-        radius: round ? Math.min(width, height) / 2 : 2
+        radius: round ? Math.min(width, height) / 2 : controlSize.rounding
         color: {
             if ((control.round && !control.flat && control.activeFocus) ||
                     control.pressed || control.pressedImpl)
@@ -46,19 +45,19 @@ T.Button { // TODO: clickable
         }
 
         Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: backgroundItem.radius
+            color: control.activeFocus && !control.round ? customPalette.highlightColor :
+                                                           backgroundItem.color
+        }
+
+        Rectangle {
             anchors.fill: parent
             color: customPalette.textColor
             radius: parent.radius
             opacity: 0.1
             visible: control.hovered
-        }
-
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: 2
-            color: customPalette.highlightColor
-            visible: control.activeFocus && !control.round
         }
 
         Shaders.Hatch {
@@ -73,21 +72,19 @@ T.Button { // TODO: clickable
         }
     }
 
-    contentItem: Item {
-            ContentItem {
-            id: content
-            anchors.centerIn: parent
-            height: controlSize.baseSize
-            text: control.text
-            font: control.font
-            textColor: (control.round && control.activeFocus) ||
-                       control.pressed || control.pressedImpl ?
-                           customPalette.selectedTextColor : customPalette.textColor
-            }
+    contentItem: ContentItem {
+        id: content
+        anchors.fill: parent
+        anchors.margins: control.padding
+        text: control.text
+        font: control.font
+        textColor: (control.round && control.activeFocus) ||
+                   control.pressed || control.pressedImpl ?
+                       customPalette.selectedTextColor : customPalette.textColor
     }
 
     ToolTip {
-        visible: (hovered || down) && tipText
+        visible: (control.hovered || control.down) && tipText
         text: tipText
         delay: 1000
     }

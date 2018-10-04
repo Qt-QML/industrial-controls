@@ -23,13 +23,8 @@
   </metadata>
   <defs
      id="defs16" />
-  <g
-     style="fill:none;stroke:#ffffff"
-     transform="matrix(-0.95439804,0,0,-0.95439804,38.905531,38.922044)"
-     id="layer1">
-    <path
-       style="fill:#ffffff;fill-rule:evenodd;stroke:none"
-       d="m 23.984614,33.996962 c 0,0 1.524975,1.524974 -15.7013499,-15.701349 l 4.2925219,-4.292522 11.470281,11.470282 11.439555,-11.439556 4.231068,4.231068 z"
-       id="rect3287" />
-  </g>
+  <path
+     id="rect4133-6"
+     d="M 1 1 L 1 6.9453125 L 31 6.9453125 L 31 1 L 1 1 z M 1 13.091797 L 1 19.037109 L 31 19.037109 L 31 13.091797 L 1 13.091797 z M 1 25.054688 L 1 31 L 31 31 L 31 25.054688 L 1 25.054688 z "
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:11.34186077;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
 </svg>

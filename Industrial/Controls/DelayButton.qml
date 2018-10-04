@@ -16,30 +16,30 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    delay: 1000
     font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth)
-    implicitHeight: Math.max(controlSize.baseSize, content.implicitHeight)
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: controlSize.baseSize
+    hoverEnabled: true
+    padding: controlSize.padding
+    delay: 1000
 
     background: Rectangle {
         id: backgroundItem
         anchors.fill: parent
-        border.color: control.activeFocus ? customPalette.highlightColor : "transparent"
-        radius: 2
+        radius: controlSize.rounding
         color: control.flat ? "transparent" : customPalette.buttonColor
 
         Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: control.hovered
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: backgroundItem.radius
+            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
         }
 
         ContentItem {
             id: content
-            anchors.centerIn: parent
-            height: parent.height
+            anchors.fill: parent
+            anchors.margins: control.padding
             text: control.text
             font: control.font
             textColor: customPalette.textColor
@@ -52,15 +52,30 @@ T.DelayButton {
             color: customPalette.highlightColor
             clip: true
 
-            ContentItem {
+            Item {
+                x: (backgroundItem.width - width) / 2
                 anchors.verticalCenter: parent.verticalCenter
                 height: parent.height
-                x: (backgroundItem.width - implicitWidth) / 2
-                text: control.text
-                font: control.font
-                iconSource: control.iconSource
-                textColor: customPalette.selectedTextColor
+                width: content.width + control.padding * 2
+
+                ContentItem {
+                    id: invertedContent
+                    anchors.fill: parent
+                    anchors.margins: control.padding
+                    text: control.text
+                    font: control.font
+                    iconSource: control.iconSource
+                    textColor: customPalette.selectedTextColor
+                }
             }
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            color: customPalette.textColor
+            radius: parent.radius
+            opacity: 0.1
+            visible: control.hovered
         }
 
         Shaders.Hatch {
@@ -78,7 +93,7 @@ T.DelayButton {
     contentItem: Item {}
 
     ToolTip {
-        visible: (hovered || down) && tipText
+        visible: control.hovered && tipText
         text: tipText
         delay: 1000
     }

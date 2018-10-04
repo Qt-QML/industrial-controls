@@ -9,11 +9,11 @@ T.Control {
 
     property real value: 0
     property bool isLongitude: false
+    property bool isValid: !isNaN(value)
     property color color: customPalette.textColor
     property int secondsPrecision: 2
     property int sign: 1
 
-    readonly property bool isValid: !isNaN(value)
     readonly property real scalingFactor: width / implicitWidth
 
     property alias backgroundColor: background.color
@@ -79,6 +79,7 @@ T.Control {
     background: BackgroundItem {
         id: background
         anchors.fill: parent
+        isValid: control.isValid
         leftPadding: controlSize.baseSize + controlSize.padding
         color: isValid ? "transparent" : customPalette.dangerColor
         textColor: isValid ? (highlighted ? customPalette.highlightColor :

@@ -5,9 +5,8 @@ TextInput {
 
     horizontalAlignment: Qt.AlignHCenter
     font.pixelSize: controlSize.fontSize
-    color: customPalette.textColor
+    color: enabled ? customPalette.textColor : customPalette.disabledColor
     selectByMouse: true
     selectionColor: customPalette.selectionColor
     selectedTextColor: customPalette.selectedTextColor
-    //onActiveFocusChanged: if (activeFocus) selectAll()
 }

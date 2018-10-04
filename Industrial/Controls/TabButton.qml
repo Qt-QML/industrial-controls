@@ -6,27 +6,38 @@ import "../Shaders" as Shaders
 T.TabButton {
     id: control
 
+    property bool flat: false
+
     property alias iconSource: content.iconSource
     property alias iconColor: content.iconColor
     property alias textColor: content.textColor
     property alias backgroundColor: backgroundItem.color
 
     font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(backgroundItem.implicitWidth, content.implicitWidth)
-    implicitHeight: Math.max(backgroundItem.implicitHeight, content.implicitHeight)
-    clip: true
+    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: controlSize.baseSize
+    hoverEnabled: true
+    padding: controlSize.padding
 
     background: Rectangle {
         id: backgroundItem
         anchors.fill: parent
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.baseSize
-        border.color: control.activeFocus ? customPalette.highlightColor : "transparent"
         radius: 3
-        color: {
-            if (control.checked || control.highlighted) return customPalette.selectionColor;
-            if (control.pressed) return customPalette.highlightColor;
-            return control.flat ? "transparent" : customPalette.buttonColor;
+        color: control.checked ? customPalette.raisedColor : "transparent";
+
+        Rectangle {
+            anchors.fill: parent
+            color: customPalette.textColor
+            radius: parent.radius
+            opacity: 0.1
+            visible: control.hovered
+        }
+
+        Rectangle {
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: 2
+            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
         }
 
         Shaders.Hatch {
@@ -40,7 +51,6 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: pressed || checked ? customPalette.selectedTextColor: customPalette.textColor
+        textColor: customPalette.textColor
     }
 }
-
