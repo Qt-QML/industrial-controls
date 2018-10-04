@@ -4,12 +4,12 @@ import QtQuick.Templates 2.2 as T
 T.TextField {
     id: control
 
+    property alias isValid: background.isValid
     property alias labelText: background.text
 
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
-    color: customPalette.textColor
     selectionColor: customPalette.selectionColor
     selectedTextColor: customPalette.selectedTextColor
     selectByMouse: true
@@ -18,6 +18,12 @@ T.TextField {
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
     opacity: enabled ? 1 : 0.33
+    color: {
+        if (!control.enabled) return customPalette.sunkenColor;
+        if (!control.isValid) return customPalette.selectedTextColor
+
+        return customPalette.textColor;
+    }
 
     background: BackgroundItem {
         id: background

@@ -12,15 +12,16 @@ SpinBox {
 
     to: realTo / precision
     from: realFrom / precision
-    isValid: false
+    isValid: !isNaN(realValue)
 
-    Component.onCompleted: recalc()
-    onRealValueChanged: recalc()
-    onValueChanged: realValue = value * precision
+    onRealValueChanged: value = Math.round(realValue / precision)
+    onValueModified: realValue = value * precision
 
     validator: DoubleValidator {
-        bottom: Math.min(control.from * precision, control.to * precision)
-        top: Math.max(control.from * precision, control.to * precision)
+        decimals: Helper.decimals(precision)
+        notation: DoubleValidator.StandardNotation
+        bottom: Math.min(realFrom, realTo)
+        top: Math.max(realFrom, realTo)
     }
 
     textFromValue: function(value, locale) {
@@ -28,14 +29,10 @@ SpinBox {
     }
 
     valueFromText: function(text, locale) {
-        return Number.fromLocaleString(locale, text) / precision
-    }
+        var val = Number.fromLocaleString(locale, text) / precision;
+        if (val < from) return from;
+        if (val > to) return to;
 
-    function recalc() {
-        if (!isNaN(realValue)) {
-            isValid = true;
-            value = Math.round(realValue / precision);
-        }
-        else isValid = false;
+        return val;
     }
 }

@@ -17,6 +17,7 @@ T.SpinBox {
     font.pixelSize: controlSize.fontSize
     editable: true
     opacity: enabled ? 1 : 0.33
+    to: 100
 
     validator: IntValidator {
         bottom: Math.min(control.from, control.to)
@@ -26,17 +27,21 @@ T.SpinBox {
     background: BackgroundItem {
         id: background
         anchors.fill: parent
+        isValid: control.isValid
         leftPadding: controlSize.baseSize + controlSize.padding
-        color: isValid ? "transparent" : customPalette.dangerColor
-        textColor: isValid ? (highlighted ? customPalette.highlightColor :
-                                            customPalette.secondaryTextColor) :
-                             customPalette.selectedTextColor
         highlighted: control.activeFocus
     }
 
     contentItem: NumericInput {
-        text: isValid ? control.textFromValue(control.value, control.locale) : "0"
-        color: isValid ? control.color : customPalette.selectedTextColor
+        Binding on text { value: control.textFromValue(control.value, control.locale) }
+        color: {
+            if (!control.enabled) return customPalette.sunkenColor;
+            if (!control.isValid) return customPalette.selectedTextColor
+
+            return control.color;
+        }
+        maximumLength: control.to.toString().length
+        clip: true
         font: control.font
         readOnly: !control.editable
         inputMethodHints: Qt.ImhDigitsOnly
@@ -64,11 +69,14 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
+            width: parent.width - customPalette.padding * 2
             source: "qrc:/ui/minus.svg"
-            color: isValid && !down.pressed ? control.color :
-                                              customPalette.selectedTextColor
-            width: parent.width * 0.6
-            height: width
+            color: {
+                if (!enabled) return customPalette.sunkenColor;
+                if (!control.isValid || down.pressed) return customPalette.selectedTextColor
+
+                return customPalette.textColor;
+            }
         }
     }
 
@@ -90,11 +98,14 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
+            width: parent.width - customPalette.padding * 2
             source: "qrc:/ui/plus.svg"
-            color: isValid && !up.pressed ? control.color :
-                                            customPalette.selectedTextColor
-            width: parent.width * 0.6
-            height: width
+            color: {
+                if (!enabled) return customPalette.sunkenColor;
+                if (!control.isValid || up.pressed) return customPalette.selectedTextColor
+
+                return customPalette.textColor;
+            }
         }
     }
 }

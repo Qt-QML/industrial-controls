@@ -1,5 +1,3 @@
-import QtQuick 2.9
-
 TextInput {
     id: root
 
@@ -11,9 +9,4 @@ TextInput {
     onTextEdited: changed = true
     onActiveFocusChanged:  if (!activeFocus && changed) finished()
     onEditingFinished: if (changed) finished()
-
-    font.pixelSize: controlSize.fontSize
-    color: customPalette.textColor
-    selectedTextColor: customPalette.selectedTextColor
-    selectionColor: customPalette.selectionColor
 }
