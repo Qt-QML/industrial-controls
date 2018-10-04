@@ -55,12 +55,13 @@ T.ComboBox {
     contentItem: ContentItem {
         id: content
         anchors.fill: parent
-        anchors.margins: control.padding
-        anchors.bottomMargin: control.padding + background.offset
+        anchors.leftMargin: control.padding
+        anchors.rightMargin: control.padding
+        anchors.topMargin: background.height - controlSize.baseSize + control.padding
+        anchors.bottomMargin: control.padding
         font: control.font
         text: displayText
         iconSource: displayIcon
-        horizontalAlignment: Text.AlignHCenter
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
     }
 

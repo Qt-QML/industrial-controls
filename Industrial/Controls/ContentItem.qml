@@ -17,7 +17,7 @@ Item {
     clip: true
     implicitWidth: {
         if (icon.visible) {
-            return label.visible ? (icon.width + spacing + label.implicitWidth) : icon.width;
+            return label.visible ? (icon.width + content.spacing + label.implicitWidth) : icon.width;
         }
         return label.implicitWidth
     }
@@ -36,9 +36,9 @@ Item {
     Text {
         id: label
         anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        font.pixelSize: controlSize.fontSize
         width: content.width - (icon.visible ? content.spacing + icon.width : 0)
+        height: content.height
+        font.pixelSize: controlSize.fontSize
         color: enabled ? textColor : customPalette.sunkenColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
