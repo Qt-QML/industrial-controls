@@ -20,6 +20,7 @@ namespace presentation
         Q_PROPERTY(int rounding READ rounding WRITE setRounding)
         Q_PROPERTY(int underline READ underline WRITE setUnderline)
         Q_PROPERTY(int shadowSize READ shadowSize WRITE setShadowSize)
+        Q_PROPERTY(int animationTime READ animationTime WRITE setAnimationTime)
 
     public:
         int baseSize() const;
@@ -52,6 +53,9 @@ namespace presentation
         int shadowSize() const;
         void setShadowSize(int shadowSize);
 
+        int animationTime() const;
+        void setAnimationTime(int animationTime);
+
     private:
         int m_baseSize;
         int m_inputControlHeight;
@@ -63,6 +67,7 @@ namespace presentation
         int m_rounding;
         int m_underline;
         int m_shadowSize;
+        int m_animationTime;
     };
 }
 

@@ -14,7 +14,6 @@ namespace presentation
         Q_PROPERTY(QColor backgroundColor READ backgroundColor WRITE setBackgroundColor)
         Q_PROPERTY(QColor sunkenColor READ sunkenColor WRITE setSunkenColor)
         Q_PROPERTY(QColor raisedColor READ raisedColor WRITE setRaisedColor)
-        Q_PROPERTY(QColor controlColor READ controlColor WRITE setControlColor)
         Q_PROPERTY(QColor buttonColor READ buttonColor WRITE setButtonColor)
 
         Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor)
@@ -46,9 +45,6 @@ namespace presentation
 
         QColor raisedColor() const;
         void setRaisedColor(const QColor& raisedColor);
-
-        QColor controlColor() const;
-        void setControlColor(QColor controlColor);
 
         QColor buttonColor() const;
         void setButtonColor(const QColor& buttonColor);
@@ -105,7 +101,6 @@ namespace presentation
         QColor m_backgroundColor;
         QColor m_sunkenColor;
         QColor m_raisedColor;
-        QColor m_controlColor;
         QColor m_buttonColor;
         QColor m_textColor;
         QColor m_secondaryTextColor;

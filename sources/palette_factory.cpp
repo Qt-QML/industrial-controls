@@ -12,7 +12,6 @@ Palette PaletteFactory::createDayPalette()
     palette.setSunkenColor("#B0BEC5");
     palette.setBackgroundColor("#F5F5F5");
     palette.setRaisedColor("#ECEFF1");
-    palette.setControlColor("#CFD8DC");
     palette.setButtonColor("#CFD8DC");
 
     palette.setTextColor("#202020");
@@ -35,7 +34,6 @@ Palette PaletteFactory::createNightPalette()
     palette.setSunkenColor("#102027");
     palette.setBackgroundColor("#2d373e");
     palette.setRaisedColor("#37474f");
-    palette.setControlColor("#4f5b62");
     palette.setButtonColor("#607C88");
 
     palette.setTextColor("#ffffff");

@@ -44,7 +44,7 @@ Item {
         width: parent.width
         height: controlSize.underline
         color: customPalette.highlightColor
-        visible: control.highlighted
+        visible: control.highlighted && control.enabled
     }
 
     Shaders.Hatch {

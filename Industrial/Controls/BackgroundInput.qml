@@ -5,6 +5,7 @@ BackgroundItem {
 
     property bool inputed: true
 
+    property alias textHeight: textItem.height
     property alias text: textItem.text
     property alias textColor: textItem.color
 
@@ -14,8 +15,9 @@ BackgroundItem {
         id: textItem
         anchors.left: parent.left
         anchors.leftMargin: control.leftPadding
-        height: parent.height
-        verticalAlignment: inputed ? Text.AlignTop : Text.AlignVCenter
+        anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
+        anchors.top: inputed ? parent.top : undefined
+        height: implicitHeight
         font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
         color: {
             if (!control.enabled) return customPalette.sunkenColor;
@@ -24,5 +26,6 @@ BackgroundItem {
 
             return customPalette.secondaryTextColor;
         }
+        Behavior on font.pixelSize { PropertyAnimation { duration: controlSize.animationTime } }
     }
 }

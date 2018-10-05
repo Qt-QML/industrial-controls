@@ -16,6 +16,6 @@ ShaderEffect {
     void main(void)
     {
         gl_FragColor = mix(vec4(0.0, 0.0, 0.0, 0.0), color,
-                        sin(qt_TexCoord0.x * yFactor + qt_TexCoord0.y * xFactor));
+                        cos(qt_TexCoord0.x * yFactor + qt_TexCoord0.y * xFactor));
     }"
 }

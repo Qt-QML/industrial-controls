@@ -37,8 +37,7 @@ Frame {
         Label { text: qsTr("Text field"); font.pixelSize: controlSize.secondaryFontSize }
 
         TextField {
-            labelText: qsTr("Text edit")
-            text: qsTr("Example text")
+            labelText: qsTr("Edit text here")
             Layout.fillWidth: true
         }
 
@@ -60,7 +59,7 @@ Frame {
 
         ComboBox {
             labelText: qsTr("Combobox")
-            model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combo") ]
+            model: [ "", qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combo") ]
             Layout.fillWidth: true
         }
 
@@ -86,7 +85,6 @@ Frame {
         Label { text: qsTr("Spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         SpinBox {
-            labelText: qsTr("Spinbox")
             Layout.fillWidth: true
         }
 

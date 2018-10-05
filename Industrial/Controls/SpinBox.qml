@@ -16,7 +16,9 @@ T.SpinBox {
     rightPadding: controlSize.baseSize
     font.pixelSize: controlSize.fontSize
     editable: true
+    hoverEnabled: true
     opacity: enabled ? 1 : 0.33
+    clip: true
     to: 100
 
     validator: IntValidator {
@@ -40,6 +42,7 @@ T.SpinBox {
 
             return control.color;
         }
+        height: parent.height
         maximumLength: control.to.toString().length
         clip: true
         font: control.font
@@ -51,21 +54,11 @@ T.SpinBox {
         bottomPadding: background.offset
     }
 
-    down.indicator: Rectangle {
+    down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
         width: controlSize.baseSize
-        height: parent.height - background.radius
-        radius: 3
-        color: down.pressed ? customPalette.highlightColor : "transparent"
-        opacity: enabled ? 1 : 0.33
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: down.hovered
-        }
+        color: down.pressed && enabled ? customPalette.highlightColor : "transparent"
+        hovered: down.hovered
 
         ColoredIcon {
             anchors.centerIn: parent
@@ -80,21 +73,11 @@ T.SpinBox {
         }
     }
 
-    up.indicator: Rectangle {
+    up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: controlSize.baseSize
-        height: parent.height - background.radius
-        radius: 3
-        color: up.pressed ? customPalette.highlightColor : "transparent"
-        opacity: enabled ? 1 : 0.33
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: up.hovered
-        }
+        color: up.pressed && enabled ? customPalette.highlightColor : "transparent"
+        hovered: up.hovered
 
         ColoredIcon {
             anchors.centerIn: parent

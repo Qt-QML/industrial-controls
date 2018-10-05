@@ -101,3 +101,13 @@ void ControlSize::setShadowSize(int shadowSize)
 {
     m_shadowSize = shadowSize;
 }
+
+int ControlSize::animationTime() const
+{
+    return m_animationTime;
+}
+
+void ControlSize::setAnimationTime(int animationTime)
+{
+    m_animationTime = animationTime;
+}

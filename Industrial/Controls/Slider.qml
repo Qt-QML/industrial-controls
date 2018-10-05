@@ -16,7 +16,7 @@ T.Slider {
         width: control.availableWidth
         height: 2
         radius: height / 2
-        color: customPalette.controlColor
+        color: customPalette.secondaryTextColor
 
         Rectangle {
             width: control.visualPosition * parent.width

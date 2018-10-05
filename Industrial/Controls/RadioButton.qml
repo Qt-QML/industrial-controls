@@ -21,7 +21,7 @@ T.RadioButton {
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
         color: "transparent"
-        border.color: control.activeFocus ? customPalette.highlightColor : customPalette.controlColor
+        border.color: control.activeFocus ? customPalette.highlightColor : customPalette.secondaryTextColor
 
         Rectangle {
             anchors.fill: parent
