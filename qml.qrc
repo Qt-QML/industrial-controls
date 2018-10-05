@@ -33,7 +33,6 @@
         <file>Industrial/Controls/ProgressBar.qml</file>
         <file>Industrial/Controls/Slider.qml</file>
         <file>Industrial/Controls/ComboBox.qml</file>
-        <file>Industrial/Controls/TextInput.qml</file>
         <file>Industrial/Controls/TextField.qml</file>
         <file>Industrial/Controls/FilterField.qml</file>
         <file>Industrial/Controls/ItemDelegate.qml</file>

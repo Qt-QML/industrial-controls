@@ -20,6 +20,16 @@ Item {
 
         NumericInput {
             id: input
+
+            property bool changed: false
+
+            signal finished()
+
+            onFinished: changed = false
+            onTextEdited: changed = true
+            onActiveFocusChanged:  if (!activeFocus && changed) finished()
+            onEditingFinished: if (changed) finished()
+
             height: root.height
             inputMethodHints: Qt.ImhDigitsOnly
             font: control.font

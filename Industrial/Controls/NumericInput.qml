@@ -1,12 +1,12 @@
+import QtQuick 2.9
+
 TextInput {
     id: root
 
-    property bool changed: false
-
-    signal finished()
-
-    onFinished: changed = false
-    onTextEdited: changed = true
-    onActiveFocusChanged:  if (!activeFocus && changed) finished()
-    onEditingFinished: if (changed) finished()
+    horizontalAlignment: Qt.AlignHCenter
+    selectByMouse: true
+    font.pixelSize: controlSize.fontSize
+    color: enabled ? customPalette.textColor : customPalette.sunkenColor
+    selectionColor: customPalette.selectionColor
+    selectedTextColor: customPalette.selectedTextColor
 }

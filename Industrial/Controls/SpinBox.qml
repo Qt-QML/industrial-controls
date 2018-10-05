@@ -1,4 +1,4 @@
-import QtQuick 2.6
+import QtQuick 2.9
 import QtQuick.Templates 2.2 as T
 
 T.SpinBox {
@@ -36,7 +36,7 @@ T.SpinBox {
 
     contentItem: NumericInput {
         Binding on text { value: control.textFromValue(control.value, control.locale) }
-        color: control.enabled ? control.color : customPalette.sunkenColor
+        onTextEdited: control.value = control.valueFromText(text, control.locale)
         height: control.height
         maximumLength: control.to.toString().length
         clip: true
