@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.Button { // TODO: clickable
     id: control
 
@@ -24,8 +22,11 @@ T.Button { // TODO: clickable
     hoverEnabled: true
     padding: controlSize.padding
 
-    background: Rectangle {
+    background: BackgroundItem {
         id: backgroundItem
+        highlighted: control.activeFocus && !control.round
+        hovered: control.hovered
+        shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : controlSize.rounding
         color: {
             if ((control.round && !control.flat && control.activeFocus) ||
@@ -42,33 +43,6 @@ T.Button { // TODO: clickable
             y: parent.height - height
             visible: false
             focused: control.activeFocus
-        }
-
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: backgroundItem.radius
-            color: control.activeFocus && !control.round ? customPalette.highlightColor :
-                                                           backgroundItem.color
-        }
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: control.hovered
-        }
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled && !control.flat
-        }
-
-        Shadow {
-            visible: !control.flat
-            source: parent
         }
     }
 

@@ -2,29 +2,49 @@ import QtQuick 2.6
 
 import "../Shaders" as Shaders
 
-Rectangle {
+Item {
     id: control
 
-    property bool inputed: true
     property bool highlighted: false
+    property bool hovered: false
     property bool isValid: true
+    property bool shadow: false
     property int leftPadding: controlSize.padding
     readonly property int offset: radius + 1
 
-    property alias text: textItem.text
-    property alias textColor: textItem.color
+    property alias radius: bg.radius
+    property alias color: bg.color
 
-    implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: controlSize.baseSize * 4
     implicitHeight: controlSize.inputControlHeight
-    color: isValid ? customPalette.backgroundColor : customPalette.dangerColor
-    radius: controlSize.rounding
+
+    Item {
+        anchors.fill: parent
+        clip: true
+
+        Rectangle {
+            id: bg
+            color: control.isValid ? customPalette.backgroundColor : customPalette.dangerColor
+            anchors.fill: parent
+            radius: controlSize.rounding
+            anchors.bottomMargin: -radius
+
+            Rectangle {
+                anchors.fill: parent
+                color: customPalette.textColor
+                radius: parent.radius
+                opacity: 0.1
+                visible: hovered
+            }
+        }
+    }
 
     Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
-        height: control.radius
-        color: control.highlighted ? customPalette.highlightColor : customPalette.controlColor
-        visible: enabled
+        height: controlSize.underline
+        color: customPalette.highlightColor
+        visible: control.highlighted
     }
 
     Shaders.Hatch {
@@ -33,19 +53,8 @@ Rectangle {
         visible: !enabled
     }
 
-    Text {
-        id: textItem
-        anchors.left: parent.left
-        anchors.leftMargin: control.leftPadding
-        height: parent.height
-        verticalAlignment: inputed ? Text.AlignTop : Text.AlignVCenter
-        font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
-        color: {
-            if (!control.enabled) return customPalette.sunkenColor;
-            if (!control.isValid) return customPalette.selectedTextColor
-            if (control.highlighted) return customPalette.highlightColor;
-
-            return customPalette.secondaryTextColor;
-        }
+    Shadow {
+        visible: shadow
+        source: parent
     }
 }

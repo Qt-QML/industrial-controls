@@ -24,7 +24,7 @@ T.SpinBox {
         top: Math.max(control.from, control.to)
     }
 
-    background: BackgroundItem {
+    background: BackgroundInput {
         id: background
         anchors.fill: parent
         isValid: control.isValid

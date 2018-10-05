@@ -18,6 +18,7 @@ namespace presentation
         Q_PROPERTY(int margins READ margins WRITE setMargins)
         Q_PROPERTY(int padding READ padding WRITE setPadding)
         Q_PROPERTY(int rounding READ rounding WRITE setRounding)
+        Q_PROPERTY(int underline READ underline WRITE setUnderline)
         Q_PROPERTY(int shadowSize READ shadowSize WRITE setShadowSize)
 
     public:
@@ -45,6 +46,9 @@ namespace presentation
         int rounding() const;
         void setRounding(int rounding);
 
+        int underline() const;
+        void setUnderline(int underline);
+
         int shadowSize() const;
         void setShadowSize(int shadowSize);
 
@@ -57,6 +61,7 @@ namespace presentation
         int m_margins;
         int m_padding;
         int m_rounding;
+        int m_underline;
         int m_shadowSize;
     };
 }

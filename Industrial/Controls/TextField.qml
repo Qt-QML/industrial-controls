@@ -25,7 +25,7 @@ T.TextField {
         return customPalette.textColor;
     }
 
-    background: BackgroundItem {
+    background: BackgroundInput {
         id: background
         anchors.fill: parent
         inputed: displayText.length > 0 || control.activeFocus

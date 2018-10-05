@@ -76,7 +76,7 @@ T.Control {
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
 
-    background: BackgroundItem {
+    background: BackgroundInput {
         id: background
         anchors.fill: parent
         isValid: control.isValid

@@ -72,6 +72,16 @@ void ControlSize::setPadding(int padding)
     m_padding = padding;
 }
 
+int ControlSize::underline() const
+{
+    return m_underline;
+}
+
+void ControlSize::setUnderline(int underline)
+{
+    m_underline = underline;
+}
+
 int ControlSize::rounding() const
 {
     return m_rounding;

@@ -34,7 +34,7 @@ T.ComboBox {
         opened: control.down
     }
 
-    background: BackgroundItem {
+    background: BackgroundInput {
         id: background
         anchors.fill: parent
         leftPadding: {

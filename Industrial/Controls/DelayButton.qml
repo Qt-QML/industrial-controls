@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.DelayButton {
     id: control
 
@@ -23,34 +21,41 @@ T.DelayButton {
     padding: controlSize.padding
     delay: 1000
 
-    background: Rectangle {
+    background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        radius: controlSize.rounding
+        highlighted: control.activeFocus
+        hovered: control.hovered
+        shadow: !control.flat
         color: control.flat ? "transparent" : customPalette.buttonColor
+    }
 
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: backgroundItem.radius
-            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
-        }
+    contentItem: Item {
+        anchors.fill: parent
 
         ContentItem {
             id: content
             anchors.fill: parent
+            implicitHeight: parent.height
             anchors.margins: control.padding
             text: control.text
             font: control.font
             textColor: customPalette.textColor
         }
 
-        Rectangle {
-            radius: parent.radius
-            height: parent.height
+        Item {
             width: parent.width * control.progress
-            color: customPalette.highlightColor
+            height: parent.height
             clip: true
+
+            Rectangle {
+                radius: backgroundItem.radius
+                anchors.fill: parent
+                anchors.rightMargin: -backgroundItem.radius
+                anchors.bottomMargin: -backgroundItem.radius
+                color: customPalette.highlightColor
+                clip: true
+            }
 
             Item {
                 x: (backgroundItem.width - width) / 2
@@ -69,28 +74,7 @@ T.DelayButton {
                 }
             }
         }
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: control.hovered
-        }
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled && !control.flat
-        }
-
-        Shadow {
-            visible: !control.flat
-            source: parent
-        }
     }
-
-    contentItem: Item {}
 
     ToolTip {
         visible: control.hovered && tipText
