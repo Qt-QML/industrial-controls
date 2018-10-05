@@ -24,7 +24,7 @@ Item {
 
         Rectangle {
             id: bg
-            color: control.isValid ? customPalette.backgroundColor : customPalette.dangerColor
+            color: customPalette.backgroundColor
             anchors.fill: parent
             radius: controlSize.rounding
             anchors.bottomMargin: -radius
@@ -43,7 +43,7 @@ Item {
         anchors.bottom: parent.bottom
         width: parent.width
         height: controlSize.underline
-        color: customPalette.highlightColor
+        color: control.isValid ? customPalette.highlightColor : customPalette.dangerColor
         visible: control.highlighted && control.enabled
     }
 

@@ -21,7 +21,7 @@ BackgroundItem {
         font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
         color: {
             if (!control.enabled) return customPalette.sunkenColor;
-            if (!control.isValid) return customPalette.selectedTextColor
+            if (!control.isValid) return customPalette.dangerColor
             if (control.highlighted) return customPalette.highlightColor;
 
             return customPalette.secondaryTextColor;

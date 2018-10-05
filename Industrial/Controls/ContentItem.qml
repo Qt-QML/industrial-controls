@@ -3,6 +3,9 @@ import QtQuick 2.6
 Item {
     id: content
 
+    property int spacing: controlSize.spacing
+    property int iconSize: controlSize.baseSize - controlSize.padding * 2
+
     property color textColor: customPalette.textColor
     property color iconColor: textColor
 
@@ -11,8 +14,6 @@ Item {
     property alias text: label.text
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
-
-    property int spacing: controlSize.spacing
 
     clip: true
     implicitWidth: {
@@ -27,8 +28,8 @@ Item {
         id: icon
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        height: content.height
-        width: height
+        height: iconSize
+        width: iconSize
         color: enabled ? iconColor : customPalette.sunkenColor
         visible: iconSource != ""
     }
@@ -36,8 +37,9 @@ Item {
     Text {
         id: label
         anchors.right: parent.right
-        width: content.width - (icon.visible ? content.spacing + icon.width : 0)
+        width: content.width - (icon.visible ? content.spacing : 0)
         height: content.height
+        elide: Text.ElideRight
         font.pixelSize: controlSize.fontSize
         color: enabled ? textColor : customPalette.sunkenColor
         horizontalAlignment: Text.AlignHCenter

@@ -10,7 +10,8 @@ T.TextField {
     implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
-    selectionColor: customPalette.selectionColor
+    color: control.enabled ? customPalette.textColor : customPalette.sunkenColor
+    selectionColor: control.isValid ? customPalette.selectionColor : customPalette.dangerColor
     selectedTextColor: customPalette.selectedTextColor
     selectByMouse: true
     leftPadding: controlSize.padding
@@ -18,17 +19,11 @@ T.TextField {
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
     opacity: enabled ? 1 : 0.33
-    color: {
-        if (!control.enabled) return customPalette.sunkenColor;
-        if (!control.isValid) return customPalette.selectedTextColor
-
-        return customPalette.textColor;
-    }
-
     background: BackgroundInput {
         id: background
         anchors.fill: parent
         inputed: displayText.length > 0 || control.activeFocus
         highlighted: control.activeFocus
+        clip: true
     }
 }

@@ -30,6 +30,7 @@ T.ComboBox {
     indicator: MenuIndicator {
         x: control.width - width
         y: control.height - height
+        isValid: control.isValid
         focused: control.activeFocus
         opened: control.down
     }
@@ -54,25 +55,19 @@ T.ComboBox {
                         modelData[control.iconRole] : ""
         font: control.font
         highlighted: control.highlightedIndex === index
+        isValid: control.isValid
     }
 
     contentItem: ContentItem {
         id: content
-        anchors.fill: parent
+        anchors.fill: control
         anchors.leftMargin: control.padding
         anchors.rightMargin: control.padding
-        anchors.topMargin: background.height - controlSize.baseSize + control.padding
-        anchors.bottomMargin: control.padding
         font: control.font
         text: displayText
         iconSource: displayIcon
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-        textColor: {
-            if (!control.enabled) return customPalette.sunkenColor;
-            if (!control.isValid) return customPalette.selectedTextColor
-
-            return customPalette.textColor;
-        }
+        textColor: control.enabled ? customPalette.textColor : customPalette.sunkenColor
     }
 
     popup: Popup {

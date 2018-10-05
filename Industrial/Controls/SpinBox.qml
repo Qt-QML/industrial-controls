@@ -36,13 +36,8 @@ T.SpinBox {
 
     contentItem: NumericInput {
         Binding on text { value: control.textFromValue(control.value, control.locale) }
-        color: {
-            if (!control.enabled) return customPalette.sunkenColor;
-            if (!control.isValid) return customPalette.selectedTextColor
-
-            return control.color;
-        }
-        height: parent.height
+        color: control.enabled ? control.color : customPalette.sunkenColor
+        height: control.height
         maximumLength: control.to.toString().length
         clip: true
         font: control.font
@@ -51,7 +46,6 @@ T.SpinBox {
         validator: control.validator
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-        bottomPadding: background.offset
     }
 
     down.indicator: BackgroundItem {
@@ -59,6 +53,7 @@ T.SpinBox {
         width: controlSize.baseSize
         color: down.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: down.hovered
+        visible: control.enabled
 
         ColoredIcon {
             anchors.centerIn: parent
@@ -66,7 +61,7 @@ T.SpinBox {
             source: "qrc:/ui/minus.svg"
             color: {
                 if (!enabled) return customPalette.sunkenColor;
-                if (!control.isValid || down.pressed) return customPalette.selectedTextColor
+                if (down.pressed) return customPalette.selectedTextColor
 
                 return customPalette.textColor;
             }
@@ -78,6 +73,7 @@ T.SpinBox {
         width: controlSize.baseSize
         color: up.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: up.hovered
+        visible: control.enabled
 
         ColoredIcon {
             anchors.centerIn: parent
@@ -85,7 +81,7 @@ T.SpinBox {
             source: "qrc:/ui/plus.svg"
             color: {
                 if (!enabled) return customPalette.sunkenColor;
-                if (!control.isValid || up.pressed) return customPalette.selectedTextColor
+                if (up.pressed) return customPalette.selectedTextColor
 
                 return customPalette.textColor;
             }

@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.3
 T.ItemDelegate {
     id: control
 
+    property bool isValid: true
+
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
@@ -15,7 +17,7 @@ T.ItemDelegate {
     background: Rectangle {
         anchors.fill: parent
         visible: control.highlighted
-        color: customPalette.highlightColor
+        color: isValid ? customPalette.highlightColor : customPalette.dangerColor
     }
 
     contentItem: ContentItem {
