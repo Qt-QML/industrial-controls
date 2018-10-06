@@ -28,6 +28,32 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
+        Label { text: qsTr("Checkbox"); font.pixelSize: controlSize.secondaryFontSize }
+
+        CheckBox {
+            text: qsTr("Basic checkbox")
+            Layout.fillWidth: true
+        }
+
+        CheckBox {
+            text: qsTr("Disabled checkbox")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Radio button"); font.pixelSize: controlSize.secondaryFontSize }
+
+        RadioButton {
+            text: qsTr("Basic radio button")
+            Layout.fillWidth: true
+        }
+
+        RadioButton {
+            text: qsTr("Disabled radio button")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
         Label { text: qsTr("Switch"); font.pixelSize: controlSize.secondaryFontSize }
 
         Switch {

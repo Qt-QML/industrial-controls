@@ -15,7 +15,6 @@ Item {
     property alias radius: bg.radius
     property alias color: bg.color
 
-    implicitWidth: controlSize.baseSize * 4
     implicitHeight: controlSize.inputControlHeight
 
     Item {

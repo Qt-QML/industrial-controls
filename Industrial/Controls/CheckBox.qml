@@ -2,8 +2,6 @@ import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
 
-import "../Shaders" as Shaders
-
 T.CheckBox {
     id: control
 
@@ -20,14 +18,13 @@ T.CheckBox {
     hoverEnabled: true
     opacity: enabled ? 1 : 0.33
 
-    indicator: Rectangle {
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.baseSize
+    indicator: BackgroundItem {
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        radius: 2
-        color: "transparent"
-        border.color: control.activeFocus ? customPalette.highlightColor : customPalette.secondaryTextColor
+        implicitWidth: controlSize.baseSize
+        implicitHeight: controlSize.baseSize
+        highlighted: control.activeFocus
+        hovered: control.hovered
 
         ColoredIcon {
             anchors.fill: parent
@@ -35,12 +32,6 @@ T.CheckBox {
             source: "qrc:/ui/ok.svg"
             color: control.down ? customPalette.highlightColor : customPalette.textColor
             visible: control.checked || control.down
-        }
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled
         }
     }
 

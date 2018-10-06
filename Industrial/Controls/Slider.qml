@@ -8,15 +8,16 @@ T.Slider {
 
     height: controlSize.baseSize
     opacity: enabled ? 1 : 0.33
+    hoverEnabled: true
 
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
         implicitWidth: controlSize.baseSize * 6
         width: control.availableWidth
-        height: 2
+        height: controlSize.underline
         radius: height / 2
-        color: customPalette.secondaryTextColor
+        color: customPalette.backgroundColor
 
         Rectangle {
             width: control.visualPosition * parent.width
@@ -35,9 +36,15 @@ T.Slider {
         color: control.activeFocus ? customPalette.highlightColor : customPalette.buttonColor
         visible: enabled
 
-        Shadow {
-            source: parent
+        Rectangle {
+            anchors.fill: parent
+            color: customPalette.textColor
+            radius: parent.radius
+            opacity: 0.1
+            visible: hovered
         }
+
+        Shadow { source: parent }
 
         Rectangle {
             anchors.centerIn: parent

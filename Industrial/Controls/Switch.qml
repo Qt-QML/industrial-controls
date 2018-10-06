@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.Switch {
     id: control
 
@@ -15,31 +13,44 @@ T.Switch {
     font.pixelSize: controlSize.fontSize
     implicitWidth: contentItem.implicitWidth
     implicitHeight: controlSize.baseSize
+    opacity: enabled ? 1 : 0.33
+    hoverEnabled: true
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
     indicator: Rectangle {
         id: backgroundItem
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.baseSize / 4
         x: control.leftPadding
         y: parent.height / 2 - height / 2
+        implicitWidth: controlSize.baseSize
+        implicitHeight: controlSize.underline
         radius: height / 2
-        border.color: control.activeFocus ? customPalette.highlightColor : "transparent"
-        color: control.inputChecked ? customPalette.selectionColor : customPalette.sunkenColor;
+        color: control.checked ? customPalette.selectionColor : customPalette.backgroundColor
 
-        Rectangle {
+        Rectangle { // TODO: common handle
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
-            width: controlSize.baseSize / 1.5
-            height: controlSize.baseSize / 1.5
-            radius: height / 2
-            color: control.pressed ? customPalette.highlightColor : customPalette.buttonColor;
+            implicitWidth: controlSize.baseSize / 1.5
+            implicitHeight: implicitWidth
+            radius: width / 2
+            color: {
+                if (!control.enabled) return customPalette.sunkenColor;
+                if (control.pressed) return customPalette.highlightColor;
 
-            Shaders.Hatch {
+                return customPalette.buttonColor;
+            }
+
+            Rectangle {
                 anchors.fill: parent
-                color: customPalette.sunkenColor
-                visible: !control.enabled
+                color: customPalette.textColor
+                radius: parent.radius
+                opacity: 0.1
+                visible: hovered
+            }
+
+            Shadow {
+                source: parent;
+                visible: enabled
             }
         }
     }

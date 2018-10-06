@@ -14,14 +14,14 @@ T.RadioButton {
     spacing: controlSize.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
 
-    indicator: Rectangle {
-        implicitWidth: controlSize.baseSize * 0.8
-        implicitHeight: controlSize.baseSize * 0.8
+    indicator: BackgroundItem {
         x: control.leftPadding
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
-        color: "transparent"
-        border.color: control.activeFocus ? customPalette.highlightColor : customPalette.secondaryTextColor
+        implicitWidth: controlSize.baseSize
+        implicitHeight: controlSize.baseSize
+        highlighted: control.activeFocus
+        hovered: control.hovered
 
         Rectangle {
             anchors.fill: parent
@@ -29,12 +29,6 @@ T.RadioButton {
             radius: width * 0.5
             color: control.down ? customPalette.highlightColor : customPalette.textColor
             visible: control.checked || control.down
-        }
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled
         }
     }
 
