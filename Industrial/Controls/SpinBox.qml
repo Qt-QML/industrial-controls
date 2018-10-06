@@ -21,6 +21,16 @@ T.SpinBox {
     clip: true
     to: 100
 
+    Connections {
+        target: up
+        onPressedChanged: if (!control.activeFocus) control.forceActiveFocus()
+    }
+
+    Connections {
+        target: down
+        onPressedChanged: if (!control.activeFocus) control.forceActiveFocus()
+    }
+
     validator: IntValidator {
         bottom: Math.min(control.from, control.to)
         top: Math.max(control.from, control.to)
@@ -51,6 +61,7 @@ T.SpinBox {
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
         width: controlSize.baseSize
+        height: parent.height - controlSize.underline
         color: down.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: down.hovered
         visible: control.enabled

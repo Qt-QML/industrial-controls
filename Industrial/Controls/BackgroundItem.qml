@@ -39,18 +39,19 @@ Item {
         }
     }
 
+    Shaders.Hatch {
+        anchors.fill: parent
+        color: customPalette.sunkenColor
+        visible: !enabled
+    }
+
+
     Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         height: controlSize.underline
         color: control.isValid ? customPalette.highlightColor : customPalette.dangerColor
         visible: control.highlighted && control.enabled
-    }
-
-    Shaders.Hatch {
-        anchors.fill: parent
-        color: customPalette.sunkenColor
-        visible: !enabled
     }
 
     Shadow {
