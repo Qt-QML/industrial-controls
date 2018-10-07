@@ -19,32 +19,11 @@ T.TabButton {
     hoverEnabled: true
     padding: controlSize.padding
 
-    background: Rectangle {
+    background: BackgroundItem {
         id: backgroundItem
-        anchors.fill: parent
-        radius: 3
+        highlighted: control.activeFocus
+        hovered: control.hovered
         color: control.checked ? customPalette.raisedColor : "transparent";
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: control.hovered
-        }
-
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: 2
-            color: control.activeFocus ? customPalette.highlightColor : backgroundItem.color
-        }
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled
-        }
     }
 
     contentItem: ContentItem {

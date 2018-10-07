@@ -7,7 +7,15 @@ T.TabBar { // TODO: replace with model-based bar
     implicitWidth: controlSize.baseSize * count * 6
     implicitHeight: controlSize.baseSize
 
-    background: Rectangle {
-        color: customPalette.backgroundColor
+    background: Item {
+        clip: true
+
+        Rectangle {
+            id: bg
+            color: customPalette.backgroundColor
+            anchors.fill: parent
+            radius: controlSize.rounding
+            anchors.bottomMargin: -radius
+        }
     }
 }
