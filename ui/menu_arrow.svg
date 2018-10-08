@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
+   width="32"
+   height="32"
    id="svg2"
-   height="38.4pt"
-   width="38.4pt">
+   version="1.1">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -26,51 +26,52 @@
     <linearGradient
        id="linearGradient3775">
       <stop
-         id="stop3795"
+         style="stop-color:#f2f3f4;stop-opacity:1;"
          offset="0"
-         style="stop-color:#f2f3f4;stop-opacity:1;" />
+         id="stop3795" />
       <stop
-         id="stop3781"
+         style="stop-color:#b6bcc1;stop-opacity:1;"
          offset="1"
-         style="stop-color:#b6bcc1;stop-opacity:1;" />
+         id="stop3781" />
     </linearGradient>
     <linearGradient
        id="linearGradient3767">
       <stop
-         id="stop3769"
+         style="stop-color:#bdc3c7;stop-opacity:0.49803922;"
+         offset="0"
+         id="stop3769" />
+      <stop
+         id="stop3771"
+         offset="0.5"
+         style="stop-color:#bdc3c7;stop-opacity:0.24705882;" />
+      <stop
+         id="stop3773"
+         offset="1"
+         style="stop-color:#bdc3c7;stop-opacity:0;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3755">
+      <stop
+         id="stop3763"
          offset="0"
          style="stop-color:#bdc3c7;stop-opacity:0.49803922;" />
       <stop
          style="stop-color:#bdc3c7;stop-opacity:0.24705882;"
          offset="0.5"
-         id="stop3771" />
+         id="stop3765" />
       <stop
          style="stop-color:#bdc3c7;stop-opacity:0;"
          offset="1"
-         id="stop3773" />
-    </linearGradient>
-    <linearGradient
-       id="linearGradient3755">
-      <stop
-         style="stop-color:#bdc3c7;stop-opacity:0.49803922;"
-         offset="0"
-         id="stop3763" />
-      <stop
-         id="stop3765"
-         offset="0.5"
-         style="stop-color:#bdc3c7;stop-opacity:0.24705882;" />
-      <stop
-         id="stop3759"
-         offset="1"
-         style="stop-color:#bdc3c7;stop-opacity:0;" />
+         id="stop3759" />
     </linearGradient>
   </defs>
   <g
+     transform="matrix(0.80969198,0,0,0.80969198,-6.8192978,-6.6744925)"
      id="layer1">
     <path
-       transform="translate(8.42209,8.24325)"
+       id="shape0"
+       d="M 39.4012,39.5212 H 0 L 39.5212,0 Z"
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0"
-       d="M 39.4012,39.5212 0,39.5212 39.5212,0 Z"
-       id="shape0" />
+       transform="translate(8.42209,8.24325)" />
   </g>
 </svg>

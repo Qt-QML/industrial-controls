@@ -5,10 +5,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="24"
-   height="24"
+   version="1.1"
    id="svg2"
-   version="1.1">
+   height="32"
+   width="32">
   <metadata
      id="metadata8">
     <rdf:RDF>
@@ -24,16 +24,16 @@
   <defs
      id="defs4" />
   <g
-     transform="matrix(0.76967502,0,0,0.74082549,-6.4630068,-5.7205007)"
+     style="fill:#ffffff"
      id="layer1"
-     style="fill:#ffffff">
+     transform="matrix(1.2582568,0,0,1.2110939,-14.183133,-12.969293)">
     <rect
-       y="0"
-       x="0"
-       id="rect3339"
-       transform="matrix(0,-1,1,0,12.0668,26.6666)"
-       width="5.4933214"
+       style="fill:#ffffff"
        height="23.84251"
-       style="fill:#ffffff" />
+       width="5.4933214"
+       transform="rotate(-90,19.3667,7.2999)"
+       id="rect3339"
+       x="0"
+       y="0" />
   </g>
 </svg>

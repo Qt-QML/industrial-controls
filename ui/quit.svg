@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 32 32"
+   height="32"
+   width="32">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="fill:#ffffff;stroke:none"
+     transform="matrix(1.1740701,0,0,1.103692,-6.7851216,-1131.8247)"
+     id="layer1">
+    <g
+       transform="matrix(0.10700338,0,0,0.1105857,2.2172156,1022.5977)"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+       id="g4903">
+      <path
+         id="path596"
+         d="M 140.18378,34.344217 V 204.01071 h 40.92577 V 34.344217 Z M 112.13495,48.492332 C 70.410913,67.383302 41.247925,109.83756 41.247925,159.08268 c 0,66.75032 53.561771,121.0573 119.398735,121.0573 65.83697,0 119.39874,-54.30698 119.39874,-121.0573 0,-49.24512 -29.16299,-91.699378 -70.88703,-110.590348 v 37.898317 c 22.96074,15.806221 38.0784,42.495861 38.0784,72.692031 0,48.41227 -38.84125,87.7937 -86.59011,87.7937 -47.74885,0 -86.590112,-39.38143 -86.590112,-87.7937 0,-30.19756 15.119043,-56.88581 38.078402,-72.692031 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
