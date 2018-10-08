@@ -7,26 +7,41 @@ import "../JS/Helper.js" as Helper
 T.Control {
     id: control
 
-    property real value: 0
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
-    property color color: customPalette.textColor
     property int secondsPrecision: 2
     property int sign: 1
+    property real value: 0
+    property real from: 0
+    property real to: isLongitude ? 180 : 90
+    property color color: customPalette.textColor
 
     readonly property real scalingFactor: width / implicitWidth
+    readonly property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
+                                                (isLongitude ? qsTr("E") : qsTr("N"))
 
     property alias backgroundColor: background.color
     property alias labelText: background.text
 
+    readonly property bool _increaseEnabled: value < to
+    readonly property bool _decreaseEnabled: value > from
+
     property Item focusedItem
 
     function updateValueFromControls() {
-        value = Helper.dmsToDegree(sign,
-                                   Math.abs(dInput.input.text),
-                                   Math.abs(mInput.input.text),
-                                   Helper.stringToReal(sInput.input.text,
-                                                       locale.decimalPoint));
+        var val = Helper.dmsToDegree(sign, Math.abs(dInput.input.text),
+                                     Math.abs(mInput.input.text),
+                                     Helper.stringToReal(sInput.input.text, locale.decimalPoint));
+
+        if (val > to) {
+            value = to;
+            updateControlsFromValue();
+        }
+        else if (val < -to) {
+            value = -to;
+            updateControlsFromValue();
+        }
+        else value = val;
     }
 
     function updateControlsFromValue() {
@@ -45,11 +60,6 @@ T.Control {
     }
 
     function changeValue(digit, add) {
-        if (!isValid) {
-            value = 0;
-            return;
-        }
-
         var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
 
         switch (digit) {
@@ -81,10 +91,6 @@ T.Control {
         anchors.fill: parent
         isValid: control.isValid
         leftPadding: controlSize.baseSize + controlSize.padding
-        color: isValid ? "transparent" : customPalette.dangerColor
-        textColor: isValid ? (highlighted ? customPalette.highlightColor :
-                                            customPalette.secondaryTextColor) :
-                             customPalette.selectedTextColor
     }
 
     contentItem: FocusScope {
@@ -105,37 +111,27 @@ T.Control {
             Button {
                 flat: true
                 autoRepeat: true
-                activeFocusOnTab: false
-                opacity: enabled ? 1 : 0.33
-                iconColor: control.isValid ? control.color : customPalette.selectedTextColor
+                focusPolicy: Qt.NoFocus
+                visible: control.enabled
+                enabled: focusedItem && _decreaseEnabled
                 iconSource: "qrc:/ui/minus.svg"
-                pressedImpl: focusedItem && focusedItem.down
-                onClicked: {
-                    if (focusedItem) {
-                        if (focusedItem.activeFocus) focusedItem.forceActiveFocus();
-                        focusedItem.decreaseValue();
-                    }
-                    else {
-                        dInput.forceActiveFocus();
-                    }
-                }
+                pressedImpl: _decreaseEnabled && focusedItem && focusedItem.down
+                onClicked:  if (focusedItem) focusedItem.decreaseValue()
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.radius
             }
 
             CoordSpinBoxInput {
                 id: dInput
                 input.focus: true
                 input.maximumLength: isLongitude ? 3 : 2
-                input.validator: IntValidator { bottom: 0; top: isLongitude ? 180 : 90 }
+                input.validator: IntValidator { bottom: control.from; top: control.to }
                 nextItem: mInput.input
                 sign: "\u00B0"
-                onIncreaseValue: changeValue(0, 1)
-                onDecreaseValue: changeValue(0, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(0, 1)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(0, -1)
                 Layout.preferredWidth: controlSize.baseSize * (isLongitude ? 1 : 0.75)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.offset
             }
 
             CoordSpinBoxInput {
@@ -145,12 +141,11 @@ T.Control {
                 previousItem: dInput.input
                 nextItem: sInput.input
                 sign: "\'"
-                onIncreaseValue: changeValue(1, 1)
-                onDecreaseValue: changeValue(1, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(1, 1)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(1, -1)
                 Layout.preferredWidth: controlSize.baseSize * 0.75
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.offset
             }
 
             CoordSpinBoxInput {
@@ -159,48 +154,44 @@ T.Control {
                 input.validator: DoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
                 sign: "\""
-                onIncreaseValue: changeValue(2, Math.pow(10, -secondsPrecision))
-                onDecreaseValue: changeValue(2, -Math.pow(10, -secondsPrecision))
+                onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
+                onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision))
                 Layout.preferredWidth: controlSize.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.offset
             }
 
             Button {
                 flat: true
                 font: control.font
-                activeFocusOnTab: false
-                textColor: control.isValid ? control.color : customPalette.selectedTextColor
-                text: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
-                                 (isLongitude ? qsTr("E") : qsTr("N"))
+                focusPolicy: Qt.NoFocus
+                visible: control.enabled
+                text: suffix
                 onClicked: {
                     value = -value;
                     updateControlsFromValue();
                 }
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.radius
+            }
+
+            Label {
+                visible: !control.enabled
+                text: suffix
+                color: customPalette.sunkenColor
+                Layout.fillHeight: true
+                Layout.fillWidth: true
             }
 
             Button {
                 flat: true
                 autoRepeat: true
-                activeFocusOnTab: false
-                opacity: enabled ? 1 : 0.33
-                iconColor: control.isValid ? control.color : customPalette.selectedTextColor
+                focusPolicy: Qt.NoFocus
+                visible: control.enabled
+                enabled: focusedItem && _increaseEnabled
                 iconSource: "qrc:/ui/plus.svg"
-                pressedImpl: focusedItem && focusedItem.up
-                onClicked: {
-                    if (focusedItem) {
-                        if (focusedItem.activeFocus) focusedItem.forceActiveFocus();
-                        focusedItem.increaseValue();
-                    }
-                    else {
-                        dInput.forceActiveFocus();
-                    }
-                }
+                pressedImpl: _increaseEnabled && focusedItem && focusedItem.up
+                onClicked: if (focusedItem) focusedItem.increaseValue()
                 Layout.fillHeight: true
-                Layout.bottomMargin: background.radius
             }
         }
     }
@@ -208,9 +199,9 @@ T.Control {
     Rectangle {
         anchors.bottom: control.bottom
         width: focusedItem ? focusedItem.width + 5 : 0
-        height: 2
         x: focusedItem ? focusedItem.x : 0
-        color: scope.activeFocus ? customPalette.highlightColor : "transparent"
+        height: controlSize.underline
+        color: control.isValid ? customPalette.highlightColor : customPalette.dangerColor
         Behavior on x { NumberAnimation { duration: 150 } }
     }
 }

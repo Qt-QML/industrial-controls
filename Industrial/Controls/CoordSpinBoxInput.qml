@@ -6,6 +6,7 @@ Item {
     property Item previousItem
     property Item nextItem
 
+    property bool changed: false
     property bool up: false
     property bool down: false
 
@@ -15,6 +16,11 @@ Item {
     signal decreaseValue()
     signal increaseValue()
 
+    function finish() {
+        changed = true;
+        updateValueFromControls();
+    }
+
     Row {
         anchors.centerIn: parent
 
@@ -23,20 +29,21 @@ Item {
 
             property bool changed: false
 
-            signal finished()
-
-            onFinished: changed = false
-            onTextEdited: changed = true
-            onActiveFocusChanged:  if (!activeFocus && changed) finished()
-            onEditingFinished: if (changed) finished()
-
             height: root.height
             inputMethodHints: Qt.ImhDigitsOnly
             font: control.font
-            color: control.isValid ? control.color : customPalette.selectedTextColor
-            onFinished: updateValueFromControls()
-            onEditingFinished: if (nextItem && activeFocus) nextItem.forceActiveFocus()
-            onActiveFocusChanged: if (activeFocus) focusedItem = root
+            color: control.enabled ? control.color : customPalette.sunkenColor
+            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+
+            onTextEdited: finish()
+            onActiveFocusChanged: {
+                if (activeFocus) focusedItem = root;
+                else if (changed) changed = false;
+            }
+            onEditingFinished: {
+                if (changed) finish();
+                if (nextItem && activeFocus) nextItem.forceActiveFocus();
+            }
 
             Keys.onPressed: {
                 if (event.key === Qt.Key_Left && previousItem && cursorPosition === 0) {
@@ -71,8 +78,6 @@ Item {
 
                 event.accepted = true;
             }
-
-            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
         }
 
         Label {

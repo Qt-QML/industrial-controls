@@ -119,25 +119,25 @@ Frame {
             Layout.fillWidth: true
         }
 
-//        Label { text: qsTr("Coord spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Coord spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
-//        CoordSpinBox {
-//            labelText: qsTr("Coord spinbox")
-//            Layout.fillWidth: true
-//        }
+        CoordSpinBox {
+            labelText: qsTr("Coordinates")
+            Layout.fillWidth: true
+        }
 
-//        CoordSpinBox {
-//            labelText: qsTr("Invalid coord spinbox")
-//            isValid: false
-//            Layout.fillWidth: true
-//        }
+        CoordSpinBox {
+            labelText: qsTr("Invalid coordinates")
+            isValid: false
+            Layout.fillWidth: true
+        }
 
-//        CoordSpinBox {
-//            labelText: qsTr("Disabled coord spinbox")
-//            isLongitude: true
-//            enabled: false
-//            Layout.fillWidth: true
-//        }
+        CoordSpinBox {
+            labelText: qsTr("Disabled coordinates")
+            isLongitude: true
+            enabled: false
+            Layout.fillWidth: true
+        }
 
         Item { Layout.fillHeight: true }
     }
