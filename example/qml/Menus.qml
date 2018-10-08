@@ -6,4 +6,44 @@ Frame {
     id: root
 
     padding: controlSize.padding
+
+    MouseArea {
+         anchors.fill: parent
+         acceptedButtons: Qt.RightButton
+         onClicked: {
+             menu.x = mouseX;
+             menu.y = mouseY;
+             menu.open();
+         }
+
+         Label {
+             anchors.centerIn: parent
+             text: qsTr("Click here to open menu")
+         }
+    }
+
+    Menu {
+        id: menu
+        title: qsTr("Menu")
+
+        MenuItem {
+            text: qsTr("Info")
+        }
+
+        MenuItem {
+            text: qsTr("Add")
+            iconSource: "qrc:/ui/plus.svg"
+        }
+
+        MenuItem {
+            text: qsTr("Remove")
+            iconSource: "qrc:/ui/remove.svg"
+            enabled: false
+        }
+
+        MenuItem {
+            text: qsTr("Check")
+            checkable: true
+        }
+    }
 }

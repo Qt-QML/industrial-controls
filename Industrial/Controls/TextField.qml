@@ -22,8 +22,17 @@ T.TextField {
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        inputed: displayText.length > 0 || control.activeFocus
+        inputed: displayText.length > 0 || placeholderText.length > 0 || control.activeFocus
         highlighted: control.activeFocus
         clip: true
+    }
+
+    Label {
+        anchors.centerIn: parent
+        visible: control.displayText.length == 0 && control.placeholderText.length > 0
+        text: control.placeholderText
+        font.pixelSize: controlSize.fontSize
+        color: customPalette.secondaryTextColor
+        opacity: 0.5
     }
 }

@@ -6,7 +6,7 @@ import "../Shaders" as Shaders
 T.MenuItem {
     id: control
 
-    property alias iconSource: icon.source
+    property url iconSource: ""
     property color iconColor: label.color
 
     leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : 0
@@ -42,7 +42,13 @@ T.MenuItem {
         x: controlSize.padding
         id: icon
         color: enabled ? iconColor : customPalette.sunkenColor
-        source: control.checked ? "qrc:/ui/ok.svg" : ""
+        source: {
+            if (!checkable) return control.iconSource;
+
+            if (control.checked) return control.iconSource.length > 0 ? control.iconSource:
+                                                                        "qrc:/ui/ok.svg"
+            return "";
+        }
         anchors.verticalCenter: parent.verticalCenter
         width: controlSize.baseSize * 0.6
         height: width

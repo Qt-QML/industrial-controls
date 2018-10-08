@@ -17,7 +17,7 @@ ColumnLayout {
         TabButton { text: "Edits"; flat: true }
         TabButton { text: "Inputs"; flat: true }
         TabButton { text: "Misc"; flat: true }
-        TabButton { text: "Menus"; flat: true }
+        TabButton { text: "Menu"; flat: true }
     }
 
     StackLayout {
