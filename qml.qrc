@@ -13,6 +13,7 @@
         <file>Industrial/Controls/Frame.qml</file>
         <file>Industrial/Controls/ContentItem.qml</file>
         <file>Industrial/Controls/BackgroundItem.qml</file>
+        <file>Industrial/Controls/BackgroundInput.qml</file>
         <file>Industrial/Controls/Button.qml</file>
         <file>Industrial/Controls/DelayButton.qml</file>
         <file>Industrial/Controls/RoundButton.qml</file>
