@@ -14,8 +14,10 @@ ColumnLayout {
         z: 1
 
         TabButton { text: "Buttons"; flat: true }
+        TabButton { text: "Edits"; flat: true }
         TabButton { text: "Inputs"; flat: true }
-        TabButton { text: "Switchs & Sliders"; flat: true }
+        TabButton { text: "Misc"; flat: true }
+        TabButton { text: "Menus"; flat: true }
     }
 
     StackLayout {
@@ -24,7 +26,9 @@ ColumnLayout {
         Layout.fillHeight: true
 
         Buttons {}
+        Edits {}
         Inputs {}
-        SwitchsNSliders {}
+        Misc {}
+        Menus {}
     }
 }

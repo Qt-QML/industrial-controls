@@ -34,54 +34,6 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Text fields"); font.pixelSize: controlSize.secondaryFontSize }
-
-        TextField {
-            labelText: qsTr("Edit text here")
-            Layout.fillWidth: true
-        }
-
-        TextField {
-            labelText: qsTr("Invalid text edit")
-            text: qsTr("Errored text")
-            isValid: false
-            Layout.fillWidth: true
-        }
-
-        TextField {
-            labelText: qsTr("Blocked Text edit")
-            text: qsTr("Example text")
-            enabled: false
-            Layout.fillWidth: true
-        }
-
-        Label { text: qsTr("Comboboxes"); font.pixelSize: controlSize.secondaryFontSize }
-
-        ComboBox {
-            labelText: qsTr("Combobox")
-            model: [ "", qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combo") ]
-            Layout.fillWidth: true
-        }
-
-        ComboBox {
-            labelText: qsTr("Invalid combobox")
-            model: [
-                { text: "Up", icon: "qrc:/ui/up.svg" },
-                { text: "Down", icon: "qrc:/ui/down.svg" },
-                { text: "Left", icon: "qrc:/ui/left.svg" },
-                { text: "Right", icon: "qrc:/ui/right.svg" }
-            ]
-            isValid: false
-            Layout.fillWidth: true
-        }
-
-        ComboBox {
-            labelText: qsTr("Disabled combobox")
-            model: [ qsTr("Disabled") ]
-            enabled: false
-            Layout.fillWidth: true
-        }
-
         Label { text: qsTr("Spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         SpinBox {
@@ -138,6 +90,8 @@ Frame {
             enabled: false
             Layout.fillWidth: true
         }
+
+        // TODO: altitude & distance pickers
 
         Item { Layout.fillHeight: true }
     }
