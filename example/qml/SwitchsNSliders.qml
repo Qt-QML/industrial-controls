@@ -28,7 +28,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Checkbox"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Checkboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         CheckBox {
             text: qsTr("Basic checkbox")
@@ -41,7 +41,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Radio button"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Radio buttons"); font.pixelSize: controlSize.secondaryFontSize }
 
         RadioButton {
             text: qsTr("Basic radio button")
@@ -54,7 +54,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Switch"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Switchs"); font.pixelSize: controlSize.secondaryFontSize }
 
         Switch {
             text: qsTr("Basic switch")
@@ -67,21 +67,31 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Slider"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Sliders"); font.pixelSize: controlSize.secondaryFontSize }
 
         Slider {
-            //text: qsTr("Basic slider")
-            Layout.columnSpan: 2
+            //text: qsTr("Slider")
             Layout.fillWidth: true
         }
-
-        Label { text: qsTr("Disabled Slider"); font.pixelSize: controlSize.secondaryFontSize }
 
         Slider {
             //text: qsTr("Disabled slider")
             value: 0.5
             enabled: false
-            Layout.columnSpan: 2
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Progress bar"); font.pixelSize: controlSize.secondaryFontSize }
+
+        ProgressBar {
+            value: 0.25
+            Layout.fillWidth: true
+        }
+
+        ProgressBar {
+            value: 75
+            to: 100
+            enabled: false
             Layout.fillWidth: true
         }
 

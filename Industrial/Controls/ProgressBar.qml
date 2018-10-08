@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.ProgressBar {
     id: control
 
@@ -12,26 +10,17 @@ T.ProgressBar {
     implicitHeight: controlSize.baseSize
     opacity: enabled ? 1 : 0.33
 
-    background: Rectangle {
-        anchors.fill: parent
-        radius: 2
-        color: customPalette.sunkenColor
-
-        Shaders.Hatch {
-            anchors.fill: parent
-            color: customPalette.sunkenColor
-            visible: !control.enabled && !control.flat
-        }
-    }
+    background: BackgroundItem {}
 
     contentItem: Item {
         anchors.fill: parent
+        clip: true
         anchors.margins: 1
 
         Rectangle {
             width: control.visualPosition * background.width
-            height: parent.height
-            radius: 2
+            height: parent.height + controlSize.rounding
+            radius: controlSize.rounding
             color: customPalette.selectionColor
         }
 
