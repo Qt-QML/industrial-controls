@@ -15,8 +15,8 @@ T.CheckBox {
     spacing: controlSize.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
-    hoverEnabled: true
     opacity: enabled ? 1 : 0.33
+    hoverEnabled: true
 
     indicator: BackgroundItem {
         x: control.leftPadding

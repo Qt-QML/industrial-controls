@@ -13,6 +13,7 @@ T.RadioButton {
     leftPadding: 0
     spacing: controlSize.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
+    hoverEnabled: true
 
     indicator: BackgroundItem {
         x: control.leftPadding

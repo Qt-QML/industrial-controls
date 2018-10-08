@@ -34,7 +34,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Text field"); font.pixelSize: controlSize.secondaryFontSize }
+        Label { text: qsTr("Text fields"); font.pixelSize: controlSize.secondaryFontSize }
 
         TextField {
             labelText: qsTr("Edit text here")
