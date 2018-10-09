@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.2 as T
+import QtQuick.Templates 2.2 as T
 
 T.MenuItem {
     id: control
@@ -10,6 +10,7 @@ T.MenuItem {
     leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : 0
     font.pixelSize: controlSize.fontSize
     width: parent.width
+    height: controlSize.baseSize
     hoverEnabled: true
 
     background: BackgroundItem {
