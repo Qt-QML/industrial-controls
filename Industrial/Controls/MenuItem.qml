@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.MenuItem {
     id: control
 
@@ -12,30 +10,12 @@ T.MenuItem {
     leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : 0
     font.pixelSize: controlSize.fontSize
     width: parent.width
+    hoverEnabled: true
 
-    background: Rectangle {
-        anchors.fill: control
-        implicitWidth: controlSize.baseSize
-        implicitHeight: implicitWidth
-        color: {
-            if (control.pressed) return customPalette.highlightColor;
-            if (control.checked || control.highlighted) return customPalette.selectionColor;
-            return "transparent";
-        }
-        border.color: control.activeFocus ? customPalette.selectionColor : "transparent"
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        color: customPalette.textColor
-        opacity: 0.1
-        visible: control.hovered
-    }
-
-    Shaders.Hatch {
-        anchors.fill: parent
-        color: customPalette.sunkenColor
-        visible: !control.enabled
+    background: BackgroundItem {
+        hovered: control.hovered
+        highlighted: control.activeFocus
+        color: control.pressed ? customPalette.highlightColor : "transparent"
     }
 
     indicator: ColoredIcon {

@@ -16,7 +16,6 @@ T.Control {
     property real to: isLongitude ? 180 : 90
     property color color: customPalette.textColor
 
-    readonly property real scalingFactor: width / implicitWidth
     readonly property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                                 (isLongitude ? qsTr("E") : qsTr("N"))
 

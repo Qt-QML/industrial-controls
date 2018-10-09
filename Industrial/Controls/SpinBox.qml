@@ -68,7 +68,7 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - customPalette.padding * 2
+            width: parent.width - controlSize.padding * 2
             source: "qrc:/ui/minus.svg"
             color: {
                 if (!enabled) return customPalette.sunkenColor;
@@ -88,7 +88,7 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - customPalette.padding * 2
+            width: parent.width - controlSize.padding * 2
             source: "qrc:/ui/plus.svg"
             color: {
                 if (!enabled) return customPalette.sunkenColor;
