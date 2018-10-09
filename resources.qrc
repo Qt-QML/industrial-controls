@@ -23,5 +23,6 @@
         <file>ui/erase.svg</file>
         <file>ui/refresh.svg</file>
         <file>ui/restore.svg</file>
+        <file>ui/plugins.svg</file>
     </qresource>
 </RCC>
