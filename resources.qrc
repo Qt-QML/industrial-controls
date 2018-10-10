@@ -23,6 +23,8 @@
         <file>ui/erase.svg</file>
         <file>ui/filter.svg</file>
         <file>ui/refresh.svg</file>
+        <file>ui/connect.svg</file>
+        <file>ui/disconnect.svg</file>
         <file>ui/restore.svg</file>
         <file>ui/plugins.svg</file>
     </qresource>
