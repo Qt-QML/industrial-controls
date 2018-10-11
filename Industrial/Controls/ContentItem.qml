@@ -26,8 +26,8 @@ Item {
 
     ColoredIcon {
         id: icon
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.centerIn: parent
+        anchors.horizontalCenterOffset: label.visible ? controlSize.padding - label.width / 2 : 0
         height: iconSize
         width: iconSize
         color: enabled ? iconColor : customPalette.sunkenColor
