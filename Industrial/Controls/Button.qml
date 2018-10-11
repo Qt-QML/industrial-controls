@@ -4,7 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.Button { // TODO: clickable
     id: control
 
-    property bool round: false // TODO: remove round
+    property bool round: false
     property bool pressedImpl: false
     property string tipText
 
@@ -29,12 +29,10 @@ T.Button { // TODO: clickable
         hovered: control.hovered
         shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : controlSize.rounding
+        croppig: round ? 0 : radius
         color: {
-            if ((control.round && !control.flat && control.activeFocus) ||
-                    control.pressed || control.pressedImpl)
-                return customPalette.highlightColor;
-            if (control.highlighted || control.checked)
-                return customPalette.selectionColor;
+            if (control.pressed || control.pressedImpl) return customPalette.highlightColor;
+            if (control.highlighted || control.checked) return customPalette.selectionColor;
             return control.flat ? "transparent" : customPalette.buttonColor;
         }
 
@@ -53,9 +51,7 @@ T.Button { // TODO: clickable
         anchors.margins: control.padding
         text: control.text
         font: control.font
-        textColor: (control.round && control.activeFocus) ||
-                   control.pressed || control.pressedImpl ?
-                       customPalette.selectedTextColor : customPalette.textColor
+        textColor: control.pressed || control.pressedImpl ? customPalette.selectedTextColor : customPalette.textColor
     }
 
     ToolTip {

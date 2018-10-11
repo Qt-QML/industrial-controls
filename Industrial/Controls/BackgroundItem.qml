@@ -10,6 +10,7 @@ Item {
     property bool isValid: true
     property bool shadow: false
     property int leftPadding: controlSize.padding
+    property int croppig: radius
     readonly property int offset: radius + 1
 
     property alias radius: bg.radius
@@ -26,7 +27,7 @@ Item {
             color: customPalette.backgroundColor
             anchors.fill: parent
             radius: controlSize.rounding
-            anchors.bottomMargin: -radius
+            anchors.bottomMargin: -croppig
 
             Rectangle {
                 anchors.fill: parent
