@@ -11,8 +11,6 @@ Item {
     property alias backgroundColor: background.color
     readonly property alias margin: menuButton.width
 
-    //]contentData, contentChildren
-
     Rectangle {
         id: background
         anchors.fill: control
