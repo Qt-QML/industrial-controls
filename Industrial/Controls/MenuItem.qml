@@ -7,7 +7,9 @@ T.MenuItem {
     property url iconSource: ""
     property color iconColor: label.color
 
-    leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : 0
+    property alias horizontalAlignment: label.horizontalAlignment
+
+    leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : controlSize.padding
     font.pixelSize: controlSize.fontSize
     width: parent.width
     height: controlSize.baseSize
@@ -23,6 +25,7 @@ T.MenuItem {
         x: controlSize.padding
         id: icon
         color: enabled ? iconColor : customPalette.sunkenColor
+        anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;
 
@@ -30,8 +33,7 @@ T.MenuItem {
                                                                         "qrc:/ui/ok.svg"
             return "";
         }
-        anchors.verticalCenter: parent.verticalCenter
-        width: controlSize.baseSize * 0.6
+        width: controlSize.baseSize - controlSize.padding * 2
         height: width
     }
 
