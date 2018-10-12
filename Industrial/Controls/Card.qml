@@ -7,20 +7,17 @@ Item {
 
     property alias deepEnabled: deepButton.visible
     property alias menuEnabled: menuButton.enabled
-    property alias menu: menu
+    property alias menuItems: menu.contentChildren
     property alias backgroundColor: background.color
     readonly property alias margin: menuButton.width
 
-    property Item contentItem: Item {}
-
-    implicitWidth: contentItem.implicitWidth + controlSize.margins * 2
-    implicitHeight: contentItem.implicitHeight + controlSize.margins * 2
+    //]contentData, contentChildren
 
     Rectangle {
         id: background
         anchors.fill: control
         color: customPalette.raisedColor
-        radius: 2
+        radius: controlSize.rounding
         z: -1
 
         Shadow {
@@ -34,26 +31,16 @@ Item {
         anchors.right: parent.right
         iconSource: "qrc:/ui/dots.svg"
         flat: true
-        enabled: false
+        enabled: menu.contentModel.count > 0
         width: controlSize.baseSize * 0.5
         height: controlSize.baseSize * 0.75
+        iconSize: height - controlSize.padding
+        padding: 0
         onClicked: menu.open()
 
         Menu {
             id: menu
             y: parent.height
-
-            function addEntry(text, iconSource) {
-                var item = menuItem.createObject(null, { text: text, iconSource: iconSource });
-                menu.addItem(item);
-                menuButton.enabled = true;
-                return item;
-            }
-
-            Component {
-                id: menuItem
-                MenuItem {}
-            }
         }
     }
 
