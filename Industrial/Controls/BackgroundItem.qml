@@ -7,6 +7,7 @@ Item {
 
     property bool highlighted: false
     property bool hovered: false
+    property bool caution: false
     property bool isValid: true
     property bool shadow: false
     property int leftPadding: controlSize.padding
@@ -15,6 +16,7 @@ Item {
 
     property alias radius: bg.radius
     property alias color: bg.color
+    property alias highlighterColor: highlighter.color
 
     implicitHeight: controlSize.inputControlHeight
 
@@ -47,11 +49,17 @@ Item {
 
 
     Rectangle {
+        id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
         height: controlSize.underline
-        color: control.isValid ? customPalette.highlightColor : customPalette.dangerColor
         visible: control.highlighted && control.enabled
+        color: {
+            if (caution) return customPalette.cautionColor;
+            if (!isValid) return customPalette.dangerColor;
+
+            return customPalette.highlightColor;
+        }
     }
 
     Shadow {

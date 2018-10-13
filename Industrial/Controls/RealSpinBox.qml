@@ -10,12 +10,27 @@ SpinBox {
     property real realTo: 100
     property real precision: 0.01
 
+    function validate() {
+        control.value = control.valueFromText(input.text, control.locale);
+        caution = false;
+    }
+
+    onRealValueChanged: value = Math.round(realValue / precision)
+    onValueModified: realValue = value * precision
+
     to: realTo / precision
     from: realFrom / precision
     isValid: !isNaN(realValue)
 
-    onRealValueChanged: value = Math.round(realValue / precision)
-    onValueModified: realValue = value * precision
+    Connections {
+        target: up
+        onPressedChanged: if (up.pressed && caution) validate()
+    }
+
+    Connections {
+        target: down
+        onPressedChanged: if (down.pressed && caution) validate()
+    }
 
     validator: DoubleValidator {
         decimals: Helper.decimals(precision)
@@ -25,8 +40,10 @@ SpinBox {
     }
 
     contentItem: NumericInput {
+        id: input
         Binding on text { value: control.textFromValue(control.value, control.locale) }
-        onEditingFinished: control.value = control.valueFromText(text, control.locale)
+        onTextEdited: caution = true
+        onEditingFinished: validate()
         height: control.height
         maximumLength: control.to.toString().length
         clip: true

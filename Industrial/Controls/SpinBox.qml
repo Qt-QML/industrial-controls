@@ -7,6 +7,7 @@ T.SpinBox {
     property bool isValid: value >= from && value <= to
     property color color: customPalette.textColor
 
+    property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
 
