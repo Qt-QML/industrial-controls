@@ -6,7 +6,6 @@ Item {
     property Item previousItem
     property Item nextItem
 
-    property bool changed: false
     property bool up: false
     property bool down: false
 
@@ -16,32 +15,25 @@ Item {
     signal decreaseValue()
     signal increaseValue()
 
-    function finish() {
-        changed = true;
-        updateValueFromControls();
-    }
-
     Row {
         anchors.centerIn: parent
 
         NumericInput {
             id: input
-
-            property bool changed: false
-
             height: root.height
             inputMethodHints: Qt.ImhDigitsOnly
             font: control.font
             color: control.enabled ? control.color : customPalette.sunkenColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
-            onTextEdited: finish()
+            onTextEdited: control.caution = true
             onActiveFocusChanged: {
-                if (activeFocus) focusedItem = root;
-                else if (changed) changed = false;
+                if (activeFocus) focusedItem = root
+                else updateValueFromControls();
+
             }
             onEditingFinished: {
-                if (changed) finish();
+                updateValueFromControls();
                 if (nextItem && activeFocus) nextItem.forceActiveFocus();
             }
 

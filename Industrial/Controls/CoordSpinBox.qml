@@ -16,21 +16,25 @@ T.Control {
     property real to: isLongitude ? 180 : 90
     property color color: customPalette.textColor
 
-    readonly property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
-                                                (isLongitude ? qsTr("E") : qsTr("N"))
+    property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
+                                       (isLongitude ? qsTr("E") : qsTr("N"))
 
     property alias backgroundColor: background.color
     property alias labelText: background.text
+    property alias caution: background.caution
 
-    readonly property bool _increaseEnabled: value < to
-    readonly property bool _decreaseEnabled: value > from
+    readonly property bool _increaseEnabled: Math.abs(value) < to
+    readonly property bool _decreaseEnabled: Math.abs(value) > from
 
     property Item focusedItem
 
     function updateValueFromControls() {
-        var val = Helper.dmsToDegree(sign, Math.abs(dInput.input.text),
+
+        var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
+        var val = Helper.dmsToDegree(sign,
+                                     Math.abs(dInput.input.text),
                                      Math.abs(mInput.input.text),
-                                     Helper.stringToReal(sInput.input.text, locale.decimalPoint));
+                                     Math.min(secs, 60));
 
         if (val > to) {
             value = to;
@@ -56,6 +60,7 @@ T.Control {
             mInput.input.text = Helper.pad(0, mInput.maximumLength);
             sInput.input.text = Helper.padReal(0, 2, secondsPrecision, locale.decimalPoint);
         }
+        caution = false;
     }
 
     function changeValue(digit, add) {
@@ -115,7 +120,12 @@ T.Control {
                 enabled: focusedItem && _decreaseEnabled
                 iconSource: "qrc:/ui/minus.svg"
                 pressedImpl: _decreaseEnabled && focusedItem && focusedItem.down
-                onClicked:  if (focusedItem) focusedItem.decreaseValue()
+                onClicked: {
+                    if (!focusedItem) return;
+
+                    updateValueFromControls();
+                    focusedItem.decreaseValue();
+                }
                 Layout.fillHeight: true
             }
 
@@ -189,7 +199,12 @@ T.Control {
                 enabled: focusedItem && _increaseEnabled
                 iconSource: "qrc:/ui/plus.svg"
                 pressedImpl: _increaseEnabled && focusedItem && focusedItem.up
-                onClicked: if (focusedItem) focusedItem.increaseValue()
+                onClicked: {
+                    if (!focusedItem) return;
+
+                    updateValueFromControls();
+                    focusedItem.increaseValue();
+                }
                 Layout.fillHeight: true
             }
         }
@@ -200,7 +215,12 @@ T.Control {
         width: focusedItem ? focusedItem.width + 5 : 0
         x: focusedItem ? focusedItem.x : 0
         height: controlSize.underline
-        color: control.isValid ? customPalette.highlightColor : customPalette.dangerColor
+        color: {
+            if (caution) return customPalette.cautionColor;
+            if (!isValid) return customPalette.dangerColor;
+
+            return customPalette.highlightColor;
+        }
         Behavior on x { NumberAnimation { duration: 150 } }
     }
 }
