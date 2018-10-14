@@ -82,6 +82,16 @@ void ControlSize::setUnderline(int underline)
     m_underline = underline;
 }
 
+int ControlSize::handleSize() const
+{
+    return m_handleSize;
+}
+
+void ControlSize::setHandleSize(int handleSize)
+{
+    m_handleSize = handleSize;
+}
+
 int ControlSize::rounding() const
 {
     return m_rounding;

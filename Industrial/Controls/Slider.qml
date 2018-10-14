@@ -27,24 +27,9 @@ T.Slider {
         }
     }
 
-    handle: Rectangle {
+    handle: Handle {
         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        implicitWidth: controlSize.baseSize / 1.5
-        implicitHeight: implicitWidth
-        radius: width / 2
-        color: control.activeFocus ? customPalette.highlightColor : customPalette.buttonColor
-        visible: enabled
-
-        Rectangle {
-            anchors.fill: parent
-            color: customPalette.textColor
-            radius: parent.radius
-            opacity: 0.1
-            visible: hovered
-        }
-
-        Shadow { source: parent }
 
         Rectangle {
             anchors.centerIn: parent

@@ -15,6 +15,7 @@ ControlSize ControlSizeFactory::createControlSize(int baseSize)
     controlSize.setPadding(baseSize / 6);
     controlSize.setRounding(4);
     controlSize.setUnderline(2);
+    controlSize.setHandleSize(baseSize / 1.5);
     controlSize.setShadowSize(3);
     controlSize.setAnimationTime(100);
 

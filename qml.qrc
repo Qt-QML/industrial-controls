@@ -23,6 +23,7 @@
         <file>Industrial/Controls/TabBar.qml</file>
         <file>Industrial/Controls/BottomBar.qml</file>
         <file>Industrial/Controls/CheckBox.qml</file>
+        <file>Industrial/Controls/Handle.qml</file>
         <file>Industrial/Controls/Switch.qml</file>
         <file>Industrial/Controls/RadioButton.qml</file>
         <file>Industrial/Controls/ToolBar.qml</file>
