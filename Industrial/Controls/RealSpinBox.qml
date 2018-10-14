@@ -17,6 +17,7 @@ SpinBox {
 
     onRealValueChanged: value = Math.round(realValue / precision)
     onValueModified: realValue = value * precision
+    onActiveFocusChanged: validate()
 
     to: realTo / precision
     from: realFrom / precision

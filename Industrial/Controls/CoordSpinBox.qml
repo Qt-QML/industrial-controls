@@ -29,22 +29,16 @@ T.Control {
     property Item focusedItem
 
     function updateValueFromControls() {
-
+        var degs = Math.abs(dInput.input.text);
+        var mins = Math.abs(mInput.input.text);
         var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
-        var val = Helper.dmsToDegree(sign,
-                                     Math.abs(dInput.input.text),
-                                     Math.abs(mInput.input.text),
-                                     Math.min(secs, 60));
+        var val = Helper.dmsToDegree(sign, degs, mins, Math.min(secs, 60));
 
-        if (val > to) {
-            value = to;
-            updateControlsFromValue();
-        }
-        else if (val < -to) {
-            value = -to;
-            updateControlsFromValue();
-        }
+        if (val > to) value = to;
+        else if (val < -to) value = -to;
         else value = val;
+
+        updateControlsFromValue();
     }
 
     function updateControlsFromValue() {
@@ -93,8 +87,15 @@ T.Control {
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        isValid: control.isValid
         leftPadding: controlSize.baseSize + controlSize.padding
+        textColor: {
+            if (highlighter.visible) return highlighter.color;
+
+            if (!control.enabled) return customPalette.sunkenColor;
+            if (!control.isValid) return customPalette.dangerColor
+
+            return customPalette.secondaryTextColor;
+        }
     }
 
     contentItem: FocusScope {
@@ -211,9 +212,11 @@ T.Control {
     }
 
     Rectangle {
+        id: highlighter
         anchors.bottom: control.bottom
         width: focusedItem ? focusedItem.width + 5 : 0
         x: focusedItem ? focusedItem.x : 0
+        visible: focusedItem
         height: controlSize.underline
         color: {
             if (caution) return customPalette.cautionColor;
