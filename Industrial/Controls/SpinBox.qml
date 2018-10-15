@@ -49,6 +49,7 @@ T.SpinBox {
         onTextEdited: control.value = control.valueFromText(text, control.locale)
         height: control.height
         maximumLength: control.to.toString().length
+        selectionColor: background.highlighterColor
         clip: true
         font: control.font
         readOnly: !control.editable
@@ -65,6 +66,12 @@ T.SpinBox {
         color: down.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: down.hovered
         visible: control.enabled
+
+        Hatch {
+            anchors.fill: parent
+            color: customPalette.raisedColor
+            visible: !enabled
+        }
 
         ColoredIcon {
             anchors.centerIn: parent
@@ -85,6 +92,12 @@ T.SpinBox {
         color: up.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: up.hovered
         visible: control.enabled
+
+        Hatch {
+            anchors.fill: parent
+            color: customPalette.raisedColor
+            visible: !enabled
+        }
 
         ColoredIcon {
             anchors.centerIn: parent

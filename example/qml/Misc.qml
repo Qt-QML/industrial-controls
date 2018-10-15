@@ -31,12 +31,14 @@ Frame {
         Label { text: qsTr("Checkboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         CheckBox {
+            id: _checkbox
             text: qsTr("Basic checkbox")
             Layout.fillWidth: true
         }
 
         CheckBox {
             text: qsTr("Disabled checkbox")
+            checked: _checkbox.checked
             enabled: false
             Layout.fillWidth: true
         }
@@ -45,18 +47,22 @@ Frame {
 
         RadioButton {
             text: qsTr("Basic radio button")
+            onActiveFocusChanged: if (!activeFocus) _radio.checked = true
             Layout.fillWidth: true
         }
 
         RadioButton {
+            id: _radio
             text: qsTr("Disabled radio button")
             enabled: false
+            checked: true
             Layout.fillWidth: true
         }
 
         Label { text: qsTr("Switchs"); font.pixelSize: controlSize.secondaryFontSize }
 
         Switch {
+            id: _switch
             text: qsTr("Basic switch")
             Layout.fillWidth: true
         }
@@ -64,6 +70,7 @@ Frame {
         Switch {
             text: qsTr("Disabled switch")
             enabled: false
+            checked: _switch.checked
             Layout.fillWidth: true
         }
 
@@ -71,12 +78,16 @@ Frame {
 
         Slider {
             //text: qsTr("Slider")
+            id: _slider
+            to: 100
+            value: 50
             Layout.fillWidth: true
         }
 
         Slider {
             //text: qsTr("Disabled slider")
-            value: 0.5
+            value: to - _slider.value
+            to: 100
             enabled: false
             Layout.fillWidth: true
         }
@@ -84,12 +95,12 @@ Frame {
         Label { text: qsTr("Progress bar"); font.pixelSize: controlSize.secondaryFontSize }
 
         ProgressBar {
-            value: 0.25
+            value: _slider.value * 0.01
             Layout.fillWidth: true
         }
 
         ProgressBar {
-            value: 75
+            value: to - _slider.value
             to: 100
             enabled: false
             Layout.fillWidth: true

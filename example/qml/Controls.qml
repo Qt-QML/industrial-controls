@@ -13,11 +13,12 @@ ColumnLayout {
         Layout.rightMargin: controlSize.baseSize + controlSize.padding
         z: 1
 
-        TabButton { text: "Buttons"; flat: true }
-        TabButton { text: "Edits"; flat: true }
-        TabButton { text: "Inputs"; flat: true }
-        TabButton { text: "Misc"; flat: true }
-        TabButton { text: "Menu"; flat: true }
+        TabButton { text: "Buttons" }
+        TabButton { text: "Edits" }
+        TabButton { text: "Inputs" }
+        TabButton { text: "Misc" }
+        TabButton { text: "Menu" }
+        TabButton { text: "Disabled"; enabled: false }
     }
 
     StackLayout {

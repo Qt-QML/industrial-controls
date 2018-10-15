@@ -7,17 +7,17 @@ T.TextField {
     property alias isValid: background.isValid
     property alias labelText: background.text
 
-    implicitWidth: background.implicitWidth
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
     color: control.enabled ? customPalette.textColor : customPalette.sunkenColor
-    selectionColor: control.isValid ? customPalette.selectionColor : customPalette.dangerColor
+    selectionColor: background.highlighterColor
     selectedTextColor: customPalette.selectedTextColor
     selectByMouse: true
     leftPadding: controlSize.padding
     bottomPadding: background.offset
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
+
     background: BackgroundInput {
         id: background
         anchors.fill: parent
@@ -27,6 +27,7 @@ T.TextField {
     }
 
     Label {
+        id: placeholderLabel
         anchors.centerIn: parent
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText

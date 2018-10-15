@@ -112,7 +112,13 @@ T.Control {
             anchors.fill: parent
             spacing: 1
 
+            Item {
+                implicitWidth: down.width
+                visible: !down.visible
+            }
+
             Button {
+                id: down
                 flat: true
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
@@ -171,10 +177,12 @@ T.Control {
             }
 
             Button {
+                id: suffixButton
                 flat: true
                 font: control.font
                 focusPolicy: Qt.NoFocus
                 visible: control.enabled
+                enabled: value != 0
                 text: suffix
                 onClicked: {
                     value = -value;
@@ -187,11 +195,12 @@ T.Control {
                 visible: !control.enabled
                 text: suffix
                 color: customPalette.sunkenColor
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+                Layout.preferredWidth: suffixButton.width
+                Layout.alignment: Qt.AlignBottom
             }
 
             Button {
+                id: up
                 flat: true
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
@@ -206,6 +215,11 @@ T.Control {
                     focusedItem.increaseValue();
                 }
                 Layout.fillHeight: true
+            }
+
+            Item {
+                implicitWidth: up.width
+                visible: !control.enabled
             }
         }
     }
