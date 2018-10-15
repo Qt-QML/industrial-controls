@@ -11,7 +11,7 @@ TextField {
         iconSource: "qrc:/ui/erase.svg"
         tipText: qsTr("Clear filter")
         flat: true
-        visible: control.text.length > 0
+        visible: control.text.length > 0 && control.enabled
         onClicked: control.clear()
     }
 }

@@ -18,7 +18,6 @@ T.TextField {
     bottomPadding: background.offset
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
-    opacity: enabled ? 1 : 0.33
     background: BackgroundInput {
         id: background
         anchors.fill: parent

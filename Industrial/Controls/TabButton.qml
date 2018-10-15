@@ -13,6 +13,7 @@ T.TabButton {
     property alias textColor: content.textColor
     property alias backgroundColor: backgroundItem.color
 
+    // TODO: flat
     font.pixelSize: controlSize.fontSize
     implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: controlSize.baseSize

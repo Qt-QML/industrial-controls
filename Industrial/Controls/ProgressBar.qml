@@ -4,11 +4,8 @@ import QtQuick.Templates 2.2 as T
 T.ProgressBar {
     id: control
 
-    property string text: control.visualPosition
-
     implicitWidth: controlSize.baseSize * 4
     implicitHeight: controlSize.baseSize
-    opacity: enabled ? 1 : 0.33
 
     background: BackgroundItem {}
 
@@ -22,11 +19,12 @@ T.ProgressBar {
             height: parent.height + controlSize.rounding
             radius: controlSize.rounding
             color: customPalette.selectionColor
-        }
 
-        Label {
-            anchors.centerIn: parent
-            text: control.text
+            Hatch {
+                anchors.fill: parent
+                color: customPalette.backgroundColor
+                visible: !enabled
+            }
         }
     }
 }

@@ -1,7 +1,5 @@
 import QtQuick 2.6
 
-import "../Shaders" as Shaders
-
 Item {
     id: control
 
@@ -14,8 +12,8 @@ Item {
     property int croppig: radius
     readonly property int offset: radius + 1
 
-    property alias radius: bg.radius
-    property alias color: bg.color
+    property alias radius: background.radius
+    property alias color: background.color
     property alias highlighterColor: highlighter.color
 
     implicitHeight: controlSize.inputControlHeight
@@ -25,7 +23,7 @@ Item {
         clip: true
 
         Rectangle {
-            id: bg
+            id: background
             color: customPalette.backgroundColor
             anchors.fill: parent
             radius: controlSize.rounding
@@ -40,13 +38,6 @@ Item {
             }
         }
     }
-
-    Shaders.Hatch {
-        anchors.fill: parent
-        color: customPalette.sunkenColor
-        visible: !enabled
-    }
-
 
     Rectangle {
         id: highlighter

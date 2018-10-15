@@ -79,7 +79,6 @@ T.Control {
     onValueChanged: updateControlsFromValue()
 
     clip: true
-    opacity: enabled ? 1 : 0.33
     implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize

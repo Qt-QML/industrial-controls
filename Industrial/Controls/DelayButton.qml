@@ -28,6 +28,12 @@ T.DelayButton {
         hovered: control.hovered
         shadow: !control.flat
         color: control.flat ? "transparent" : customPalette.buttonColor
+
+        Hatch {
+            anchors.fill: parent
+            color: customPalette.raisedColor
+            visible: !enabled
+        }
     }
 
     contentItem: Item {

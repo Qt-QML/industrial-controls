@@ -8,6 +8,7 @@
         <file>Industrial/Shaders/Pie.qml</file>
         <file>Industrial/Controls/qmldir</file>
         <file>Industrial/Controls/Shadow.qml</file>
+        <file>Industrial/Controls/Hatch.qml</file>
         <file>Industrial/Controls/ApplicationWindow.qml</file>
         <file>Industrial/Controls/Pane.qml</file>
         <file>Industrial/Controls/Frame.qml</file>
@@ -49,7 +50,6 @@
         <file>Industrial/Controls/ColoredIcon.qml</file>
         <file>Industrial/Controls/ToolTip.qml</file>
         <file>Industrial/Controls/Drawer.qml</file>
-        <file>Industrial/Controls/Dragger.qml</file>
         <file>Industrial/Indicators/qmldir</file>
         <file>Industrial/Indicators/Led.qml</file>
         <file>Industrial/Indicators/BlinkingLed.qml</file>

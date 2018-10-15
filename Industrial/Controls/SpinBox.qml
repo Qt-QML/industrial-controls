@@ -18,7 +18,6 @@ T.SpinBox {
     font.pixelSize: controlSize.fontSize
     editable: true
     hoverEnabled: true
-    opacity: enabled ? 1 : 0.33
     clip: true
     to: 100
 

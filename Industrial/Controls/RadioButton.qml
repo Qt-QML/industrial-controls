@@ -28,8 +28,13 @@ T.RadioButton {
             anchors.fill: parent
             anchors.margins: parent.width * 0.25
             radius: width * 0.5
-            color: control.down ? customPalette.highlightColor : customPalette.textColor
             visible: control.checked || control.down
+            color: {
+                if (!control.enabled) return customPalette.sunkenColor;
+                if (control.down) return customPalette.highlightColor;
+
+                return customPalette.textColor;
+            }
         }
     }
 

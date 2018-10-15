@@ -5,7 +5,7 @@ T.Label {
     id: control
 
     font.pixelSize: controlSize.fontSize
-    color: customPalette.textColor
+    color: control.enabled ? customPalette.textColor : customPalette.sunkenColor
     verticalAlignment: Text.AlignVCenter
     elide: Text.ElideRight
 }

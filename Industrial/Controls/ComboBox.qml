@@ -21,7 +21,6 @@ T.ComboBox {
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
     padding: controlSize.padding
-    opacity: enabled ? 1 : 0.33
     clip: true
     textRole: "text"
     displayText: currentItem && currentItem[control.textRole] !== undefined ?

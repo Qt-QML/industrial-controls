@@ -11,6 +11,12 @@ BackgroundItem {
 
     implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
 
+    Hatch {
+        anchors.fill: parent
+        color: customPalette.raisedColor
+        visible: !enabled
+    }
+
     Text {
         id: textItem
         anchors.left: parent.left

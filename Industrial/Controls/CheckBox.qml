@@ -29,8 +29,13 @@ T.CheckBox {
             anchors.fill: parent
             anchors.margins: parent.width * 0.1
             source: "qrc:/ui/ok.svg"
-            color: control.down ? customPalette.highlightColor : customPalette.textColor
             visible: control.checked || control.down
+            color: {
+                if (!control.enabled) return customPalette.sunkenColor;
+                if (control.down) return customPalette.highlightColor;
+
+                return customPalette.textColor;
+            }
         }
     }
 

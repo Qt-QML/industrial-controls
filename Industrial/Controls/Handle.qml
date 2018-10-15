@@ -5,7 +5,7 @@ Rectangle {
     implicitHeight: implicitWidth
     radius: width / 2
     color: {
-        if (!control.enabled) return customPalette.sunkenColor;
+        if (!control.enabled) return customPalette.backgroundColor;
         if (control.pressed) return customPalette.highlightColor;
         if (control.activeFocus) return customPalette.selectionColor;
 

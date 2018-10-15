@@ -26,6 +26,12 @@ T.Switch {
         radius: height / 2
         color: control.checked ? customPalette.selectionColor : customPalette.backgroundColor
 
+        Hatch {
+            anchors.fill: parent
+            color: customPalette.backgroundColor
+            visible: !enabled
+        }
+
         Handle {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
@@ -34,13 +40,10 @@ T.Switch {
         }
     }
 
-    contentItem: Text {
+    contentItem: Label {
         id: text
-        horizontalAlignment: Qt.AlignLeft
-        verticalAlignment: Text.AlignVCenter
         text: control.text
         font: control.font
-        color: customPalette.textColor
         leftPadding: indicator.width + control.spacing
     }
 

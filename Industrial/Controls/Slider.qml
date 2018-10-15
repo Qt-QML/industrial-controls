@@ -1,8 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
-import "../Shaders" as Shaders
-
 T.Slider {
     id: control
 
@@ -26,8 +24,9 @@ T.Slider {
             color: customPalette.selectionColor
             radius: height / 2
 
-            Shaders.Hatch {
-                source: parent
+            Hatch {
+                anchors.fill: parent
+                color: customPalette.backgroundColor
                 visible: !enabled
             }
         }

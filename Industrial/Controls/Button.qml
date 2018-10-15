@@ -44,6 +44,12 @@ T.Button { // TODO: clickable
             visible: false
             focused: control.activeFocus
         }
+
+        Hatch {
+            anchors.fill: parent
+            color: customPalette.raisedColor
+            visible: !enabled
+        }
     }
 
     contentItem: ContentItem {
