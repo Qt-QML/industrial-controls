@@ -89,6 +89,7 @@ T.SpinBox {
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: controlSize.baseSize
+        height: parent.height - controlSize.underline
         color: up.pressed && enabled ? customPalette.highlightColor : "transparent"
         hovered: up.hovered
         visible: control.enabled

@@ -15,7 +15,7 @@ T.ProgressBar {
         anchors.margins: 1
 
         Rectangle {
-            width: control.visualPosition * background.width
+            width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height + controlSize.rounding
             radius: controlSize.rounding
             color: customPalette.selectionColor

@@ -13,6 +13,8 @@ SpinBox {
     function validate() {
         control.value = control.valueFromText(input.text, control.locale);
         caution = false;
+        input.text = Qt.binding(function() { return control.textFromValue(control.value,
+                                                                          control.locale) });
     }
 
     onRealValueChanged: value = Math.round(realValue / precision)

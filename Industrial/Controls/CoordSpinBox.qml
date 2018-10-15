@@ -110,7 +110,7 @@ T.Control {
         RowLayout {
             id: row
             anchors.fill: parent
-            spacing: 1
+            spacing: 0
 
             Item {
                 implicitWidth: down.width
