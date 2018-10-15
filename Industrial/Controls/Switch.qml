@@ -29,6 +29,8 @@ T.Switch {
         Handle {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
+
+            Behavior on x { PropertyAnimation { duration: controlSize.animationTime} }
         }
     }
 
