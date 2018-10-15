@@ -1,13 +1,14 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
+import "../Shaders" as Shaders
+
 T.Slider {
     id: control
 
     property real visualValue: from + position * (to - from)
 
     height: controlSize.baseSize
-    opacity: enabled ? 1 : 0.33
     hoverEnabled: true
 
     background: Rectangle {
@@ -24,6 +25,11 @@ T.Slider {
             height: parent.height
             color: customPalette.selectionColor
             radius: height / 2
+
+            Shaders.Hatch {
+                source: parent
+                visible: !enabled
+            }
         }
     }
 

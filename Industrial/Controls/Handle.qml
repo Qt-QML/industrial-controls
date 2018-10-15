@@ -6,8 +6,8 @@ Rectangle {
     radius: width / 2
     color: {
         if (!control.enabled) return customPalette.sunkenColor;
-        if (control.pressed) return customPalette.selectionColor;
-        if (control.activeFocus) return customPalette.highlightColor;
+        if (control.pressed) return customPalette.highlightColor;
+        if (control.activeFocus) return customPalette.selectionColor;
 
         return customPalette.buttonColor;
     }
