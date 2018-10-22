@@ -16,18 +16,4 @@ ApplicationWindow {
         anchors.margins: controlSize.margins
         source: "Controls.qml"
     }
-
-    Button {
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.margins: controlSize.margins
-        iconSource: "qrc:/ui/refresh.svg"
-        tipText: qsTr("Refresh")
-        flat: true
-        onClicked: {
-            loader.source = "";
-            trimmer.trim();
-            loader.source = "Controls.qml";
-        }
-    }
 }
