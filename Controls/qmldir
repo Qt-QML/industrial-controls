@@ -3,6 +3,7 @@ depends QtQuick.Templates 2.2
 depends QtQuick.Controls 2.2
 designersupported
 
+helper 1.0 helper.js
 Shadow 1.0 Shadow.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
 Pane 1.0 Pane.qml
@@ -20,6 +21,8 @@ BottomBar 1.0 BottomBar.qml
 CheckBox 1.0 CheckBox.qml
 Switch 1.0 Switch.qml
 RadioButton 1.0 RadioButton.qml
+Led 1.0 Led.qml
+BlinkingLed 1.0 BlinkingLed.qml
 ToolBar 1.0 ToolBar.qml
 Label 1.0 Label.qml
 Link 1.0 Link.qml

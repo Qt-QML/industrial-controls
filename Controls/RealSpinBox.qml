@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-import "../JS/Helper.js" as Helper
+import "helper.js" as Helper
 
 SpinBox {
     id: control
