@@ -28,7 +28,7 @@ T.CheckBox {
         ColoredIcon {
             anchors.fill: parent
             anchors.margins: parent.width * 0.1
-            source: "qrc:/ui/ok.svg"
+            source: "qrc:/icons/ok.svg"
             visible: control.checked || control.down
             color: {
                 if (!control.enabled) return customPalette.sunkenColor;

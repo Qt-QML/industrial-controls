@@ -27,7 +27,7 @@ Item {
         id: menuButton
         anchors.top: parent.top
         anchors.right: parent.right
-        iconSource: "qrc:/ui/dots.svg"
+        iconSource: "qrc:/icons/dots.svg"
         flat: true
         enabled: menu.contentModel.count > 0
         width: controlSize.baseSize * 0.5
@@ -49,7 +49,7 @@ Item {
         width: controlSize.baseSize * 0.75
         height: width
 
-        source: "qrc:/ui/menu_arrow.svg"
+        source: "qrc:/icons/menu_arrow.svg"
         color: {
             if (area.pressed) return customPalette.selectionColor;
             if (area.containsMouse) return customPalette.highlightColor;

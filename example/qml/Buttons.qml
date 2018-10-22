@@ -54,12 +54,12 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/plus.svg"
+            iconSource: "qrc:/icons/plus.svg"
             tipText: qsTr("Icon button")
         }
 
         Button {
-            iconSource: "qrc:/ui/up.svg"
+            iconSource: "qrc:/icons/up.svg"
             text: qsTr("Up button")
             Layout.fillWidth: true
         }
@@ -71,7 +71,7 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/ok.svg"
+            iconSource: "qrc:/icons/ok.svg"
             enabled: false
             Layout.alignment: Qt.AlignHCenter
         }
@@ -85,13 +85,13 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/minus.svg"
+            iconSource: "qrc:/icons/minus.svg"
             tipText: qsTr("Flat icon button")
             flat: true
         }
 
         Button {
-            iconSource: "qrc:/ui/down.svg"
+            iconSource: "qrc:/icons/down.svg"
             text: qsTr("Down button")
             flat: true
             Layout.fillWidth: true
@@ -105,7 +105,7 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/cancel.svg"
+            iconSource: "qrc:/icons/cancel.svg"
             flat: true
             enabled: false
             Layout.alignment: Qt.AlignHCenter
@@ -120,13 +120,13 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/refresh.svg"
+            iconSource: "qrc:/icons/refresh.svg"
             tipText: qsTr("Checkable icon")
             checkable: true
         }
 
         Button {
-            iconSource: "qrc:/ui/left.svg"
+            iconSource: "qrc:/icons/left.svg"
             text: qsTr("Left button")
             checkable: true
             Layout.fillWidth: true
@@ -140,7 +140,7 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/dots.svg"
+            iconSource: "qrc:/icons/dots.svg"
             checkable: true
             enabled: false
             Layout.alignment: Qt.AlignHCenter
@@ -156,14 +156,14 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/restore.svg"
+            iconSource: "qrc:/icons/restore.svg"
             tipText: qsTr("Checkable icon")
             checkable: true
             flat: true
         }
 
         Button {
-            iconSource: "qrc:/ui/right.svg"
+            iconSource: "qrc:/icons/right.svg"
             text: qsTr("Right button")
             checkable: true
             flat: true
@@ -179,7 +179,7 @@ Frame {
         }
 
         Button {
-            iconSource: "qrc:/ui/cancel.svg"
+            iconSource: "qrc:/icons/cancel.svg"
             checkable: true
             enabled: false
             flat: true
@@ -194,25 +194,25 @@ Frame {
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/up.svg"
+            iconSource: "qrc:/icons/up.svg"
             tipText: qsTr("Delay icon button")
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/down.svg"
+            iconSource: "qrc:/icons/down.svg"
             text: qsTr("Delay down")
             Layout.fillWidth: true
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/up.svg"
+            iconSource: "qrc:/icons/up.svg"
             text: qsTr("Delay up")
             enabled: false
             Layout.fillWidth: true
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/dots.svg"
+            iconSource: "qrc:/icons/dots.svg"
             Layout.alignment: Qt.AlignHCenter
             enabled: false
         }
@@ -226,20 +226,20 @@ Frame {
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/plus.svg"
+            iconSource: "qrc:/icons/plus.svg"
             flat: true
             tipText: qsTr("Delay icon flat")
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/left.svg"
+            iconSource: "qrc:/icons/left.svg"
             text: qsTr("Delay left")
             flat: true
             Layout.fillWidth: true
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/right.svg"
+            iconSource: "qrc:/icons/right.svg"
             text: qsTr("Delay right")
             flat: true
             enabled: false
@@ -247,7 +247,7 @@ Frame {
         }
 
         DelayButton {
-            iconSource: "qrc:/ui/cancel.svg"
+            iconSource: "qrc:/icons/cancel.svg"
             flat: true
             enabled: false
             Layout.alignment: Qt.AlignHCenter

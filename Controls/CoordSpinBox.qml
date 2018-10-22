@@ -124,7 +124,7 @@ T.Control {
                 focusPolicy: Qt.NoFocus
                 visible: control.enabled
                 enabled: focusedItem && _decreaseEnabled
-                iconSource: "qrc:/ui/minus.svg"
+                iconSource: "qrc:/icons/minus.svg"
                 pressedImpl: _decreaseEnabled && focusedItem && focusedItem.down
                 onClicked: {
                     if (!focusedItem) return;
@@ -206,7 +206,7 @@ T.Control {
                 focusPolicy: Qt.NoFocus
                 visible: control.enabled
                 enabled: focusedItem && _increaseEnabled
-                iconSource: "qrc:/ui/plus.svg"
+                iconSource: "qrc:/icons/plus.svg"
                 pressedImpl: _increaseEnabled && focusedItem && focusedItem.up
                 onClicked: {
                     if (!focusedItem) return;

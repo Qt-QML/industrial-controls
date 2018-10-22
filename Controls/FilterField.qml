@@ -8,7 +8,7 @@ TextField {
     Button {
         anchors.right: parent.right
         height: parent.height
-        iconSource: "qrc:/ui/erase.svg"
+        iconSource: "qrc:/icons/erase.svg"
         tipText: qsTr("Clear filter")
         flat: true
         visible: control.text.length > 0 && control.enabled

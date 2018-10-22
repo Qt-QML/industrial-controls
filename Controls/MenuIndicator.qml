@@ -9,7 +9,7 @@ ColoredIcon {
 
     width: controlSize.baseSize / 2
     height: width
-    source: "qrc:/ui/menu_arrow.svg"
+    source: "qrc:/icons/menu_arrow.svg"
     color: {
         if (!enabled) return customPalette.sunkenColor;
         if (!isValid) return customPalette.dangerColor;

@@ -32,12 +32,12 @@ Frame {
 
         MenuItem {
             text: qsTr("Add")
-            iconSource: "qrc:/ui/plus.svg"
+            iconSource: "qrc:/icons/plus.svg"
         }
 
         MenuItem {
             text: qsTr("Remove")
-            iconSource: "qrc:/ui/remove.svg"
+            iconSource: "qrc:/icons/remove.svg"
             enabled: false
         }
 

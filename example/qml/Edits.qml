@@ -109,10 +109,10 @@ Frame {
         ComboBox {
             labelText: qsTr("Invalid combobox")
             model: [
-                { text: "Up", icon: "qrc:/ui/up.svg" },
-                { text: "Down", icon: "qrc:/ui/down.svg" },
-                { text: "Left", icon: "qrc:/ui/left.svg" },
-                { text: "Right", icon: "qrc:/ui/right.svg" }
+                { text: "Up", icon: "qrc:/icons/up.svg" },
+                { text: "Down", icon: "qrc:/icons/down.svg" },
+                { text: "Left", icon: "qrc:/icons/left.svg" },
+                { text: "Right", icon: "qrc:/icons/right.svg" }
             ]
             isValid: false
             Layout.fillWidth: true

@@ -30,7 +30,7 @@ T.MenuItem {
             if (!checkable) return control.iconSource;
 
             if (control.checked) return control.iconSource.length > 0 ? control.iconSource:
-                                                                        "qrc:/ui/ok.svg"
+                                                                        "qrc:/icons/ok.svg"
             return "";
         }
         width: controlSize.baseSize - controlSize.padding * 2
