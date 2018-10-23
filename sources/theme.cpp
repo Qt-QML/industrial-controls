@@ -1,10 +1,7 @@
 #include "theme.h"
 
 Theme::Theme(QObject* parent):
-    QObject(parent),
-    m_backgroundColor("#212121"),
-    m_surfaceColor("#475057"),
-    m_buttonColor("#354b51")
+    QObject(parent)
 {}
 
 void Theme::setBackgroundColor(const QColor& backgroundColor)
