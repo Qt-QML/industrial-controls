@@ -7,6 +7,8 @@
 #include "control_size_factory.h"
 #include "palette_factory.h"
 
+#include "theme.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -23,6 +25,8 @@ int main(int argc, char *argv[])
                                              QVariant::fromValue(controlSize.createControlSize(36)));
     engine.rootContext()->setContextProperty(QStringLiteral("customPalette"),
                                              QVariant::fromValue(palette.createNightPalette()));
+
+    qmlRegisterType<Theme>("Industrial", 1, 0, "Theme");
 
     engine.load(QStringLiteral("../qml/Main.qml"));
     if (engine.rootObjects().isEmpty()) return -1;

@@ -1,7 +1,10 @@
 import QtQuick 2.6
+import Industrial 1.0
 
 BackgroundItem {
     id: control
+
+    property Theme theme: Theme {}
 
     property bool inputed: true
 
@@ -13,7 +16,7 @@ BackgroundItem {
 
     Hatch {
         anchors.fill: parent
-        color: customPalette.raisedColor
+        color: theme.surfaceColor
         visible: !enabled
     }
 
