@@ -1,10 +1,11 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2 as T
+import Industrial 1.0
 
 T.Frame {
     id: control
 
-    property color backgroundColor: customPalette.raisedColor
+    property color backgroundColor: theme.surfaceColor
 
     padding: controlSize.padding
 

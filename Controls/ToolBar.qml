@@ -5,6 +5,6 @@ T.ToolBar {
     id: control
 
     background: Rectangle {
-        color: customPalette.raisedColor
+        color: theme.surfaceColor
     }
 }

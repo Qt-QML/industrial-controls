@@ -11,7 +11,7 @@ T.ScrollBar {
     background: Item { }
 
     contentItem: Rectangle {
-        color: active && enabled ? customPalette.selectionColor : "transparent"
+        color: active && enabled ? theme.selectionColor : "transparent"
         radius: width / 2
     }
 }

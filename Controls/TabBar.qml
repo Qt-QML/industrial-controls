@@ -12,7 +12,7 @@ T.TabBar { // TODO: replace with model-based bar
 
         Rectangle {
             id: bg
-            color: customPalette.backgroundColor
+            color: theme.containerColor
             anchors.fill: parent
             radius: controlSize.rounding
             anchors.bottomMargin: -radius

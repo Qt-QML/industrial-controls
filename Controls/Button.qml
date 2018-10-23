@@ -32,9 +32,9 @@ T.Button { // TODO: clickable
         radius: round ? Math.min(width, height) / 2 : controlSize.rounding
         croppig: round ? 0 : radius
         color: {
-            if (control.pressed || control.pressedImpl) return customPalette.highlightColor;
-            if (control.highlighted || control.checked) return customPalette.selectionColor;
-            return control.flat ? "transparent" : customPalette.buttonColor;
+            if (control.pressed || control.pressedImpl) return theme.highlightColor;
+            if (control.highlighted || control.checked) return theme.selectionColor;
+            return control.flat ? "transparent" : theme.buttonColor;
         }
 
         MenuIndicator {
@@ -47,7 +47,7 @@ T.Button { // TODO: clickable
 
         Hatch {
             anchors.fill: parent
-            color: customPalette.raisedColor
+            color: theme.surfaceColor
             visible: !enabled
         }
     }

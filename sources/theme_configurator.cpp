@@ -4,10 +4,23 @@
 // Qt
 #include <QDebug>
 
+namespace
+{
+    const int background = 60;
+    const int surface = 100;
+    const int container = 80;
+    const int button = 140;
+
+    const int tip = 60;
+    const int selection = 100;
+    const int highlight = 140;
+}
+
 ThemeConfigurator::ThemeConfigurator(QObject* parent):
     QObject(parent),
     m_theme(new Theme(this)),
-    m_baseColor("#313238"),
+    m_baseColor("#37474f"),
+    m_primaryColor("#31d0b3"),
     m_lightness(100)
 {
     this->rebuild();
@@ -28,7 +41,7 @@ QColor ThemeConfigurator::primaryColor() const
     return m_primaryColor;
 }
 
-float ThemeConfigurator::lightness() const
+int ThemeConfigurator::lightness() const
 {
     return m_lightness;
 }
@@ -51,9 +64,9 @@ void ThemeConfigurator::setPrimaryColor(const QColor& primaryColor)
     this->rebuild();
 }
 
-void ThemeConfigurator::setLightness(float lightness)
+void ThemeConfigurator::setLightness(int lightness)
 {
-    if (qFuzzyCompare(m_lightness, lightness)) return;
+    if (m_lightness == lightness) return;
 
     m_lightness = lightness;
     emit primaryColorChanged();
@@ -63,8 +76,14 @@ void ThemeConfigurator::setLightness(float lightness)
 
 void ThemeConfigurator::rebuild()
 {
-    m_theme->setBackgroundColor(m_baseColor.lighter(m_lightness));
-    m_theme->setSurfaceColor(m_baseColor.lighter(m_lightness + 50));
-    m_theme->setContainerColor(m_baseColor.lighter(m_lightness - 50));
-    m_theme->setButtonColor(m_baseColor.lighter(m_lightness + 75));
+    QColor base = m_baseColor.lighter(m_lightness);
+
+    m_theme->setBackgroundColor(base.lighter(::background));
+    m_theme->setSurfaceColor(base.lighter(::surface));
+    m_theme->setContainerColor(base.lighter(::container));
+    m_theme->setButtonColor(base.lighter(::button));
+
+    m_theme->setTipColor(m_primaryColor.lighter(::tip));
+    m_theme->setSelectionColor(m_primaryColor.lighter(::selection));
+    m_theme->setHighlightColor(m_primaryColor.lighter(::highlight));
 }

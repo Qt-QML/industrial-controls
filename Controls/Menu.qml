@@ -8,7 +8,7 @@ T.Menu {
     background: Rectangle {
         implicitWidth: controlSize.baseSize * 6
         implicitHeight: controlSize.baseSize
-        color: customPalette.backgroundColor
+        color: theme.containerColor
 
         Shadow {
             visible: !control.flat

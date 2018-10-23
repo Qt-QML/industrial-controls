@@ -16,17 +16,17 @@ T.Slider {
         width: control.availableWidth
         height: controlSize.underline
         radius: height / 2
-        color: customPalette.backgroundColor
+        color: theme.containerColor
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: customPalette.selectionColor
+            color: theme.selectionColor
             radius: height / 2
 
             Hatch {
                 anchors.fill: parent
-                color: customPalette.backgroundColor
+                color: theme.containerColor
                 visible: !enabled
             }
         }
@@ -41,7 +41,7 @@ T.Slider {
             width: parent.width * 2
             height: width
             radius: width / 2
-            color: customPalette.highlightColor
+            color: theme.highlightColor
             opacity: 0.5
             visible: control.pressed
         }

@@ -17,7 +17,7 @@ T.ItemDelegate {
     background: Rectangle {
         anchors.fill: parent
         visible: control.highlighted
-        color: isValid ? customPalette.highlightColor : customPalette.dangerColor
+        color: isValid ? theme.highlightColor : customPalette.dangerColor
     }
 
     contentItem: ContentItem {

@@ -235,7 +235,7 @@ T.Control {
             if (caution) return customPalette.cautionColor;
             if (!isValid) return customPalette.dangerColor;
 
-            return customPalette.highlightColor;
+            return theme.highlightColor;
         }
         Behavior on x { NumberAnimation { duration: 150 } }
     }

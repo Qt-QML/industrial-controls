@@ -4,8 +4,6 @@ import Industrial 1.0
 BackgroundItem {
     id: control
 
-    property Theme theme: Theme {}
-
     property bool inputed: true
 
     property alias textHeight: textItem.height
@@ -32,7 +30,7 @@ BackgroundItem {
             if (!control.enabled) return customPalette.sunkenColor;
             if (control.caution) return customPalette.cautionColor;
             if (!control.isValid) return customPalette.dangerColor
-            if (control.highlighted) return customPalette.highlightColor;
+            if (control.highlighted) return theme.highlightColor;
 
             return customPalette.secondaryTextColor;
         }

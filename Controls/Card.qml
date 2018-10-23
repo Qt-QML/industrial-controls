@@ -14,7 +14,7 @@ Item {
     Rectangle {
         id: background
         anchors.fill: control
-        color: customPalette.raisedColor
+        color: theme.surfaceColor
         radius: controlSize.rounding
         z: -1
 
@@ -51,9 +51,9 @@ Item {
 
         source: "qrc:/icons/menu_arrow.svg"
         color: {
-            if (area.pressed) return customPalette.selectionColor;
-            if (area.containsMouse) return customPalette.highlightColor;
-            return customPalette.buttonColor
+            if (area.pressed) return theme.selectionColor;
+            if (area.containsMouse) return theme.highlightColor;
+            return theme.buttonColor
         }
 
         MouseArea {

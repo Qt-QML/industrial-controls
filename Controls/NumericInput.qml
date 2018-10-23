@@ -7,6 +7,6 @@ TextInput {
     selectByMouse: true
     font.pixelSize: controlSize.fontSize
     color: enabled ? customPalette.textColor : customPalette.sunkenColor
-    selectionColor: customPalette.selectionColor
+    selectionColor: theme.selectionColor
     selectedTextColor: customPalette.selectedTextColor
 }

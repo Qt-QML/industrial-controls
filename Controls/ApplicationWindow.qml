@@ -5,7 +5,5 @@ import Industrial 1.0
 Controls.ApplicationWindow {
     id: window
 
-    property Theme theme: theme
-
     color: theme.backgroundColor
 }

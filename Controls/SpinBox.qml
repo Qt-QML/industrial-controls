@@ -63,13 +63,13 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         width: controlSize.baseSize
         height: parent.height - controlSize.underline
-        color: down.pressed && enabled ? customPalette.highlightColor : "transparent"
+        color: down.pressed && enabled ? theme.highlightColor : "transparent"
         hovered: down.hovered
         visible: control.enabled
 
         Hatch {
             anchors.fill: parent
-            color: customPalette.raisedColor
+            color: theme.surfaceColor
             visible: !enabled
         }
 
@@ -90,13 +90,13 @@ T.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         width: controlSize.baseSize
         height: parent.height - controlSize.underline
-        color: up.pressed && enabled ? customPalette.highlightColor : "transparent"
+        color: up.pressed && enabled ? theme.highlightColor : "transparent"
         hovered: up.hovered
         visible: control.enabled
 
         Hatch {
             anchors.fill: parent
-            color: customPalette.raisedColor
+            color: theme.surfaceColor
             visible: !enabled
         }
 

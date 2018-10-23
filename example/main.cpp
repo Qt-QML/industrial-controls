@@ -27,8 +27,12 @@ int main(int argc, char *argv[])
                                              QVariant::fromValue(controlSize.createControlSize(36)));
     engine.rootContext()->setContextProperty(QStringLiteral("customPalette"),
                                              QVariant::fromValue(palette.createNightPalette()));
+
+    ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);
     engine.rootContext()->setContextProperty(QStringLiteral("themeConfigurator"),
-                                             QVariant::fromValue(new ThemeConfigurator(&app)));
+                                             QVariant::fromValue(themeConfigurator));
+    engine.rootContext()->setContextProperty(QStringLiteral("theme"),
+                                             QVariant::fromValue(themeConfigurator->theme()));
 
 
     engine.load(QStringLiteral("../qml/Main.qml"));

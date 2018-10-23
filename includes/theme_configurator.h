@@ -15,7 +15,7 @@ class ThemeConfigurator: public QObject
 
     Q_PROPERTY(QColor baseColor READ baseColor WRITE setBaseColor NOTIFY baseColorChanged)
     Q_PROPERTY(QColor primaryColor READ primaryColor WRITE setPrimaryColor NOTIFY primaryColorChanged)
-    Q_PROPERTY(float lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
+    Q_PROPERTY(int lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
 
 public:
     explicit ThemeConfigurator(QObject* parent = nullptr);
@@ -24,12 +24,12 @@ public:
 
     QColor baseColor() const;
     QColor primaryColor() const;
-    float lightness() const;
+    int lightness() const;
 
 public slots:
     void setBaseColor(QColor baseColor);
     void setPrimaryColor(const QColor& primaryColor);
-    void setLightness(float lightness);
+    void setLightness(int lightness);
 
     void rebuild();
 
@@ -42,7 +42,7 @@ private:
     Theme* const m_theme;
     QColor m_baseColor;
     QColor m_primaryColor;
-    float m_lightness;
+    int m_lightness;
 };
 
 #endif // THEME_CONFIGURATOR_H

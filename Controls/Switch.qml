@@ -24,11 +24,11 @@ T.Switch {
         implicitWidth: controlSize.baseSize
         implicitHeight: controlSize.underline
         radius: height / 2
-        color: control.checked ? customPalette.selectionColor : customPalette.backgroundColor
+        color: control.checked ? theme.selectionColor : theme.containerColor
 
         Hatch {
             anchors.fill: parent
-            color: customPalette.backgroundColor
+            color: theme.containerColor
             visible: !enabled
         }
 

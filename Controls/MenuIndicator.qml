@@ -13,8 +13,8 @@ ColoredIcon {
     color: {
         if (!enabled) return customPalette.sunkenColor;
         if (!isValid) return customPalette.dangerColor;
-        if (opened) return customPalette.highlightColor;
-        if (focused) return customPalette.selectionColor;
+        if (opened) return theme.highlightColor;
+        if (focused) return theme.selectionColor;
 
         return customPalette.secondaryTextColor;
     }

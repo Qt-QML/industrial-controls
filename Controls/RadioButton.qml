@@ -29,7 +29,7 @@ T.RadioButton {
             visible: control.checked || control.down
             color: {
                 if (!control.enabled) return customPalette.sunkenColor;
-                if (control.down) return customPalette.highlightColor;
+                if (control.down) return theme.highlightColor;
 
                 return customPalette.textColor;
             }

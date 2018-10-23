@@ -18,11 +18,11 @@ T.ProgressBar {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height + controlSize.rounding
             radius: controlSize.rounding
-            color: customPalette.selectionColor
+            color: theme.selectionColor
 
             Hatch {
                 anchors.fill: parent
-                color: customPalette.backgroundColor
+                color: theme.containerColor
                 visible: !enabled
             }
         }

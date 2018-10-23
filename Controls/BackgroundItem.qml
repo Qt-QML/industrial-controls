@@ -24,7 +24,7 @@ Item {
 
         Rectangle {
             id: background
-            color: customPalette.backgroundColor
+            color: theme.containerColor
             anchors.fill: parent
             radius: controlSize.rounding
             anchors.bottomMargin: -croppig
@@ -49,7 +49,7 @@ Item {
             if (caution) return customPalette.cautionColor;
             if (!isValid) return customPalette.dangerColor;
 
-            return customPalette.highlightColor;
+            return theme.highlightColor;
         }
     }
 

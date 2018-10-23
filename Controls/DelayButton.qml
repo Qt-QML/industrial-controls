@@ -27,11 +27,11 @@ T.DelayButton {
         highlighted: control.activeFocus
         hovered: control.hovered
         shadow: !control.flat
-        color: control.flat ? "transparent" : customPalette.buttonColor
+        color: control.flat ? "transparent" : theme.buttonColor
 
         Hatch {
             anchors.fill: parent
-            color: customPalette.raisedColor
+            color: theme.surfaceColor
             visible: !enabled
         }
     }
@@ -59,7 +59,7 @@ T.DelayButton {
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
                 anchors.bottomMargin: -backgroundItem.radius
-                color: customPalette.highlightColor
+                color: theme.highlightColor
                 clip: true
             }
 

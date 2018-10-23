@@ -18,7 +18,7 @@ T.MenuItem {
     background: BackgroundItem {
         hovered: control.hovered
         highlighted: control.activeFocus
-        color: control.pressed ? customPalette.highlightColor : "transparent"
+        color: control.pressed ? theme.highlightColor : "transparent"
     }
 
     indicator: ColoredIcon {

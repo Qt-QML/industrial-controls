@@ -9,7 +9,6 @@ ApplicationWindow {
     title: qsTr("Industrial demo")
     width: controlSize.baseSize * 24
     height: controlSize.baseSize * 12
-    theme: themeConfigurator.theme
 
     Loader {
         id: loader
@@ -32,14 +31,20 @@ ApplicationWindow {
             x: parent.width - width
             y: parent.height
             width: controlSize.baseSize * 8
+            closePolicy: Popup.CloseOnPressOutsideParent
 
             ColumnLayout{
                 width: parent.width
                 spacing: controlSize.spacing
 
+                Label {
+                    text: qsTr("Lightness")
+                    Layout.alignment: Qt.AlignHCenter
+                }
+
                 Slider {
-                    from: 1
-                    to: 200
+                    from: 50
+                    to: 150
                     Binding on value { value: themeConfigurator.lightness }
                     onMoved: themeConfigurator.setLightness(value)
                     Layout.fillWidth: true

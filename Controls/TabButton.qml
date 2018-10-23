@@ -22,7 +22,7 @@ T.TabButton {
         id: backgroundItem
         highlighted: control.activeFocus
         hovered: control.hovered
-        color: control.checked ? customPalette.raisedColor : "transparent";
+        color: control.checked ? theme.surfaceColor : "transparent";
     }
 
     contentItem: ContentItem {
