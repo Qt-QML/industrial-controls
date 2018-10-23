@@ -28,7 +28,7 @@ T.RadioButton {
             radius: width * 0.5
             visible: control.checked || control.down
             color: {
-                if (!control.enabled) return customPalette.sunkenColor;
+                if (!control.enabled) return theme.disabledColor;
                 if (control.down) return theme.highlightColor;
 
                 return customPalette.textColor;

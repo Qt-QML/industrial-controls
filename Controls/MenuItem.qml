@@ -24,7 +24,7 @@ T.MenuItem {
     indicator: ColoredIcon {
         x: controlSize.padding
         id: icon
-        color: enabled ? iconColor : customPalette.sunkenColor
+        color: enabled ? iconColor : theme.disabledColor
         anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;
@@ -42,7 +42,7 @@ T.MenuItem {
         font: control.font
         text: control.text
         color: {
-            if (!enabled) return customPalette.sunkenColor;
+            if (!enabled) return theme.disabledColor;
             if (control.pressed) return customPalette.selectedTextColor;
             return customPalette.textColor;
         }

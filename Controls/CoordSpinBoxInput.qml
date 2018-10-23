@@ -23,7 +23,7 @@ Item {
             height: root.height
             inputMethodHints: Qt.ImhDigitsOnly
             font: control.font
-            color: control.enabled ? control.color : customPalette.sunkenColor
+            color: control.enabled ? control.color : theme.disabledColor
             selectionColor: background.highlighterColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 

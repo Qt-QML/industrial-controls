@@ -11,8 +11,8 @@ ColoredIcon {
     height: width
     source: "qrc:/icons/menu_arrow.svg"
     color: {
-        if (!enabled) return customPalette.sunkenColor;
-        if (!isValid) return customPalette.dangerColor;
+        if (!enabled) return theme.disabledColor;
+        if (!isValid) return theme.negativeColor;
         if (opened) return theme.highlightColor;
         if (focused) return theme.selectionColor;
 

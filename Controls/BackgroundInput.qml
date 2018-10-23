@@ -27,12 +27,12 @@ BackgroundItem {
         height: implicitHeight
         font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
         color: {
-            if (!control.enabled) return customPalette.sunkenColor;
-            if (control.caution) return customPalette.cautionColor;
-            if (!control.isValid) return customPalette.dangerColor
+            if (!control.enabled) return theme.disabledColor;
+            if (control.caution) return theme.neutralColor;
+            if (!control.isValid) return theme.negativeColor;
             if (control.highlighted) return theme.highlightColor;
 
-            return customPalette.secondaryTextColor;
+            return theme.onContainerColor;
         }
         Behavior on font.pixelSize { PropertyAnimation { duration: controlSize.animationTime } }
     }

@@ -78,7 +78,7 @@ T.SpinBox {
             width: parent.width - controlSize.padding * 2
             source: "qrc:/icons/minus.svg"
             color: {
-                if (!enabled) return customPalette.sunkenColor;
+                if (!enabled) return theme.disabledColor;
                 if (down.pressed) return customPalette.selectedTextColor
 
                 return customPalette.textColor;
@@ -105,7 +105,7 @@ T.SpinBox {
             width: parent.width - controlSize.padding * 2
             source: "qrc:/icons/plus.svg"
             color: {
-                if (!enabled) return customPalette.sunkenColor;
+                if (!enabled) return theme.disabledColor;
                 if (up.pressed) return customPalette.selectedTextColor
 
                 return customPalette.textColor;

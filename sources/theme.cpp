@@ -90,8 +90,14 @@ void Theme::setOnHighlightColor(const QColor& onHighlightColor)
 
 void Theme::setControlColor(const QColor& controlColor)
 {
-    m_controlColor= controlColor;
+    m_controlColor = controlColor;
     emit controlColorChanged();
+}
+
+void Theme::setDisabledColor(const QColor& disabledColor)
+{
+    m_disabledColor = disabledColor;
+    emit disabledColorChanged();
 }
 
 void Theme::setPositiveColor(const QColor& positiveColor)

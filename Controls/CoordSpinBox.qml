@@ -90,8 +90,8 @@ T.Control {
         textColor: {
             if (highlighter.visible) return highlighter.color;
 
-            if (!control.enabled) return customPalette.sunkenColor;
-            if (!control.isValid) return customPalette.dangerColor
+            if (!control.enabled) return theme.disabledColor;
+            if (!control.isValid) return theme.negativeColor
 
             return customPalette.secondaryTextColor;
         }
@@ -194,7 +194,7 @@ T.Control {
             Label {
                 visible: !control.enabled
                 text: suffix
-                color: customPalette.sunkenColor
+                color: theme.disabledColor
                 Layout.preferredWidth: suffixButton.width
                 Layout.alignment: Qt.AlignBottom
             }
@@ -232,8 +232,8 @@ T.Control {
         visible: focusedItem
         height: controlSize.underline
         color: {
-            if (caution) return customPalette.cautionColor;
-            if (!isValid) return customPalette.dangerColor;
+            if (caution) return theme.neutralColor;
+            if (!isValid) return theme.negativeColor;
 
             return theme.highlightColor;
         }

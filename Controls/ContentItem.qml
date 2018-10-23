@@ -30,7 +30,7 @@ Item {
         anchors.horizontalCenterOffset: label.visible ? controlSize.padding - label.width / 2 : 0
         height: iconSize
         width: iconSize
-        color: enabled ? iconColor : customPalette.sunkenColor
+        color: enabled ? iconColor : theme.disabledColor
         visible: iconSource != ""
     }
 
@@ -41,7 +41,7 @@ Item {
         height: content.height
         elide: Text.ElideRight
         font.pixelSize: controlSize.fontSize
-        color: enabled ? textColor : customPalette.sunkenColor
+        color: enabled ? textColor : theme.disabledColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0

@@ -46,8 +46,8 @@ Item {
         height: controlSize.underline
         visible: control.highlighted && control.enabled
         color: {
-            if (caution) return customPalette.cautionColor;
-            if (!isValid) return customPalette.dangerColor;
+            if (caution) return theme.neutralColor;
+            if (!isValid) return theme.negativeColor;
 
             return theme.highlightColor;
         }

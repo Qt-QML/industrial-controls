@@ -9,7 +9,7 @@ T.TextField {
 
     implicitHeight: background.implicitHeight
     font.pixelSize: controlSize.fontSize
-    color: control.enabled ? customPalette.textColor : customPalette.sunkenColor
+    color: control.enabled ? theme.onContainerColor : theme.disabledColor
     selectionColor: background.highlighterColor
     selectedTextColor: customPalette.selectedTextColor
     selectByMouse: true
