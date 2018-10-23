@@ -14,7 +14,7 @@ T.Control {
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
-    property color color: customPalette.textColor
+    property color color: theme.onContainerColor
 
     property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
@@ -93,7 +93,7 @@ T.Control {
             if (!control.enabled) return theme.disabledColor;
             if (!control.isValid) return theme.negativeColor
 
-            return customPalette.secondaryTextColor;
+            return theme.onContainerColor;
         }
     }
 

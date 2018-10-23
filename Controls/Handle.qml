@@ -14,7 +14,7 @@ Rectangle {
 
     Rectangle {
         anchors.fill: parent
-        color: customPalette.textColor
+        color: theme.onContainerColor
         radius: parent.radius
         opacity: 0.1
         visible: hovered

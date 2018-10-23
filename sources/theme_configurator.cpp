@@ -16,12 +16,12 @@ namespace
     const int container = 80;
     const int button = 140;
 
-    const int disabled = 20;
+    const int disabled = 40;
     const int control = 120;
 
     const int tip = 80;
     const int selection = 100;
-    const int highlight = 140;
+    const int highlight = 120;
 }
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent):
@@ -128,7 +128,7 @@ void ThemeConfigurator::rebuild()
     m_theme->setDisabledColor(base.lighter(::disabled));
     m_theme->setControlColor(base.lighter(::control));
 
-    QColor onBase = m_onBaseColor.darker(m_lightness);
+    QColor onBase = m_onBaseColor.lighter(m_lightness + 40);
     m_theme->setOnBackgroundColor(onBase);
     m_theme->setOnSurfaceColor(onBase);
     m_theme->setOnContainerColor(onBase);

@@ -11,7 +11,7 @@ T.TextField {
     font.pixelSize: controlSize.fontSize
     color: control.enabled ? theme.onContainerColor : theme.disabledColor
     selectionColor: background.highlighterColor
-    selectedTextColor: customPalette.selectedTextColor
+    selectedTextColor: theme.onSelectionColor
     selectByMouse: true
     leftPadding: controlSize.padding
     bottomPadding: background.offset
@@ -32,7 +32,7 @@ T.TextField {
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
         font.pixelSize: controlSize.fontSize
-        color: customPalette.secondaryTextColor
+        color: theme.onContainerColor
         opacity: 0.5
     }
 }

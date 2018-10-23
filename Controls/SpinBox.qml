@@ -5,7 +5,7 @@ T.SpinBox {
     id: control
 
     property bool isValid: value >= from && value <= to
-    property color color: customPalette.textColor
+    property color color: theme.onContainerColor
 
     property alias caution: background.caution
     property alias backgroundColor: background.color
@@ -79,9 +79,9 @@ T.SpinBox {
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;
-                if (down.pressed) return customPalette.selectedTextColor
+                if (down.pressed) return theme.onSelectionColor
 
-                return customPalette.textColor;
+                return theme.onContainerColor;
             }
         }
     }
@@ -106,9 +106,9 @@ T.SpinBox {
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;
-                if (up.pressed) return customPalette.selectedTextColor
+                if (up.pressed) return theme.onSelectionColor
 
-                return customPalette.textColor;
+                return theme.onContainerColor;
             }
         }
     }

@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<Theme>("Industrial", 1, 0, "Theme");
     engine.rootContext()->setContextProperty(QStringLiteral("controlSize"),
                                              QVariant::fromValue(controlSize.createControlSize(36)));
-    engine.rootContext()->setContextProperty(QStringLiteral("customPalette"),
+    engine.rootContext()->setContextProperty(QStringLiteral("theme"),
                                              QVariant::fromValue(palette.createNightPalette()));
 
     ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);

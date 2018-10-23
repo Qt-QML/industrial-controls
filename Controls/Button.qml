@@ -58,7 +58,7 @@ T.Button { // TODO: clickable
         anchors.margins: control.padding
         text: control.text
         font: control.font
-        textColor: control.pressed || control.pressedImpl ? customPalette.selectedTextColor : customPalette.textColor
+        textColor: control.pressed || control.pressedImpl ? theme.onSelectionColor : theme.onButtonColor
     }
 
     ToolTip {

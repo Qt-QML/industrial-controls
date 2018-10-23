@@ -46,7 +46,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: customPalette.textColor
+            textColor: theme.onButtonColor
         }
 
         Item {
@@ -76,7 +76,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: customPalette.selectedTextColor
+                    textColor: theme.onSelectionColor
                 }
             }
         }

@@ -6,7 +6,7 @@ TextInput {
     horizontalAlignment: Qt.AlignHCenter
     selectByMouse: true
     font.pixelSize: controlSize.fontSize
-    color: enabled ? customPalette.textColor : theme.disabledColor
+    color: enabled ? theme.onSurfaceColor : theme.disabledColor
     selectionColor: theme.selectionColor
-    selectedTextColor: customPalette.selectedTextColor
+    selectedTextColor: theme.onSelectionColor
 }

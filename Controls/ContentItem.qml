@@ -6,7 +6,7 @@ Item {
     property int spacing: controlSize.spacing
     property int iconSize: controlSize.baseSize - controlSize.padding * 2
 
-    property color textColor: customPalette.textColor
+    property color textColor: theme.onSurfaceColor
     property color iconColor: textColor
 
     property alias iconSource: icon.source

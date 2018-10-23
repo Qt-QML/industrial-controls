@@ -31,7 +31,7 @@ T.RadioButton {
                 if (!control.enabled) return theme.disabledColor;
                 if (control.down) return theme.highlightColor;
 
-                return customPalette.textColor;
+                return theme.onContainerColor;
             }
         }
     }

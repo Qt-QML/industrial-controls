@@ -29,6 +29,6 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: customPalette.textColor
+        textColor: theme.onContainerColor
     }
 }

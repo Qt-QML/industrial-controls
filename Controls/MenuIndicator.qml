@@ -16,6 +16,6 @@ ColoredIcon {
         if (opened) return theme.highlightColor;
         if (focused) return theme.selectionColor;
 
-        return customPalette.secondaryTextColor;
+        return theme.onSurfaceColor;
     }
 }

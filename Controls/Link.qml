@@ -4,7 +4,7 @@ Label {
     id: control
 
     onLinkActivated: Qt.openUrlExternally(link)
-    linkColor: customPalette.linkColor
+    linkColor: theme.linkColor
 
     MouseArea {
         anchors.fill: control
