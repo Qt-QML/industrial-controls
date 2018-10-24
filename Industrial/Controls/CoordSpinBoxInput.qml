@@ -33,7 +33,7 @@ Item {
 
             onTextEdited: control.caution = true
             onActiveFocusChanged: {
-                if (activeFocus) focusedItem = root
+                if (activeFocus) _focusedItem = root
                 else updateValueFromControls();
 
             }

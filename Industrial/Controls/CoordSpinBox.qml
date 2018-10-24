@@ -11,28 +11,28 @@ T.Control {
     property bool isValid: !isNaN(value)
     property bool caution: false
     property int secondsPrecision: 2
-    property int sign: 1
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
     property color color: theme.onContainerColor
 
-    property string suffix: sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
+    property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
 
     property alias backgroundColor: background.color
     property alias labelText: background.text
 
+    property int _sign: 1
     readonly property bool _increaseEnabled: Math.abs(value) < to
     readonly property bool _decreaseEnabled: Math.abs(value) > from
 
-    property Item focusedItem
+    property Item _focusedItem
 
     function updateValueFromControls() {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
         var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
-        var val = Helper.dmsToDegree(sign, degs, mins, Math.min(secs, 60));
+        var val = Helper.dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
         if (val > to) value = to;
         else if (val < -to) value = -to;
@@ -44,7 +44,7 @@ T.Control {
     function updateControlsFromValue() {
         if (!isNaN(value)) {
             var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
-            sign = dms.sign;
+            _sign = dms.sign;
             dInput.input.text = Helper.pad(dms.deg, dInput.maximumLength);
             mInput.input.text = Helper.pad(dms.min, mInput.maximumLength);
             sInput.input.text = Helper.padReal(dms.sec, 2, secondsPrecision, locale.decimalPoint);
@@ -72,7 +72,13 @@ T.Control {
             break;
         }
 
-        value = Helper.dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
+        var newValue = Helper.dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
+        var newSign = newValue < 0 ? -1 : 1
+        if (dms.sign !== newSign) {
+            value = 0;
+        } else {
+            value = newValue;
+        }
     }
 
     Component.onCompleted: updateControlsFromValue()
@@ -106,7 +112,7 @@ T.Control {
         onActiveFocusChanged: {
             if (activeFocus) return;
 
-            focusedItem = null;
+            _focusedItem = null;
         }
 
         RowLayout {
@@ -120,16 +126,16 @@ T.Control {
                 color: theme.containerColor
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
-                enabled: focusedItem && _decreaseEnabled
+                enabled: _focusedItem && _decreaseEnabled
                 hatched: !enabled && control.enabled
                 rightCropped: true
                 iconSource: "qrc:/icons/minus.svg"
-                pressedImpl: _decreaseEnabled && focusedItem && focusedItem.down
+                pressedImpl: _decreaseEnabled && _focusedItem && _focusedItem.down
                 onClicked: {
-                    if (!focusedItem) return;
+                    if (!_focusedItem) return;
 
                     updateValueFromControls();
-                    focusedItem.decreaseValue();
+                    _focusedItem.decreaseValue();
                 }
                 Layout.fillHeight: true
             }
@@ -198,16 +204,16 @@ T.Control {
                 flat: true
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
-                enabled: focusedItem && _increaseEnabled
+                enabled: _focusedItem && _increaseEnabled
                 hatched: !enabled && control.enabled
                 leftCropped: true
                 iconSource: "qrc:/icons/plus.svg"
-                pressedImpl: _increaseEnabled && focusedItem && focusedItem.up
+                pressedImpl: _increaseEnabled && _focusedItem && _focusedItem.up
                 onClicked: {
-                    if (!focusedItem) return;
+                    if (!_focusedItem) return;
 
                     updateValueFromControls();
-                    focusedItem.increaseValue();
+                    _focusedItem.increaseValue();
                 }
                 Layout.fillHeight: true
             }
@@ -217,9 +223,9 @@ T.Control {
     Rectangle {
         id: highlighter
         anchors.bottom: control.bottom
-        width: focusedItem ? focusedItem.width : 0
-        x: focusedItem ? focusedItem.x : 0
-        visible: focusedItem
+        width: _focusedItem ? _focusedItem.width : 0
+        x: _focusedItem ? _focusedItem.x : 0
+        visible: _focusedItem
         height: controlSize.underline
         color: {
             if (caution) return theme.neutralColor;
