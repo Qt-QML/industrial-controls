@@ -22,7 +22,7 @@ Item {
         }
         return label.implicitWidth
     }
-    implicitHeight: controlSize.baseSize
+    implicitHeight: label.contentHeight
 
     ColoredIcon {
         id: icon

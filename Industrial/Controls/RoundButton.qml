@@ -5,7 +5,7 @@ Button {
 
     property real radius: Math.min(width, height) / 2
 
-    implicitWidth: controlSize.inputControlHeight
+    implicitWidth: controlSize.baseSize * 1.5
     implicitHeight: implicitWidth
     round: true
     highlighted: true

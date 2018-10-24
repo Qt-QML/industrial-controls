@@ -8,7 +8,7 @@ BackgroundItem {
     property bool caution: false
     property bool isValid: true
 
-    property alias textHeight: textItem.height
+    property alias textHeight: textMetrics.height
     property alias text: textItem.text
     property alias textColor: textItem.color
 
@@ -21,6 +21,12 @@ BackgroundItem {
         }
 
         return theme.controlColor;
+    }
+
+    TextMetrics {
+        id: textMetrics
+        font.pixelSize: controlSize.secondaryFontSize
+        text: textItem.text
     }
 
     Hatch {
@@ -36,7 +42,7 @@ BackgroundItem {
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? controlSize.secondaryFontSize: controlSize.fontSize
+        font.pixelSize: inputed ? controlSize.secondaryFontSize : controlSize.fontSize
         color: {
             if (!control.enabled) return theme.disabledColor;
             if (control.caution) return theme.neutralColor;

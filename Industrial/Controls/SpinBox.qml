@@ -12,7 +12,7 @@ T.SpinBox {
     property alias labelText: background.text
 
     implicitWidth: background.implicitWidth + controlSize.baseSize * 2
-    implicitHeight: background.implicitHeight
+    implicitHeight: background.textHeight + contentItem.implicitHeight
     leftPadding: controlSize.baseSize
     rightPadding: controlSize.baseSize
     font.pixelSize: controlSize.fontSize
@@ -53,6 +53,7 @@ T.SpinBox {
         maximumLength: control.to.toString().length
         color: control.enabled ? control.color : theme.disabledColor
         selectionColor: background.highlighterColor
+        selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
         clip: true
         font: control.font
         readOnly: !control.editable
@@ -69,7 +70,6 @@ T.SpinBox {
         rightCroppig: radius
         color: down.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: down.hovered
-        visible: control.enabled
 
         Hatch {
             anchors.fill: parent
@@ -97,7 +97,6 @@ T.SpinBox {
         leftCroppig: radius
         color: up.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: up.hovered
-        visible: control.enabled
 
         Hatch {
             anchors.fill: parent

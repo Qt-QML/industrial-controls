@@ -52,6 +52,7 @@ SpinBox {
         overwriteMode: true
         color: control.enabled ? control.color : theme.disabledColor
         selectionColor: background.highlighterColor
+        selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
         clip: true
         font: control.font
         readOnly: !control.editable

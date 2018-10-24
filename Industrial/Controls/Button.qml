@@ -6,6 +6,10 @@ T.Button { // TODO: clickable
 
     property bool round: false
     property bool pressedImpl: false
+    property bool leftCropped: false
+    property bool rightCropped: false
+    property bool hatched: !enabled && !flat
+    property color color: control.flat ? "transparent" : theme.buttonColor
     property string tipText
 
     property alias iconSource: content.iconSource
@@ -30,11 +34,13 @@ T.Button { // TODO: clickable
         hovered: control.hovered
         shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : controlSize.rounding
+        leftCroppig: leftCropped ? radius : 0
+        rightCroppig: rightCropped ? radius : 0
         bottomCroppig: round ? 0 : radius
         color: {
             if (control.pressed || control.pressedImpl) return theme.highlightColor;
             if (control.highlighted || control.checked) return theme.selectionColor;
-            return control.flat ? "transparent" : theme.buttonColor;
+            return control.color;
         }
 
         MenuIndicator {
@@ -48,7 +54,7 @@ T.Button { // TODO: clickable
         Hatch {
             anchors.fill: parent
             color: theme.surfaceColor
-            visible: !enabled
+            visible: control.hatched
         }
     }
 

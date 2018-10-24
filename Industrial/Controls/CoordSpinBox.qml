@@ -80,13 +80,15 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
-    implicitHeight: background.implicitHeight
+    implicitHeight: background.textHeight + Math.max(dInput.implicitHeight, sInput.implicitHeight)
     font.pixelSize: controlSize.fontSize
 
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        leftPadding: controlSize.baseSize + controlSize.padding
+        anchors.leftMargin: down.width
+        anchors.rightMargin: up.width
+        radius: 0
         textColor: {
             if (highlighter.visible) return highlighter.color;
 
@@ -112,18 +114,15 @@ T.Control {
             anchors.fill: parent
             spacing: 0
 
-            Item {
-                implicitWidth: down.width
-                visible: !down.visible
-            }
-
             Button {
                 id: down
                 flat: true
+                color: theme.containerColor
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
-                visible: control.enabled
                 enabled: focusedItem && _decreaseEnabled
+                hatched: !enabled && control.enabled
+                rightCropped: true
                 iconSource: "qrc:/icons/minus.svg"
                 pressedImpl: _decreaseEnabled && focusedItem && focusedItem.down
                 onClicked: {
@@ -181,8 +180,10 @@ T.Control {
                 flat: true
                 font: control.font
                 focusPolicy: Qt.NoFocus
-                visible: control.enabled
                 enabled: value != 0
+                hatched: !enabled && control.enabled
+                rightCropped: true
+                leftCropped: true
                 text: suffix
                 onClicked: {
                     value = -value;
@@ -191,21 +192,15 @@ T.Control {
                 Layout.fillHeight: true
             }
 
-            Label {
-                visible: !control.enabled
-                text: suffix
-                color: theme.disabledColor
-                Layout.preferredWidth: suffixButton.width
-                Layout.alignment: Qt.AlignBottom
-            }
-
             Button {
                 id: up
+                color: theme.containerColor
                 flat: true
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
-                visible: control.enabled
                 enabled: focusedItem && _increaseEnabled
+                hatched: !enabled && control.enabled
+                leftCropped: true
                 iconSource: "qrc:/icons/plus.svg"
                 pressedImpl: _increaseEnabled && focusedItem && focusedItem.up
                 onClicked: {
@@ -215,11 +210,6 @@ T.Control {
                     focusedItem.increaseValue();
                 }
                 Layout.fillHeight: true
-            }
-
-            Item {
-                implicitWidth: up.width
-                visible: !control.enabled
             }
         }
     }

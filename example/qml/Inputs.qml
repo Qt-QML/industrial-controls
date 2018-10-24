@@ -8,7 +8,8 @@ Frame {
     padding: controlSize.padding
 
     GridLayout {
-        anchors { left: parent.left; right: parent.right; margins: controlSize.padding }
+        anchors.fill: parent
+        anchors.margins: controlSize.padding
         rowSpacing: controlSize.spacing
         columnSpacing: controlSize.spacing
         columns: 4
@@ -36,6 +37,7 @@ Frame {
         Label { text: qsTr("Spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         SpinBox {
+            id: spin
             labelText: qsTr("Spinbox")
             Layout.fillWidth: true
         }
@@ -47,6 +49,7 @@ Frame {
         }
 
         SpinBox {
+            value: spin.value
             labelText: qsTr("Disabled spinbox")
             enabled: false
             Layout.fillWidth: true
@@ -55,6 +58,7 @@ Frame {
         Label { text: qsTr("Real spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         RealSpinBox {
+            id: realSpin
             labelText: qsTr("Real spinbox")
             Layout.fillWidth: true
         }
@@ -66,6 +70,7 @@ Frame {
         }
 
         RealSpinBox {
+            realValue: realSpin.realValue
             labelText: qsTr("Disabled real spinbox")
             enabled: false
             Layout.fillWidth: true
@@ -74,6 +79,7 @@ Frame {
         Label { text: qsTr("Coord spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         CoordSpinBox {
+            id: coordSpin
             labelText: qsTr("Coordinates")
             Layout.fillWidth: true
         }
@@ -85,6 +91,7 @@ Frame {
         }
 
         CoordSpinBox {
+            value: coordSpin.value
             labelText: qsTr("Disabled coordinates")
             isLongitude: true
             enabled: false

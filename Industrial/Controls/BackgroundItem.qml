@@ -16,8 +16,6 @@ Item {
     property alias color: background.color
     property alias highlighterColor: highlighter.color
 
-    implicitHeight: controlSize.inputControlHeight
-
     Item {
         anchors.fill: parent
         clip: true

@@ -15,6 +15,8 @@ Item {
     signal decreaseValue()
     signal increaseValue()
 
+    implicitHeight: input.contentHeight
+
     Row {
         anchors.centerIn: parent
 
@@ -25,7 +27,8 @@ Item {
             overwriteMode: true
             font: control.font
             color: control.enabled ? control.color : theme.disabledColor
-            selectionColor: highlighter.color
+            selectionColor: highlighter.visible ? highlighter.color : theme.controlColor
+            selectedTextColor: highlighter.visible ? theme.onSelectionColor : theme.onContainerColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: control.caution = true
