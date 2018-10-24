@@ -58,7 +58,11 @@ T.Button { // TODO: clickable
         anchors.margins: control.padding
         text: control.text
         font: control.font
-        textColor: control.pressed || control.pressedImpl ? theme.onSelectionColor : theme.onButtonColor
+        textColor: {
+            if (control.pressed || control.pressedImpl) return theme.onHighlightColor;
+            if (control.highlighted || control.checked) return theme.onSelectionColor;
+            return theme.onButtonColor;
+        }
     }
 
     ToolTip {

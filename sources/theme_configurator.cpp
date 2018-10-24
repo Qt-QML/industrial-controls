@@ -8,8 +8,12 @@ namespace
 {
     const QColor baseColor = "#37474f";
     const QColor onBaseColor = "#fafafa";
-    const QColor primaryColor = "#31d0b3";
+    const QColor primaryColor = "#18c19d";
     const QColor onPrimaryColor = "#161616";
+
+    const QColor positiveColor = "#86c34a";
+    const QColor neutralColor = "#ff9800";
+    const QColor negativeColor = "#e53535";
 
     const int background = 60;
     const int surface = 100;
@@ -138,7 +142,11 @@ void ThemeConfigurator::rebuild()
     m_theme->setSelectionColor(m_primaryColor.lighter(::selection));
     m_theme->setHighlightColor(m_primaryColor.lighter(::highlight));
 
-    m_theme->setOnTipColor(m_onPrimaryColor);
+    m_theme->setOnTipColor(m_onBaseColor);
     m_theme->setOnSelectionColor(m_onPrimaryColor);
     m_theme->setOnHighlightColor(m_onPrimaryColor);
+
+    m_theme->setPositiveColor(::positiveColor);
+    m_theme->setNeutralColorr(::neutralColor);
+    m_theme->setNegativeColor(::negativeColor);
 }

@@ -34,7 +34,7 @@ T.CheckBox {
                 if (!control.enabled) return theme.disabledColor;
                 if (control.down) return theme.highlightColor;
 
-                return theme.onContainerColor;
+                return theme.onButtonColor;
             }
         }
     }

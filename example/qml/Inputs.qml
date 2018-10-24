@@ -37,6 +37,7 @@ Frame {
         Label { text: qsTr("Spinboxes"); font.pixelSize: controlSize.secondaryFontSize }
 
         SpinBox {
+            labelText: qsTr("Spinbox")
             Layout.fillWidth: true
         }
 

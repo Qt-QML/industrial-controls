@@ -5,7 +5,7 @@ T.MenuItem {
     id: control
 
     property url iconSource: ""
-    property color iconColor: label.color
+    property alias iconColor: icon.color
 
     property alias horizontalAlignment: label.horizontalAlignment
 
@@ -22,9 +22,9 @@ T.MenuItem {
     }
 
     indicator: ColoredIcon {
-        x: controlSize.padding
         id: icon
-        color: enabled ? iconColor : theme.disabledColor
+        x: controlSize.padding
+        color: label.color
         anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;

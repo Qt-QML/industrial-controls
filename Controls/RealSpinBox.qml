@@ -49,6 +49,7 @@ SpinBox {
         onEditingFinished: validate()
         height: control.height
         maximumLength: control.to.toString().length
+        color: control.enabled ? control.color : theme.disabledColor
         selectionColor: background.highlighterColor
         clip: true
         font: control.font

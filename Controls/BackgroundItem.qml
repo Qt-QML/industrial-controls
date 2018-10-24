@@ -31,7 +31,7 @@ Item {
 
             Rectangle {
                 anchors.fill: parent
-                color: theme.onContainerColor
+                color: theme.onButtonColor
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

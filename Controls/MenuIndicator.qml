@@ -16,6 +16,6 @@ ColoredIcon {
         if (opened) return theme.highlightColor;
         if (focused) return theme.selectionColor;
 
-        return theme.onSurfaceColor;
+        return theme.onButtonColor;
     }
 }

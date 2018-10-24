@@ -49,6 +49,7 @@ T.SpinBox {
         onTextEdited: control.value = control.valueFromText(text, control.locale)
         height: control.height
         maximumLength: control.to.toString().length
+        color: control.enabled ? control.color : theme.disabledColor
         selectionColor: background.highlighterColor
         clip: true
         font: control.font
@@ -81,7 +82,7 @@ T.SpinBox {
                 if (!enabled) return theme.disabledColor;
                 if (down.pressed) return theme.onSelectionColor
 
-                return theme.onContainerColor;
+                return theme.onButtonColor;
             }
         }
     }
@@ -108,7 +109,7 @@ T.SpinBox {
                 if (!enabled) return theme.disabledColor;
                 if (up.pressed) return theme.onSelectionColor
 
-                return theme.onContainerColor;
+                return theme.onButtonColor;
             }
         }
     }
