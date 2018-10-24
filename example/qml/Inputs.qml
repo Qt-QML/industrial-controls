@@ -8,8 +8,7 @@ Frame {
     padding: controlSize.padding
 
     GridLayout {
-        anchors.fill: parent
-        anchors.margins: controlSize.padding
+        anchors { left: parent.left; right: parent.right; margins: controlSize.padding }
         rowSpacing: controlSize.spacing
         columnSpacing: controlSize.spacing
         columns: 4
