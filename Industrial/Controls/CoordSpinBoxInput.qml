@@ -24,7 +24,7 @@ Item {
             inputMethodHints: Qt.ImhDigitsOnly
             font: control.font
             color: control.enabled ? control.color : theme.disabledColor
-            selectionColor: background.highlighterColor
+            selectionColor: highlighter.color
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: control.caution = true

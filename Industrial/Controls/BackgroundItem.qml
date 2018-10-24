@@ -5,8 +5,6 @@ Item {
 
     property bool highlighted: false
     property bool hovered: false
-    property bool caution: false
-    property bool isValid: true
     property bool shadow: false
     property int leftPadding: controlSize.padding
     property int croppig: radius
@@ -44,13 +42,8 @@ Item {
         anchors.bottom: parent.bottom
         width: parent.width
         height: controlSize.underline
-        visible: control.highlighted && control.enabled
-        color: {
-            if (caution) return theme.neutralColor;
-            if (!isValid) return theme.negativeColor;
-
-            return theme.highlightColor;
-        }
+        visible: control.enabled
+        color: control.highlighted ? theme.highlightColor : "transparent"
     }
 
     Shadow {

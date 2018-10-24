@@ -9,6 +9,7 @@ T.Control {
 
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
+    property bool caution: false
     property int secondsPrecision: 2
     property int sign: 1
     property real value: 0
@@ -21,7 +22,6 @@ T.Control {
 
     property alias backgroundColor: background.color
     property alias labelText: background.text
-    property alias caution: background.caution
 
     readonly property bool _increaseEnabled: Math.abs(value) < to
     readonly property bool _decreaseEnabled: Math.abs(value) > from
@@ -227,7 +227,7 @@ T.Control {
     Rectangle {
         id: highlighter
         anchors.bottom: control.bottom
-        width: focusedItem ? focusedItem.width + 5 : 0
+        width: focusedItem ? focusedItem.width : 0
         x: focusedItem ? focusedItem.x : 0
         visible: focusedItem
         height: controlSize.underline

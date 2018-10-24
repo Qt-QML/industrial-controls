@@ -21,6 +21,7 @@ T.RadioButton {
         implicitHeight: controlSize.baseSize
         highlighted: control.activeFocus
         hovered: control.hovered
+        highlighterColor: control.activeFocus ? theme.highlightColor : theme.controlColor
 
         Rectangle {
             anchors.fill: parent

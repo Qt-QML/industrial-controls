@@ -5,12 +5,21 @@ BackgroundItem {
     id: control
 
     property bool inputed: true
+    property bool caution: false
+    property bool isValid: true
 
     property alias textHeight: textItem.height
     property alias text: textItem.text
     property alias textColor: textItem.color
 
     implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
+    highlighterColor: {
+        if (control.caution) return theme.neutralColor;
+        if (!control.isValid) return theme.negativeColor;
+        if (control.highlighted) return theme.highlightColor;
+
+        return theme.controlColor;
+    }
 
     Hatch {
         anchors.fill: parent

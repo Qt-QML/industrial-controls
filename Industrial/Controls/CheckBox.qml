@@ -24,6 +24,7 @@ T.CheckBox {
         implicitHeight: controlSize.baseSize
         highlighted: control.activeFocus
         hovered: control.hovered
+        highlighterColor: control.activeFocus ? theme.highlightColor : theme.controlColor
 
         ColoredIcon {
             anchors.fill: parent
