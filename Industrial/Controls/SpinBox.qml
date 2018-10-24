@@ -11,7 +11,7 @@ T.SpinBox {
     property alias backgroundColor: background.color
     property alias labelText: background.text
 
-    implicitWidth: background.implicitWidth
+    implicitWidth: background.implicitWidth + controlSize.baseSize * 2
     implicitHeight: background.implicitHeight
     leftPadding: controlSize.baseSize
     rightPadding: controlSize.baseSize
@@ -38,10 +38,12 @@ T.SpinBox {
 
     background: BackgroundInput {
         id: background
-        anchors.fill: parent
-        isValid: control.isValid
-        leftPadding: controlSize.baseSize + controlSize.padding
+        x: controlSize.baseSize
+        width: control.width - controlSize.baseSize * 2
+        height: control.height
+        radius: 0
         highlighted: control.activeFocus
+        isValid: control.isValid
     }
 
     contentItem: NumericInput {
@@ -63,8 +65,9 @@ T.SpinBox {
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
         width: controlSize.baseSize
-        height: parent.height - controlSize.underline
-        color: down.pressed && enabled ? theme.highlightColor : "transparent"
+        height: parent.height
+        rightCroppig: radius
+        color: down.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: down.hovered
         visible: control.enabled
 
@@ -90,8 +93,9 @@ T.SpinBox {
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: controlSize.baseSize
-        height: parent.height - controlSize.underline
-        color: up.pressed && enabled ? theme.highlightColor : "transparent"
+        height: parent.height
+        leftCroppig: radius
+        color: up.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: up.hovered
         visible: control.enabled
 

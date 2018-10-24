@@ -14,9 +14,11 @@ BackgroundItem {
 
     implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
     highlighterColor: {
-        if (control.caution) return theme.neutralColor;
-        if (!control.isValid) return theme.negativeColor;
-        if (control.highlighted) return theme.highlightColor;
+        if (highlighted) {
+            if (control.caution) return theme.neutralColor;
+            if (!control.isValid) return theme.negativeColor;
+            return theme.highlightColor;
+        }
 
         return theme.controlColor;
     }

@@ -22,6 +22,7 @@ Item {
             id: input
             height: root.height
             inputMethodHints: Qt.ImhDigitsOnly
+            overwriteMode: true
             font: control.font
             color: control.enabled ? control.color : theme.disabledColor
             selectionColor: highlighter.color

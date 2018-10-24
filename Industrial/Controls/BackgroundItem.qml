@@ -7,7 +7,9 @@ Item {
     property bool hovered: false
     property bool shadow: false
     property int leftPadding: controlSize.padding
-    property int croppig: radius
+    property int leftCroppig: 0
+    property int rightCroppig: 0
+    property int bottomCroppig: radius
     readonly property int offset: radius + 1
 
     property alias radius: background.radius
@@ -22,10 +24,12 @@ Item {
 
         Rectangle {
             id: background
-            color: theme.containerColor
             anchors.fill: parent
+            anchors.leftMargin: -leftCroppig
+            anchors.rightMargin: -rightCroppig
+            anchors.bottomMargin: -bottomCroppig
+            color: theme.containerColor
             radius: controlSize.rounding
-            anchors.bottomMargin: -croppig
 
             Rectangle {
                 anchors.fill: parent

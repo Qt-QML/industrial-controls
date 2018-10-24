@@ -30,7 +30,7 @@ T.Button { // TODO: clickable
         hovered: control.hovered
         shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : controlSize.rounding
-        croppig: round ? 0 : radius
+        bottomCroppig: round ? 0 : radius
         color: {
             if (control.pressed || control.pressedImpl) return theme.highlightColor;
             if (control.highlighted || control.checked) return theme.selectionColor;
