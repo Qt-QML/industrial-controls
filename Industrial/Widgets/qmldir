@@ -1,0 +1,5 @@
+module Industrial.Widgets
+depends Industrial.Controls 1.0
+designersupported
+
+ColorPicker 1.0 ColorPicker.qml

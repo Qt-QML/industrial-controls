@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0
+import Industrial.Widgets 1.0
 
 Popup {
     id: root
@@ -37,6 +38,22 @@ Popup {
             Binding on value { value: themeConfigurator.baseSize }
             onPressedChanged: if (!pressed) themeConfigurator.setBaseSize(value)
             Layout.fillWidth: true
+        }
+
+        RowLayout {
+            spacing: theme.spacing
+
+            ColorPicker {
+                Binding on color { value: themeConfigurator.baseColor; when: opened }
+                onColorChanged: themeConfigurator.setBaseColor(color)
+
+                ColorPicker {
+                    x: parent.width * 0.5
+                    y: parent.width * 0.5
+                    Binding on color { value: themeConfigurator.onBaseColor; when: opened }
+                    onColorChanged: themeConfigurator.setOnBaseColor(color)
+                }
+            }
         }
     }
 }

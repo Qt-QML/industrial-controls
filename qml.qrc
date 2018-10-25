@@ -45,5 +45,7 @@
         <file>Industrial/Controls/ColoredIcon.qml</file>
         <file>Industrial/Controls/ToolTip.qml</file>
         <file>Industrial/Controls/Drawer.qml</file>
+        <file>Industrial/Widgets/qmldir</file>
+        <file>Industrial/Widgets/ColorPicker.qml</file>
     </qresource>
 </RCC>
