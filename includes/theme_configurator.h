@@ -17,8 +17,8 @@ class ThemeConfigurator: public QObject
     Q_PROPERTY(QColor onBaseColor READ onBaseColor WRITE setOnBaseColor NOTIFY onBaseColorChanged)
     Q_PROPERTY(QColor primaryColor READ primaryColor WRITE setPrimaryColor NOTIFY primaryColorChanged)
     Q_PROPERTY(QColor onPrimaryColor READ onPrimaryColor WRITE setOnPrimaryColor NOTIFY onPrimaryColorChanged)
-    Q_PROPERTY(int lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
 
+    Q_PROPERTY(int lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
     Q_PROPERTY(int baseSize READ baseSize WRITE setBaseSize NOTIFY baseSizeChanged)
 
 public:
@@ -30,8 +30,8 @@ public:
     QColor onBaseColor() const;
     QColor primaryColor() const;
     QColor onPrimaryColor() const;
-    int lightness() const;
 
+    int lightness() const;
     int baseSize() const;
 
 public slots:
@@ -39,8 +39,8 @@ public slots:
     void setOnBaseColor(const QColor& onBaseColor);
     void setPrimaryColor(const QColor& primaryColor);
     void setOnPrimaryColor(const QColor& onPrimaryColor);
-    void setLightness(int lightness);
 
+    void setLightness(int lightness);
     void setBaseSize(int baseSize);
 
     void rebuildColors();
@@ -51,15 +51,18 @@ signals:
     void onBaseColorChanged();
     void primaryColorChanged();
     void onPrimaryColorChanged();
+
     void lightnessChanged();
     void baseSizeChanged();
 
 private:
     Theme* const m_theme;
+
     QColor m_baseColor;
     QColor m_onBaseColor;
     QColor m_primaryColor;
     QColor m_onPrimaryColor;
+
     int m_lightness;
     int m_baseSize;
 };

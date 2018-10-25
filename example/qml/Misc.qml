@@ -77,7 +77,7 @@ Frame {
         Label { text: qsTr("Sliders"); font.pixelSize: theme.auxFontSize }
 
         Slider {
-            //text: qsTr("Slider")
+            text: qsTr("Slider")
             id: _slider
             to: 100
             value: 50
@@ -85,7 +85,7 @@ Frame {
         }
 
         Slider {
-            //text: qsTr("Disabled slider")
+            text: qsTr("Disabled slider")
             value: to - _slider.value
             to: 100
             enabled: false

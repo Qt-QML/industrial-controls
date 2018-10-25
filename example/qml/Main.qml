@@ -24,32 +24,12 @@ ApplicationWindow {
         iconSource: "qrc:/icons/configure.svg"
         tipText: qsTr("Configure")
         flat: true
-        onClicked: popup.visible = !popup.visible
+        onClicked: configurationPopup.visible = !configurationPopup.visible
 
-        Popup {
-            id: popup
+        Configuration {
+            id: configurationPopup
             x: parent.width - width
             y: parent.height
-            width: theme.baseSize * 8
-            closePolicy: Popup.CloseOnPressOutsideParent
-
-            ColumnLayout{
-                width: parent.width
-                spacing: theme.spacing
-
-                Label {
-                    text: qsTr("Lightness")
-                    Layout.alignment: Qt.AlignHCenter
-                }
-
-                Slider {
-                    from: 50
-                    to: 150
-                    Binding on value { value: themeConfigurator.lightness }
-                    onMoved: themeConfigurator.setLightness(value)
-                    Layout.fillWidth: true
-                }
-            }
         }
     }
 }

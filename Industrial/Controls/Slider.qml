@@ -5,8 +5,11 @@ T.Slider {
     id: control
 
     property real visualValue: from + position * (to - from)
+    property alias text: textItem.text
 
-    height: theme.baseSize
+    implicitWidth: theme.baseSize * 6
+    implicitHeight: handle.height + topPadding
+    topPadding: textItem.visible ? textItem.contentHeight : 0
     hoverEnabled: true
 
     background: Rectangle {
@@ -33,6 +36,7 @@ T.Slider {
     }
 
     handle: Handle {
+        id: handle
         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
         y: control.topPadding + control.availableHeight / 2 - height / 2
 
@@ -45,6 +49,21 @@ T.Slider {
             opacity: 0.5
             visible: control.pressed
         }
+    }
+
+    Text {
+        id: textItem
+        anchors.left: parent.left
+        anchors.top: parent.top
+        visible: text.length
+        font.pixelSize: theme.auxFontSize
+        color: {
+            if (!control.enabled) return theme.disabledColor;
+            if (control.activeFocus) return theme.selectionColor;
+
+            return theme.onSurfaceColor;
+        }
+        Behavior on font.pixelSize { PropertyAnimation { duration: theme.animationTime } }
     }
 
     ToolTip {
