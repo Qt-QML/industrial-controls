@@ -6,7 +6,7 @@ RectangularGlow {
 
     property Item source
 
-    glowRadius: controlSize.shadowSize
+    glowRadius: theme.shadowSize
     spread: 0.2
     color: "#77000000"
     cornerRadius: (source.radius ? source.radius : 0) + glowRadius

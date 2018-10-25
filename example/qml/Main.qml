@@ -7,20 +7,20 @@ ApplicationWindow {
 
     visible: true
     title: qsTr("Industrial demo")
-    width: controlSize.baseSize * 24
-    height: controlSize.baseSize * 12
+    width: theme.baseSize * 24
+    height: theme.baseSize * 12
 
     Loader {
         id: loader
         anchors.fill: parent
-        anchors.margins: controlSize.margins
+        anchors.margins: theme.margins
         source: "Controls.qml"
     }
 
     Button {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.margins: controlSize.margins
+        anchors.margins: theme.margins
         iconSource: "qrc:/icons/configure.svg"
         tipText: qsTr("Configure")
         flat: true
@@ -30,12 +30,12 @@ ApplicationWindow {
             id: popup
             x: parent.width - width
             y: parent.height
-            width: controlSize.baseSize * 8
+            width: theme.baseSize * 8
             closePolicy: Popup.CloseOnPressOutsideParent
 
             ColumnLayout{
                 width: parent.width
-                spacing: controlSize.spacing
+                spacing: theme.spacing
 
                 Label {
                     text: qsTr("Lightness")

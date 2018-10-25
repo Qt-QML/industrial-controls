@@ -9,7 +9,7 @@ Item {
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
-    width: controlSize.baseSize
+    width: theme.baseSize
     height: width
 
     Image {

@@ -12,11 +12,11 @@ T.TabButton {
     property alias backgroundColor: backgroundItem.color
 
     // TODO: flat
-    font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: controlSize.baseSize
+    font.pixelSize: theme.mainFontSize
+    implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: theme.baseSize
     hoverEnabled: true
-    padding: controlSize.padding
+    padding: theme.padding
 
     background: BackgroundItem {
         id: backgroundItem

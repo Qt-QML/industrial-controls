@@ -9,10 +9,10 @@ T.Switch {
     property alias backgroundColor: backgroundItem.color
     property string tipText
 
-    spacing: controlSize.spacing
-    font.pixelSize: controlSize.fontSize
+    spacing: theme.spacing
+    font.pixelSize: theme.mainFontSize
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: controlSize.baseSize
+    implicitHeight: theme.baseSize
     hoverEnabled: true
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
@@ -21,8 +21,8 @@ T.Switch {
         id: backgroundItem
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.underline
+        implicitWidth: theme.baseSize
+        implicitHeight: theme.underline
         radius: height / 2
         color: control.checked ? theme.selectionColor : theme.containerColor
 
@@ -36,7 +36,7 @@ T.Switch {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
 
-            Behavior on x { PropertyAnimation { duration: controlSize.animationTime} }
+            Behavior on x { PropertyAnimation { duration: theme.animationTime} }
         }
     }
 

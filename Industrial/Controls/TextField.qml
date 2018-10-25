@@ -8,12 +8,12 @@ T.TextField {
     property alias labelText: background.text
 
     implicitHeight: background.textHeight + contentHeight
-    font.pixelSize: controlSize.fontSize
+    font.pixelSize: theme.mainFontSize
     color: control.enabled ? theme.onContainerColor : theme.disabledColor
     selectionColor: background.highlighterColor
     selectedTextColor: theme.onSelectionColor
     selectByMouse: true
-    leftPadding: controlSize.padding
+    leftPadding: theme.padding
     bottomPadding: background.offset
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
@@ -31,7 +31,7 @@ T.TextField {
         anchors.centerIn: parent
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
-        font.pixelSize: controlSize.fontSize
+        font.pixelSize: theme.mainFontSize
         color: theme.onContainerColor
         opacity: 0.5
     }

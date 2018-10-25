@@ -1,7 +1,7 @@
 import QtQuick 2.6
 
 Rectangle {
-    implicitWidth: controlSize.handleSize
+    implicitWidth: theme.handleSize
     implicitHeight: implicitWidth
     radius: width / 2
     color: {

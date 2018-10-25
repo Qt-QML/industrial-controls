@@ -4,8 +4,8 @@ import QtQuick.Templates 2.2 as T
 T.ProgressBar {
     id: control
 
-    implicitWidth: controlSize.baseSize * 4
-    implicitHeight: controlSize.baseSize
+    implicitWidth: theme.baseSize * 4
+    implicitHeight: theme.baseSize
 
     background: BackgroundItem {}
 
@@ -16,8 +16,8 @@ T.ProgressBar {
 
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
-            height: parent.height + controlSize.rounding
-            radius: controlSize.rounding
+            height: parent.height + theme.rounding
+            radius: theme.rounding
             color: theme.selectionColor
 
             Hatch {

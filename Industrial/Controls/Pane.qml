@@ -7,7 +7,7 @@ T.Pane {
 
     property color backgroundColor: theme.surfaceColor
 
-    padding: controlSize.padding
+    padding: theme.padding
 
     background: Rectangle { color: backgroundColor }
 }

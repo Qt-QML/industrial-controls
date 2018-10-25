@@ -87,7 +87,7 @@ T.Control {
     clip: true
     implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
     implicitHeight: background.textHeight + Math.max(dInput.implicitHeight, sInput.implicitHeight)
-    font.pixelSize: controlSize.fontSize
+    font.pixelSize: theme.mainFontSize
 
     background: BackgroundInput {
         id: background
@@ -149,7 +149,7 @@ T.Control {
                 sign: "\u00B0"
                 onIncreaseValue: if (_increaseEnabled) changeValue(0, 1)
                 onDecreaseValue: if (_decreaseEnabled) changeValue(0, -1)
-                Layout.preferredWidth: controlSize.baseSize * (isLongitude ? 1 : 0.75)
+                Layout.preferredWidth: theme.baseSize * (isLongitude ? 1 : 0.75)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
@@ -163,7 +163,7 @@ T.Control {
                 sign: "\'"
                 onIncreaseValue: if (_increaseEnabled) changeValue(1, 1)
                 onDecreaseValue: if (_decreaseEnabled) changeValue(1, -1)
-                Layout.preferredWidth: controlSize.baseSize * 0.75
+                Layout.preferredWidth: theme.baseSize * 0.75
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
@@ -176,7 +176,7 @@ T.Control {
                 sign: "\""
                 onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
                 onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision))
-                Layout.preferredWidth: controlSize.baseSize * (0.75 + secondsPrecision / 5 * 2)
+                Layout.preferredWidth: theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
@@ -226,7 +226,7 @@ T.Control {
         width: _focusedItem ? _focusedItem.width : 0
         x: _focusedItem ? _focusedItem.x : 0
         visible: _focusedItem
-        height: controlSize.underline
+        height: theme.underline
         color: {
             if (caution) return theme.neutralColor;
             if (!isValid) return theme.negativeColor;

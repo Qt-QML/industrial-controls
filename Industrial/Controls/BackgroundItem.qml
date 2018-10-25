@@ -6,7 +6,7 @@ Item {
     property bool highlighted: false
     property bool hovered: false
     property bool shadow: false
-    property int leftPadding: controlSize.padding
+    property int leftPadding: theme.padding
     property int leftCroppig: 0
     property int rightCroppig: 0
     property int bottomCroppig: radius
@@ -27,7 +27,7 @@ Item {
             anchors.rightMargin: -rightCroppig
             anchors.bottomMargin: -bottomCroppig
             color: theme.containerColor
-            radius: controlSize.rounding
+            radius: theme.rounding
 
             Rectangle {
                 anchors.fill: parent
@@ -43,7 +43,7 @@ Item {
         id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
-        height: controlSize.underline
+        height: theme.underline
         visible: control.enabled
         color: control.highlighted ? theme.highlightColor : "transparent"
     }

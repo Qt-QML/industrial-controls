@@ -12,7 +12,7 @@ BackgroundItem {
     property alias text: textItem.text
     property alias textColor: textItem.color
 
-    implicitWidth: Math.max(controlSize.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Math.max(theme.baseSize * 4, textItem.implicitWidth)
     highlighterColor: {
         if (highlighted) {
             if (control.caution) return theme.neutralColor;
@@ -25,7 +25,7 @@ BackgroundItem {
 
     TextMetrics {
         id: textMetrics
-        font.pixelSize: controlSize.secondaryFontSize
+        font.pixelSize: theme.auxFontSize
         text: textItem.text
     }
 
@@ -42,7 +42,7 @@ BackgroundItem {
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? controlSize.secondaryFontSize : controlSize.fontSize
+        font.pixelSize: inputed ? theme.auxFontSize : theme.mainFontSize
         color: {
             if (!control.enabled) return theme.disabledColor;
             if (control.caution) return theme.neutralColor;
@@ -51,6 +51,6 @@ BackgroundItem {
 
             return theme.onContainerColor;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: controlSize.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: theme.animationTime } }
     }
 }

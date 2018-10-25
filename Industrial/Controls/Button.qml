@@ -22,18 +22,18 @@ T.Button { // TODO: clickable
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
-    font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: controlSize.baseSize
+    font.pixelSize: theme.mainFontSize
+    implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: theme.baseSize
     hoverEnabled: true
-    padding: controlSize.padding
+    padding: theme.padding
 
     background: BackgroundItem {
         id: backgroundItem
         highlighted: control.activeFocus && !control.round
         hovered: control.hovered
         shadow: !control.flat
-        radius: round ? Math.min(width, height) / 2 : controlSize.rounding
+        radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0
         bottomCroppig: round ? 0 : radius

@@ -6,10 +6,10 @@ T.RadioButton {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: controlSize.fontSize
-    height: controlSize.baseSize
+    font.pixelSize: theme.mainFontSize
+    height: theme.baseSize
     leftPadding: 0
-    spacing: controlSize.spacing
+    spacing: theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     hoverEnabled: true
 
@@ -17,8 +17,8 @@ T.RadioButton {
         x: control.leftPadding
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.baseSize
+        implicitWidth: theme.baseSize
+        implicitHeight: theme.baseSize
         highlighted: control.activeFocus
         hovered: control.hovered
         highlighterColor: control.activeFocus ? theme.highlightColor : theme.controlColor

@@ -5,8 +5,8 @@ ShaderEffect {
 
     property color color: theme.negativeColor
     property real ratio: width / height
-    property real xFactor: controlSize.baseSize
-    property real yFactor: controlSize.baseSize * ratio
+    property real xFactor: theme.baseSize
+    property real yFactor: theme.baseSize * ratio
 
     fragmentShader:"
     varying highp vec2 qt_TexCoord0;

@@ -6,15 +6,15 @@ T.Slider {
 
     property real visualValue: from + position * (to - from)
 
-    height: controlSize.baseSize
+    height: theme.baseSize
     hoverEnabled: true
 
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        implicitWidth: controlSize.baseSize * 6
+        implicitWidth: theme.baseSize * 6
         width: control.availableWidth
-        height: controlSize.underline
+        height: theme.underline
         radius: height / 2
         color: theme.containerColor
 

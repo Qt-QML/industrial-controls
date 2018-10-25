@@ -26,6 +26,19 @@ namespace
     const int tip = 80;
     const int selection = 100;
     const int highlight = 120;
+
+    const int rounding = 4;
+    const int underline = 2;
+    const int shadowSize = 3;
+
+    const float mainFontFactor = 2.0;
+    const float auxFontFactor = 2.5;
+    const float spacingFactor = 2.0;
+    const float marginsFactor = 4.0;
+    const float paddingFactor = 6.0;
+    const float handleSizeFactor = 1.5;
+
+    const int animationTime = 100;
 }
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent):
@@ -35,9 +48,21 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
     m_onBaseColor(::onBaseColor),
     m_primaryColor(::primaryColor),
     m_onPrimaryColor(::onPrimaryColor),
-    m_lightness(100)
+    m_lightness(100),
+    m_baseSize(32)
 {
-    this->rebuild();
+    m_theme->setPositiveColor(::positiveColor);
+    m_theme->setNeutralColorr(::neutralColor);
+    m_theme->setNegativeColor(::negativeColor);
+
+    m_theme->setRounding(::rounding);
+    m_theme->setUnderline(::underline);
+    m_theme->setShadowSize(::shadowSize);
+
+    m_theme->setAnimationTime(::animationTime);
+
+    this->rebuildColors();
+    this->rebuildSizes();
 }
 
 Theme* ThemeConfigurator::theme() const
@@ -70,6 +95,11 @@ int ThemeConfigurator::lightness() const
     return m_lightness;
 }
 
+int ThemeConfigurator::baseSize() const
+{
+    return m_baseSize;
+}
+
 void ThemeConfigurator::setBaseColor(const QColor& baseColor)
 {
     if (m_baseColor == baseColor) return;
@@ -77,7 +107,7 @@ void ThemeConfigurator::setBaseColor(const QColor& baseColor)
     m_baseColor = baseColor;
     emit baseColorChanged();
 
-    this->rebuild();
+    this->rebuildColors();
 }
 
 void ThemeConfigurator::setOnBaseColor(const QColor& fontColor)
@@ -87,7 +117,7 @@ void ThemeConfigurator::setOnBaseColor(const QColor& fontColor)
     m_onBaseColor = fontColor;
     emit onBaseColorChanged();
 
-    this->rebuild();
+    this->rebuildColors();
 }
 
 void ThemeConfigurator::setPrimaryColor(const QColor& primaryColor)
@@ -97,7 +127,7 @@ void ThemeConfigurator::setPrimaryColor(const QColor& primaryColor)
     m_primaryColor = primaryColor;
     emit primaryColorChanged();
 
-    this->rebuild();
+    this->rebuildColors();
 }
 
 void ThemeConfigurator::setOnPrimaryColor(const QColor& onPrimaryColor)
@@ -107,7 +137,7 @@ void ThemeConfigurator::setOnPrimaryColor(const QColor& onPrimaryColor)
     m_onPrimaryColor = onPrimaryColor;
     emit onPrimaryColorChanged();
 
-    this->rebuild();
+    this->rebuildColors();
 }
 
 void ThemeConfigurator::setLightness(int lightness)
@@ -117,10 +147,20 @@ void ThemeConfigurator::setLightness(int lightness)
     m_lightness = lightness;
     emit primaryColorChanged();
 
-    this->rebuild();
+    this->rebuildColors();
 }
 
-void ThemeConfigurator::rebuild()
+void ThemeConfigurator::setBaseSize(int baseSize)
+{
+    if (m_baseSize == baseSize) return;
+
+    m_baseSize = baseSize;
+    emit baseSizeChanged();
+
+    this->rebuildSizes();
+}
+
+void ThemeConfigurator::rebuildColors()
 {
     QColor base = m_baseColor.lighter(m_lightness);
 
@@ -145,8 +185,15 @@ void ThemeConfigurator::rebuild()
     m_theme->setOnTipColor(m_onBaseColor);
     m_theme->setOnSelectionColor(m_onPrimaryColor);
     m_theme->setOnHighlightColor(m_onPrimaryColor);
+}
 
-    m_theme->setPositiveColor(::positiveColor);
-    m_theme->setNeutralColorr(::neutralColor);
-    m_theme->setNegativeColor(::negativeColor);
+void ThemeConfigurator::rebuildSizes()
+{
+    m_theme->setBaseSize(m_baseSize);
+    m_theme->setMainFontSize(m_baseSize / ::mainFontFactor);
+    m_theme->setAuxFontSize(m_baseSize / ::auxFontFactor);
+    m_theme->setSpacing(m_baseSize / ::spacingFactor);
+    m_theme->setMargins(m_baseSize / ::marginsFactor);
+    m_theme->setPadding(m_baseSize / ::paddingFactor);
+    m_theme->setHandleSize(m_baseSize / ::handleSizeFactor);
 }

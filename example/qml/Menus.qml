@@ -5,7 +5,7 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    padding: controlSize.padding
+    padding: theme.padding
 
     MouseArea {
          anchors.fill: parent

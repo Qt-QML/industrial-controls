@@ -9,10 +9,10 @@ T.CheckBox {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: controlSize.fontSize
-    height: controlSize.baseSize
+    font.pixelSize: theme.mainFontSize
+    height: theme.baseSize
     leftPadding: 0
-    spacing: controlSize.spacing
+    spacing: theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
     hoverEnabled: true
@@ -20,8 +20,8 @@ T.CheckBox {
     indicator: BackgroundItem {
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: controlSize.baseSize
-        implicitHeight: controlSize.baseSize
+        implicitWidth: theme.baseSize
+        implicitHeight: theme.baseSize
         highlighted: control.activeFocus
         hovered: control.hovered
         highlighterColor: control.activeFocus ? theme.highlightColor : theme.controlColor

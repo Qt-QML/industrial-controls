@@ -11,11 +11,11 @@ T.SpinBox {
     property alias backgroundColor: background.color
     property alias labelText: background.text
 
-    implicitWidth: background.implicitWidth + controlSize.baseSize * 2
+    implicitWidth: background.implicitWidth + theme.baseSize * 2
     implicitHeight: background.textHeight + contentItem.implicitHeight
-    leftPadding: controlSize.baseSize
-    rightPadding: controlSize.baseSize
-    font.pixelSize: controlSize.fontSize
+    leftPadding: theme.baseSize
+    rightPadding: theme.baseSize
+    font.pixelSize: theme.mainFontSize
     editable: true
     hoverEnabled: true
     clip: true
@@ -38,8 +38,8 @@ T.SpinBox {
 
     background: BackgroundInput {
         id: background
-        x: controlSize.baseSize
-        width: control.width - controlSize.baseSize * 2
+        x: theme.baseSize
+        width: control.width - theme.baseSize * 2
         height: control.height
         radius: 0
         highlighted: control.activeFocus
@@ -65,7 +65,7 @@ T.SpinBox {
 
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
-        width: controlSize.baseSize
+        width: theme.baseSize
         height: parent.height
         rightCroppig: radius
         color: down.pressed && enabled ? theme.highlightColor : theme.containerColor
@@ -79,7 +79,7 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - controlSize.padding * 2
+            width: parent.width - theme.padding * 2
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;
@@ -92,7 +92,7 @@ T.SpinBox {
 
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
-        width: controlSize.baseSize
+        width: theme.baseSize
         height: parent.height
         leftCroppig: radius
         color: up.pressed && enabled ? theme.highlightColor : theme.containerColor
@@ -106,7 +106,7 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - controlSize.padding * 2
+            width: parent.width - theme.padding * 2
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;

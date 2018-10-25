@@ -4,8 +4,6 @@
 #include <QQmlContext>
 
 // Internal
-#include "control_size_factory.h"
-
 #include "theme.h"
 #include "theme_configurator.h"
 
@@ -18,11 +16,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/"));
 
-    presentation::ControlSizeFactory controlSize;
-
     qmlRegisterType<Theme>("Industrial", 1, 0, "Theme");
-    engine.rootContext()->setContextProperty(QStringLiteral("controlSize"),
-                                             QVariant::fromValue(controlSize.createControlSize(36)));
 
     ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);
     engine.rootContext()->setContextProperty(QStringLiteral("themeConfigurator"),

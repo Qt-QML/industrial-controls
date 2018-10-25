@@ -7,7 +7,7 @@ ColoredIcon {
     property bool opened: false
     property bool isValid: true
 
-    width: controlSize.baseSize / 2
+    width: theme.baseSize / 2
     height: width
     source: "qrc:/icons/menu_arrow.svg"
     color: {

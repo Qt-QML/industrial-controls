@@ -3,6 +3,6 @@ import QtQuick 2.6
 Rectangle {
     id: control
 
-    implicitHeight: controlSize.baseSize
+    implicitHeight: theme.baseSize
     color: theme.disabledColor
 }

@@ -10,9 +10,9 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    implicitHeight: controlSize.baseSize
-    padding: controlSize.padding
-    font.pixelSize: controlSize.fontSize
+    implicitHeight: theme.baseSize
+    padding: theme.padding
+    font.pixelSize: theme.mainFontSize
 
     background: Rectangle {
         anchors.fill: parent

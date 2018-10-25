@@ -15,7 +15,7 @@ Item {
         id: background
         anchors.fill: control
         color: theme.surfaceColor
-        radius: controlSize.rounding
+        radius: theme.rounding
         z: -1
 
         Shadow {
@@ -30,9 +30,9 @@ Item {
         iconSource: "qrc:/icons/dots.svg"
         flat: true
         enabled: menu.contentModel.count > 0
-        width: controlSize.baseSize * 0.5
-        height: controlSize.baseSize * 0.75
-        iconSize: height - controlSize.padding
+        width: theme.baseSize * 0.5
+        height: theme.baseSize * 0.75
+        iconSize: height - theme.padding
         padding: 0
         onClicked: menu.open()
 
@@ -46,7 +46,7 @@ Item {
         id: deepButton
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        width: controlSize.baseSize * 0.75
+        width: theme.baseSize * 0.75
         height: width
 
         source: "qrc:/icons/menu_arrow.svg"
@@ -59,7 +59,7 @@ Item {
         MouseArea {
             id: area
             anchors.centerIn: parent
-            width: controlSize.baseSize
+            width: theme.baseSize
             height: width
             hoverEnabled: true
             onPressed: deepIn()

@@ -31,6 +31,20 @@ class Theme: public QObject
     Q_PROPERTY(QColor neutralColor MEMBER m_neutralColor NOTIFY neutralColorChanged)
     Q_PROPERTY(QColor negativeColor MEMBER m_negativeColor NOTIFY negativeColorChanged)
 
+    Q_PROPERTY(int baseSize MEMBER m_baseSize NOTIFY baseSizeChanged)
+    Q_PROPERTY(int spacing MEMBER m_spacing NOTIFY spacingChanged)
+    Q_PROPERTY(int margins MEMBER m_margins NOTIFY marginsChanged)
+    Q_PROPERTY(int padding MEMBER m_padding NOTIFY paddingChanged)
+    Q_PROPERTY(int rounding MEMBER m_rounding NOTIFY roundingChanged)
+    Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
+    Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
+    Q_PROPERTY(int shadowSize MEMBER m_shadowSize NOTIFY shadowSizeChanged)
+
+    Q_PROPERTY(int mainFontSize MEMBER m_mainFontSize NOTIFY mainFontSizeChanged)
+    Q_PROPERTY(int auxFontSize MEMBER m_auxFontSize NOTIFY auxFontSizeChanged)
+
+    Q_PROPERTY(int animationTime MEMBER m_animationTime NOTIFY animationTimeChanged)
+
 public:
     explicit Theme(QObject* parent = nullptr);
 
@@ -57,6 +71,20 @@ public slots:
     void setNeutralColorr(const QColor& neutralColor);
     void setNegativeColor(const QColor& negativeColor);
 
+    void setBaseSize(int baseSize);
+    void setSpacing(int spacing);
+    void setMargins(int margins);
+    void setPadding(int padding);
+    void setRounding(int rounding);
+    void setUnderline(int underline);
+    void setHandleSize(int handleSize);
+    void setShadowSize(int shadowSize);
+
+    void setMainFontSize(int mainFontSize);
+    void setAuxFontSize(int auxFontSize);
+
+    void setAnimationTime(int animationTime);
+
 signals:
     void backgroundColorChanged();
     void onBackgroundColorChanged();
@@ -80,6 +108,20 @@ signals:
     void neutralColorChanged();
     void negativeColorChanged();
 
+    void baseSizeChanged();
+    void spacingChanged();
+    void marginsChanged();
+    void paddingChanged();
+    void roundingChanged();
+    void underlineChanged();
+    void handleSizeChanged();
+    void shadowSizeChanged();
+
+    void mainFontSizeChanged();
+    void auxFontSizeChanged();
+
+    void animationTimeChanged();
+
 private:
     QColor m_backgroundColor;
     QColor m_onBackgroundColor;
@@ -102,6 +144,20 @@ private:
     QColor m_positiveColor;
     QColor m_neutralColor;
     QColor m_negativeColor;
+
+    int m_baseSize;
+    int m_spacing;
+    int m_margins;
+    int m_padding;
+    int m_rounding;
+    int m_underline;
+    int m_handleSize;
+    int m_shadowSize;
+
+    int m_mainFontSize;
+    int m_auxFontSize;
+
+    int m_animationTime;
 };
 
 #endif // PALETTE_H

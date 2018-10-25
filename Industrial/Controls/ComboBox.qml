@@ -19,8 +19,8 @@ T.ComboBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: background.textHeight + content.implicitHeight
-    font.pixelSize: controlSize.fontSize
-    padding: controlSize.padding
+    font.pixelSize: theme.mainFontSize
+    padding: theme.padding
     clip: true
     textRole: "text"
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
@@ -38,8 +38,8 @@ T.ComboBox {
         id: background
         anchors.fill: parent
         leftPadding: {
-            if (displayIcon.length == 0) return controlSize.padding;
-            return content.height + controlSize.padding + controlSize.margins;
+            if (displayIcon.length == 0) return theme.padding;
+            return content.height + theme.padding + theme.margins;
         }
         inputed: displayText.length > 0
         highlighted: control.activeFocus

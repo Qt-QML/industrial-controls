@@ -9,10 +9,10 @@ T.MenuItem {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    leftPadding: icon.visible ? icon.width + controlSize.padding * 2 : controlSize.padding
-    font.pixelSize: controlSize.fontSize
+    leftPadding: icon.visible ? icon.width + theme.padding * 2 : theme.padding
+    font.pixelSize: theme.mainFontSize
     width: parent.width
-    height: controlSize.baseSize
+    height: theme.baseSize
     hoverEnabled: true
 
     background: BackgroundItem {
@@ -23,7 +23,7 @@ T.MenuItem {
 
     indicator: ColoredIcon {
         id: icon
-        x: controlSize.padding
+        x: theme.padding
         color: label.color
         anchors.verticalCenter: parent.verticalCenter
         source: {
@@ -33,7 +33,7 @@ T.MenuItem {
                                                                         "qrc:/icons/ok.svg"
             return "";
         }
-        width: controlSize.baseSize - controlSize.padding * 2
+        width: theme.baseSize - theme.padding * 2
         height: width
     }
 

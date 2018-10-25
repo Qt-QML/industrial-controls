@@ -14,11 +14,11 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    font.pixelSize: controlSize.fontSize
-    implicitWidth: Math.max(controlSize.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: controlSize.baseSize
+    font.pixelSize: theme.mainFontSize
+    implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: theme.baseSize
     hoverEnabled: true
-    padding: controlSize.padding
+    padding: theme.padding
     delay: 1000
 
     background: BackgroundItem {
