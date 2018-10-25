@@ -27,7 +27,6 @@ namespace
     const int selection = 100;
     const int highlight = 120;
 
-    const int rounding = 4;
     const int underline = 2;
     const int shadowSize = 3;
 
@@ -50,17 +49,19 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
     m_primaryColor(::primaryColor),
     m_onPrimaryColor(::onPrimaryColor),
     m_lightness(100),
+    m_rounding(4),
     m_baseSize(32)
 {
     m_theme->setPositiveColor(::positiveColor);
     m_theme->setNeutralColorr(::neutralColor);
     m_theme->setNegativeColor(::negativeColor);
 
-    m_theme->setRounding(::rounding);
     m_theme->setUnderline(::underline);
     m_theme->setShadowSize(::shadowSize);
 
     m_theme->setAnimationTime(::animationTime);
+
+    m_theme->setRounding(m_rounding);
 
     this->rebuildColors();
     this->rebuildSizes();
@@ -94,6 +95,11 @@ QColor ThemeConfigurator::onPrimaryColor() const
 int ThemeConfigurator::lightness() const
 {
     return m_lightness;
+}
+
+int ThemeConfigurator::rounding() const
+{
+    return m_rounding;
 }
 
 int ThemeConfigurator::baseSize() const
@@ -149,6 +155,16 @@ void ThemeConfigurator::setLightness(int lightness)
     emit primaryColorChanged();
 
     this->rebuildColors();
+}
+
+void ThemeConfigurator::setRounding(int rounding)
+{
+    if (m_rounding == rounding) return;
+
+    m_rounding = rounding;
+    emit roundingChanged();
+
+    m_theme->setRounding(m_rounding);
 }
 
 void ThemeConfigurator::setBaseSize(int baseSize)

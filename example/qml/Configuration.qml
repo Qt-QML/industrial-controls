@@ -21,6 +21,15 @@ Popup {
         }
 
         Slider {
+            from: 0
+            to: 8
+            text: qsTr("Rounding")
+            Binding on value { value: themeConfigurator.rounding }
+            onMoved: themeConfigurator.setRounding(value)
+            Layout.fillWidth: true
+        }
+
+        Slider {
             from: 24
             to: 64
             stepSize: 4
