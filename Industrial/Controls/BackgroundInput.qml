@@ -1,5 +1,4 @@
 import QtQuick 2.6
-import Industrial 1.0
 
 BackgroundItem {
     id: control

@@ -16,8 +16,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/"));
 
-    qmlRegisterType<Theme>("Industrial", 1, 0, "Theme");
-
     ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);
     engine.rootContext()->setContextProperty(QStringLiteral("themeConfigurator"),
                                              QVariant::fromValue(themeConfigurator));
