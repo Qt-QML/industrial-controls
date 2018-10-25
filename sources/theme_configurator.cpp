@@ -36,6 +36,7 @@ namespace
     const float spacingFactor = 2.0;
     const float marginsFactor = 4.0;
     const float paddingFactor = 6.0;
+    const float fillFactor = 8.0;
     const float handleSizeFactor = 1.5;
 
     const int animationTime = 100;
@@ -195,5 +196,6 @@ void ThemeConfigurator::rebuildSizes()
     m_theme->setSpacing(m_baseSize / ::spacingFactor);
     m_theme->setMargins(m_baseSize / ::marginsFactor);
     m_theme->setPadding(m_baseSize / ::paddingFactor);
+    m_theme->setFill(m_baseSize / ::fillFactor);
     m_theme->setHandleSize(m_baseSize / ::handleSizeFactor);
 }

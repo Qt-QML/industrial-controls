@@ -37,6 +37,7 @@ class Theme: public QObject
     Q_PROPERTY(int padding MEMBER m_padding NOTIFY paddingChanged)
     Q_PROPERTY(int rounding MEMBER m_rounding NOTIFY roundingChanged)
     Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
+    Q_PROPERTY(int fill MEMBER m_fill NOTIFY fillChanged)
     Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
     Q_PROPERTY(int shadowSize MEMBER m_shadowSize NOTIFY shadowSizeChanged)
 
@@ -77,6 +78,7 @@ public slots:
     void setPadding(int padding);
     void setRounding(int rounding);
     void setUnderline(int underline);
+    void setFill(int fill);
     void setHandleSize(int handleSize);
     void setShadowSize(int shadowSize);
 
@@ -114,6 +116,7 @@ signals:
     void paddingChanged();
     void roundingChanged();
     void underlineChanged();
+    void fillChanged();
     void handleSizeChanged();
     void shadowSizeChanged();
 
@@ -151,6 +154,7 @@ private:
     int m_padding;
     int m_rounding;
     int m_underline;
+    int m_fill;
     int m_handleSize;
     int m_shadowSize;
 

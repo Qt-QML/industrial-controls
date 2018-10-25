@@ -154,6 +154,12 @@ void Theme::setUnderline(int underline)
     emit underlineChanged();
 }
 
+void Theme::setFill(int fill)
+{
+    m_fill = fill;
+    emit fillChanged();
+}
+
 void Theme::setHandleSize(int handleSize)
 {
     m_handleSize = handleSize;
