@@ -42,24 +42,31 @@ SpinBox {
         top: Math.max(realFrom, realTo)
     }
 
-    contentItem: NumericInput {
-        id: input
-        Binding on text { value: control.textFromValue(control.value, control.locale) }
-        onTextEdited: caution = true
-        onEditingFinished: validate()
-        height: control.height
-        maximumLength: control.to.toString().length
-        overwriteMode: true
-        color: control.enabled ? control.color : theme.disabledColor
-        selectionColor: background.highlighterColor
-        selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
-        clip: true
-        font: control.font
-        readOnly: !control.editable
-        inputMethodHints: Qt.ImhFormattedNumbersOnly
-        validator: control.validator
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+    contentItem: Item {
+        anchors.centerIn: parent
+        implicitHeight: input.contentHeight
+
+        NumericInput {
+            id: input
+            anchors.fill: parent
+            anchors.bottomMargin: background.underline * 1.5
+            Binding on text { value: control.textFromValue(control.value, control.locale) }
+            onTextEdited: caution = true
+            onEditingFinished: validate()
+            height: control.height
+            maximumLength: control.to.toString().length
+            overwriteMode: true
+            color: control.enabled ? control.color : theme.disabledColor
+            selectionColor: background.highlighterColor
+            selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
+            clip: true
+            font: control.font
+            readOnly: !control.editable
+            inputMethodHints: Qt.ImhFormattedNumbersOnly
+            validator: control.validator
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+        }
     }
 
     textFromValue: function(value, locale) {

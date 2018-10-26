@@ -16,6 +16,15 @@ Item {
     implicitWidth: primary.implicitWidth + secondary.implicitWidth * 0.5
     implicitHeight: primary.implicitHeight + secondary.implicitHeight * 0.5
 
+    Button {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        width: root.width * 0.33
+        height: root.height * 0.33
+        flat: true
+        iconSource: "qrc:/icons/swap.svg"
+    }
+
     ColorPicker {
         id: primary
         width: root.width / 1.5

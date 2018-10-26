@@ -13,7 +13,7 @@ T.SpinBox {
     property alias labelText: background.text
 
     implicitWidth: background.implicitWidth + theme.baseSize * 2
-    implicitHeight: background.textHeight + contentItem.implicitHeight
+    implicitHeight: background.textHeight + contentItem.implicitHeight + background.underline
     leftPadding: theme.baseSize
     rightPadding: theme.baseSize
     font.pixelSize: theme.mainFontSize
@@ -47,21 +47,28 @@ T.SpinBox {
         isValid: control.isValid
     }
 
-    contentItem: NumericInput {
-        Binding on text { value: control.textFromValue(control.value, control.locale) }
-        onTextEdited: control.value = control.valueFromText(text, control.locale)
-        height: control.height
-        maximumLength: control.to.toString().length
-        color: control.enabled ? control.color : theme.disabledColor
-        selectionColor: background.highlighterColor
-        selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
-        clip: true
-        font: control.font
-        readOnly: !control.editable
-        inputMethodHints: Qt.ImhDigitsOnly
-        validator: control.validator
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+    contentItem: Item {
+        anchors.centerIn: parent
+        implicitHeight: input.contentHeight
+
+        NumericInput {
+            id: input
+            anchors.fill: parent
+            anchors.bottomMargin: background.underline * 1.5
+            Binding on text { value: control.textFromValue(control.value, control.locale) }
+            onTextEdited: control.value = control.valueFromText(text, control.locale)
+            maximumLength: control.to.toString().length
+            color: control.enabled ? control.color : theme.disabledColor
+            selectionColor: background.highlighterColor
+            selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
+            clip: true
+            font: control.font
+            readOnly: !control.editable
+            inputMethodHints: Qt.ImhDigitsOnly
+            validator: control.validator
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+        }
     }
 
     down.indicator: BackgroundItem {

@@ -9,6 +9,7 @@ BackgroundItem {
     property bool highlighted: false
 
     property alias textHeight: textMetrics.height
+    property alias underline: highlighter.height
     property alias text: textItem.text
     property alias textColor: textItem.color
     property alias highlighterColor: highlighter.color
