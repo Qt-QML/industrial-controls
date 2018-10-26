@@ -7,7 +7,7 @@ T.TextField {
     property alias isValid: background.isValid
     property alias labelText: background.text
 
-    implicitHeight: background.textHeight + contentHeight
+    implicitHeight: background.textHeight + contentHeight + background.underline
     font.pixelSize: theme.mainFontSize
     color: control.enabled ? theme.onContainerColor : theme.disabledColor
     selectionColor: background.highlighterColor
