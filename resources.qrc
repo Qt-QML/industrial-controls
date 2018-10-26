@@ -24,5 +24,6 @@
         <file>icons/disconnect.svg</file>
         <file>icons/restore.svg</file>
         <file>icons/plugins.svg</file>
+        <file>icons/swap.svg</file>
     </qresource>
 </RCC>

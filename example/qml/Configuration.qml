@@ -60,8 +60,8 @@ Popup {
             spacing: theme.spacing
 
             DualColorPicker {
-                Binding on primaryColor { value: themeConfigurator.primaryColor; when: !opened }
-                Binding on secondaryColor { value: themeConfigurator.onPrimaryColor; when: !opened }
+                Binding on primaryColor { value: themeConfigurator.primaryColor; }
+                Binding on secondaryColor { value: themeConfigurator.onPrimaryColor;  }
                 onPrimaryColorPicked: themeConfigurator.setPrimaryColor(color)
                 onSecondaryColorPicked: themeConfigurator.setOnPrimaryColor(color)
             }

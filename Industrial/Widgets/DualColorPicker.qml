@@ -19,10 +19,14 @@ Item {
     Button {
         anchors.top: parent.top
         anchors.right: parent.right
-        width: root.width * 0.33
-        height: root.height * 0.33
+        anchors.margins: -width * 0.1
         flat: true
         iconSource: "qrc:/icons/swap.svg"
+        onClicked: {
+            var tmp = primary.color;
+            primaryColorPicked(secondary.color);
+            secondaryColorPicked(tmp);
+        }
     }
 
     ColorPicker {
