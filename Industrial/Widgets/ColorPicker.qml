@@ -7,7 +7,7 @@ Rectangle {
 
     property alias opened: popup.visible
 
-    signal picked(color pickedColor)
+    signal colorPicked(color color)
 
     implicitWidth: theme.baseSize * 1.5
     implicitHeight: theme.baseSize * 1.5
@@ -85,7 +85,7 @@ Rectangle {
                     text: qsTr("Assign")
                     onClicked: {
                         root.color = previewRect.color;
-                        root.picked(root.color);
+                        root.colorPicked(previewRect.color);
                     }
                     Layout.fillWidth: true
                     Layout.columnSpan: 3

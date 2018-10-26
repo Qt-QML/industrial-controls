@@ -43,16 +43,32 @@ Popup {
         RowLayout {
             spacing: theme.spacing
 
-            ColorPicker {
-                Binding on color { value: themeConfigurator.baseColor; when: opened }
-                onColorChanged: themeConfigurator.setBaseColor(color)
+            DualColorPicker {
+                Binding on primaryColor { value: themeConfigurator.baseColor; when: !opened }
+                Binding on secondaryColor { value: themeConfigurator.onBaseColor; when: !opened }
+                onPrimaryColorPicked: themeConfigurator.setBaseColor(color)
+                onSecondaryColorPicked: themeConfigurator.setOnBaseColor(color)
+            }
 
-                ColorPicker {
-                    x: parent.width * 0.5
-                    y: parent.width * 0.5
-                    Binding on color { value: themeConfigurator.onBaseColor; when: opened }
-                    onColorChanged: themeConfigurator.setOnBaseColor(color)
-                }
+            Label {
+                text: qsTr("Base color")
+                Layout.alignment: Qt.AlignCenter
+            }
+        }
+
+        RowLayout {
+            spacing: theme.spacing
+
+            DualColorPicker {
+                Binding on primaryColor { value: themeConfigurator.primaryColor; when: !opened }
+                Binding on secondaryColor { value: themeConfigurator.onPrimaryColor; when: !opened }
+                onPrimaryColorPicked: themeConfigurator.setPrimaryColor(color)
+                onSecondaryColorPicked: themeConfigurator.setOnPrimaryColor(color)
+            }
+
+            Label {
+                text: qsTr("Primary color")
+                Layout.alignment: Qt.AlignCenter
             }
         }
     }

@@ -47,5 +47,6 @@
         <file>Industrial/Controls/Drawer.qml</file>
         <file>Industrial/Widgets/qmldir</file>
         <file>Industrial/Widgets/ColorPicker.qml</file>
+        <file>Industrial/Widgets/DualColorPicker.qml</file>
     </qresource>
 </RCC>
