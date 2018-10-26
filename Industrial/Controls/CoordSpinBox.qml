@@ -10,6 +10,7 @@ T.Control {
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
     property bool caution: false
+    property bool round: false
     property int secondsPrecision: 2
     property real value: 0
     property real from: 0
@@ -123,6 +124,7 @@ T.Control {
             Button {
                 id: down
                 flat: true
+                round: control.round
                 color: theme.containerColor
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
@@ -202,6 +204,7 @@ T.Control {
                 id: up
                 color: theme.containerColor
                 flat: true
+                round: control.round
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _increaseEnabled

@@ -6,6 +6,7 @@ T.SpinBox {
 
     property bool isValid: value >= from && value <= to
     property color color: theme.onContainerColor
+    property bool round: false
 
     property alias caution: background.caution
     property alias backgroundColor: background.color
@@ -67,7 +68,9 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         width: theme.baseSize
         height: parent.height
+        radius: round ? Math.min(width, height) / 2 : theme.rounding
         rightCroppig: radius
+        bottomCroppig: round ? 0 : radius
         color: down.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: down.hovered
 
@@ -94,7 +97,9 @@ T.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         width: theme.baseSize
         height: parent.height
+        radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: radius
+        bottomCroppig: round ? 0 : radius
         color: up.pressed && enabled ? theme.highlightColor : theme.containerColor
         hovered: up.hovered
 
