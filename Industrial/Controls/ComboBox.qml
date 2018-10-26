@@ -18,7 +18,7 @@ T.ComboBox {
     property alias horizontalAlignment: content.horizontalAlignment
 
     implicitWidth: background.implicitWidth
-    implicitHeight: background.textHeight + content.implicitHeight
+    implicitHeight: background.textHeight + content.implicitHeight + background.underline
     font.pixelSize: theme.mainFontSize
     padding: theme.padding
     clip: true
@@ -62,6 +62,7 @@ T.ComboBox {
         anchors.fill: control
         anchors.leftMargin: control.padding
         anchors.rightMargin: control.padding
+        anchors.bottomMargin: background.underline * 1.5
         font: control.font
         text: displayText
         iconSource: displayIcon
@@ -78,7 +79,7 @@ T.ComboBox {
 
         contentItem: ListView {
             clip: true
-            implicitHeight: contentHeight
+            implicitHeight: contentHeight + 2
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
             boundsBehavior: Flickable.StopAtBounds
