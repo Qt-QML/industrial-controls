@@ -10,6 +10,7 @@ T.Slider {
     implicitWidth: theme.baseSize * 6
     implicitHeight: handle.height + topPadding
     topPadding: textItem.visible ? textItem.contentHeight : 0
+    focusPolicy: Qt.NoFocus
     hoverEnabled: true
 
     background: Rectangle {
@@ -26,12 +27,12 @@ T.Slider {
             height: parent.height
             color: theme.selectionColor
             radius: height / 2
+        }
 
-            Hatch {
-                anchors.fill: parent
-                color: theme.containerColor
-                visible: !enabled
-            }
+        Hatch {
+            anchors.fill: parent
+            color: theme.surfaceColor
+            visible: !enabled
         }
     }
 

@@ -9,11 +9,12 @@ T.Switch {
     property alias backgroundColor: backgroundItem.color
     property string tipText
 
-    spacing: theme.spacing
-    font.pixelSize: theme.mainFontSize
     implicitWidth: contentItem.implicitWidth
     implicitHeight: theme.baseSize
+    spacing: theme.spacing
+    focusPolicy: Qt.NoFocus
     hoverEnabled: true
+    font.pixelSize: theme.mainFontSize
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
@@ -28,8 +29,8 @@ T.Switch {
 
         Hatch {
             anchors.fill: parent
-            color: theme.containerColor
-            visible: !enabled
+            color: theme.surfaceColor
+            visible: !control.enabled
         }
 
         Handle {

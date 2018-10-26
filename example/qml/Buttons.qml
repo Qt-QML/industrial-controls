@@ -217,42 +217,6 @@ Frame {
             enabled: false
         }
 
-        Label { text: qsTr("Delay & flat"); font.pixelSize: theme.auxFontSize }
-
-        DelayButton {
-            text: qsTr("Delay flat")
-            flat: true
-            Layout.fillWidth: true
-        }
-
-        DelayButton {
-            iconSource: "qrc:/icons/plus.svg"
-            flat: true
-            tipText: qsTr("Delay icon flat")
-        }
-
-        DelayButton {
-            iconSource: "qrc:/icons/left.svg"
-            text: qsTr("Delay left")
-            flat: true
-            Layout.fillWidth: true
-        }
-
-        DelayButton {
-            iconSource: "qrc:/icons/right.svg"
-            text: qsTr("Delay right")
-            flat: true
-            enabled: false
-            Layout.fillWidth: true
-        }
-
-        DelayButton {
-            iconSource: "qrc:/icons/cancel.svg"
-            flat: true
-            enabled: false
-            Layout.alignment: Qt.AlignHCenter
-        }
-
         // TODO: confirm buttons
 
         Item { Layout.fillHeight: true }

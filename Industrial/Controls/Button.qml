@@ -22,21 +22,21 @@ T.Button { // TODO: clickable
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
-    font.pixelSize: theme.mainFontSize
     implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: theme.baseSize
+    focusPolicy: Qt.NoFocus
     hoverEnabled: true
     padding: theme.padding
+    font.pixelSize: theme.mainFontSize
 
     background: BackgroundItem {
         id: backgroundItem
-        highlighted: control.activeFocus && !control.round
         hovered: control.hovered
         shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0
-        bottomCroppig: round ? 0 : radius
+        borderColor: control.activeFocus ? theme.highlightColor : "transparent"
         color: {
             if (control.pressed || control.pressedImpl) return theme.highlightColor;
             if (control.highlighted || control.checked) return theme.selectionColor;

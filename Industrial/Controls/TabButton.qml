@@ -15,12 +15,14 @@ T.TabButton {
     font.pixelSize: theme.mainFontSize
     implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: theme.baseSize
-    hoverEnabled: true
+    focusPolicy: Qt.NoFocus
+    hoverEnabled: !control.checked
     padding: theme.padding
 
     background: BackgroundItem {
         id: backgroundItem
-        highlighted: control.activeFocus
+        bottomCroppig: radius
+        borderColor: control.activeFocus ? theme.highlightColor : "transparent"
         hovered: control.hovered
         color: control.checked ? theme.surfaceColor : "transparent";
     }

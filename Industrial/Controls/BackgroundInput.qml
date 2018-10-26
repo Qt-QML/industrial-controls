@@ -6,21 +6,15 @@ BackgroundItem {
     property bool inputed: true
     property bool caution: false
     property bool isValid: true
+    property bool highlighted: false
 
     property alias textHeight: textMetrics.height
     property alias text: textItem.text
     property alias textColor: textItem.color
+    property alias highlighterColor: highlighter.color
 
+    bottomCroppig: radius
     implicitWidth: Math.max(theme.baseSize * 4, textItem.implicitWidth)
-    highlighterColor: {
-        if (highlighted) {
-            if (control.caution) return theme.neutralColor;
-            if (!control.isValid) return theme.negativeColor;
-            return theme.highlightColor;
-        }
-
-        return theme.controlColor;
-    }
 
     TextMetrics {
         id: textMetrics
@@ -32,6 +26,23 @@ BackgroundItem {
         anchors.fill: parent
         color: theme.surfaceColor
         visible: !enabled
+    }
+
+    Rectangle {
+        id: highlighter
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: theme.underline
+        visible: control.enabled
+        color:      {
+            if (highlighted) {
+                if (control.caution) return theme.neutralColor;
+                if (!control.isValid) return theme.negativeColor;
+                return theme.highlightColor;
+            }
+
+            return theme.controlColor;
+        }
     }
 
     Text {

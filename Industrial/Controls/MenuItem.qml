@@ -9,15 +9,16 @@ T.MenuItem {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
+    implicitWidth: parent.width
+    implicitHeight: theme.baseSize
+    focusPolicy: Qt.NoFocus
     leftPadding: icon.visible ? icon.width + theme.padding * 2 : theme.padding
     font.pixelSize: theme.mainFontSize
-    width: parent.width
-    height: theme.baseSize
     hoverEnabled: true
 
     background: BackgroundItem {
+        radius: 0
         hovered: control.hovered
-        highlighted: control.activeFocus
         color: control.pressed ? theme.highlightColor : "transparent"
     }
 
