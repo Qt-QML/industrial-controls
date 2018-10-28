@@ -19,6 +19,7 @@ Item {
 
     Row {
         anchors.centerIn: parent
+        anchors.verticalCenterOffset: -background.underline * 1.5
 
         NumericInput {
             id: input
@@ -31,7 +32,14 @@ Item {
             selectedTextColor: highlighter.visible ? theme.onSelectionColor : theme.onContainerColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
-            onTextEdited: control.caution = true
+            onTextEdited: {
+                if (cursorPosition < maximumLength) {
+                    control.caution = true;
+                } else {
+                    updateValueFromControls();
+                    if (nextItem && activeFocus) nextItem.forceActiveFocus();
+                }
+            }
             onActiveFocusChanged: {
                 if (activeFocus) _focusedItem = root
                 else updateValueFromControls();
