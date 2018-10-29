@@ -26,6 +26,7 @@ class Theme: public QObject
 
     Q_PROPERTY(QColor controlColor MEMBER m_controlColor NOTIFY controlColorChanged)
     Q_PROPERTY(QColor disabledColor MEMBER m_disabledColor NOTIFY disabledColorChanged)
+    Q_PROPERTY(QColor linkColor MEMBER m_linkColor NOTIFY linkColorChanged)
 
     Q_PROPERTY(QColor positiveColor MEMBER m_positiveColor NOTIFY positiveColorChanged)
     Q_PROPERTY(QColor neutralColor MEMBER m_neutralColor NOTIFY neutralColorChanged)
@@ -67,6 +68,7 @@ public slots:
 
     void setControlColor(const QColor& controlColor);
     void setDisabledColor(const QColor& disabledColor);
+    void setLinkColor(const QColor& linkColor);
 
     void setPositiveColor(const QColor& positiveColor);
     void setNeutralColorr(const QColor& neutralColor);
@@ -105,6 +107,7 @@ signals:
 
     void controlColorChanged();
     void disabledColorChanged();
+    void linkColorChanged();
 
     void positiveColorChanged();
     void neutralColorChanged();
@@ -143,6 +146,7 @@ private:
 
     QColor m_controlColor;
     QColor m_disabledColor;
+    QColor m_linkColor;
 
     QColor m_positiveColor;
     QColor m_neutralColor;

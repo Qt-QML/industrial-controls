@@ -100,6 +100,12 @@ void Theme::setDisabledColor(const QColor& disabledColor)
     emit disabledColorChanged();
 }
 
+void Theme::setLinkColor(const QColor& linkColor)
+{
+    m_linkColor = linkColor;
+    emit linkColorChanged();
+}
+
 void Theme::setPositiveColor(const QColor& positiveColor)
 {
     m_positiveColor = positiveColor;

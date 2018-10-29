@@ -29,6 +29,8 @@
         <file>Industrial/Controls/Menu.qml</file>
         <file>Industrial/Controls/MenuItem.qml</file>
         <file>Industrial/Controls/ProgressBar.qml</file>
+        <file>Industrial/Controls/Led.qml</file>
+        <file>Industrial/Controls/BlinkingLed.qml</file>
         <file>Industrial/Controls/Slider.qml</file>
         <file>Industrial/Controls/ComboBox.qml</file>
         <file>Industrial/Controls/TextField.qml</file>

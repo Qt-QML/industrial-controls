@@ -6,6 +6,7 @@
 
 namespace
 {
+    const QColor linkColor = "#51a0e7";
     const QColor baseColor = "#37474f";
     const QColor onBaseColor = "#fafafa";
     const QColor primaryColor = "#18c19d";
@@ -52,6 +53,8 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
     m_rounding(4),
     m_baseSize(32)
 {
+    m_theme->setLinkColor(::linkColor);
+
     m_theme->setPositiveColor(::positiveColor);
     m_theme->setNeutralColorr(::neutralColor);
     m_theme->setNegativeColor(::negativeColor);
