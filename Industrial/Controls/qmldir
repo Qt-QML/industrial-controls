@@ -12,7 +12,7 @@ Card 1.0 Card.qml
 ContentItem 1.0 ContentItem.qml
 Button 1.0 Button.qml
 DelayButton 1.0 DelayButton.qml
-RoundButton 1.0 RoundButton.qml
+FloatButton 1.0 FloatButton.qml
 ButtonGroup 1.0 ButtonGroup.qml
 ButtonBar 1.0 ButtonBar.qml
 TabButton 1.0 TabButton.qml
@@ -24,6 +24,7 @@ RadioButton 1.0 RadioButton.qml
 Led 1.0 Led.qml
 BlinkingLed 1.0 BlinkingLed.qml
 ToolBar 1.0 ToolBar.qml
+ToolButton 1.0 ToolButton.qml
 Label 1.0 Label.qml
 Link 1.0 Link.qml
 MenuIndicator 1.0 MenuIndicator.qml

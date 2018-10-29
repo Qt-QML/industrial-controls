@@ -40,6 +40,7 @@ class Theme: public QObject
     Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
     Q_PROPERTY(int fill MEMBER m_fill NOTIFY fillChanged)
     Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
+    Q_PROPERTY(int floatButton MEMBER m_floatButton NOTIFY floatButtonChanged)
     Q_PROPERTY(int shadowSize MEMBER m_shadowSize NOTIFY shadowSizeChanged)
 
     Q_PROPERTY(int mainFontSize MEMBER m_mainFontSize NOTIFY mainFontSizeChanged)
@@ -82,6 +83,7 @@ public slots:
     void setUnderline(int underline);
     void setFill(int fill);
     void setHandleSize(int handleSize);
+    void setFloatButton(int floatButton);
     void setShadowSize(int shadowSize);
 
     void setMainFontSize(int mainFontSize);
@@ -121,6 +123,7 @@ signals:
     void underlineChanged();
     void fillChanged();
     void handleSizeChanged();
+    void floatButtonChanged();
     void shadowSizeChanged();
 
     void mainFontSizeChanged();
@@ -160,6 +163,7 @@ private:
     int m_underline;
     int m_fill;
     int m_handleSize;
+    int m_floatButton;
     int m_shadowSize;
 
     int m_mainFontSize;

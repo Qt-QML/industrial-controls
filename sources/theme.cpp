@@ -172,6 +172,12 @@ void Theme::setHandleSize(int handleSize)
     emit handleSizeChanged();
 }
 
+void Theme::setFloatButton(int floatButton)
+{
+    m_floatButton = floatButton;
+    emit floatButtonChanged();
+}
+
 void Theme::setShadowSize(int shadowSize)
 {
     m_shadowSize = shadowSize;

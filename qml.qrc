@@ -12,7 +12,7 @@
         <file>Industrial/Controls/BackgroundInput.qml</file>
         <file>Industrial/Controls/Button.qml</file>
         <file>Industrial/Controls/DelayButton.qml</file>
-        <file>Industrial/Controls/RoundButton.qml</file>
+        <file>Industrial/Controls/FloatButton.qml</file>
         <file>Industrial/Controls/ButtonGroup.qml</file>
         <file>Industrial/Controls/ButtonBar.qml</file>
         <file>Industrial/Controls/TabButton.qml</file>
@@ -22,6 +22,7 @@
         <file>Industrial/Controls/Handle.qml</file>
         <file>Industrial/Controls/Switch.qml</file>
         <file>Industrial/Controls/RadioButton.qml</file>
+        <file>Industrial/Controls/ToolButton.qml</file>
         <file>Industrial/Controls/ToolBar.qml</file>
         <file>Industrial/Controls/Label.qml</file>
         <file>Industrial/Controls/Link.qml</file>

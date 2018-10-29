@@ -38,6 +38,7 @@ namespace
     const float paddingFactor = 5.0;
     const float fillFactor = 8.0;
     const float handleSizeFactor = 1.5;
+    const float floatSizeFactor = 0.75;
 
     const int animationTime = 100;
 }
@@ -217,4 +218,5 @@ void ThemeConfigurator::rebuildSizes()
     m_theme->setPadding(m_baseSize / ::paddingFactor);
     m_theme->setFill(m_baseSize / ::fillFactor);
     m_theme->setHandleSize(m_baseSize / ::handleSizeFactor);
+    m_theme->setFloatButton(m_baseSize / ::floatSizeFactor);
 }
