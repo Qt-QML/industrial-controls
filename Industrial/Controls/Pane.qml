@@ -8,5 +8,8 @@ T.Pane {
 
     padding: theme.padding
 
-    background: Rectangle { color: backgroundColor }
+    background: Rectangle {
+        color: backgroundColor
+        radius: theme.rounding
+    }
 }

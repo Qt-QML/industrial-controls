@@ -10,7 +10,6 @@ T.Frame {
 
     background: Rectangle {
         color: backgroundColor
-        radius: 2
 
         Shadow {
             source: parent
