@@ -41,9 +41,13 @@ Item {
                 }
             }
             onActiveFocusChanged: {
-                if (activeFocus) _focusedItem = root
-                else updateValueFromControls();
-
+                if (activeFocus) {
+                    _focusedItem = root;
+                    cursorPosition = 0;
+                }
+                else {
+                    updateValueFromControls();
+                }
             }
             onEditingFinished: {
                 updateValueFromControls();

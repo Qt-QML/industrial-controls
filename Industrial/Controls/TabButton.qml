@@ -16,7 +16,7 @@ T.TabButton {
     implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: theme.baseSize
     focusPolicy: Qt.NoFocus
-    hoverEnabled: !control.checked
+    //hoverEnabled: true NOTE: QTBUG
     padding: theme.padding
 
     background: BackgroundItem {
@@ -24,7 +24,7 @@ T.TabButton {
         bottomCroppig: radius
         borderColor: control.activeFocus ? theme.highlightColor : "transparent"
         hovered: control.hovered
-        color: control.checked ? theme.surfaceColor : "transparent";
+        color: control.checked ? theme.surfaceColor : "transparent"
     }
 
     contentItem: ContentItem {

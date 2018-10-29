@@ -86,6 +86,7 @@ Frame {
 
         CoordSpinBox {
             labelText: qsTr("Invalid coordinates")
+            isLongitude: true
             isValid: false
             Layout.fillWidth: true
         }
@@ -93,7 +94,6 @@ Frame {
         CoordSpinBox {
             value: coordSpin.value
             labelText: qsTr("Disabled coordinates")
-            isLongitude: true
             enabled: false
             Layout.fillWidth: true
         }
