@@ -5,6 +5,7 @@ T.TextField {
     id: control
 
     property alias flat: background.flat
+    property alias backgroundColor: background.color
     property alias isValid: background.isValid
     property alias labelText: background.text
 

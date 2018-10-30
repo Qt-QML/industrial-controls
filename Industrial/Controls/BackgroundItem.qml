@@ -5,7 +5,6 @@ Item {
 
     property bool hovered: false
     property bool flat: false
-    property bool shadow: false
     property int leftPadding: theme.padding
     property int leftCroppig: 0
     property int rightCroppig: 0
@@ -38,10 +37,5 @@ Item {
                 visible: hovered
             }
         }
-    }
-
-    Shadow {
-        visible: shadow && !flat
-        source: parent
     }
 }

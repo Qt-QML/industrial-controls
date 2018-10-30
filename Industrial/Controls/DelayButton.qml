@@ -6,6 +6,7 @@ T.DelayButton {
 
     property string tipText
     property bool flat: false
+    property bool shadow: !flat
     property bool round: flat
 
     property alias iconSource: content.iconSource
@@ -28,9 +29,13 @@ T.DelayButton {
         anchors.fill: parent
         borderColor: control.activeFocus ? theme.highlightColor : "transparent"
         hovered: control.hovered
-        shadow: !control.flat
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         color: control.flat ? "transparent" : theme.buttonColor
+
+        Shadow {
+            visible: control.shadow && !control.flat
+            source: parent
+        }
 
         Hatch {
             anchors.fill: parent

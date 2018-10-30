@@ -9,6 +9,7 @@ T.Button { // TODO: clickable
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
+    property bool shadow: !flat
     property color color: control.flat ? "transparent" : theme.buttonColor
     property string tipText
 
@@ -22,7 +23,7 @@ T.Button { // TODO: clickable
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
-    implicitWidth: Math.max(theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitWidth: Math.max(height, content.implicitWidth + control.padding * 2)
     implicitHeight: theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
@@ -33,7 +34,6 @@ T.Button { // TODO: clickable
         id: backgroundItem
         hovered: control.hovered
         flat: control.flat
-        shadow: true // FIXME: remove shadow from commaon background
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0
@@ -42,6 +42,11 @@ T.Button { // TODO: clickable
             if (control.pressed || control.pressedImpl) return theme.highlightColor;
             if (control.highlighted || control.checked) return theme.selectionColor;
             return control.color;
+        }
+
+        Shadow {
+            visible: control.shadow && !control.flat
+            source: parent
         }
 
         MenuIndicator {

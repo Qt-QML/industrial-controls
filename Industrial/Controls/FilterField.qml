@@ -11,7 +11,8 @@ TextField {
         height: parent.height + radius
         iconSource: "qrc:/icons/erase.svg"
         tipText: qsTr("Clear filter")
-        flat: true
+        color: control.backgroundColor
+        shadow: false
         radius: theme.rounding
         visible: control.text.length > 0 && control.enabled
         onClicked: control.clear()
