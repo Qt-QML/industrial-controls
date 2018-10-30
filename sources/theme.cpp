@@ -201,3 +201,9 @@ void Theme::setAnimationTime(int animationTime)
     m_animationTime = animationTime;
     emit animationTimeChanged();
 }
+
+void Theme::setFlatRound(bool flatRound)
+{
+    m_flatRound = flatRound;
+    emit flatRoundChanged();
+}

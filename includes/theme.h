@@ -48,6 +48,8 @@ class Theme: public QObject
 
     Q_PROPERTY(int animationTime MEMBER m_animationTime NOTIFY animationTimeChanged)
 
+    Q_PROPERTY(bool flatRound MEMBER m_flatRound NOTIFY flatRoundChanged)
+
 public:
     explicit Theme(QObject* parent = nullptr);
 
@@ -91,6 +93,8 @@ public slots:
 
     void setAnimationTime(int animationTime);
 
+    void setFlatRound(bool flatRound);
+
 signals:
     void backgroundColorChanged();
     void onBackgroundColorChanged();
@@ -131,6 +135,8 @@ signals:
 
     void animationTimeChanged();
 
+    void flatRoundChanged();
+
 private:
     QColor m_backgroundColor;
     QColor m_onBackgroundColor;
@@ -170,6 +176,8 @@ private:
     int m_auxFontSize;
 
     int m_animationTime;
+
+    bool m_flatRound;
 };
 
 #endif // PALETTE_H
