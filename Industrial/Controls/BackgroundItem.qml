@@ -4,6 +4,7 @@ Item {
     id: control
 
     property bool hovered: false
+    property bool flat: false
     property bool shadow: false
     property int leftPadding: theme.padding
     property int leftCroppig: 0
@@ -26,7 +27,7 @@ Item {
             anchors.rightMargin: -rightCroppig
             anchors.bottomMargin: -bottomCroppig
             radius: theme.rounding
-            color: theme.containerColor
+            color: flat ? "transparent" : theme.containerColor
             border.color: borderColor
 
             Rectangle {
@@ -40,7 +41,7 @@ Item {
     }
 
     Shadow {
-        visible: shadow
+        visible: shadow && !flat
         source: parent
     }
 }

@@ -38,6 +38,7 @@ T.ComboBox {
     background: BackgroundInput {
         id: background
         anchors.fill: parent
+        flat: control.flat
         leftPadding: {
             if (displayIcon.length == 0) return theme.padding;
             return content.height + theme.padding + theme.margins;

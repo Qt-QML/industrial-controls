@@ -11,6 +11,7 @@ T.SpinBox {
     property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
+    property alias flat: background.flat
 
     implicitWidth: background.implicitWidth + theme.baseSize * 2
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
@@ -94,7 +95,7 @@ T.SpinBox {
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;
-                if (down.pressed) return theme.onSelectionColor
+                if (down.pressed) return theme.onHighlightColor;
 
                 return theme.onButtonColor;
             }
@@ -123,7 +124,7 @@ T.SpinBox {
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return theme.disabledColor;
-                if (up.pressed) return theme.onSelectionColor
+                if (up.pressed) return theme.onHighlightColor;
 
                 return theme.onButtonColor;
             }

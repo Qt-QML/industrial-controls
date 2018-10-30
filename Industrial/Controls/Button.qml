@@ -32,7 +32,7 @@ T.Button { // TODO: clickable
     background: BackgroundItem {
         id: backgroundItem
         hovered: control.hovered
-        shadow: !control.flat
+        flat: control.flat
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0

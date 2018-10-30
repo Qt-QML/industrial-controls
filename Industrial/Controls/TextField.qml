@@ -4,6 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.TextField {
     id: control
 
+    property alias flat: background.flat
     property alias isValid: background.isValid
     property alias labelText: background.text
 

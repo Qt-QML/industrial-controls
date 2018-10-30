@@ -22,6 +22,7 @@ T.Control {
 
     property alias backgroundColor: background.color
     property alias labelText: background.text
+    property alias flat: background.flat
 
     property int _sign: 1
     readonly property bool _increaseEnabled: Math.abs(value) < to
