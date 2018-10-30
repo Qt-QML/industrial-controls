@@ -44,7 +44,7 @@ T.MenuItem {
         text: control.text
         color: {
             if (!enabled) return theme.disabledColor;
-            if (control.pressed) return theme.onSelectionColor;
+            if (control.pressed) return theme.onHighlightColor;
             return theme.onContainerColor;
         }
     }
