@@ -33,6 +33,7 @@ T.Button { // TODO: clickable
         id: backgroundItem
         hovered: control.hovered
         flat: control.flat
+        shadow: true // FIXME: remove shadow from commaon background
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0
