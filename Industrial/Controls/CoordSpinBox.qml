@@ -87,7 +87,7 @@ T.Control {
     onValueChanged: updateControlsFromValue()
 
     clip: true
-    implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
+    implicitWidth: Math.max(background.implicitWidth, row.height)
     implicitHeight: Math.max(background.textHeight +
                              Math.max(dInput.implicitHeight, sInput.implicitHeight) +
                              background.underline, theme.baseSize)
@@ -147,6 +147,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: dInput
+                implicitWidth: theme.baseSize * (isLongitude ? 1 : 0.75)
                 input.focus: true
                 input.maximumLength: isLongitude ? 3 : 2
                 input.validator: IntValidator { bottom: control.from; top: control.to }
@@ -154,13 +155,13 @@ T.Control {
                 sign: "\u00B0"
                 onIncreaseValue: if (_increaseEnabled) changeValue(0, 1)
                 onDecreaseValue: if (_decreaseEnabled) changeValue(0, -1)
-                Layout.preferredWidth: theme.baseSize * (isLongitude ? 1 : 0.75)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             CoordSpinBoxInput {
                 id: mInput
+                implicitWidth: theme.baseSize * 0.75
                 input.maximumLength: 2
                 input.validator: IntValidator { bottom: 0; top: 60 }
                 previousItem: dInput.input
@@ -168,26 +169,26 @@ T.Control {
                 sign: "\'"
                 onIncreaseValue: if (_increaseEnabled) changeValue(1, 1)
                 onDecreaseValue: if (_decreaseEnabled) changeValue(1, -1)
-                Layout.preferredWidth: theme.baseSize * 0.75
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             CoordSpinBoxInput {
                 id: sInput
+                implicitWidth: theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 input.maximumLength: 3 + secondsPrecision
                 input.validator: DoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
                 sign: "\""
                 onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
                 onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision))
-                Layout.preferredWidth: theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             Button {
                 id: suffixButton
+                implicitWidth: theme.baseSize
                 flat: true
                 font: control.font
                 focusPolicy: Qt.NoFocus
