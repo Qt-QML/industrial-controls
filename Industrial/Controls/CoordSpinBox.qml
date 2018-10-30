@@ -87,9 +87,9 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(row.implicitWidth, background.implicitWidth)
-    implicitHeight: background.textHeight +
-                    Math.max(dInput.implicitHeight, sInput.implicitHeight) +
-                    background.underline
+    implicitHeight: Math.max(background.textHeight +
+                             Math.max(dInput.implicitHeight, sInput.implicitHeight) +
+                             background.underline, theme.baseSize)
     font.pixelSize: theme.mainFontSize
 
     background: BackgroundInput {

@@ -18,7 +18,8 @@ T.ComboBox {
     property alias horizontalAlignment: content.horizontalAlignment
 
     implicitWidth: background.implicitWidth
-    implicitHeight: background.textHeight + content.implicitHeight + background.underline
+    implicitHeight: Math.max(background.textHeight + content.implicitHeight + background.underline,
+                             theme.baseSize)
     font.pixelSize: theme.mainFontSize
     padding: theme.padding
     clip: true

@@ -13,7 +13,8 @@ T.SpinBox {
     property alias labelText: background.text
 
     implicitWidth: background.implicitWidth + theme.baseSize * 2
-    implicitHeight: background.textHeight + contentItem.implicitHeight + background.underline
+    implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
+                             background.underline, theme.baseSize)
     leftPadding: theme.baseSize
     rightPadding: theme.baseSize
     font.pixelSize: theme.mainFontSize
