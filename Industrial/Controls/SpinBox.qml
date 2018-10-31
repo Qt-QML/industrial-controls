@@ -80,7 +80,7 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         rightCroppig: radius
         bottomCroppig: round ? 0 : radius
-        color: down.pressed && enabled ? theme.highlightColor : theme.containerColor
+        color: down.pressed && enabled ? theme.highlightColor : background.color
         hovered: down.hovered
 
         Hatch {
@@ -109,7 +109,7 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : theme.rounding
         leftCroppig: radius
         bottomCroppig: round ? 0 : radius
-        color: up.pressed && enabled ? theme.highlightColor : theme.containerColor
+        color: up.pressed && enabled ? theme.highlightColor : background.color
         hovered: up.hovered
 
         Hatch {

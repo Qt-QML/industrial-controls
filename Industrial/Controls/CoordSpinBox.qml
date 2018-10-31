@@ -128,7 +128,7 @@ T.Control {
                 id: down
                 flat: true
                 round: control.round
-                color: theme.containerColor
+                color: background.color
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _decreaseEnabled
@@ -206,7 +206,7 @@ T.Control {
 
             Button {
                 id: up
-                color: theme.containerColor
+                color: background.color
                 flat: true
                 round: control.round
                 autoRepeat: true
