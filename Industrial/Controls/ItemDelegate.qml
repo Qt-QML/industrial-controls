@@ -13,11 +13,16 @@ T.ItemDelegate {
     implicitHeight: theme.baseSize
     padding: theme.padding
     font.pixelSize: theme.mainFontSize
+    hoverEnabled: true
 
-    background: Rectangle {
-        anchors.fill: parent
-        visible: control.highlighted
-        color: isValid ? theme.highlightColor : theme.negativeColor
+    background: BackgroundItem {
+        radius: 0
+        hovered: control.hovered
+        color: {
+            if (control.highlighted) return control.isValid ? theme.highlightColor :
+                                                              theme.negativeColor;
+            return theme.containerColor;
+        }
     }
 
     contentItem: ContentItem {
@@ -26,6 +31,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? theme.onSelectionColor : theme.onContainerColor
+        textColor: control.highlighted ? theme.onHighlightColor : theme.onContainerColor
     }
 }

@@ -55,7 +55,7 @@ T.ComboBox {
         iconSource: modelData[control.iconRole] !== undefined ?
                         modelData[control.iconRole] : ""
         font: control.font
-        highlighted: control.highlightedIndex === index
+        highlighted: control.currentIndex === index
         isValid: control.isValid
     }
 
