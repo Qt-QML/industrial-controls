@@ -56,9 +56,9 @@ SpinBox {
             height: control.height
             maximumLength: control.to.toString().length
             overwriteMode: true
-            color: control.enabled ? control.color : theme.disabledColor
+            color: control.enabled ? control.color : Theme.disabledColor
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? theme.onSelectionColor : theme.onContainerColor
+            selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
             clip: true
             font: control.font
             readOnly: !control.editable

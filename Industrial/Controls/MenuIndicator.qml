@@ -7,15 +7,15 @@ ColoredIcon {
     property bool opened: false
     property bool isValid: true
 
-    width: theme.baseSize / 2
+    width: Theme.baseSize / 2
     height: width
     source: "qrc:/icons/menu_arrow.svg"
     color: {
-        if (!enabled) return theme.disabledColor;
-        if (!isValid) return theme.negativeColor;
-        if (opened) return theme.highlightColor;
-        if (focused) return theme.selectionColor;
+        if (!enabled) return Theme.disabledColor;
+        if (!isValid) return Theme.negativeColor;
+        if (opened) return Theme.highlightColor;
+        if (focused) return Theme.selectionColor;
 
-        return theme.onButtonColor;
+        return Theme.onButtonColor;
     }
 }

@@ -9,11 +9,11 @@ T.CheckBox {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: theme.mainFontSize
-    height: theme.baseSize
+    font.pixelSize: Theme.mainFontSize
+    height: Theme.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
-    spacing: theme.spacing
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
     hoverEnabled: true
@@ -21,10 +21,10 @@ T.CheckBox {
     indicator: BackgroundItem {
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: theme.baseSize
-        implicitHeight: theme.baseSize
+        implicitWidth: Theme.baseSize
+        implicitHeight: Theme.baseSize
         hovered: control.hovered
-        borderColor: control.activeFocus ? theme.highlightColor : "transparent"
+        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
 
         ColoredIcon {
             anchors.fill: parent
@@ -32,16 +32,16 @@ T.CheckBox {
             source: "qrc:/icons/ok.svg"
             visible: control.checked || control.down
             color: {
-                if (!control.enabled) return theme.disabledColor;
-                if (control.down) return theme.highlightColor;
+                if (!control.enabled) return Theme.disabledColor;
+                if (control.down) return Theme.highlightColor;
 
-                return theme.onButtonColor;
+                return Theme.onButtonColor;
             }
         }
 
         Hatch {
             anchors.fill: parent
-            color: theme.surfaceColor
+            color: Theme.surfaceColor
             visible: !control.enabled
         }
     }

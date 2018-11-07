@@ -27,9 +27,9 @@ Item {
             inputMethodHints: Qt.ImhDigitsOnly
             overwriteMode: true
             font: control.font
-            color: control.enabled ? control.color : theme.disabledColor
-            selectionColor: highlighter.visible ? highlighter.color : theme.controlColor
-            selectedTextColor: highlighter.visible ? theme.onSelectionColor : theme.onContainerColor
+            color: control.enabled ? control.color : Theme.disabledColor
+            selectionColor: highlighter.visible ? highlighter.color : Theme.controlColor
+            selectedTextColor: highlighter.visible ? Theme.onSelectionColor : Theme.onContainerColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: {

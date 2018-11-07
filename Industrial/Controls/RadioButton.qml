@@ -6,11 +6,11 @@ T.RadioButton {
 
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: theme.mainFontSize
-    height: theme.baseSize
+    font.pixelSize: Theme.mainFontSize
+    height: Theme.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
-    spacing: theme.spacing
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     hoverEnabled: true
 
@@ -18,10 +18,10 @@ T.RadioButton {
         x: control.leftPadding
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
-        implicitWidth: theme.baseSize
-        implicitHeight: theme.baseSize
+        implicitWidth: Theme.baseSize
+        implicitHeight: Theme.baseSize
         hovered: control.hovered
-        borderColor: control.activeFocus ? theme.highlightColor : "transparent"
+        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
 
         Rectangle {
             anchors.fill: parent
@@ -29,16 +29,16 @@ T.RadioButton {
             radius: width * 0.5
             visible: control.checked || control.down
             color: {
-                if (!control.enabled) return theme.disabledColor;
-                if (control.down) return theme.highlightColor;
+                if (!control.enabled) return Theme.disabledColor;
+                if (control.down) return Theme.highlightColor;
 
-                return theme.onButtonColor;
+                return Theme.onButtonColor;
             }
         }
 
         Hatch {
             anchors.fill: parent
-            color: theme.surfaceColor
+            color: Theme.surfaceColor
             visible: !control.enabled
         }
     }

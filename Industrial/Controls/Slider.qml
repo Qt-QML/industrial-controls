@@ -7,7 +7,7 @@ T.Slider {
     property real visualValue: from + position * (to - from)
     property alias text: textItem.text
 
-    implicitWidth: theme.baseSize * 6
+    implicitWidth: Theme.baseSize * 6
     implicitHeight: handle.height + topPadding
     topPadding: textItem.visible ? textItem.contentHeight : 0
     focusPolicy: Qt.NoFocus
@@ -16,22 +16,22 @@ T.Slider {
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        implicitWidth: theme.baseSize * 6
+        implicitWidth: Theme.baseSize * 6
         width: control.availableWidth
-        height: theme.fill
+        height: Theme.fill
         radius: height / 2
-        color: theme.containerColor
+        color: Theme.containerColor
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: theme.selectionColor
+            color: Theme.selectionColor
             radius: height / 2
         }
 
         Hatch {
             anchors.fill: parent
-            color: theme.surfaceColor
+            color: Theme.surfaceColor
             visible: !enabled
         }
     }
@@ -46,7 +46,7 @@ T.Slider {
             width: parent.width * 2
             height: width
             radius: width / 2
-            color: theme.highlightColor
+            color: Theme.highlightColor
             opacity: 0.5
             visible: control.pressed
         }
@@ -57,14 +57,14 @@ T.Slider {
         anchors.left: parent.left
         anchors.top: parent.top
         visible: text.length
-        font.pixelSize: theme.auxFontSize
+        font.pixelSize: Theme.auxFontSize
         color: {
-            if (!control.enabled) return theme.disabledColor;
-            if (control.activeFocus) return theme.selectionColor;
+            if (!control.enabled) return Theme.disabledColor;
+            if (control.activeFocus) return Theme.selectionColor;
 
-            return theme.onSurfaceColor;
+            return Theme.onSurfaceColor;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: theme.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }
 
     ToolTip {

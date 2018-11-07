@@ -10,7 +10,7 @@ ColumnLayout {
     TabBar {
         id: tabBar
         Layout.fillWidth: true
-        Layout.rightMargin: theme.baseSize + theme.padding
+        Layout.rightMargin: Theme.baseSize + Theme.padding
         z: 1
 
         TabButton { text: "Buttons" }

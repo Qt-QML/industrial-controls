@@ -5,7 +5,7 @@ import "../Controls" as Controls
 Rectangle {
     id: root
 
-    implicitWidth: theme.baseSize * 0.25
+    implicitWidth: Theme.baseSize * 0.25
     implicitHeight: width
     radius: width / 2
     opacity: 0.75

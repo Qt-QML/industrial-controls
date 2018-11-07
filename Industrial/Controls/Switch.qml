@@ -10,11 +10,11 @@ T.Switch {
     property string tipText
 
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: theme.baseSize
-    spacing: theme.spacing
+    implicitHeight: Theme.baseSize
+    spacing: Theme.spacing
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    font.pixelSize: theme.mainFontSize
+    font.pixelSize: Theme.mainFontSize
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
@@ -22,14 +22,14 @@ T.Switch {
         id: backgroundItem
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: theme.baseSize
-        implicitHeight: theme.fill
+        implicitWidth: Theme.baseSize
+        implicitHeight: Theme.fill
         radius: height / 2
-        color: control.checked ? theme.selectionColor : theme.containerColor
+        color: control.checked ? Theme.selectionColor : Theme.containerColor
 
         Hatch {
             anchors.fill: parent
-            color: theme.surfaceColor
+            color: Theme.surfaceColor
             visible: !control.enabled
         }
 
@@ -37,7 +37,7 @@ T.Switch {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
 
-            Behavior on x { PropertyAnimation { duration: theme.animationTime} }
+            Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
         }
     }
 

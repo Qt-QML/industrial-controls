@@ -5,36 +5,36 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    padding: theme.padding
+    padding: Theme.padding
 
     GridLayout {
         anchors.fill: parent
-        anchors.margins: theme.padding
-        rowSpacing: theme.spacing
-        columnSpacing: theme.spacing
+        anchors.margins: Theme.padding
+        rowSpacing: Theme.spacing
+        columnSpacing: Theme.spacing
         columns: 4
 
         Label {}
 
         Label {
             text: qsTr("Enabled")
-            font.pixelSize: theme.auxFontSize
+            font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Invalid")
-            font.pixelSize: theme.auxFontSize
+            font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Disabled")
-            font.pixelSize: theme.auxFontSize
+            font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Spinboxes"); font.pixelSize: theme.auxFontSize }
+        Label { text: qsTr("Spinboxes"); font.pixelSize: Theme.auxFontSize }
 
         SpinBox {
             id: spin
@@ -55,7 +55,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Real spinboxes"); font.pixelSize: theme.auxFontSize }
+        Label { text: qsTr("Real spinboxes"); font.pixelSize: Theme.auxFontSize }
 
         RealSpinBox {
             id: realSpin
@@ -76,7 +76,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Coord spinboxes"); font.pixelSize: theme.auxFontSize }
+        Label { text: qsTr("Coord spinboxes"); font.pixelSize: Theme.auxFontSize }
 
         CoordSpinBox {
             id: coordSpin

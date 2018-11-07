@@ -5,12 +5,12 @@ import Industrial.Widgets 1.0
 
 Popup {
     id: root
-    width: theme.baseSize * 8
+    width: Theme.baseSize * 8
     closePolicy: Popup.CloseOnPressOutsideParent
 
     ColumnLayout{
         width: parent.width
-        spacing: theme.spacing
+        spacing: Theme.spacing
 
         Slider {
             from: 50
@@ -41,7 +41,7 @@ Popup {
         }
 
         RowLayout {
-            spacing: theme.spacing
+            spacing: Theme.spacing
 
             DualColorPicker {
                 Binding on primaryColor { value: themeConfigurator.baseColor; when: !opened }
@@ -57,7 +57,7 @@ Popup {
         }
 
         RowLayout {
-            spacing: theme.spacing
+            spacing: Theme.spacing
 
             DualColorPicker {
                 Binding on primaryColor { value: themeConfigurator.primaryColor; }

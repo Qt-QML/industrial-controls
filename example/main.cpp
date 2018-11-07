@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);
     engine.rootContext()->setContextProperty(QStringLiteral("themeConfigurator"),
                                              QVariant::fromValue(themeConfigurator));
-    engine.rootContext()->setContextProperty(QStringLiteral("theme"),
+    engine.rootContext()->setContextProperty(QStringLiteral("Theme"),
                                              QVariant::fromValue(themeConfigurator->theme()));
 
 

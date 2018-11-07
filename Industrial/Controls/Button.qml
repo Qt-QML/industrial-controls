@@ -4,13 +4,13 @@ import QtQuick.Templates 2.2 as T
 T.Button { // TODO: clickable
     id: control
 
-    property bool round: flat && theme.flatRound
+    property bool round: flat && Theme.flatRound
     property bool pressedImpl: false
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
     property bool shadow: !flat
-    property color color: control.flat ? "transparent" : theme.buttonColor
+    property color color: control.flat ? "transparent" : Theme.buttonColor
     property string tipText
 
     property alias iconSource: content.iconSource
@@ -24,23 +24,23 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     implicitWidth: Math.max(height, content.implicitWidth + control.padding * 2)
-    implicitHeight: theme.baseSize
+    implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: theme.padding
-    font.pixelSize: theme.mainFontSize
+    padding: Theme.padding
+    font.pixelSize: Theme.mainFontSize
 
     background: BackgroundItem {
         id: backgroundItem
         hovered: control.hovered
         flat: control.flat
-        radius: round ? Math.min(width, height) / 2 : theme.rounding
+        radius: round ? Math.min(width, height) / 2 : Theme.rounding
         leftCroppig: leftCropped ? radius : 0
         rightCroppig: rightCropped ? radius : 0
-        borderColor: control.activeFocus ? theme.highlightColor : "transparent"
+        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
         color: {
-            if (control.pressed || control.pressedImpl) return theme.highlightColor;
-            if (control.highlighted || control.checked) return theme.selectionColor;
+            if (control.pressed || control.pressedImpl) return Theme.highlightColor;
+            if (control.highlighted || control.checked) return Theme.selectionColor;
             return control.color;
         }
 
@@ -59,7 +59,7 @@ T.Button { // TODO: clickable
 
         Hatch {
             anchors.fill: parent
-            color: theme.surfaceColor
+            color: Theme.surfaceColor
             visible: control.hatched
         }
     }
@@ -71,9 +71,9 @@ T.Button { // TODO: clickable
         text: control.text
         font: control.font
         textColor: {
-            if (control.pressed || control.pressedImpl) return theme.onHighlightColor;
-            if (control.highlighted || control.checked) return theme.onSelectionColor;
-            return theme.onButtonColor;
+            if (control.pressed || control.pressedImpl) return Theme.onHighlightColor;
+            if (control.highlighted || control.checked) return Theme.onSelectionColor;
+            return Theme.onButtonColor;
         }
     }
 

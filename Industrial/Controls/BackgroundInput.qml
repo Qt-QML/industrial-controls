@@ -15,17 +15,17 @@ BackgroundItem {
     property alias highlighterColor: highlighter.color
 
     bottomCroppig: radius
-    implicitWidth: Math.max(theme.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Math.max(Theme.baseSize * 4, textItem.implicitWidth)
 
     TextMetrics {
         id: textMetrics
-        font.pixelSize: theme.auxFontSize
+        font.pixelSize: Theme.auxFontSize
         text: textItem.text
     }
 
     Hatch {
         anchors.fill: parent
-        color: theme.surfaceColor
+        color: Theme.surfaceColor
         visible: !enabled
     }
 
@@ -33,16 +33,16 @@ BackgroundItem {
         id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
-        height: theme.underline
+        height: Theme.underline
         visible: control.enabled
         color:      {
             if (highlighted) {
-                if (control.caution) return theme.neutralColor;
-                if (!control.isValid) return theme.negativeColor;
-                return theme.highlightColor;
+                if (control.caution) return Theme.neutralColor;
+                if (!control.isValid) return Theme.negativeColor;
+                return Theme.highlightColor;
             }
 
-            return theme.controlColor;
+            return Theme.controlColor;
         }
     }
 
@@ -53,15 +53,15 @@ BackgroundItem {
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? theme.auxFontSize : theme.mainFontSize
+        font.pixelSize: inputed ? Theme.auxFontSize : Theme.mainFontSize
         color: {
-            if (!control.enabled) return theme.disabledColor;
-            if (control.caution) return theme.neutralColor;
-            if (!control.isValid) return theme.negativeColor;
-            if (control.highlighted) return theme.highlightColor;
+            if (!control.enabled) return Theme.disabledColor;
+            if (control.caution) return Theme.neutralColor;
+            if (!control.isValid) return Theme.negativeColor;
+            if (control.highlighted) return Theme.highlightColor;
 
-            return theme.onContainerColor;
+            return Theme.onContainerColor;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: theme.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }
 }

@@ -5,13 +5,13 @@ T.ScrollBar {
     id: control
 
     interactive: false
-    implicitWidth: theme.baseSize / 6
-    implicitHeight: theme.baseSize / 6
+    implicitWidth: Theme.baseSize / 6
+    implicitHeight: Theme.baseSize / 6
 
     background: Item { }
 
     contentItem: Rectangle {
-        color: active && enabled ? theme.selectionColor : "transparent"
+        color: active && enabled ? Theme.selectionColor : "transparent"
         radius: width / 2
     }
 }
