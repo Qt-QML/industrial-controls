@@ -59,7 +59,7 @@ T.SpinBox {
             anchors.bottomMargin: background.underline * 1.5
             Binding on text { value: control.textFromValue(control.value, control.locale) }
             onTextEdited: control.value = control.valueFromText(text, control.locale)
-            maximumLength: control.to.toString().length
+            maximumLength: control.to.toString().length + 1
             color: control.enabled ? control.color : Theme.disabledColor
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
@@ -129,5 +129,17 @@ T.SpinBox {
                 return Theme.onButtonColor;
             }
         }
+    }
+
+    textFromValue: function(value, locale) {
+        return (value).toString()
+    }
+
+    valueFromText: function(text, locale) {
+        var val = parseInt(text);
+        if (val < from) return from;
+        if (val > to) return to;
+
+        return val;
     }
 }

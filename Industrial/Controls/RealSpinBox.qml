@@ -54,8 +54,6 @@ SpinBox {
             onTextEdited: caution = true
             onEditingFinished: validate()
             height: control.height
-            maximumLength: control.to.toString().length
-            overwriteMode: true
             color: control.enabled ? control.color : Theme.disabledColor
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
@@ -70,11 +68,11 @@ SpinBox {
     }
 
     textFromValue: function(value, locale) {
-        return Number(value * precision).toLocaleString(locale, 'f', Helper.decimals(precision))
+        return (value * precision).toFixed(Helper.decimals(precision)).replace(".", locale.decimalPoint)
     }
 
     valueFromText: function(text, locale) {
-        var val = Number.fromLocaleString(locale, text) / precision;
+        var val = parseFloat(text.replace(locale.decimalPoint, '.')) / precision;
         if (val < from) return from;
         if (val > to) return to;
 
