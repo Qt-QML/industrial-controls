@@ -7,6 +7,7 @@ BackgroundItem {
     property bool caution: false
     property bool isValid: true
     property bool highlighted: false
+    property int textPadding: Theme.padding
 
     property alias textHeight: textMetrics.height
     property alias underline: highlighter.height
@@ -49,7 +50,7 @@ BackgroundItem {
     Text {
         id: textItem
         anchors.left: parent.left
-        anchors.leftMargin: control.leftPadding
+        anchors.leftMargin: control.textPadding
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight

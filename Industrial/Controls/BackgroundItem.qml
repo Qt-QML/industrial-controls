@@ -5,7 +5,6 @@ Item {
 
     property bool hovered: false
     property bool flat: false
-    property int leftPadding: Theme.padding
     property int leftCroppig: 0
     property int rightCroppig: 0
     property int bottomCroppig: 0
