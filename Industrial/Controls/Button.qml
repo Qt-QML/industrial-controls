@@ -6,6 +6,8 @@ T.Button { // TODO: clickable
 
     property bool round: flat && Theme.flatRound
     property bool pressedImpl: false
+    property bool topCropped: false
+    property bool bottomCropped: false
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
@@ -35,8 +37,10 @@ T.Button { // TODO: clickable
         hovered: control.hovered
         flat: control.flat
         radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        leftCroppig: leftCropped ? radius : 0
-        rightCroppig: rightCropped ? radius : 0
+        topCropping: topCropped ? radius : 0
+        bottomCropping: bottomCropped ? radius : 0
+        leftCropping: leftCropped ? radius : 0
+        rightCropping: rightCropped ? radius : 0
         borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
         color: {
             if (control.pressed || control.pressedImpl) return Theme.highlightColor;

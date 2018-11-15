@@ -5,9 +5,10 @@ Item {
 
     property bool hovered: false
     property bool flat: false
-    property int leftCroppig: 0
-    property int rightCroppig: 0
-    property int bottomCroppig: 0
+    property int topCropping: 0
+    property int bottomCropping: 0
+    property int leftCropping: 0
+    property int rightCropping: 0
     readonly property int offset: radius + 1
     property color borderColor: "transparent"
 
@@ -21,9 +22,10 @@ Item {
         Rectangle {
             id: background
             anchors.fill: parent
-            anchors.leftMargin: -leftCroppig
-            anchors.rightMargin: -rightCroppig
-            anchors.bottomMargin: -bottomCroppig
+            anchors.topMargin: -topCropping
+            anchors.bottomMargin: -bottomCropping
+            anchors.leftMargin: -leftCropping
+            anchors.rightMargin: -rightCropping
             radius: Theme.rounding
             color: flat ? "transparent" : Theme.containerColor
             border.color: borderColor

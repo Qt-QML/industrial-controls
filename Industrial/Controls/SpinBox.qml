@@ -41,10 +41,7 @@ T.SpinBox {
 
     background: BackgroundInput {
         id: background
-        x: Theme.baseSize
-        width: control.width - Theme.baseSize * 2
-        height: control.height
-        radius: 0
+        anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
     }
@@ -70,10 +67,10 @@ T.SpinBox {
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
         width: Theme.baseSize
-        height: parent.height
+        height: parent.height - background.highlighterHeight
         radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        rightCroppig: radius
-        bottomCroppig: round ? 0 : radius
+        rightCropping: radius
+        bottomCropping: round ? 0 : radius
         color: down.pressed && enabled ? Theme.highlightColor : background.color
         hovered: down.hovered
 
@@ -98,10 +95,10 @@ T.SpinBox {
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: Theme.baseSize
-        height: parent.height
+        height: parent.height - background.highlighterHeight
         radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        leftCroppig: radius
-        bottomCroppig: round ? 0 : radius
+        leftCropping: radius
+        bottomCropping: round ? 0 : radius
         color: up.pressed && enabled ? Theme.highlightColor : background.color
         hovered: up.hovered
 

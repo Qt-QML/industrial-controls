@@ -97,9 +97,6 @@ T.Control {
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        anchors.leftMargin: down.width
-        anchors.rightMargin: up.width
-        radius: 0
         textColor: {
             if (highlighter.visible) return highlighter.color;
 
@@ -135,6 +132,7 @@ T.Control {
                 enabled: _focusedItem && _decreaseEnabled
                 hatched: !enabled
                 rightCropped: true
+                bottomCropped: true
                 iconSource: "qrc:/icons/minus.svg"
                 pressedImpl: _decreaseEnabled && _focusedItem && _focusedItem.down
                 onClicked: {
@@ -144,6 +142,7 @@ T.Control {
                     _focusedItem.decreaseValue();
                 }
                 Layout.fillHeight: true
+                Layout.bottomMargin: background.highlighterHeight
             }
 
             CoordSpinBoxInput {
@@ -215,6 +214,7 @@ T.Control {
                 enabled: _focusedItem && _increaseEnabled
                 hatched: !enabled
                 leftCropped: true
+                bottomCropped: true
                 iconSource: "qrc:/icons/plus.svg"
                 pressedImpl: _increaseEnabled && _focusedItem && _focusedItem.up
                 onClicked: {
@@ -224,6 +224,7 @@ T.Control {
                     _focusedItem.increaseValue();
                 }
                 Layout.fillHeight: true
+                Layout.bottomMargin: background.highlighterHeight
             }
         }
     }

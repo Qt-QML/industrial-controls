@@ -13,9 +13,10 @@ BackgroundItem {
     property alias underline: highlighter.height
     property alias text: textItem.text
     property alias textColor: textItem.color
+    property alias highlighterHeight: highlighter.height
     property alias highlighterColor: highlighter.color
 
-    bottomCroppig: radius
+    bottomCropping: radius
     implicitWidth: Math.max(Theme.baseSize * 4, textItem.implicitWidth)
 
     TextMetrics {
