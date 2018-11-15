@@ -27,7 +27,6 @@ ToolBar 1.0 ToolBar.qml
 ToolButton 1.0 ToolButton.qml
 Label 1.0 Label.qml
 Link 1.0 Link.qml
-MenuIndicator 1.0 MenuIndicator.qml
 Menu 1.0 Menu.qml
 MenuItem 1.0 MenuItem.qml
 ProgressBar 1.0 ProgressBar.qml

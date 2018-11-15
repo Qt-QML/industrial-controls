@@ -20,8 +20,6 @@ T.Button { // TODO: clickable
     property alias iconSize: content.iconSize
     property alias textColor: content.textColor
     property alias radius: backgroundItem.radius
-    property alias hasMenu: menuIndicator.visible
-    property alias menuOpened: menuIndicator.opened
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
@@ -51,14 +49,6 @@ T.Button { // TODO: clickable
         Shadow {
             visible: control.shadow && !control.flat
             source: parent
-        }
-
-        MenuIndicator {
-            id: menuIndicator
-            x: parent.width - width
-            y: parent.height - height
-            visible: false
-            focused: control.activeFocus
         }
 
         Hatch {

@@ -26,7 +26,6 @@
         <file>Industrial/Controls/ToolBar.qml</file>
         <file>Industrial/Controls/Label.qml</file>
         <file>Industrial/Controls/Link.qml</file>
-        <file>Industrial/Controls/MenuIndicator.qml</file>
         <file>Industrial/Controls/Menu.qml</file>
         <file>Industrial/Controls/MenuItem.qml</file>
         <file>Industrial/Controls/ProgressBar.qml</file>

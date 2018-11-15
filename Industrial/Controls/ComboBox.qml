@@ -27,12 +27,14 @@ T.ComboBox {
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
                      currentItem[control.textRole] : currentItem
 
-    indicator: MenuIndicator {
+
+    indicator: ColoredIcon {
         x: control.width - width
         y: control.height - height
-        isValid: control.isValid
-        focused: control.activeFocus
-        opened: control.down
+        width: Theme.baseSize / 2
+        height: width
+        source: "qrc:/icons/menu_arrow.svg"
+        color: background.highlighterColor
     }
 
     background: BackgroundInput {
