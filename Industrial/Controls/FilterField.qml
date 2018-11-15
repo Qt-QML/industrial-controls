@@ -8,7 +8,9 @@ TextField {
 
     Button {
         anchors.right: parent.right
-        height: parent.height + radius
+        height: parent.height - Theme.underline
+        leftCropped: true
+        bottomCropped: true
         iconSource: "qrc:/icons/erase.svg"
         tipText: qsTr("Clear filter")
         color: control.backgroundColor
