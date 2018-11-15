@@ -97,6 +97,7 @@ T.Control {
     background: BackgroundInput {
         id: background
         anchors.fill: parent
+        textPadding: Theme.baseSize + Theme.padding
         textColor: {
             if (highlighter.visible) return highlighter.color;
 

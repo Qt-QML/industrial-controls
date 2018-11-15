@@ -44,6 +44,7 @@ T.SpinBox {
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
+        textPadding: Theme.baseSize + Theme.padding
     }
 
     contentItem: Item {
