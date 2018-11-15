@@ -11,29 +11,22 @@ SpinBox {
     property real precision: 0.01
 
     function validate() {
-        control.value = control.valueFromText(input.text, control.locale);
+        value = valueFromText(input.text, locale);
         caution = false;
-        input.text = Qt.binding(function() { return control.textFromValue(control.value,
-                                                                          control.locale) });
+        input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
     }
 
     onRealValueChanged: value = Math.round(realValue / precision)
-    onValueModified: realValue = value * precision
+    onValueChanged: {
+        if (caution) validate();
+        realValue = value * precision;
+    }
+
     onActiveFocusChanged: validate()
 
     to: realTo / precision
     from: realFrom / precision
     isValid: !isNaN(realValue)
-
-    Connections {
-        target: up
-        onPressedChanged: if (up.pressed && caution) validate()
-    }
-
-    Connections {
-        target: down
-        onPressedChanged: if (down.pressed && caution) validate()
-    }
 
     validator: DoubleValidator {
         decimals: Helper.decimals(precision)
@@ -49,21 +42,15 @@ SpinBox {
         NumericInput {
             id: input
             anchors.fill: parent
-            anchors.bottomMargin: background.underline * 1.5
+            anchors.bottomMargin: background.underline * 1.5 // FIXME: to theme
+            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             Binding on text { value: control.textFromValue(control.value, control.locale) }
             onTextEdited: caution = true
             onEditingFinished: validate()
-            height: control.height
-            color: control.enabled ? control.color : Theme.disabledColor
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
-            clip: true
-            font: control.font
-            readOnly: !control.editable
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             validator: control.validator
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
         }
     }
 

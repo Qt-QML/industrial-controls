@@ -23,7 +23,7 @@ T.Button { // TODO: clickable
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
 
-    implicitWidth: Math.max(height, content.implicitWidth + control.padding * 2)
+    implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true

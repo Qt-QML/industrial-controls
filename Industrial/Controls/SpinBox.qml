@@ -57,19 +57,13 @@ T.SpinBox {
             id: input
             anchors.fill: parent
             anchors.bottomMargin: background.underline * 1.5
+            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             Binding on text { value: control.textFromValue(control.value, control.locale) }
             onTextEdited: control.value = control.valueFromText(text, control.locale)
             maximumLength: control.to.toString().length + 1
-            color: control.enabled ? control.color : Theme.disabledColor
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
-            clip: true
-            font: control.font
-            readOnly: !control.editable
-            inputMethodHints: Qt.ImhDigitsOnly
             validator: control.validator
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
         }
     }
 
@@ -91,7 +85,6 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - Theme.padding * 2
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return Theme.disabledColor;
@@ -120,7 +113,6 @@ T.SpinBox {
 
         ColoredIcon {
             anchors.centerIn: parent
-            width: parent.width - Theme.padding * 2
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return Theme.disabledColor;

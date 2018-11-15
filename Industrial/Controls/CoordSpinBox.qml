@@ -11,6 +11,7 @@ T.Control {
     property bool isValid: !isNaN(value)
     property bool caution: false
     property bool round: false
+    property bool editable: true
     property int secondsPrecision: 2
     property real value: 0
     property real from: 0
