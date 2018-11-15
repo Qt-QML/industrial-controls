@@ -160,10 +160,16 @@ void Theme::setUnderline(int underline)
     emit underlineChanged();
 }
 
-void Theme::setFill(int fill)
+void Theme::setIconSize(int iconSize)
 {
-    m_fill = fill;
-    emit fillChanged();
+    m_iconSize = iconSize;
+    emit iconSizeChanged();
+}
+
+void Theme::setFillSize(int fillSize)
+{
+    m_fillSize = fillSize;
+    emit fillSizeChanged();
 }
 
 void Theme::setHandleSize(int handleSize)

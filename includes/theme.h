@@ -38,7 +38,8 @@ class Theme: public QObject
     Q_PROPERTY(int padding MEMBER m_padding NOTIFY paddingChanged)
     Q_PROPERTY(int rounding MEMBER m_rounding NOTIFY roundingChanged)
     Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
-    Q_PROPERTY(int fill MEMBER m_fill NOTIFY fillChanged)
+    Q_PROPERTY(int iconSize MEMBER m_iconSize NOTIFY iconSizeChanged)
+    Q_PROPERTY(int fillSize MEMBER m_fillSize NOTIFY fillSizeChanged)
     Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
     Q_PROPERTY(int floatButton MEMBER m_floatButton NOTIFY floatButtonChanged)
     Q_PROPERTY(int shadowSize MEMBER m_shadowSize NOTIFY shadowSizeChanged)
@@ -83,7 +84,8 @@ public slots:
     void setPadding(int padding);
     void setRounding(int rounding);
     void setUnderline(int underline);
-    void setFill(int fill);
+    void setIconSize(int iconSize);
+    void setFillSize(int fillSize);
     void setHandleSize(int handleSize);
     void setFloatButton(int floatButton);
     void setShadowSize(int shadowSize);
@@ -125,7 +127,8 @@ signals:
     void paddingChanged();
     void roundingChanged();
     void underlineChanged();
-    void fillChanged();
+    void iconSizeChanged();
+    void fillSizeChanged();
     void handleSizeChanged();
     void floatButtonChanged();
     void shadowSizeChanged();
@@ -167,7 +170,8 @@ private:
     int m_padding;
     int m_rounding;
     int m_underline;
-    int m_fill;
+    int m_iconSize;
+    int m_fillSize;
     int m_handleSize;
     int m_floatButton;
     int m_shadowSize;

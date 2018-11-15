@@ -18,7 +18,7 @@ T.Slider {
         y: control.topPadding + control.availableHeight / 2 - height / 2
         implicitWidth: Theme.baseSize * 6
         width: control.availableWidth
-        height: Theme.fill
+        height: Theme.fillSize
         radius: height / 2
         color: Theme.containerColor
 

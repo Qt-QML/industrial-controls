@@ -4,7 +4,7 @@ Item {
     id: content
 
     property int spacing: Theme.spacing
-    property int iconSize: Theme.baseSize - Theme.padding * 2
+    property int iconSize: Theme.iconSize
 
     property color textColor: Theme.onSurfaceColor
     property color iconColor: textColor

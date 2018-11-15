@@ -36,6 +36,7 @@ namespace
     const float spacingFactor = 3.0;
     const float marginsFactor = 4.0;
     const float paddingFactor = 6.0;
+    const float iconFactor = 1.75;
     const float fillFactor = 8.0;
     const float handleSizeFactor = 1.5;
     const float floatSizeFactor = 0.75;
@@ -213,12 +214,13 @@ void ThemeConfigurator::rebuildColors()
 void ThemeConfigurator::rebuildSizes()
 {
     m_theme->setBaseSize(m_baseSize);
-    m_theme->setMainFontSize(m_baseSize / ::mainFontFactor);
-    m_theme->setAuxFontSize(m_baseSize / ::auxFontFactor);
-    m_theme->setSpacing(m_baseSize / ::spacingFactor);
-    m_theme->setMargins(m_baseSize / ::marginsFactor);
-    m_theme->setPadding(m_baseSize / ::paddingFactor);
-    m_theme->setFill(m_baseSize / ::fillFactor);
-    m_theme->setHandleSize(m_baseSize / ::handleSizeFactor);
-    m_theme->setFloatButton(m_baseSize / ::floatSizeFactor);
+    m_theme->setMainFontSize(static_cast<int>(m_baseSize / ::mainFontFactor));
+    m_theme->setAuxFontSize(static_cast<int>(m_baseSize / ::auxFontFactor));
+    m_theme->setSpacing(static_cast<int>(m_baseSize / ::spacingFactor));
+    m_theme->setMargins(static_cast<int>(m_baseSize / ::marginsFactor));
+    m_theme->setPadding(static_cast<int>(m_baseSize / ::paddingFactor));
+    m_theme->setIconSize(static_cast<int>(m_baseSize / ::iconFactor));
+    m_theme->setFillSize(static_cast<int>(m_baseSize / ::fillFactor));
+    m_theme->setHandleSize(static_cast<int>(m_baseSize / ::handleSizeFactor));
+    m_theme->setFloatButton(static_cast<int>(m_baseSize / ::floatSizeFactor));
 }
