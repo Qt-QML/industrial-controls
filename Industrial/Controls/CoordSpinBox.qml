@@ -191,7 +191,7 @@ T.Control {
                 id: suffixButton
                 implicitWidth: Theme.baseSize
                 flat: true
-                font: control.font
+                font.bold: true
                 focusPolicy: Qt.NoFocus
                 enabled: value != 0
                 hatched: !enabled && control.enabled

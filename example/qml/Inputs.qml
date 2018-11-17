@@ -17,13 +17,13 @@ Frame {
         Label {}
 
         Label {
-            text: qsTr("Enabled")
+            text: qsTr("Basic")
             font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
-            text: qsTr("Invalid")
+            text: qsTr("Flat")
             font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
@@ -43,8 +43,8 @@ Frame {
         }
 
         SpinBox {
-            labelText: qsTr("Invalid spinbox")
-            isValid: false
+            labelText: qsTr("Flat spinbox")
+            flat: true
             Layout.fillWidth: true
         }
 
@@ -64,8 +64,8 @@ Frame {
         }
 
         RealSpinBox {
-            labelText: qsTr("Invalid real spinbox")
-            isValid: false
+            labelText: qsTr("Flat real spinbox")
+            flat: true
             Layout.fillWidth: true
         }
 
@@ -85,9 +85,9 @@ Frame {
         }
 
         CoordSpinBox {
-            labelText: qsTr("Invalid coordinates")
+            labelText: qsTr("Flat coordinates")
             isLongitude: true
-            isValid: false
+            flat: true
             Layout.fillWidth: true
         }
 
