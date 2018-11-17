@@ -4,6 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.RadioButton {
     id: control
 
+    property alias flat: background.flat
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: Theme.mainFontSize
@@ -15,13 +16,14 @@ T.RadioButton {
     hoverEnabled: true
 
     indicator: BackgroundItem {
+        id: background
         x: control.leftPadding
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
         implicitWidth: Theme.baseSize
         implicitHeight: Theme.baseSize
         hovered: control.hovered
-        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
+        borderColor: control.flat ? Theme.controlColor : "transparent"
 
         Rectangle {
             anchors.fill: parent

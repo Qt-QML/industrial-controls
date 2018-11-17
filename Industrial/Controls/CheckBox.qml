@@ -7,6 +7,7 @@ T.CheckBox {
 
     property string tipText
 
+    property alias flat: background.flat
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: Theme.mainFontSize
@@ -19,12 +20,13 @@ T.CheckBox {
     hoverEnabled: true
 
     indicator: BackgroundItem {
+        id: background
         x: control.leftPadding
         y: parent.height / 2 - height / 2
         implicitWidth: Theme.baseSize
         implicitHeight: Theme.baseSize
         hovered: control.hovered
-        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
+        borderColor: control.flat ? Theme.controlColor : "transparent"
 
         ColoredIcon {
             anchors.fill: parent
