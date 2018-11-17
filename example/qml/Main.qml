@@ -24,6 +24,7 @@ ApplicationWindow {
         iconSource: "qrc:/icons/configure.svg"
         tipText: qsTr("Configure")
         flat: true
+        round: true
         color: configurationPopup.visible ? Theme.surfaceColor : "transparent"
         onClicked: configurationPopup.visible = !configurationPopup.visible
 

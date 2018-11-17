@@ -4,7 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.Button { // TODO: clickable
     id: control
 
-    property bool round: flat && Theme.flatRound
+    property bool round: false
     property bool pressedImpl: false
     property bool topCropped: false
     property bool bottomCropped: false

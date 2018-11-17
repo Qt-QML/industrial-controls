@@ -68,8 +68,6 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
 
     m_theme->setRounding(m_rounding);
 
-    m_theme->setFlatRound(true);
-
     this->rebuildColors();
     this->rebuildSizes();
 }
