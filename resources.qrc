@@ -25,5 +25,7 @@
         <file>icons/restore.svg</file>
         <file>icons/plugins.svg</file>
         <file>icons/swap.svg</file>
+        <file>icons/edit.svg</file>
+        <file>icons/plot.svg</file>
     </qresource>
 </RCC>
