@@ -46,7 +46,10 @@ SpinBox {
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             Binding on text { value: control.textFromValue(control.value, control.locale) }
             onTextEdited: caution = true
-            onEditingFinished: validate()
+            onEditingFinished: {
+                control.validate();
+                control.valueModified();
+            }
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
             inputMethodHints: Qt.ImhFormattedNumbersOnly

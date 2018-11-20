@@ -57,7 +57,10 @@ T.SpinBox {
             anchors.bottomMargin: background.underline * 1.5
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             Binding on text { value: control.textFromValue(control.value, control.locale) }
-            onTextEdited: control.value = control.valueFromText(text, control.locale)
+            onTextEdited: {
+                control.value = control.valueFromText(text, control.locale);
+                control.valueModified();
+            }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
