@@ -178,10 +178,16 @@ void Theme::setHandleSize(int handleSize)
     emit handleSizeChanged();
 }
 
-void Theme::setFloatButton(int floatButton)
+void Theme::setCheckmarkSize(int checkmarkSize)
 {
-    m_floatButton = floatButton;
-    emit floatButtonChanged();
+    m_checkmarkSize = checkmarkSize;
+    emit checkmarkSizeChanged();
+}
+
+void Theme::setFloatSize(int floatSize)
+{
+    m_floatSize = floatSize;
+    emit floatSizeChanged();
 }
 
 void Theme::setShadowSize(int shadowSize)

@@ -39,7 +39,8 @@ namespace
     const float iconFactor = 1.75;
     const float fillFactor = 8.0;
     const float handleSizeFactor = 1.5;
-    const float floatSizeFactor = 0.75;
+    const float checkmarkFactor = 1.25;
+    const float floatFactor = 0.75;
 
     const int animationTime = 100;
 }
@@ -220,5 +221,6 @@ void ThemeConfigurator::rebuildSizes()
     m_theme->setIconSize(static_cast<int>(m_baseSize / ::iconFactor));
     m_theme->setFillSize(static_cast<int>(m_baseSize / ::fillFactor));
     m_theme->setHandleSize(static_cast<int>(m_baseSize / ::handleSizeFactor));
-    m_theme->setFloatButton(static_cast<int>(m_baseSize / ::floatSizeFactor));
+    m_theme->setCheckmarkSize(static_cast<int>(m_baseSize / ::checkmarkFactor));
+    m_theme->setFloatSize(static_cast<int>(m_baseSize / ::floatFactor));
 }

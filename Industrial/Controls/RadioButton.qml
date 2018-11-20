@@ -20,8 +20,8 @@ T.RadioButton {
         x: control.leftPadding
         y: parent.height * 0.5 - height * 0.5
         radius: width * 0.5
-        implicitWidth: Theme.baseSize
-        implicitHeight: Theme.baseSize
+        implicitWidth: Theme.checkmarkSize
+        implicitHeight: Theme.checkmarkSize
         hovered: control.hovered
         borderColor: control.flat ? Theme.controlColor : "transparent"
 

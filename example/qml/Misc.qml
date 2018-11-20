@@ -12,12 +12,18 @@ Frame {
         anchors.margins: Theme.padding
         rowSpacing: Theme.spacing
         columnSpacing: Theme.spacing
-        columns: 3
+        columns: 4
 
         Label {}
 
         Label {
-            text: qsTr("Enabled")
+            text: qsTr("Basic")
+            font.pixelSize: Theme.auxFontSize
+            Layout.alignment: Qt.AlignHCenter
+        }
+
+        Label {
+            text: qsTr("Flat")
             font.pixelSize: Theme.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
@@ -37,6 +43,12 @@ Frame {
         }
 
         CheckBox {
+            text: qsTr("Flat checkbox")
+            flat: true
+            Layout.fillWidth: true
+        }
+
+        CheckBox {
             text: qsTr("Disabled checkbox")
             checked: _checkbox.checked
             enabled: false
@@ -47,12 +59,16 @@ Frame {
 
         RadioButton {
             text: qsTr("Basic radio button")
-            onActiveFocusChanged: if (!activeFocus) _radio.checked = true
             Layout.fillWidth: true
         }
 
         RadioButton {
-            id: _radio
+            text: qsTr("Flat radio button")
+            flat: true
+            Layout.fillWidth: true
+        }
+
+        RadioButton {
             text: qsTr("Disabled radio button")
             enabled: false
             checked: true

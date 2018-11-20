@@ -41,7 +41,8 @@ class Theme: public QObject
     Q_PROPERTY(int iconSize MEMBER m_iconSize NOTIFY iconSizeChanged)
     Q_PROPERTY(int fillSize MEMBER m_fillSize NOTIFY fillSizeChanged)
     Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
-    Q_PROPERTY(int floatButton MEMBER m_floatButton NOTIFY floatButtonChanged)
+    Q_PROPERTY(int checkmarkSize MEMBER m_checkmarkSize NOTIFY checkmarkSizeChanged)
+    Q_PROPERTY(int floatSize MEMBER m_floatSize NOTIFY floatSizeChanged)
     Q_PROPERTY(int shadowSize MEMBER m_shadowSize NOTIFY shadowSizeChanged)
 
     Q_PROPERTY(int mainFontSize MEMBER m_mainFontSize NOTIFY mainFontSizeChanged)
@@ -85,7 +86,8 @@ public slots:
     void setIconSize(int iconSize);
     void setFillSize(int fillSize);
     void setHandleSize(int handleSize);
-    void setFloatButton(int floatButton);
+    void setCheckmarkSize(int checkmarkSize);
+    void setFloatSize(int floatSize);
     void setShadowSize(int shadowSize);
 
     void setMainFontSize(int mainFontSize);
@@ -126,7 +128,8 @@ signals:
     void iconSizeChanged();
     void fillSizeChanged();
     void handleSizeChanged();
-    void floatButtonChanged();
+    void checkmarkSizeChanged();
+    void floatSizeChanged();
     void shadowSizeChanged();
 
     void mainFontSizeChanged();
@@ -167,7 +170,8 @@ private:
     int m_iconSize;
     int m_fillSize;
     int m_handleSize;
-    int m_floatButton;
+    int m_checkmarkSize;
+    int m_floatSize;
     int m_shadowSize;
 
     int m_mainFontSize;

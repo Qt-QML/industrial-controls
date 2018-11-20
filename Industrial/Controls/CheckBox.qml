@@ -23,8 +23,8 @@ T.CheckBox {
         id: background
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Theme.baseSize
-        implicitHeight: Theme.baseSize
+        implicitWidth: Theme.checkmarkSize
+        implicitHeight: Theme.checkmarkSize
         hovered: control.hovered
         borderColor: control.flat ? Theme.controlColor : "transparent"
 
