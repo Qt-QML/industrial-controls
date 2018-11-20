@@ -18,10 +18,11 @@
         <file>Industrial/Controls/TabButton.qml</file>
         <file>Industrial/Controls/TabBar.qml</file>
         <file>Industrial/Controls/BottomBar.qml</file>
+        <file>Industrial/Controls/CheckMarkBase.qml</file>
         <file>Industrial/Controls/CheckBox.qml</file>
+        <file>Industrial/Controls/RadioButton.qml</file>
         <file>Industrial/Controls/Handle.qml</file>
         <file>Industrial/Controls/Switch.qml</file>
-        <file>Industrial/Controls/RadioButton.qml</file>
         <file>Industrial/Controls/ToolButton.qml</file>
         <file>Industrial/Controls/ToolBar.qml</file>
         <file>Industrial/Controls/Label.qml</file>

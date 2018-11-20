@@ -84,6 +84,13 @@ Frame {
         }
 
         Switch {
+            text: qsTr("Flat switch")
+            flat: true
+            Layout.fillWidth: true
+        }
+
+
+        Switch {
             text: qsTr("Disabled switch")
             enabled: false
             checked: _switch.checked
@@ -93,10 +100,16 @@ Frame {
         Label { text: qsTr("Sliders"); font.pixelSize: Theme.auxFontSize }
 
         Slider {
-            text: qsTr("Slider")
             id: _slider
+            text: qsTr("Slider")
             to: 100
             value: 50
+            Layout.fillWidth: true
+        }
+
+        Slider {
+            text: qsTr("Flat slider")
+            flat: true
             Layout.fillWidth: true
         }
 

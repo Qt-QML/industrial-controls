@@ -7,7 +7,7 @@ T.CheckBox {
 
     property string tipText
 
-    property alias flat: background.flat
+    property alias flat: base.flat
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: Theme.mainFontSize
@@ -19,32 +19,20 @@ T.CheckBox {
     implicitHeight: contentItem.height
     hoverEnabled: true
 
-    indicator: BackgroundItem {
-        id: background
+    indicator: CheckMarkBase {
+        id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Theme.checkmarkSize
-        implicitHeight: Theme.checkmarkSize
+        down: control.down
         hovered: control.hovered
-        borderColor: control.flat ? Theme.controlColor : "transparent"
+        checked: control.checked
 
         ColoredIcon {
             anchors.fill: parent
             anchors.margins: parent.width * 0.1
             source: "qrc:/icons/ok.svg"
             visible: control.checked || control.down
-            color: {
-                if (!control.enabled) return Theme.disabledColor;
-                if (control.down) return Theme.highlightColor;
-
-                return Theme.onButtonColor;
-            }
-        }
-
-        Hatch {
-            anchors.fill: parent
-            color: Theme.surfaceColor
-            visible: !control.enabled
+            color: base.indicatorColor
         }
     }
 

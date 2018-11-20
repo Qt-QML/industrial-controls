@@ -203,7 +203,7 @@ void ThemeConfigurator::rebuildColors()
 
     m_theme->setTipColor(m_primaryColor.lighter(::tip));
     m_theme->setSelectionColor(m_primaryColor.lighter(::selection));
-    m_theme->setHighlightColor(m_primaryColor.lighter(::highlight));
+    m_theme->setHighlightColor(m_primaryColor.lighter(::highlight)); // highlight color darker
 
     m_theme->setOnTipColor(m_onBaseColor);
     m_theme->setOnSelectionColor(m_onBaseColor);
