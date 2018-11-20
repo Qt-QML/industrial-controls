@@ -5,9 +5,11 @@ T.Switch {
     id: control
 
     property bool inputChecked: checked
+    property bool flat: false
+    property string tipText
+
     property alias textColor: text.color
     property alias backgroundColor: backgroundItem.color
-    property string tipText
 
     implicitWidth: contentItem.implicitWidth
     implicitHeight: Theme.baseSize
@@ -25,7 +27,8 @@ T.Switch {
         implicitWidth: Theme.baseSize
         implicitHeight: Theme.fillSize
         radius: height / 2
-        color: control.checked ? Theme.selectionColor : Theme.containerColor
+        color: control.checked ? Theme.selectionColor : control.flat ? Theme.controlColor :
+                                                                       Theme.containerColor
 
         Hatch {
             anchors.fill: parent

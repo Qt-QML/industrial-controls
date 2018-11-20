@@ -20,8 +20,5 @@ Rectangle {
         visible: hovered
     }
 
-    Shadow {
-        source: parent
-        visible: enabled
-    }
+    Shadow { source: parent }
 }

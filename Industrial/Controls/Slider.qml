@@ -4,7 +4,9 @@ import QtQuick.Templates 2.2 as T
 T.Slider {
     id: control
 
+    property bool flat: false
     property real visualValue: from + position * (to - from)
+
     property alias text: textItem.text
 
     implicitWidth: Theme.baseSize * 6
@@ -20,7 +22,7 @@ T.Slider {
         width: control.availableWidth
         height: Theme.fillSize
         radius: height / 2
-        color: Theme.containerColor
+        color: flat ? Theme.controlColor : Theme.containerColor
 
         Rectangle {
             width: control.visualPosition * parent.width
