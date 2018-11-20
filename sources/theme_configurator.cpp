@@ -33,7 +33,7 @@ namespace
 
     const float mainFontFactor = 2.0;
     const float auxFontFactor = 2.5;
-    const float spacingFactor = 3.0;
+    const float spacingFactor = 4.0;
     const float marginsFactor = 4.0;
     const float paddingFactor = 6.0;
     const float iconFactor = 1.75;
