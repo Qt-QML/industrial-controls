@@ -20,10 +20,12 @@
         <file>icons/erase.svg</file>
         <file>icons/filter.svg</file>
         <file>icons/refresh.svg</file>
-        <file>icons/connect.svg</file>
-        <file>icons/disconnect.svg</file>
+        <file>icons/connected.svg</file>
+        <file>icons/disconnected.svg</file>
         <file>icons/restore.svg</file>
         <file>icons/plugins.svg</file>
         <file>icons/swap.svg</file>
+        <file>icons/edit.svg</file>
+        <file>icons/plot.svg</file>
     </qresource>
 </RCC>
