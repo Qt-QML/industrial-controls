@@ -24,6 +24,7 @@ Item {
         NumericInput {
             id: input
             height: root.height
+            overwriteMode: true
             selectionColor: highlighter.visible ? highlighter.color : Theme.controlColor
             selectedTextColor: highlighter.visible ? Theme.onSelectionColor : Theme.onContainerColor
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter

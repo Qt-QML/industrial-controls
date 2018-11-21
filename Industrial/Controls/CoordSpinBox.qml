@@ -197,6 +197,7 @@ T.Control {
                     updateControlsFromValue();
                 }
                 Layout.fillHeight: true
+                Layout.bottomMargin: background.highlighterHeight
             }
 
             Button {

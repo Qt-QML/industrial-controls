@@ -44,6 +44,7 @@ SpinBox {
             anchors.fill: parent
             anchors.bottomMargin: background.underline * 1.5 // FIXME: to theme
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+            overwriteMode: true
             Binding on text { value: control.textFromValue(control.value, control.locale) }
             onTextEdited: caution = true
             onEditingFinished: {
