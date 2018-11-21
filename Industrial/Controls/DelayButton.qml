@@ -66,7 +66,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: Theme.highlightColor
+                color: Theme.selectionColor
                 clip: true
             }
 

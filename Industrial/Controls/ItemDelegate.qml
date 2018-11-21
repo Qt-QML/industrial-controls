@@ -19,7 +19,7 @@ T.ItemDelegate {
         radius: 0
         hovered: control.hovered
         color: {
-            if (control.highlighted) return control.isValid ? Theme.highlightColor :
+            if (control.highlighted) return control.isValid ? Theme.selectionColor :
                                                               Theme.negativeColor;
             return Theme.containerColor;
         }
@@ -31,6 +31,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? Theme.onHighlightColor : Theme.onContainerColor
+        textColor: control.highlighted ? Theme.onSelectionColor : Theme.onContainerColor
     }
 }

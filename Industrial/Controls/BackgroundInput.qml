@@ -41,7 +41,7 @@ BackgroundItem {
             if (highlighted) {
                 if (control.caution) return Theme.neutralColor;
                 if (!control.isValid) return Theme.negativeColor;
-                return Theme.highlightColor;
+                return Theme.selectionColor;
             }
 
             return Theme.controlColor;

@@ -9,7 +9,6 @@ T.Control {
 
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
-    property bool caution: false
     property bool round: false
     property bool editable: true
     property int secondsPrecision: 2
@@ -21,6 +20,7 @@ T.Control {
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
 
+    property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
     property alias flat: background.flat
@@ -98,14 +98,8 @@ T.Control {
         id: background
         anchors.fill: parent
         textPadding: Theme.baseSize + Theme.padding
-        textColor: {
-            if (highlighter.visible) return highlighter.color;
-
-            if (!control.enabled) return Theme.disabledColor;
-            if (!control.isValid) return Theme.negativeColor
-
-            return Theme.onContainerColor;
-        }
+        isValid: control.isValid
+        highlighted: _focusedItem
     }
 
     contentItem: FocusScope {
@@ -241,7 +235,7 @@ T.Control {
             if (caution) return Theme.neutralColor;
             if (!isValid) return Theme.negativeColor;
 
-            return Theme.highlightColor;
+            return Theme.selectionColor;
         }
         Behavior on x { NumberAnimation { duration: 150 } }
     }

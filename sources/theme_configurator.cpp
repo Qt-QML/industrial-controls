@@ -9,7 +9,7 @@ namespace
     const QColor linkColor = "#51a0e7";
     const QColor baseColor = "#37474f";
     const QColor onBaseColor = "#fafafa";
-    const QColor primaryColor = "#18c19d";
+    const QColor primaryColor = "#009688";
     const QColor onPrimaryColor = "#161616";
 
     const QColor positiveColor = "#86c34a";
@@ -26,7 +26,7 @@ namespace
 
     const int tip = 80;
     const int selection = 100;
-    const int highlight = 120;
+    const int highlight = 140;
 
     const int underline = 2;
     const int shadowSize = 3;
