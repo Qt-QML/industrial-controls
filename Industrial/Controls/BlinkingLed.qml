@@ -10,10 +10,11 @@ Led {
     function blink() { timer.start(); }
 
     color: timer.running ? blinkColor : Theme.backgroundColor
+    glowRadius: timer.running ? root.width : Theme.shadowSize
 
     Timer {
         id: timer
-        interval: 100
+        interval: Theme.animationTime
     }
 }
 
