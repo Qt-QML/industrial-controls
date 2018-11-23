@@ -98,8 +98,8 @@ T.Control {
         id: background
         anchors.fill: parent
         textPadding: Theme.baseSize + Theme.padding
+        highlighterColor: Theme.controlColor
         isValid: control.isValid
-        highlighted: _focusedItem
     }
 
     contentItem: FocusScope {

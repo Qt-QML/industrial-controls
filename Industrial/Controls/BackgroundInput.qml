@@ -37,7 +37,7 @@ BackgroundItem {
         width: parent.width
         height: Theme.underline
         visible: control.enabled
-        color:      {
+        color: {
             if (highlighted) {
                 if (control.caution) return Theme.neutralColor;
                 if (!control.isValid) return Theme.negativeColor;
