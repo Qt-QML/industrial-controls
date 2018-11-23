@@ -8,6 +8,7 @@ Item {
 
     property bool up: false
     property bool down: false
+    property int _lastCursorPosition: -1
 
     property alias input: input
     property alias sign: signItem.text
@@ -49,6 +50,13 @@ Item {
             onEditingFinished: {
                 updateValueFromControls();
                 if (nextItem && activeFocus) nextItem.forceActiveFocus();
+            }
+            onCursorPositionChanged: {
+                if (cursorPosition == 2 && length == 5) {
+                    if (_lastCursorPosition == 1) cursorPosition = 3;
+                    else if (_lastCursorPosition == 3) cursorPosition = 1;
+                }
+                _lastCursorPosition = cursorPosition
             }
 
             Keys.onPressed: {
