@@ -7,7 +7,7 @@ T.DelayButton {
     property string tipText
     property bool flat: false
     property bool shadow: !flat
-    property bool round: flat
+    property bool round: false
 
     property alias iconSource: content.iconSource
     property alias textColor: content.textColor
