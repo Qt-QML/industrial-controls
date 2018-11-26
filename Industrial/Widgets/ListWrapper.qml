@@ -12,6 +12,10 @@ Item {
     property alias header: list.header
     property alias delegate: list.delegate
 
+    function toBeginning() { list.positionViewAtBeginning() }
+    function toIndex(index) { list.positionViewAtIndex(index) }
+    function toEnd() { list.positionViewAtEnd() }
+
     implicitWidth: list.contentWidth + Theme.shadowSize + 1
     implicitHeight: Math.max(list.contentHeight + Theme.shadowSize + 1, Theme.baseSize * 5)
     clip: true
