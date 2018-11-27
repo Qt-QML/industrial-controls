@@ -172,6 +172,12 @@ void Theme::setFillSize(int fillSize)
     emit fillSizeChanged();
 }
 
+void Theme::setScrollSize(int scrollSize)
+{
+    m_scrollSize = scrollSize;
+    emit scrollSizeChanged();
+}
+
 void Theme::setHandleSize(int handleSize)
 {
     m_handleSize = handleSize;

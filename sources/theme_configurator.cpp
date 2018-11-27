@@ -28,6 +28,7 @@ namespace
     const int selection = 100;
     const int highlight = 140;
 
+    const int scrollSize = 2;
     const int underline = 2;
     const int shadowSize = 3;
 
@@ -62,6 +63,7 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
     m_theme->setNeutralColorr(::neutralColor);
     m_theme->setNegativeColor(::negativeColor);
 
+    m_theme->setScrollSize(::scrollSize);
     m_theme->setUnderline(::underline);
     m_theme->setShadowSize(::shadowSize);
 

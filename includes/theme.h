@@ -40,6 +40,7 @@ class Theme: public QObject
     Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
     Q_PROPERTY(int iconSize MEMBER m_iconSize NOTIFY iconSizeChanged)
     Q_PROPERTY(int fillSize MEMBER m_fillSize NOTIFY fillSizeChanged)
+    Q_PROPERTY(int scrollSize MEMBER m_scrollSize NOTIFY scrollSizeChanged)
     Q_PROPERTY(int handleSize MEMBER m_handleSize NOTIFY handleSizeChanged)
     Q_PROPERTY(int checkmarkSize MEMBER m_checkmarkSize NOTIFY checkmarkSizeChanged)
     Q_PROPERTY(int floatSize MEMBER m_floatSize NOTIFY floatSizeChanged)
@@ -85,6 +86,7 @@ public slots:
     void setUnderline(int underline);
     void setIconSize(int iconSize);
     void setFillSize(int fillSize);
+    void setScrollSize(int scrollSize);
     void setHandleSize(int handleSize);
     void setCheckmarkSize(int checkmarkSize);
     void setFloatSize(int floatSize);
@@ -127,6 +129,7 @@ signals:
     void underlineChanged();
     void iconSizeChanged();
     void fillSizeChanged();
+    void scrollSizeChanged();
     void handleSizeChanged();
     void checkmarkSizeChanged();
     void floatSizeChanged();
@@ -169,6 +172,7 @@ private:
     int m_underline;
     int m_iconSize;
     int m_fillSize;
+    int m_scrollSize;
     int m_handleSize;
     int m_checkmarkSize;
     int m_floatSize;
