@@ -36,6 +36,7 @@
         <file>Industrial/Controls/ComboBox.qml</file>
         <file>Industrial/Controls/TextField.qml</file>
         <file>Industrial/Controls/FilterField.qml</file>
+        <file>Industrial/Controls/AddressField.qml</file>
         <file>Industrial/Controls/ItemDelegate.qml</file>
         <file>Industrial/Controls/Popup.qml</file>
         <file>Industrial/Controls/Card.qml</file>
