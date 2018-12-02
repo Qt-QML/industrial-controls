@@ -11,13 +11,13 @@
         <file>icons/ok.svg</file>
         <file>icons/plus.svg</file>
         <file>icons/minus.svg</file>
-        <file>icons/remove.svg</file>
+        <file>icons/close.svg</file>
         <file>icons/up.svg</file>
         <file>icons/down.svg</file>
         <file>icons/left.svg</file>
         <file>icons/right.svg</file>
         <file>icons/cancel.svg</file>
-        <file>icons/trash.svg</file>
+        <file>icons/remove.svg</file>
         <file>icons/erase.svg</file>
         <file>icons/filter.svg</file>
         <file>icons/find.svg</file>
