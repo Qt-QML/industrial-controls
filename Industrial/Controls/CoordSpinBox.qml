@@ -118,7 +118,7 @@ T.Control {
             spacing: 0
 
             Button {
-                id: down
+                id: downButton
                 flat: true
                 round: control.round
                 color: background.color
@@ -201,7 +201,7 @@ T.Control {
             }
 
             Button {
-                id: up
+                id: upButton
                 color: background.color
                 flat: true
                 round: control.round

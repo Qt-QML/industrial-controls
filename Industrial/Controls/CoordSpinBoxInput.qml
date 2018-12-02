@@ -18,6 +18,13 @@ Item {
 
     implicitHeight: input.contentHeight
 
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: Qt.IBeamCursor
+        onClicked: input.forceActiveFocus();
+    }
+
     Row {
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -background.underline * 1.5
