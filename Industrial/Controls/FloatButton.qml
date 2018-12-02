@@ -6,5 +6,4 @@ Button {
     implicitWidth: Theme.floatSize
     implicitHeight: implicitWidth
     round: true
-    highlighted: true
 }

@@ -28,6 +28,7 @@ Item {
         id: icon
         anchors.centerIn: parent
         anchors.horizontalCenterOffset: label.visible ? Theme.padding - label.width / 2 : 0
+        width: Theme.iconSize
         color: enabled ? iconColor : Theme.disabledColor
         visible: iconSource != ""
     }
