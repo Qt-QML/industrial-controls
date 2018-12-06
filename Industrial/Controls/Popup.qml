@@ -7,6 +7,7 @@ T.Popup {
     property color backgroundColor: Theme.surfaceColor
 
     padding: Theme.padding
+    clip: false
 
     background:  Rectangle {
         color: backgroundColor
