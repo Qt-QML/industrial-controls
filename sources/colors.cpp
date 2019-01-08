@@ -123,3 +123,9 @@ void Colors::setNegative(const QColor& negative)
     m_negative = negative;
     emit negativeChanged();
 }
+
+void Colors::setShadow(const QColor& shadow)
+{
+    m_shadow = shadow;
+    emit shadowChanged();
+}

@@ -32,6 +32,8 @@ class Colors: public QObject
     Q_PROPERTY(QColor neutral MEMBER m_neutral NOTIFY neutralChanged)
     Q_PROPERTY(QColor negative MEMBER m_negative NOTIFY negativeChanged)
 
+    Q_PROPERTY(QColor shadow MEMBER m_shadow NOTIFY shadowChanged)
+
 public:
     explicit Colors(QObject* parent = nullptr);
 
@@ -59,6 +61,8 @@ public slots:
     void setNeutral(const QColor& neutral);
     void setNegative(const QColor& negative);
 
+    void setShadow(const QColor& shadow);
+
 signals:
     void backgroundChanged();
     void onBackgroundChanged();
@@ -83,6 +87,8 @@ signals:
     void neutralChanged();
     void negativeChanged();
 
+    void shadowChanged();
+
 private:
     QColor m_background;
     QColor m_onBackground;
@@ -106,6 +112,8 @@ private:
     QColor m_positive;
     QColor m_neutral;
     QColor m_negative;
+
+    QColor m_shadow;
 };
 
 #endif // COLORS_H
