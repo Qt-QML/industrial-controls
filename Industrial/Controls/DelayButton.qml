@@ -27,10 +27,10 @@ T.DelayButton {
     background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        borderColor: control.activeFocus ? industrial.highlightColor : "transparent"
+        borderColor: control.activeFocus ? industrial.colors.highlight : "transparent"
         hovered: control.hovered
         radius: round ? Math.min(width, height) / 2 : industrial.rounding
-        color: control.flat ? "transparent" : industrial.buttonColor
+        color: control.flat ? "transparent" : industrial.colors.button
 
         Shadow {
             visible: control.shadow && !control.flat
@@ -39,7 +39,7 @@ T.DelayButton {
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: !enabled
         }
     }
@@ -54,7 +54,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: industrial.onButtonColor
+            textColor: industrial.colors.onButton
         }
 
         Item {
@@ -66,7 +66,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: industrial.selectionColor
+                color: industrial.colors.selection
                 clip: true
             }
 
@@ -83,7 +83,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: industrial.onSelectionColor
+                    textColor: industrial.colors.onSelection
                 }
             }
         }

@@ -12,9 +12,9 @@ T.Button { // TODO: clickable
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
     property bool shadow: !flat
-    property color color: control.flat ? "transparent" : industrial.buttonColor
-    property color highlightColor: industrial.highlightColor
-    property color selectionColor: industrial.selectionColor
+    property color color: control.flat ? "transparent" : industrial.colors.button
+    property color highlightColor: industrial.colors.highlight
+    property color selectionColor: industrial.colors.selection
     property string tipText
 
     property alias iconSource: content.iconSource
@@ -41,7 +41,7 @@ T.Button { // TODO: clickable
         bottomCropping: bottomCropped ? radius : 0
         leftCropping: leftCropped ? radius : 0
         rightCropping: rightCropped ? radius : 0
-        borderColor: control.activeFocus ? industrial.highlightColor : "transparent"
+        borderColor: control.activeFocus ? industrial.colors.highlight : "transparent"
         color: {
             if (control.pressed || control.pressedImpl) return control.highlightColor;
             if (control.highlighted || control.checked) return control.selectionColor;
@@ -55,7 +55,7 @@ T.Button { // TODO: clickable
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: control.hatched
         }
     }
@@ -67,9 +67,9 @@ T.Button { // TODO: clickable
         text: control.text
         font: control.font
         textColor: {
-            if (control.pressed || control.pressedImpl) return industrial.onHighlightColor;
-            if (control.highlighted || control.checked) return industrial.onSelectionColor;
-            return industrial.onButtonColor;
+            if (control.pressed || control.pressedImpl) return industrial.colors.onHighlight;
+            if (control.highlighted || control.checked) return industrial.colors.onSelection;
+            return industrial.colors.onButton;
         }
     }
 

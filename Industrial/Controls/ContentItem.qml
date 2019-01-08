@@ -5,7 +5,7 @@ Item {
 
     property int spacing: industrial.spacing
 
-    property color textColor: industrial.onSurfaceColor
+    property color textColor: industrial.colors.onSurface
     property color iconColor: textColor
 
     property alias iconSize: icon.width
@@ -29,7 +29,7 @@ Item {
         anchors.centerIn: parent
         anchors.horizontalCenterOffset: label.visible ? industrial.padding - label.width / 2 : 0
         width: industrial.iconSize
-        color: enabled ? iconColor : industrial.disabledColor
+        color: enabled ? iconColor : industrial.colors.disabled
         visible: iconSource != ""
     }
 
@@ -40,7 +40,7 @@ Item {
         height: content.height
         elide: Text.ElideRight
         font.pixelSize: industrial.mainFontSize
-        color: enabled ? textColor : industrial.disabledColor
+        color: enabled ? textColor : industrial.colors.disabled
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0

@@ -70,7 +70,7 @@ T.ComboBox {
         text: displayText
         iconSource: displayIcon
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-        textColor: control.enabled ? industrial.onContainerColor : industrial.disabledColor
+        textColor: control.enabled ? industrial.colors.onContainer : industrial.colors.disabled
     }
 
     popup: Popup {

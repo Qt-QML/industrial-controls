@@ -9,7 +9,7 @@ T.Drawer {
     dragMargin: 0
 
     background: Rectangle {
-        color: industrial.containerColor
+        color: industrial.colors.container
 
         Shadow {
             source: parent

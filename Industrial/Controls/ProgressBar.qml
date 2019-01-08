@@ -20,13 +20,13 @@ T.ProgressBar {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
             radius: control.round ? Math.min(width, height) / 2 : industrial.rounding
-            color: industrial.selectionColor
+            color: industrial.colors.selection
         }
     }
 
     Hatch {
         anchors.fill: parent
-        color: industrial.surfaceColor
+        color: industrial.colors.surface
         visible: !enabled
         z: 10
     }

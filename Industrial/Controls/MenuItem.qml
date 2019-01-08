@@ -19,7 +19,7 @@ T.MenuItem {
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
-        color: control.pressed ? industrial.highlightColor : "transparent"
+        color: control.pressed ? industrial.colors.highlight : "transparent"
     }
 
     indicator: ColoredIcon {
@@ -43,9 +43,9 @@ T.MenuItem {
         font: control.font
         text: control.text
         color: {
-            if (!enabled) return industrial.disabledColor;
-            if (control.pressed) return industrial.onHighlightColor;
-            return industrial.onContainerColor;
+            if (!enabled) return industrial.colors.disabled;
+            if (control.pressed) return industrial.colors.onHighlight;
+            return industrial.colors.onContainer;
         }
     }
 }

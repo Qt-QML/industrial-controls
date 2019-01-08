@@ -57,11 +57,11 @@ ThemeConfigurator::ThemeConfigurator(QObject* parent):
     m_rounding(4),
     m_baseSize(32)
 {
-    m_theme->setLinkColor(::linkColor);
+    m_theme->colors()->setLink(::linkColor);
 
-    m_theme->setPositiveColor(::positiveColor);
-    m_theme->setNeutralColorr(::neutralColor);
-    m_theme->setNegativeColor(::negativeColor);
+    m_theme->colors()->setPositive(::positiveColor);
+    m_theme->colors()->setNeutral(::neutralColor);
+    m_theme->colors()->setNegative(::negativeColor);
 
     m_theme->setScrollSize(::scrollSize);
     m_theme->setUnderline(::underline);
@@ -189,27 +189,28 @@ void ThemeConfigurator::rebuildColors()
 {
     QColor base = m_baseColor.lighter(m_lightness);
 
-    m_theme->setBackgroundColor(base.lighter(::background));
-    m_theme->setSurfaceColor(base.lighter(::surface));
-    m_theme->setContainerColor(base.lighter(::container));
-    m_theme->setButtonColor(base.lighter(::button));
+    // FIXME: getter
+    m_theme->colors()->setBackground(base.lighter(::background));
+    m_theme->colors()->setSurface(base.lighter(::surface));
+    m_theme->colors()->setContainer(base.lighter(::container));
+    m_theme->colors()->setButton(base.lighter(::button));
 
-    m_theme->setDisabledColor(base.lighter(::disabled));
-    m_theme->setControlColor(base.lighter(::control));
+    m_theme->colors()->setDisabled(base.lighter(::disabled));
+    m_theme->colors()->setControl(base.lighter(::control));
 
     QColor onBase = m_onBaseColor.lighter(m_lightness + 40);
-    m_theme->setOnBackgroundColor(onBase);
-    m_theme->setOnSurfaceColor(onBase);
-    m_theme->setOnContainerColor(onBase);
-    m_theme->setOnButtonColor(onBase);
+    m_theme->colors()->setOnBackground(onBase);
+    m_theme->colors()->setOnSurface(onBase);
+    m_theme->colors()->setOnContainer(onBase);
+    m_theme->colors()->setOnButton(onBase);
 
-    m_theme->setTipColor(m_primaryColor.lighter(::tip));
-    m_theme->setSelectionColor(m_primaryColor.lighter(::selection));
-    m_theme->setHighlightColor(m_primaryColor.lighter(::highlight)); // highlight color darker
+    m_theme->colors()->setTip(m_primaryColor.lighter(::tip));
+    m_theme->colors()->setSelection(m_primaryColor.lighter(::selection));
+    m_theme->colors()->setHighlight(m_primaryColor.lighter(::highlight)); // highlight color darker
 
-    m_theme->setOnTipColor(m_onBaseColor);
-    m_theme->setOnSelectionColor(m_onBaseColor);
-    m_theme->setOnHighlightColor(m_onPrimaryColor);
+    m_theme->colors()->setOnTip(m_onBaseColor);
+    m_theme->colors()->setOnSelection(m_onBaseColor);
+    m_theme->colors()->setOnHighlight(m_onPrimaryColor);
 }
 
 void ThemeConfigurator::rebuildSizes()

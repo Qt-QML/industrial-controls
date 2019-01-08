@@ -27,7 +27,7 @@ BackgroundItem {
 
     Hatch {
         anchors.fill: parent
-        color: industrial.surfaceColor
+        color: industrial.colors.surface
         visible: !enabled
     }
 
@@ -39,12 +39,12 @@ BackgroundItem {
         visible: control.enabled
         color: {
             if (highlighted) {
-                if (control.caution) return industrial.neutralColor;
-                if (!control.isValid) return industrial.negativeColor;
-                return industrial.selectionColor;
+                if (control.caution) return industrial.colors.neutral;
+                if (!control.isValid) return industrial.colors.negative;
+                return industrial.colors.selection;
             }
 
-            return industrial.controlColor;
+            return industrial.colors.control;
         }
     }
 
@@ -57,12 +57,12 @@ BackgroundItem {
         height: implicitHeight
         font.pixelSize: inputed ? industrial.auxFontSize : industrial.mainFontSize
         color: {
-            if (!control.enabled) return industrial.disabledColor;
-            if (control.caution) return industrial.neutralColor;
-            if (!control.isValid) return industrial.negativeColor;
-            if (control.highlighted) return industrial.highlightColor;
+            if (!control.enabled) return industrial.colors.disabled;
+            if (control.caution) return industrial.colors.neutral;
+            if (!control.isValid) return industrial.colors.negative;
+            if (control.highlighted) return industrial.colors.highlight;
 
-            return industrial.onContainerColor;
+            return industrial.colors.onContainer;
         }
         Behavior on font.pixelSize { PropertyAnimation { duration: industrial.animationTime } }
     }

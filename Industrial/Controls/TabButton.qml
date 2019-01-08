@@ -22,15 +22,15 @@ T.TabButton {
     background: BackgroundItem {
         id: backgroundItem
         bottomCropping: radius
-        borderColor: control.activeFocus ? industrial.highlightColor : "transparent"
+        borderColor: control.activeFocus ? industrial.colors.highlight : "transparent"
         hovered: control.hovered
-        color: control.checked ? industrial.surfaceColor : "transparent"
+        color: control.checked ? industrial.colors.surface : "transparent"
     }
 
     contentItem: ContentItem {
         id: content
         text: control.text
         font: control.font
-        textColor: industrial.onContainerColor
+        textColor: industrial.colors.onContainer
     }
 }

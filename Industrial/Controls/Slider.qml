@@ -22,18 +22,18 @@ T.Slider {
         width: control.availableWidth
         height: industrial.fillSize
         radius: height / 2
-        color: flat ? industrial.controlColor : industrial.containerColor
+        color: flat ? industrial.colors.control : industrial.colors.container
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: industrial.selectionColor
+            color: industrial.colors.selection
             radius: height / 2
         }
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: !enabled
         }
     }
@@ -48,7 +48,7 @@ T.Slider {
             width: parent.width * 2
             height: width
             radius: width / 2
-            color: industrial.highlightColor
+            color: industrial.colors.highlight
             opacity: 0.5
             visible: control.pressed
         }
@@ -61,10 +61,10 @@ T.Slider {
         visible: text.length
         font.pixelSize: industrial.auxFontSize
         color: {
-            if (!control.enabled) return industrial.disabledColor;
-            if (control.activeFocus) return industrial.selectionColor;
+            if (!control.enabled) return industrial.colors.disabled;
+            if (control.activeFocus) return industrial.colors.selection;
 
-            return industrial.onSurfaceColor;
+            return industrial.colors.onSurface;
         }
         Behavior on font.pixelSize { PropertyAnimation { duration: industrial.animationTime } }
     }

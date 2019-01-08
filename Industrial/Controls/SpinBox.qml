@@ -5,7 +5,7 @@ T.SpinBox {
     id: control
 
     property bool isValid: value >= from && value <= to
-    property color color: industrial.onContainerColor
+    property color color: industrial.colors.onContainer
     property bool round: false
 
     property alias caution: background.caution
@@ -63,7 +63,7 @@ T.SpinBox {
             }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? industrial.onSelectionColor : industrial.onContainerColor
+            selectedTextColor: control.activeFocus ? industrial.colors.onSelection : industrial.colors.onContainer
             validator: control.validator
         }
     }
@@ -75,12 +75,12 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : industrial.rounding
         rightCropping: radius
         bottomCropping: round ? 0 : radius
-        color: down.pressed && enabled ? industrial.highlightColor : background.color
+        color: down.pressed && enabled ? industrial.colors.highlight : background.color
         hovered: down.hovered
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: !enabled
         }
 
@@ -88,10 +88,10 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
-                if (!enabled) return industrial.disabledColor;
-                if (down.pressed) return industrial.onHighlightColor;
+                if (!enabled) return industrial.colors.disabled;
+                if (down.pressed) return industrial.colors.onHighlight;
 
-                return industrial.onButtonColor;
+                return industrial.colors.onButton;
             }
         }
     }
@@ -103,12 +103,12 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : industrial.rounding
         leftCropping: radius
         bottomCropping: round ? 0 : radius
-        color: up.pressed && enabled ? industrial.highlightColor : background.color
+        color: up.pressed && enabled ? industrial.colors.highlight : background.color
         hovered: up.hovered
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: !enabled
         }
 
@@ -116,10 +116,10 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
-                if (!enabled) return industrial.disabledColor;
-                if (up.pressed) return industrial.onHighlightColor;
+                if (!enabled) return industrial.colors.disabled;
+                if (up.pressed) return industrial.colors.onHighlight;
 
-                return industrial.onButtonColor;
+                return industrial.colors.onButton;
             }
         }
     }

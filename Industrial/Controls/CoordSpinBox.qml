@@ -15,7 +15,7 @@ T.Control {
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
-    property color color: industrial.onContainerColor
+    property color color: industrial.colors.onContainer
 
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
@@ -98,7 +98,7 @@ T.Control {
         id: background
         anchors.fill: parent
         textPadding: industrial.baseSize + industrial.padding
-        highlighterColor: industrial.controlColor
+        highlighterColor: industrial.colors.control
         isValid: control.isValid
     }
 
@@ -233,10 +233,10 @@ T.Control {
         visible: _focusedItem
         height: industrial.underline
         color: {
-            if (caution) return industrial.neutralColor;
-            if (!isValid) return industrial.negativeColor;
+            if (caution) return industrial.colors.neutral;
+            if (!isValid) return industrial.colors.negative;
 
-            return industrial.selectionColor;
+            return industrial.colors.selection;
         }
         Behavior on x { NumberAnimation { duration: 150 } }
     }

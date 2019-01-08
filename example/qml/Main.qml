@@ -25,7 +25,7 @@ ApplicationWindow {
         tipText: qsTr("Configure")
         flat: true
         round: true
-        color: configurationPopup.visible ? industrial.surfaceColor : "transparent"
+        color: configurationPopup.visible ? industrial.colors.surface : "transparent"
         onClicked: configurationPopup.visible = !configurationPopup.visible
 
         Configuration {

@@ -13,9 +13,9 @@ T.TextField {
     implicitHeight: Math.max(background.textHeight + contentHeight + background.underline,
                              industrial.baseSize)
     font.pixelSize: industrial.mainFontSize
-    color: control.enabled ? industrial.onContainerColor : industrial.disabledColor
+    color: control.enabled ? industrial.colors.onContainer : industrial.colors.disabled
     selectionColor: background.highlighterColor
-    selectedTextColor: industrial.onSelectionColor
+    selectedTextColor: industrial.colors.onSelection
     selectByMouse: true
     leftPadding: industrial.padding
     bottomPadding: background.offset
@@ -36,7 +36,7 @@ T.TextField {
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
         font.pixelSize: industrial.mainFontSize
-        color: industrial.onContainerColor
+        color: industrial.colors.onContainer
         opacity: 0.5
     }
 }

@@ -27,12 +27,12 @@ Item {
             anchors.leftMargin: -leftCropping
             anchors.rightMargin: -rightCropping
             radius: industrial.rounding
-            color: flat ? "transparent" : industrial.containerColor
+            color: flat ? "transparent" : industrial.colors.container
             border.color: borderColor
 
             Rectangle {
                 anchors.fill: parent
-                color: industrial.onButtonColor
+                color: industrial.colors.onButton
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

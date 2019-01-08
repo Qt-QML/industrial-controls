@@ -4,5 +4,5 @@ import QtQuick.Controls 2.2 as Controls
 Controls.ApplicationWindow {
     id: window
 
-    color: industrial.backgroundColor
+    color: industrial.colors.background
 }

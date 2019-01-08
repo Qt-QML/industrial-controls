@@ -34,7 +34,7 @@ T.RadioButton {
 
         Hatch {
             anchors.fill: parent
-            color: industrial.surfaceColor
+            color: industrial.colors.surface
             visible: !control.enabled
         }
     }

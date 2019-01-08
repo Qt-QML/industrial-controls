@@ -8,7 +8,7 @@ T.Menu {
     background: Rectangle {
         implicitWidth: industrial.baseSize * 6
         implicitHeight: industrial.baseSize
-        color: industrial.containerColor
+        color: industrial.colors.container
 
         Shadow {
             visible: !control.flat

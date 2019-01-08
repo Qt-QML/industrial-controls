@@ -5,7 +5,7 @@ import Industrial.Controls 1.0 as Controls
 Item {
     id: root
 
-    property color backgroundColor: industrial.surfaceColor
+    property color backgroundColor: industrial.colors.surface
     property string emptyText: qsTr("No items")
 
     property alias model: list.model

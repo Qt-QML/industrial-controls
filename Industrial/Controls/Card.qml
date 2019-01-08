@@ -14,7 +14,7 @@ Item {
     Rectangle {
         id: background
         anchors.fill: control
-        color: industrial.surfaceColor
+        color: industrial.colors.surface
         radius: industrial.rounding
         z: -1
 
@@ -51,9 +51,9 @@ Item {
 
         source: "qrc:/icons/menu_arrow.svg"
         color: {
-            if (area.pressed) return industrial.selectionColor;
-            if (area.containsMouse) return industrial.highlightColor;
-            return industrial.buttonColor
+            if (area.pressed) return industrial.colors.selection;
+            if (area.containsMouse) return industrial.colors.highlight;
+            return industrial.colors.button
         }
 
         MouseArea {
