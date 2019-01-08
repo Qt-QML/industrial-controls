@@ -10,18 +10,18 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    implicitHeight: Theme.baseSize
-    padding: Theme.padding
-    font.pixelSize: Theme.mainFontSize
+    implicitHeight: industrial.baseSize
+    padding: industrial.padding
+    font.pixelSize: industrial.mainFontSize
     hoverEnabled: true
 
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
         color: {
-            if (control.highlighted) return control.isValid ? Theme.selectionColor :
-                                                              Theme.negativeColor;
-            return Theme.containerColor;
+            if (control.highlighted) return control.isValid ? industrial.selectionColor :
+                                                              industrial.negativeColor;
+            return industrial.containerColor;
         }
     }
 
@@ -31,6 +31,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? Theme.onSelectionColor : Theme.onContainerColor
+        textColor: control.highlighted ? industrial.onSelectionColor : industrial.onContainerColor
     }
 }

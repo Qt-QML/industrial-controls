@@ -3,10 +3,10 @@ import QtQuick 2.6
 ShaderEffect {
     id: shader
 
-    property color color: Theme.negativeColor
+    property color color: industrial.negativeColor
     property real ratio: width / height
-    property real xFactor: Theme.baseSize
-    property real yFactor: Theme.baseSize * ratio
+    property real xFactor: industrial.baseSize
+    property real yFactor: industrial.baseSize * ratio
 
     fragmentShader:"
     varying highp vec2 qt_TexCoord0;

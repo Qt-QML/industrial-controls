@@ -11,13 +11,13 @@ T.TextField {
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + contentHeight + background.underline,
-                             Theme.baseSize)
-    font.pixelSize: Theme.mainFontSize
-    color: control.enabled ? Theme.onContainerColor : Theme.disabledColor
+                             industrial.baseSize)
+    font.pixelSize: industrial.mainFontSize
+    color: control.enabled ? industrial.onContainerColor : industrial.disabledColor
     selectionColor: background.highlighterColor
-    selectedTextColor: Theme.onSelectionColor
+    selectedTextColor: industrial.onSelectionColor
     selectByMouse: true
-    leftPadding: Theme.padding
+    leftPadding: industrial.padding
     bottomPadding: background.offset
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
@@ -35,8 +35,8 @@ T.TextField {
         anchors.centerIn: parent
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
-        font.pixelSize: Theme.mainFontSize
-        color: Theme.onContainerColor
+        font.pixelSize: industrial.mainFontSize
+        color: industrial.onContainerColor
         opacity: 0.5
     }
 }

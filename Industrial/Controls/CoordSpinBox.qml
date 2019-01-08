@@ -15,7 +15,7 @@ T.Control {
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
-    property color color: Theme.onContainerColor
+    property color color: industrial.onContainerColor
 
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
@@ -91,14 +91,14 @@ T.Control {
     implicitWidth: Math.max(background.implicitWidth, row.height)
     implicitHeight: Math.max(background.textHeight +
                              Math.max(dInput.implicitHeight, sInput.implicitHeight) +
-                             background.underline, Theme.baseSize)
-    font.pixelSize: Theme.mainFontSize
+                             background.underline, industrial.baseSize)
+    font.pixelSize: industrial.mainFontSize
 
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        textPadding: Theme.baseSize + Theme.padding
-        highlighterColor: Theme.controlColor
+        textPadding: industrial.baseSize + industrial.padding
+        highlighterColor: industrial.controlColor
         isValid: control.isValid
     }
 
@@ -142,7 +142,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: dInput
-                implicitWidth: Theme.baseSize * (isLongitude ? 1 : 0.75)
+                implicitWidth: industrial.baseSize * (isLongitude ? 1 : 0.75)
                 input.focus: true
                 input.maximumLength: isLongitude ? 3 : 2
                 input.validator: IntValidator { bottom: control.from; top: control.to }
@@ -156,7 +156,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: mInput
-                implicitWidth: Theme.baseSize * 0.75
+                implicitWidth: industrial.baseSize * 0.75
                 input.maximumLength: 2
                 input.validator: IntValidator { bottom: 0; top: 60 }
                 previousItem: dInput.input
@@ -170,7 +170,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: sInput
-                implicitWidth: Theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
+                implicitWidth: industrial.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 input.maximumLength: 3 + secondsPrecision
                 input.validator: DoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
@@ -183,7 +183,7 @@ T.Control {
 
             Button {
                 id: suffixButton
-                implicitWidth: Theme.baseSize
+                implicitWidth: industrial.baseSize
                 flat: true
                 font.bold: true
                 focusPolicy: Qt.NoFocus
@@ -231,12 +231,12 @@ T.Control {
         width: _focusedItem ? _focusedItem.width : 0
         x: _focusedItem ? _focusedItem.x : 0
         visible: _focusedItem
-        height: Theme.underline
+        height: industrial.underline
         color: {
-            if (caution) return Theme.neutralColor;
-            if (!isValid) return Theme.negativeColor;
+            if (caution) return industrial.neutralColor;
+            if (!isValid) return industrial.negativeColor;
 
-            return Theme.selectionColor;
+            return industrial.selectionColor;
         }
         Behavior on x { NumberAnimation { duration: 150 } }
     }

@@ -26,13 +26,13 @@ Item {
             anchors.bottomMargin: -bottomCropping
             anchors.leftMargin: -leftCropping
             anchors.rightMargin: -rightCropping
-            radius: Theme.rounding
-            color: flat ? "transparent" : Theme.containerColor
+            radius: industrial.rounding
+            color: flat ? "transparent" : industrial.containerColor
             border.color: borderColor
 
             Rectangle {
                 anchors.fill: parent
-                color: Theme.onButtonColor
+                color: industrial.onButtonColor
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

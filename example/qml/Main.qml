@@ -7,25 +7,25 @@ ApplicationWindow {
 
     visible: true
     title: qsTr("Industrial demo")
-    width: Theme.baseSize * 28
-    height: Theme.baseSize * 12
+    width: industrial.baseSize * 28
+    height: industrial.baseSize * 12
 
     Loader {
         id: loader
         anchors.fill: parent
-        anchors.margins: Theme.margins
+        anchors.margins: industrial.margins
         source: "Controls.qml"
     }
 
     Button {
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.margins: Theme.margins
+        anchors.margins: industrial.margins
         iconSource: "qrc:/icons/configure.svg"
         tipText: qsTr("Configure")
         flat: true
         round: true
-        color: configurationPopup.visible ? Theme.surfaceColor : "transparent"
+        color: configurationPopup.visible ? industrial.surfaceColor : "transparent"
         onClicked: configurationPopup.visible = !configurationPopup.visible
 
         Configuration {

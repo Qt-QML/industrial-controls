@@ -4,9 +4,9 @@ import QtQuick.Controls 2.2 as T
 T.Popup {
     id: control
 
-    property color backgroundColor: Theme.surfaceColor
+    property color backgroundColor: industrial.surfaceColor
 
-    padding: Theme.padding
+    padding: industrial.padding
     clip: false
 
     background:  Rectangle {

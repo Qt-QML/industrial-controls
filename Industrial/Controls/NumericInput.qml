@@ -9,7 +9,7 @@ TextInput {
     clip: true
     readOnly: !control.editable
     font: control.font
-    color: control.enabled ? control.color : Theme.disabledColor
-    selectionColor: Theme.selectionColor
-    selectedTextColor: Theme.onSelectionColor
+    color: control.enabled ? control.color : industrial.disabledColor
+    selectionColor: industrial.selectionColor
+    selectedTextColor: industrial.onSelectionColor
 }

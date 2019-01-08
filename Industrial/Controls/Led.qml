@@ -7,19 +7,19 @@ Rectangle {
 
     property alias glowRadius: shadow.glowRadius
 
-    implicitWidth: Theme.baseSize * 0.25
+    implicitWidth: industrial.baseSize * 0.25
     implicitHeight: width
     radius: width / 2
     opacity: 0.75
 
-    Behavior on color { PropertyAnimation { duration: Theme.animationTime } }
+    Behavior on color { PropertyAnimation { duration: industrial.animationTime } }
 
     Controls.Shadow {
         id: shadow
         source: parent
         color: parent.color
 
-        Behavior on glowRadius { PropertyAnimation { duration: Theme.animationTime } }
+        Behavior on glowRadius { PropertyAnimation { duration: industrial.animationTime } }
     }
 }
 

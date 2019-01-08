@@ -4,10 +4,10 @@ import QtQuick.Templates 2.2 as T
 T.ToolBar {
     id: control
 
-    padding: Theme.padding
+    padding: industrial.padding
 
     background: Rectangle {
-        color: Theme.containerColor
+        color: industrial.containerColor
 
         Shadow {
             source: parent

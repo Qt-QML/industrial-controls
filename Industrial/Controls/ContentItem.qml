@@ -3,9 +3,9 @@ import QtQuick 2.6
 Item {
     id: content
 
-    property int spacing: Theme.spacing
+    property int spacing: industrial.spacing
 
-    property color textColor: Theme.onSurfaceColor
+    property color textColor: industrial.onSurfaceColor
     property color iconColor: textColor
 
     property alias iconSize: icon.width
@@ -27,9 +27,9 @@ Item {
     ColoredIcon {
         id: icon
         anchors.centerIn: parent
-        anchors.horizontalCenterOffset: label.visible ? Theme.padding - label.width / 2 : 0
-        width: Theme.iconSize
-        color: enabled ? iconColor : Theme.disabledColor
+        anchors.horizontalCenterOffset: label.visible ? industrial.padding - label.width / 2 : 0
+        width: industrial.iconSize
+        color: enabled ? iconColor : industrial.disabledColor
         visible: iconSource != ""
     }
 
@@ -39,8 +39,8 @@ Item {
         width: content.width - (icon.visible ? content.spacing : 0)
         height: content.height
         elide: Text.ElideRight
-        font.pixelSize: Theme.mainFontSize
-        color: enabled ? textColor : Theme.disabledColor
+        font.pixelSize: industrial.mainFontSize
+        color: enabled ? textColor : industrial.disabledColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         visible: text.length > 0

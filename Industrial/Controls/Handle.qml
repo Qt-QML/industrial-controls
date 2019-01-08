@@ -1,20 +1,20 @@
 import QtQuick 2.6
 
 Rectangle {
-    implicitWidth: Theme.handleSize
+    implicitWidth: industrial.handleSize
     implicitHeight: implicitWidth
     radius: width / 2
-    border.color: control.activeFocus ? Theme.highlightColor : "transparent"
+    border.color: control.activeFocus ? industrial.highlightColor : "transparent"
     color: {
-        if (!control.enabled) return Theme.containerColor;
-        if (control.pressed) return Theme.highlightColor;
+        if (!control.enabled) return industrial.containerColor;
+        if (control.pressed) return industrial.highlightColor;
 
-        return Theme.buttonColor;
+        return industrial.buttonColor;
     }
 
     Rectangle {
         anchors.fill: parent
-        color: Theme.onButtonColor
+        color: industrial.onButtonColor
         radius: parent.radius
         opacity: 0.1
         visible: hovered

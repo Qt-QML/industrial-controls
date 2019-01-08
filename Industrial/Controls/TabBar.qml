@@ -4,17 +4,17 @@ import QtQuick.Controls 2.2 as T
 T.TabBar { // TODO: replace with model-based bar
     id: control
 
-    implicitWidth: Theme.baseSize * count * 6
-    implicitHeight: Theme.baseSize
+    implicitWidth: industrial.baseSize * count * 6
+    implicitHeight: industrial.baseSize
 
     background: Item {
         clip: true
 
         Rectangle {
             id: bg
-            color: Theme.containerColor
+            color: industrial.containerColor
             anchors.fill: parent
-            radius: Theme.rounding
+            radius: industrial.rounding
             anchors.bottomMargin: -radius
         }
     }

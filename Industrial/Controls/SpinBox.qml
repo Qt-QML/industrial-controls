@@ -5,7 +5,7 @@ T.SpinBox {
     id: control
 
     property bool isValid: value >= from && value <= to
-    property color color: Theme.onContainerColor
+    property color color: industrial.onContainerColor
     property bool round: false
 
     property alias caution: background.caution
@@ -13,12 +13,12 @@ T.SpinBox {
     property alias labelText: background.text
     property alias flat: background.flat
 
-    implicitWidth: background.implicitWidth + Theme.baseSize * 2
+    implicitWidth: background.implicitWidth + industrial.baseSize * 2
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
-                             background.underline, Theme.baseSize)
-    leftPadding: Theme.baseSize
-    rightPadding: Theme.baseSize
-    font.pixelSize: Theme.mainFontSize
+                             background.underline, industrial.baseSize)
+    leftPadding: industrial.baseSize
+    rightPadding: industrial.baseSize
+    font.pixelSize: industrial.mainFontSize
     editable: true
     hoverEnabled: true
     clip: true
@@ -44,7 +44,7 @@ T.SpinBox {
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
-        textPadding: Theme.baseSize + Theme.padding
+        textPadding: industrial.baseSize + industrial.padding
     }
 
     contentItem: Item {
@@ -63,24 +63,24 @@ T.SpinBox {
             }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? Theme.onSelectionColor : Theme.onContainerColor
+            selectedTextColor: control.activeFocus ? industrial.onSelectionColor : industrial.onContainerColor
             validator: control.validator
         }
     }
 
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
-        width: Theme.baseSize
+        width: industrial.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        radius: round ? Math.min(width, height) / 2 : industrial.rounding
         rightCropping: radius
         bottomCropping: round ? 0 : radius
-        color: down.pressed && enabled ? Theme.highlightColor : background.color
+        color: down.pressed && enabled ? industrial.highlightColor : background.color
         hovered: down.hovered
 
         Hatch {
             anchors.fill: parent
-            color: Theme.surfaceColor
+            color: industrial.surfaceColor
             visible: !enabled
         }
 
@@ -88,27 +88,27 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
-                if (!enabled) return Theme.disabledColor;
-                if (down.pressed) return Theme.onHighlightColor;
+                if (!enabled) return industrial.disabledColor;
+                if (down.pressed) return industrial.onHighlightColor;
 
-                return Theme.onButtonColor;
+                return industrial.onButtonColor;
             }
         }
     }
 
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
-        width: Theme.baseSize
+        width: industrial.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        radius: round ? Math.min(width, height) / 2 : industrial.rounding
         leftCropping: radius
         bottomCropping: round ? 0 : radius
-        color: up.pressed && enabled ? Theme.highlightColor : background.color
+        color: up.pressed && enabled ? industrial.highlightColor : background.color
         hovered: up.hovered
 
         Hatch {
             anchors.fill: parent
-            color: Theme.surfaceColor
+            color: industrial.surfaceColor
             visible: !enabled
         }
 
@@ -116,10 +116,10 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
-                if (!enabled) return Theme.disabledColor;
-                if (up.pressed) return Theme.onHighlightColor;
+                if (!enabled) return industrial.disabledColor;
+                if (up.pressed) return industrial.onHighlightColor;
 
-                return Theme.onButtonColor;
+                return industrial.onButtonColor;
             }
         }
     }

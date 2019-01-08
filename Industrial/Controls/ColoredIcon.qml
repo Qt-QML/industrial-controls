@@ -9,7 +9,7 @@ Item {
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
-    width: Theme.iconSize
+    width: industrial.iconSize
     height: width
 
     Image {

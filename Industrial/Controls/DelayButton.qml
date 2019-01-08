@@ -16,21 +16,21 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    font.pixelSize: Theme.mainFontSize
-    implicitWidth: Math.max(Theme.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: Theme.baseSize
+    font.pixelSize: industrial.mainFontSize
+    implicitWidth: Math.max(industrial.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: industrial.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: Theme.padding
+    padding: industrial.padding
     delay: 1000
 
     background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        borderColor: control.activeFocus ? Theme.highlightColor : "transparent"
+        borderColor: control.activeFocus ? industrial.highlightColor : "transparent"
         hovered: control.hovered
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        color: control.flat ? "transparent" : Theme.buttonColor
+        radius: round ? Math.min(width, height) / 2 : industrial.rounding
+        color: control.flat ? "transparent" : industrial.buttonColor
 
         Shadow {
             visible: control.shadow && !control.flat
@@ -39,7 +39,7 @@ T.DelayButton {
 
         Hatch {
             anchors.fill: parent
-            color: Theme.surfaceColor
+            color: industrial.surfaceColor
             visible: !enabled
         }
     }
@@ -54,7 +54,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: Theme.onButtonColor
+            textColor: industrial.onButtonColor
         }
 
         Item {
@@ -66,7 +66,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: Theme.selectionColor
+                color: industrial.selectionColor
                 clip: true
             }
 
@@ -83,7 +83,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: Theme.onSelectionColor
+                    textColor: industrial.onSelectionColor
                 }
             }
         }

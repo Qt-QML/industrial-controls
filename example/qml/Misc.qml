@@ -5,36 +5,36 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    padding: Theme.padding
+    padding: industrial.padding
 
     GridLayout {
         anchors.fill: parent
-        anchors.margins: Theme.padding
-        rowSpacing: Theme.spacing
-        columnSpacing: Theme.spacing
+        anchors.margins: industrial.padding
+        rowSpacing: industrial.spacing
+        columnSpacing: industrial.spacing
         columns: 4
 
         Label {}
 
         Label {
             text: qsTr("Basic")
-            font.pixelSize: Theme.auxFontSize
+            font.pixelSize: industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Flat")
-            font.pixelSize: Theme.auxFontSize
+            font.pixelSize: industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Disabled")
-            font.pixelSize: Theme.auxFontSize
+            font.pixelSize: industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Checkboxes"); font.pixelSize: Theme.auxFontSize }
+        Label { text: qsTr("Checkboxes"); font.pixelSize: industrial.auxFontSize }
 
         CheckBox {
             id: _checkbox
@@ -55,7 +55,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Radio buttons"); font.pixelSize: Theme.auxFontSize }
+        Label { text: qsTr("Radio buttons"); font.pixelSize: industrial.auxFontSize }
 
         RadioButton {
             text: qsTr("Basic radio button")
@@ -75,7 +75,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Switchs"); font.pixelSize: Theme.auxFontSize }
+        Label { text: qsTr("Switchs"); font.pixelSize: industrial.auxFontSize }
 
         Switch {
             id: _switch
@@ -97,7 +97,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Sliders"); font.pixelSize: Theme.auxFontSize }
+        Label { text: qsTr("Sliders"); font.pixelSize: industrial.auxFontSize }
 
         Slider {
             id: _slider
@@ -121,7 +121,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Progress bar"); font.pixelSize: Theme.auxFontSize }
+        Label { text: qsTr("Progress bar"); font.pixelSize: industrial.auxFontSize }
 
         ProgressBar {
             value: _slider.value * 0.01

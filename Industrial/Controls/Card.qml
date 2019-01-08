@@ -14,8 +14,8 @@ Item {
     Rectangle {
         id: background
         anchors.fill: control
-        color: Theme.surfaceColor
-        radius: Theme.rounding
+        color: industrial.surfaceColor
+        radius: industrial.rounding
         z: -1
 
         Shadow {
@@ -30,9 +30,9 @@ Item {
         iconSource: "qrc:/icons/dots.svg"
         flat: true
         enabled: menu.contentModel.count > 0
-        width: Theme.baseSize * 0.5
-        height: Theme.baseSize * 0.75
-        iconSize: height - Theme.padding
+        width: industrial.baseSize * 0.5
+        height: industrial.baseSize * 0.75
+        iconSize: height - industrial.padding
         padding: 0
         onClicked: menu.open()
 
@@ -46,20 +46,20 @@ Item {
         id: deepButton
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        width: Theme.baseSize * 0.75
+        width: industrial.baseSize * 0.75
         height: width
 
         source: "qrc:/icons/menu_arrow.svg"
         color: {
-            if (area.pressed) return Theme.selectionColor;
-            if (area.containsMouse) return Theme.highlightColor;
-            return Theme.buttonColor
+            if (area.pressed) return industrial.selectionColor;
+            if (area.containsMouse) return industrial.highlightColor;
+            return industrial.buttonColor
         }
 
         MouseArea {
             id: area
             anchors.centerIn: parent
-            width: Theme.baseSize
+            width: industrial.baseSize
             height: width
             hoverEnabled: true
             onPressed: deepIn()
