@@ -40,7 +40,6 @@ ItemDelegate 1.0 ItemDelegate.qml
 Popup 1.0 Popup.qml
 SpinBox 1.0 SpinBox.qml
 RealSpinBox 1.0 RealSpinBox.qml
-NumericInput 1.0 NumericInput.qml
 CoordSpinBox 1.0 CoordSpinBox.qml
 ScrollBar 1.0 ScrollBar.qml
 ColoredIcon 1.0 ColoredIcon.qml
