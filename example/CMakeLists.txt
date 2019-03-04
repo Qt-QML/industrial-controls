@@ -25,8 +25,8 @@ file(GLOB_RECURSE QML_SOURCES "qml/*.qml")
 add_executable(${PROJECT_NAME} ${SOURCES} ${QML_SOURCES})
 
 # Industrial vendor includes & sources
-target_include_directories(${PROJECT_NAME} PRIVATE ${INDUSTRIAL_INCLUDES})
-target_sources(${PROJECT_NAME} PRIVATE ${INDUSTRIAL_SOURCES} ${INDUSTRIAL_RESOURCES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${INDUSTRIAL_CONTROLS_INCLUDES})
+target_sources(${PROJECT_NAME} PRIVATE ${INDUSTRIAL_CONTROLS_SOURCES} ${INDUSTRIAL_CONTROLS_RESOURCES})
 
 # Link with libraries
 target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
