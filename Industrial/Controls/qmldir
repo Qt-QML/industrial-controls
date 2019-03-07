@@ -46,3 +46,4 @@ ColoredIcon 1.0 ColoredIcon.qml
 ToolTip 1.0 ToolTip.qml
 Drawer 1.0 Drawer.qml
 Separator 1.0 Separator.qml
+Notification 1.0 Notification.qml
