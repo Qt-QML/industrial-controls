@@ -6,8 +6,10 @@ Frame {
 
     default property alias actions: row.children
     property alias text: textLabel.text
+    property alias textColor: textLabel.color
 
     backgroundColor: industrial.colors.neutral
+    padding: 0
 
     RowLayout {
         id: row
@@ -17,6 +19,8 @@ Frame {
         Label {
             id: textLabel
             color: industrial.colors.onHighlight
+            font.pixelSize: industrial.auxFontSize
+            horizontalAlignment: Text.AlignHCenter
             Layout.fillWidth: true
         }
     }
