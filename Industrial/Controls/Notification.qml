@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 
-Frame {
+Pane {
     id: control
 
     default property alias actions: row.children
