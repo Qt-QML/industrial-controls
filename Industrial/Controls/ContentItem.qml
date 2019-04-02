@@ -30,7 +30,8 @@ Item {
             implicitHeight: industrial.iconSize
             color: enabled ? iconColor : industrial.colors.disabled
             visible: iconSource != ""
-            Layout.alignment: Qt.AlignCenter
+            //Layout.alignment: Qt.AlignCenter
+            Layout.leftMargin: (content.height - width) / 2
         }
 
         Text {

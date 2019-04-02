@@ -63,8 +63,6 @@ T.ComboBox {
     contentItem: ContentItem {
         id: content
         anchors.fill: control
-        anchors.leftMargin: control.padding
-        anchors.rightMargin: control.padding
         anchors.bottomMargin: background.underline * 1.5
         font: control.font
         text: displayText
