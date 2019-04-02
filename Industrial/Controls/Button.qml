@@ -20,6 +20,7 @@ T.Button { // TODO: clickable
     property alias iconSource: content.iconSource
     property alias iconColor: content.iconColor
     property alias iconSize: content.iconSize
+    property alias textSize: content.textSize
     property alias textColor: content.textColor
     property alias radius: backgroundItem.radius
     property alias contentWidth: content.width

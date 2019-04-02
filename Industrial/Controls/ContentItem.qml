@@ -12,6 +12,7 @@ Item {
     property alias iconSource: icon.source
     property alias font: label.font
     property alias text: label.text
+    property alias textSize: label.font.pixelSize
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
