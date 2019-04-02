@@ -50,7 +50,6 @@ T.DelayButton {
         ContentItem {
             id: content
             anchors.fill: parent
-            implicitHeight: parent.height
             anchors.margins: control.padding
             text: control.text
             font: control.font

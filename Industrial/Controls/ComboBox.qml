@@ -19,7 +19,7 @@ T.ComboBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + content.implicitHeight + background.underline,
-                             industrial.baseSize)
+                             industrial.baseSize * 1.3)
     font.pixelSize: industrial.mainFontSize
     padding: industrial.padding
     clip: true
