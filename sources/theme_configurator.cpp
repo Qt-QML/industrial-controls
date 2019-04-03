@@ -42,7 +42,7 @@ namespace
     const float iconFactor = 1.75;
     const float fillFactor = 8.0;
     const float handleSizeFactor = 1.5;
-    const float checkmarkFactor = 1.25;
+    const float checkmarkFactor = 1.5;
     const float floatFactor = 0.75;
 
     const int animationTime = 100;
