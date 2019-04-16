@@ -2,12 +2,12 @@
 #define THEME_CONFIGURATOR_H
 
 // Qt
-#include <QObject>
 #include <QColor>
+#include <QObject>
 
 class Theme;
 
-class ThemeConfigurator: public QObject
+class ThemeConfigurator : public QObject
 {
     Q_OBJECT
 
@@ -16,7 +16,8 @@ class ThemeConfigurator: public QObject
     Q_PROPERTY(QColor baseColor READ baseColor WRITE setBaseColor NOTIFY baseColorChanged)
     Q_PROPERTY(QColor onBaseColor READ onBaseColor WRITE setOnBaseColor NOTIFY onBaseColorChanged)
     Q_PROPERTY(QColor primaryColor READ primaryColor WRITE setPrimaryColor NOTIFY primaryColorChanged)
-    Q_PROPERTY(QColor onPrimaryColor READ onPrimaryColor WRITE setOnPrimaryColor NOTIFY onPrimaryColorChanged)
+    Q_PROPERTY(QColor onPrimaryColor READ onPrimaryColor WRITE setOnPrimaryColor NOTIFY
+                   onPrimaryColorChanged)
 
     Q_PROPERTY(int lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
     Q_PROPERTY(int rounding READ rounding WRITE setRounding NOTIFY roundingChanged)

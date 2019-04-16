@@ -4,7 +4,7 @@
 // Internal
 #include "colors.h"
 
-class Theme: public QObject
+class Theme : public QObject
 {
     Q_OBJECT
 

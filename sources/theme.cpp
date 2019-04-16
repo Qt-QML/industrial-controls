@@ -1,8 +1,8 @@
 #include "theme.h"
 
-Theme::Theme(QObject* parent):
-    QObject(parent)
-{}
+Theme::Theme(QObject* parent) : QObject(parent)
+{
+}
 
 Colors* Theme::colors()
 {

@@ -1,8 +1,8 @@
 #include "colors.h"
 
-Colors::Colors(QObject* parent):
-    QObject(parent)
-{}
+Colors::Colors(QObject* parent) : QObject(parent)
+{
+}
 
 void Colors::setBackground(const QColor& background)
 {

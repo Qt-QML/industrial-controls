@@ -2,10 +2,10 @@
 #define COLORS_H
 
 // Qt
-#include <QObject>
 #include <QColor>
+#include <QObject>
 
-class Colors: public QObject
+class Colors : public QObject
 {
     Q_OBJECT
 
