@@ -6,49 +6,49 @@
 
 namespace
 {
-    const QColor linkColor = "#51a0e7";
-    const QColor baseColor = "#37474f";
-    const QColor onBaseColor = "#fafafa";
-    const QColor primaryColor = "#009688";
-    const QColor onPrimaryColor = "#161616";
+const QColor linkColor = "#51a0e7";
+const QColor baseColor = "#37474f";
+const QColor onBaseColor = "#fafafa";
+const QColor primaryColor = "#009688";
+const QColor onPrimaryColor = "#161616";
 
-    const QColor positiveColor = "#86c34a";
-    const QColor neutralColor = "#ff9800";
-    const QColor negativeColor = "#e53535";
+const QColor positiveColor = "#86c34a";
+const QColor neutralColor = "#ff9800";
+const QColor negativeColor = "#e53535";
 
-    const QColor shadowColor = "#80000000";
+const QColor shadowColor = "#80000000";
 
-    const int background = 60;
-    const int surface = 100;
-    const int container = 80;
-    const int button = 140;
+const int background = 60;
+const int surface = 100;
+const int container = 80;
+const int button = 140;
 
-    const int disabled = 40;
-    const int control = 120;
+const int disabled = 40;
+const int control = 120;
 
-    const int tip = 80;
-    const int selection = 100;
-    const int highlight = 140;
+const int tip = 80;
+const int selection = 100;
+const int highlight = 140;
 
-    const int scrollSize = 2;
-    const int underline = 2;
-    const int shadowSize = 3;
+const int scrollSize = 2;
+const int underline = 2;
+const int shadowSize = 3;
 
-    const float mainFontFactor = 2.0;
-    const float auxFontFactor = 2.5;
-    const float spacingFactor = 4.0;
-    const float marginsFactor = 4.0;
-    const float paddingFactor = 6.0;
-    const float iconFactor = 1.75;
-    const float fillFactor = 8.0;
-    const float handleSizeFactor = 1.5;
-    const float checkmarkFactor = 1.5;
-    const float floatFactor = 0.75;
+const float mainFontFactor = 2.0;
+const float auxFontFactor = 2.5;
+const float spacingFactor = 4.0;
+const float marginsFactor = 4.0;
+const float paddingFactor = 6.0;
+const float iconFactor = 1.75;
+const float fillFactor = 8.0;
+const float handleSizeFactor = 1.5;
+const float checkmarkFactor = 1.5;
+const float floatFactor = 0.75;
 
-    const int animationTime = 100;
-}
+const int animationTime = 100;
+} // namespace
 
-ThemeConfigurator::ThemeConfigurator(QObject* parent):
+ThemeConfigurator::ThemeConfigurator(QObject* parent) :
     QObject(parent),
     m_theme(new Theme(this)),
     m_baseColor(::baseColor),

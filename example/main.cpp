@@ -7,7 +7,7 @@
 #include "theme.h"
 #include "theme_configurator.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
                                              QVariant::fromValue(themeConfigurator));
     engine.rootContext()->setContextProperty(QStringLiteral("industrial"),
                                              QVariant::fromValue(themeConfigurator->theme()));
-
 
     engine.load(QStringLiteral("../qml/Main.qml"));
     if (engine.rootObjects().isEmpty()) return -1;
