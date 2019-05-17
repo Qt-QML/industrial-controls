@@ -5,6 +5,7 @@ Item {
     id: root
 
     property alias source: image.source
+    property alias mirror: image.mirror
     property alias color: overlay.color
 
     implicitWidth: image.implicitWidth
