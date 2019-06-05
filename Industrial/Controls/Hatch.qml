@@ -4,19 +4,21 @@ ShaderEffect {
     id: shader
 
     property color color: industrial.colors.negative
-    property real ratio: width / height
-    property real xFactor: industrial.baseSize
-    property real yFactor: industrial.baseSize * ratio
+    property real size: 2
+
+    property real _ratio: width * height / size
+    property real _xFactor: _ratio / width
+    property real _yFactor: _ratio / height
 
     fragmentShader:"
     varying highp vec2 qt_TexCoord0;
-    uniform highp float xFactor;
-    uniform highp float yFactor;
+    uniform highp float _xFactor;
+    uniform highp float _yFactor;
     uniform highp vec4 color;
 
     void main(void)
     {
         gl_FragColor = mix(vec4(0.0, 0.0, 0.0, 0.0), color,
-                        cos(qt_TexCoord0.x * yFactor + qt_TexCoord0.y * xFactor));
+                        cos(qt_TexCoord0.x * _yFactor + qt_TexCoord0.y * _xFactor));
     }"
 }
