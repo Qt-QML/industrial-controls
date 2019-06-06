@@ -8,6 +8,10 @@ Pane {
     property alias text: textLabel.text
     property alias textColor: textLabel.color
 
+    signal clicked()
+
+    implicitWidth: row.implicitWidth + padding * 2
+    implicitHeight: row.implicitHeight + padding * 2
     backgroundColor: industrial.colors.neutral
     padding: industrial.padding
 
@@ -24,5 +28,10 @@ Pane {
             horizontalAlignment: Text.AlignHCenter
             Layout.fillWidth: true
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: control.clicked()
     }
 }
