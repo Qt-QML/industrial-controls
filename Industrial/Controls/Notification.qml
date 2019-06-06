@@ -9,7 +9,7 @@ Pane {
     property alias textColor: textLabel.color
 
     backgroundColor: industrial.colors.neutral
-    padding: 0
+    padding: industrial.padding
 
     RowLayout {
         id: row
@@ -20,6 +20,7 @@ Pane {
             id: textLabel
             color: industrial.colors.onHighlight
             font.pixelSize: industrial.auxFontSize
+            wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
             Layout.fillWidth: true
         }
