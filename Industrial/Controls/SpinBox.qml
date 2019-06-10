@@ -47,6 +47,16 @@ T.SpinBox {
         textPadding: industrial.baseSize + industrial.padding
     }
 
+    MouseArea{
+        anchors.fill: parent
+        acceptedButtons: Qt.NoButton
+        propagateComposedEvents: true
+        onWheel: {
+            if(wheel.angleDelta.y>0) control.increase();
+            else control.decrease();
+        }
+    }
+
     contentItem: Item {
         anchors.centerIn: parent
         implicitHeight: input.contentHeight
