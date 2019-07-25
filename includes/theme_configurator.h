@@ -2,12 +2,13 @@
 #define THEME_CONFIGURATOR_H
 
 // Qt
+#include "export.h"
 #include <QColor>
 #include <QObject>
 
 class Theme;
 
-class ThemeConfigurator : public QObject
+class INDUSTRIAL_CONTROLS_EXPORT ThemeConfigurator : public QObject
 {
     Q_OBJECT
 
