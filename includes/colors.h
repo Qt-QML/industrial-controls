@@ -2,10 +2,11 @@
 #define COLORS_H
 
 // Qt
+#include "export.h"
 #include <QColor>
 #include <QObject>
 
-class Colors : public QObject
+class INDUSTRIAL_CONTROLS_EXPORT Colors : public QObject
 {
     Q_OBJECT
 

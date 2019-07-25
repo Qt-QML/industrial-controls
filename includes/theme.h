@@ -3,8 +3,9 @@
 
 // Internal
 #include "colors.h"
+#include "export.h"
 
-class Theme : public QObject
+class INDUSTRIAL_CONTROLS_EXPORT Theme : public QObject
 {
     Q_OBJECT
 
