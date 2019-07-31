@@ -8,6 +8,7 @@ T.CheckBox {
     property string tipText
 
     property alias flat: base.flat
+    property alias iconSource: icon.source
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: industrial.mainFontSize
@@ -28,6 +29,7 @@ T.CheckBox {
         checked: control.checked
 
         ColoredIcon {
+            id: icon
             anchors.fill: parent
             anchors.margins: parent.width * 0.1
             source: "qrc:/icons/ok.svg"
