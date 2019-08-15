@@ -11,7 +11,7 @@ T.CheckBox {
     property alias horizontalAlignment: label.horizontalAlignment
 
     font.pixelSize: industrial.mainFontSize
-    height: industrial.baseSize
+    height: Palette.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
     spacing: industrial.spacing

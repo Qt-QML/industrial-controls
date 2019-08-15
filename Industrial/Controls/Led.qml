@@ -7,7 +7,7 @@ Rectangle {
 
     property alias glowRadius: shadow.glowRadius
 
-    implicitWidth: industrial.baseSize * 0.25
+    implicitWidth: Palette.baseSize * 0.25
     implicitHeight: width
     radius: width / 2
     opacity: 0.75

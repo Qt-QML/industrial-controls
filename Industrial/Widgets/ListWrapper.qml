@@ -17,7 +17,7 @@ Item {
     function toEnd() { list.positionViewAtEnd() }
 
     implicitWidth: list.contentWidth + industrial.shadowSize + 1
-    implicitHeight: Math.max(list.contentHeight + industrial.shadowSize + 1, industrial.baseSize * 5)
+    implicitHeight: Math.max(list.contentHeight + industrial.shadowSize + 1, Palette.baseSize * 5)
     clip: true
 
     ListView {
@@ -46,7 +46,7 @@ Item {
     Rectangle {
         x: 1
         width: parent.width - industrial.shadowSize - 1
-        height: industrial.baseSize * 0.5
+        height: Palette.baseSize * 0.5
         anchors.top: parent.top
         visible: list.contentY > 0
         gradient: Gradient {
@@ -58,7 +58,7 @@ Item {
     Rectangle {
         x: 1
         width: parent.width - industrial.shadowSize - 1
-        height: industrial.baseSize * 0.5
+        height: Palette.baseSize * 0.5
         anchors.bottom: parent.bottom
         visible: list.contentY < (list.contentHeight - list.height)
         gradient: Gradient {

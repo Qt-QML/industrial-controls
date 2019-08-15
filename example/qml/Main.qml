@@ -7,8 +7,8 @@ ApplicationWindow {
 
     visible: true
     title: qsTr("Industrial demo")
-    width: industrial.baseSize * 28
-    height: industrial.baseSize * 12
+    width: Palette.baseSize * 28
+    height: Palette.baseSize * 12
 
     Loader {
         id: loader

@@ -15,7 +15,7 @@ TextField {
         tipText: qsTr("Clear filter")
         color: control.backgroundColor
         shadow: false
-        radius: industrial.rounding
+        radius: Palette.rounding
         visible: control.text.length > 0 && control.enabled
         onClicked: control.clear()
     }

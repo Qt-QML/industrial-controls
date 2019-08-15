@@ -12,7 +12,7 @@ T.Switch {
     property alias backgroundColor: backgroundItem.color
 
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: industrial.baseSize
+    implicitHeight: Palette.baseSize
     spacing: industrial.spacing
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
@@ -24,7 +24,7 @@ T.Switch {
         id: backgroundItem
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: industrial.baseSize
+        implicitWidth: Palette.baseSize
         implicitHeight: industrial.fillSize
         radius: height / 2
         color: control.checked ? Palette.selection : control.flat ? industrial.colors.control :

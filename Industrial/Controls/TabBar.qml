@@ -1,11 +1,12 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2 as T
+import "."
 
 T.TabBar { // TODO: replace with model-based bar
     id: control
 
-    implicitWidth: industrial.baseSize * count * 6
-    implicitHeight: industrial.baseSize
+    implicitWidth: Palette.baseSize * count * 6
+    implicitHeight: Palette.baseSize
 
     background: Item {
         clip: true
@@ -14,7 +15,7 @@ T.TabBar { // TODO: replace with model-based bar
             id: bg
             color: industrial.colors.container
             anchors.fill: parent
-            radius: industrial.rounding
+            radius: Palette.rounding
             anchors.bottomMargin: -radius
         }
     }

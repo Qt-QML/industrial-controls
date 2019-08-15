@@ -17,7 +17,7 @@ BackgroundItem {
     property alias highlighterColor: highlighter.color
 
     bottomCropping: radius
-    implicitWidth: Math.max(industrial.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Math.max(Palette.baseSize * 4, textItem.implicitWidth)
 
     TextMetrics {
         id: textMetrics

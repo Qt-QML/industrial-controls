@@ -10,7 +10,7 @@ T.MenuItem {
     property alias horizontalAlignment: label.horizontalAlignment
 
     implicitWidth: parent.width
-    implicitHeight: industrial.baseSize
+    implicitHeight: Palette.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: icon.visible ? icon.width + industrial.padding * 2 : industrial.padding
     font.pixelSize: industrial.mainFontSize
@@ -34,7 +34,7 @@ T.MenuItem {
                                                                         "qrc:/icons/ok.svg"
             return "";
         }
-        width: industrial.baseSize - industrial.padding * 2
+        width: Palette.baseSize - industrial.padding * 2
         height: width
     }
 

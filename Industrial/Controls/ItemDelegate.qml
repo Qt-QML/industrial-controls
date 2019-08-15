@@ -10,7 +10,7 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    implicitHeight: industrial.baseSize
+    implicitHeight: Palette.baseSize
     padding: industrial.padding
     font.pixelSize: industrial.mainFontSize
     hoverEnabled: true

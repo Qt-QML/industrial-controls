@@ -19,7 +19,7 @@ T.ComboBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + content.implicitHeight + background.underline,
-                             industrial.baseSize * 1.3)
+                             Palette.baseSize * 1.3)
     font.pixelSize: industrial.mainFontSize
     padding: industrial.padding
     clip: true
@@ -30,7 +30,7 @@ T.ComboBox {
     indicator: ColoredIcon {
         x: control.width - width
         y: control.height - height
-        width: industrial.baseSize / 2
+        width: Palette.baseSize / 2
         height: width
         source: "qrc:/icons/menu_arrow.svg"
         color: background.highlighterColor

@@ -14,7 +14,7 @@ ColumnLayout {
         id: repeater
 
         Button {
-            Layout.preferredWidth: industrial.baseSize * 7
+            Layout.preferredWidth: Palette.baseSize * 7
             text: modelData
             onClicked: if (!highlighted) currentIndex = index
             highlighted: currentIndex == index

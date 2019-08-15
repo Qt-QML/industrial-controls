@@ -6,8 +6,8 @@ T.ProgressBar {
 
     property bool round: false
 
-    implicitWidth: industrial.baseSize * 4
-    implicitHeight: industrial.baseSize
+    implicitWidth: Palette.baseSize * 4
+    implicitHeight: Palette.baseSize
 
     background: BackgroundItem {}
 
@@ -19,7 +19,7 @@ T.ProgressBar {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            radius: control.round ? Math.min(width, height) / 2 : industrial.rounding
+            radius: control.round ? Math.min(width, height) / 2 : Palette.rounding
             color: Palette.selection
         }
     }

@@ -13,8 +13,8 @@ T.TabButton {
 
     // TODO: flat
     font.pixelSize: industrial.mainFontSize
-    implicitWidth: Math.max(industrial.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: industrial.baseSize
+    implicitWidth: Math.max(Palette.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Palette.baseSize
     focusPolicy: Qt.NoFocus
     //hoverEnabled: true NOTE: QTBUG
     padding: industrial.padding

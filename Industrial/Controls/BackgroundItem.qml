@@ -27,7 +27,7 @@ Item {
             anchors.bottomMargin: -bottomCropping
             anchors.leftMargin: -leftCropping
             anchors.rightMargin: -rightCropping
-            radius: industrial.rounding
+            radius: Palette.rounding
             color: flat ? "transparent" : industrial.colors.container
             border.color: borderColor
 

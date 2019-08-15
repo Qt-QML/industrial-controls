@@ -9,8 +9,8 @@ Rectangle {
 
     signal colorPicked(color color)
 
-    implicitWidth: industrial.baseSize * 1.5
-    implicitHeight: industrial.baseSize * 1.5
+    implicitWidth: Palette.baseSize * 1.5
+    implicitHeight: Palette.baseSize * 1.5
 
     Shadow { source: parent }
 
@@ -39,7 +39,7 @@ Rectangle {
 
                 Slider {
                     id: rSlider
-                    implicitWidth: industrial.baseSize * 5
+                    implicitWidth: Palette.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.r = value / to
@@ -47,8 +47,8 @@ Rectangle {
 
                 Rectangle {
                     id: previewRect
-                    implicitWidth: industrial.baseSize * 3
-                    implicitHeight: industrial.baseSize * 3
+                    implicitWidth: Palette.baseSize * 3
+                    implicitHeight: Palette.baseSize * 3
                     Layout.alignment: Qt.AlignVCenter
                     Layout.rowSpan: 3
                     color: "transparent"
@@ -65,7 +65,7 @@ Rectangle {
 
                 Slider {
                     id: gSlider
-                    implicitWidth: industrial.baseSize * 5
+                    implicitWidth: Palette.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.g = value / to
@@ -75,7 +75,7 @@ Rectangle {
 
                 Slider {
                     id: bSlider
-                    implicitWidth: industrial.baseSize * 5
+                    implicitWidth: Palette.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.b = value / to

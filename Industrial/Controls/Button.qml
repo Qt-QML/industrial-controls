@@ -27,7 +27,7 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
-    implicitHeight: industrial.baseSize
+    implicitHeight: Palette.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
     padding: industrial.padding
@@ -37,7 +37,7 @@ T.Button { // TODO: clickable
         id: backgroundItem
         hovered: control.hovered
         flat: control.flat
-        radius: round ? Math.min(width, height) / 2 : industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Palette.rounding
         topCropping: topCropped ? radius : 0
         bottomCropping: bottomCropped ? radius : 0
         leftCropping: leftCropped ? radius : 0

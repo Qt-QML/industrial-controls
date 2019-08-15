@@ -11,7 +11,7 @@ T.TextField {
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + contentHeight + background.underline,
-                             industrial.baseSize)
+                             Palette.baseSize)
     font.pixelSize: industrial.mainFontSize
     color: control.enabled ? industrial.colors.onContainer : industrial.colors.disabled
     selectionColor: background.highlighterColor

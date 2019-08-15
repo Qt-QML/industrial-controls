@@ -14,11 +14,11 @@ T.SpinBox {
     property alias labelText: background.text
     property alias flat: background.flat
 
-    implicitWidth: background.implicitWidth + industrial.baseSize * 2
+    implicitWidth: background.implicitWidth + Palette.baseSize * 2
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
-                             background.underline, industrial.baseSize)
-    leftPadding: industrial.baseSize
-    rightPadding: industrial.baseSize
+                             background.underline, Palette.baseSize)
+    leftPadding: Palette.baseSize
+    rightPadding: Palette.baseSize
     font.pixelSize: industrial.mainFontSize
     editable: true
     hoverEnabled: true
@@ -45,7 +45,7 @@ T.SpinBox {
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
-        textPadding: industrial.baseSize + industrial.padding
+        textPadding: Palette.baseSize + industrial.padding
     }
 
     MouseArea{
@@ -81,9 +81,9 @@ T.SpinBox {
 
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
-        width: industrial.baseSize
+        width: Palette.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Palette.rounding
         rightCropping: radius
         bottomCropping: round ? 0 : radius
         color: down.pressed && enabled ? Palette.highlight : background.color
@@ -109,9 +109,9 @@ T.SpinBox {
 
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
-        width: industrial.baseSize
+        width: Palette.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Palette.rounding
         leftCropping: radius
         bottomCropping: round ? 0 : radius
         color: up.pressed && enabled ? Palette.highlight : background.color

@@ -11,6 +11,6 @@ T.Pane {
 
     background: Rectangle {
         color: backgroundColor
-        radius: industrial.rounding
+        radius: Palette.rounding
     }
 }

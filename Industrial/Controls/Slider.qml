@@ -9,7 +9,7 @@ T.Slider {
 
     property alias text: textItem.text
 
-    implicitWidth: industrial.baseSize * 6
+    implicitWidth: Palette.baseSize * 6
     implicitHeight: handle.height + topPadding
     topPadding: textItem.visible ? textItem.contentHeight : 0
     focusPolicy: Qt.NoFocus
@@ -18,7 +18,7 @@ T.Slider {
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        implicitWidth: industrial.baseSize * 6
+        implicitWidth: Palette.baseSize * 6
         width: control.availableWidth
         height: industrial.fillSize
         radius: height / 2

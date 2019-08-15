@@ -17,8 +17,8 @@ T.DelayButton {
     onActivated: progress = 0
 
     font.pixelSize: industrial.mainFontSize
-    implicitWidth: Math.max(industrial.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: industrial.baseSize
+    implicitWidth: Math.max(Palette.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Palette.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
     padding: industrial.padding
@@ -29,7 +29,7 @@ T.DelayButton {
         anchors.fill: parent
         borderColor: control.activeFocus ? Palette.highlight : "transparent"
         hovered: control.hovered
-        radius: round ? Math.min(width, height) / 2 : industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Palette.rounding
         color: control.flat ? "transparent" : Palette.button
 
         Shadow {

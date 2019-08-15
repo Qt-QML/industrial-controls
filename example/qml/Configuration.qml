@@ -5,7 +5,8 @@ import Industrial.Widgets 1.0
 
 Popup {
     id: root
-    width: industrial.baseSize * 8
+    //width: Palette.baseSize * 8
+    width: Palette.baseSize * 8
     closePolicy: Popup.CloseOnPressOutsideParent
 
     ColumnLayout{
@@ -16,8 +17,9 @@ Popup {
             from: 50
             to: 150
             text: qsTr("Lightness")
-            Binding on value { value: themeConfigurator.lightness }
-            onMoved: themeConfigurator.setLightness(value)
+            value: Palette.lightness
+            onMoved: { Palette.lightness = value}
+
             Layout.fillWidth: true
         }
 
@@ -25,8 +27,8 @@ Popup {
             from: 0
             to: 8
             text: qsTr("Rounding")
-            Binding on value { value: themeConfigurator.rounding }
-            onMoved: themeConfigurator.setRounding(value)
+            value: Palette.rounding
+            onMoved: {Palette.rounding = value}
             Layout.fillWidth: true
         }
 
@@ -35,8 +37,8 @@ Popup {
             to: 64
             stepSize: 4
             text: qsTr("Base size")
-            Binding on value { value: themeConfigurator.baseSize }
-            onPressedChanged: if (!pressed) themeConfigurator.setBaseSize(value)
+            value:  Palette.baseSize
+            onPressedChanged: if (!pressed) Palette.baseSize = value
             Layout.fillWidth: true
         }
 

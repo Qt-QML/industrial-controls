@@ -91,13 +91,13 @@ T.Control {
     implicitWidth: Math.max(background.implicitWidth, row.height)
     implicitHeight: Math.max(background.textHeight +
                              Math.max(dInput.implicitHeight, sInput.implicitHeight) +
-                             background.underline, industrial.baseSize)
+                             background.underline, Palette.baseSize)
     font.pixelSize: industrial.mainFontSize
 
     background: BackgroundInput {
         id: background
         anchors.fill: parent
-        textPadding: industrial.baseSize + industrial.padding
+        textPadding: Palette.baseSize + industrial.padding
         highlighterColor: industrial.colors.control
         isValid: control.isValid
     }
@@ -142,7 +142,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: dInput
-                implicitWidth: industrial.baseSize * (isLongitude ? 1 : 0.75)
+                implicitWidth: Palette.baseSize * (isLongitude ? 1 : 0.75)
                 input.focus: true
                 input.maximumLength: isLongitude ? 3 : 2
                 input.validator: IntValidator { bottom: control.from; top: control.to }
@@ -156,7 +156,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: mInput
-                implicitWidth: industrial.baseSize * 0.75
+                implicitWidth: Palette.baseSize * 0.75
                 input.maximumLength: 2
                 input.validator: IntValidator { bottom: 0; top: 60 }
                 previousItem: dInput.input
@@ -170,7 +170,7 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: sInput
-                implicitWidth: industrial.baseSize * (0.75 + secondsPrecision / 5 * 2)
+                implicitWidth: Palette.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 input.maximumLength: 3 + secondsPrecision
                 input.validator: DoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
@@ -183,7 +183,7 @@ T.Control {
 
             Button {
                 id: suffixButton
-                implicitWidth: industrial.baseSize
+                implicitWidth: Palette.baseSize
                 flat: true
                 font.bold: true
                 focusPolicy: Qt.NoFocus

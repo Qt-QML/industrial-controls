@@ -3,7 +3,7 @@ pragma Singleton // We indicate that this QML Type is a singleton
 import QtQuick 2.0
 
 Item {
-    readonly property color background: "aliceblue"
+    property color background: "aliceblue"
     readonly property color sunken: "antiquewhite"
     readonly property color raised: "aqua"
     readonly property color text: "azure"
@@ -26,4 +26,20 @@ Item {
     readonly property color negative: "red"
 
     readonly property color shadow: "dimgrey"
+
+
+
+    property real lightness: 80
+    onLightnessChanged: {
+        background = "red";
+        console.log(lightness);
+    }
+
+    property real rounding: 0
+    onRoundingChanged: {}
+
+    property real baseSize: 24
+    onBaseSizeChanged: {}
+
+
 }

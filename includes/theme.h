@@ -10,11 +10,11 @@ class Theme : public QObject
 
     Q_PROPERTY(Colors* colors READ colors CONSTANT)
 
-    Q_PROPERTY(int baseSize MEMBER m_baseSize NOTIFY baseSizeChanged)
+    //Q_PROPERTY(int baseSize MEMBER m_baseSize NOTIFY baseSizeChanged)
     Q_PROPERTY(int spacing MEMBER m_spacing NOTIFY spacingChanged)
     Q_PROPERTY(int margins MEMBER m_margins NOTIFY marginsChanged)
     Q_PROPERTY(int padding MEMBER m_padding NOTIFY paddingChanged)
-    Q_PROPERTY(int rounding MEMBER m_rounding NOTIFY roundingChanged)
+    //Q_PROPERTY(int rounding MEMBER m_rounding NOTIFY roundingChanged)
     Q_PROPERTY(int underline MEMBER m_underline NOTIFY underlineChanged)
     Q_PROPERTY(int iconSize MEMBER m_iconSize NOTIFY iconSizeChanged)
     Q_PROPERTY(int fillSize MEMBER m_fillSize NOTIFY fillSizeChanged)
