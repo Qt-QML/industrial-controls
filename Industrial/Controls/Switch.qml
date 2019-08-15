@@ -27,7 +27,7 @@ T.Switch {
         implicitWidth: industrial.baseSize
         implicitHeight: industrial.fillSize
         radius: height / 2
-        color: control.checked ? industrial.colors.selection : control.flat ? industrial.colors.control :
+        color: control.checked ? Palette.selection : control.flat ? industrial.colors.control :
                                                                               industrial.colors.container
 
         Hatch {

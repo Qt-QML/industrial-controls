@@ -10,6 +10,6 @@ TextInput {
     readOnly: !control.editable
     font: control.font
     color: control.enabled ? control.color : industrial.colors.disabled
-    selectionColor: industrial.colors.selection
-    selectedTextColor: industrial.colors.onSelection
+    selectionColor: Palette.selection
+    selectedTextColor: Palette.selectionText
 }

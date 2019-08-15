@@ -12,7 +12,7 @@ Pane {
 
     implicitWidth: row.implicitWidth + padding * 2
     implicitHeight: row.implicitHeight + padding * 2
-    backgroundColor: industrial.colors.neutral
+    backgroundColor: Palette.neutral
     padding: industrial.padding
 
     RowLayout {
@@ -22,7 +22,7 @@ Pane {
 
         Label {
             id: textLabel
-            color: industrial.colors.onHighlight
+            color: Palette.highlightText
             font.pixelSize: industrial.auxFontSize
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter

@@ -19,8 +19,8 @@ T.ItemDelegate {
         radius: 0
         hovered: control.hovered
         color: {
-            if (control.highlighted) return control.isValid ? industrial.colors.selection :
-                                                              industrial.colors.negative;
+            if (control.highlighted) return control.isValid ? Palette.selection :
+                                                              Palette.negative;
             return industrial.colors.container;
         }
     }
@@ -31,6 +31,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? industrial.colors.onSelection : industrial.colors.onContainer
+        textColor: control.highlighted ? Palette.selectionText : industrial.colors.onContainer
     }
 }

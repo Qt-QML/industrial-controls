@@ -55,5 +55,6 @@
         <file>Industrial/Widgets/ColorPicker.qml</file>
         <file>Industrial/Widgets/DualColorPicker.qml</file>
         <file>Industrial/Widgets/ListWrapper.qml</file>
+        <file>Industrial/Controls/Palette.qml</file>
     </qresource>
 </RCC>

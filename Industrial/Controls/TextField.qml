@@ -15,7 +15,7 @@ T.TextField {
     font.pixelSize: industrial.mainFontSize
     color: control.enabled ? industrial.colors.onContainer : industrial.colors.disabled
     selectionColor: background.highlighterColor
-    selectedTextColor: industrial.colors.onSelection
+    selectedTextColor: Palette.selectionText
     selectByMouse: true
     leftPadding: industrial.padding
     bottomPadding: background.offset

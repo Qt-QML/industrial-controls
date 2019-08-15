@@ -39,9 +39,9 @@ BackgroundItem {
         visible: control.enabled
         color: {
             if (highlighted) {
-                if (control.caution) return industrial.colors.neutral;
-                if (!control.isValid) return industrial.colors.negative;
-                return industrial.colors.selection;
+                if (control.caution) return Palette.neutral;
+                if (!control.isValid) return Palette.negative;
+                return Palette.selection;
             }
 
             return industrial.colors.control;
@@ -58,9 +58,9 @@ BackgroundItem {
         font.pixelSize: inputed ? industrial.auxFontSize : industrial.mainFontSize
         color: {
             if (!control.enabled) return industrial.colors.disabled;
-            if (control.caution) return industrial.colors.neutral;
-            if (!control.isValid) return industrial.colors.negative;
-            if (control.highlighted) return industrial.colors.highlight;
+            if (control.caution) return Palette.neutral;
+            if (!control.isValid) return Palette.negative;
+            if (control.highlighted) return Palette.highlight;
 
             return industrial.colors.onContainer;
         }

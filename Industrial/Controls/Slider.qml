@@ -27,7 +27,7 @@ T.Slider {
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: industrial.colors.selection
+            color: Palette.selection
             radius: height / 2
         }
 
@@ -48,7 +48,7 @@ T.Slider {
             width: parent.width * 2
             height: width
             radius: width / 2
-            color: industrial.colors.highlight
+            color: Palette.highlight
             opacity: 0.5
             visible: control.pressed
         }
@@ -62,7 +62,7 @@ T.Slider {
         font.pixelSize: industrial.auxFontSize
         color: {
             if (!control.enabled) return industrial.colors.disabled;
-            if (control.activeFocus) return industrial.colors.selection;
+            if (control.activeFocus) return Palette.selection;
 
             return industrial.colors.onSurface;
         }

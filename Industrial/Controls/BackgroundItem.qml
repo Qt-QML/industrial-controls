@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import "."
 
 Item {
     id: control
@@ -32,7 +33,7 @@ Item {
 
             Rectangle {
                 anchors.fill: parent
-                color: industrial.colors.onButton
+                color: Palette.buttonText
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

@@ -233,10 +233,10 @@ T.Control {
         visible: _focusedItem
         height: industrial.underline
         color: {
-            if (caution) return industrial.colors.neutral;
-            if (!isValid) return industrial.colors.negative;
+            if (caution) return Palette.neutral;
+            if (!isValid) return Palette.negative;
 
-            return industrial.colors.selection;
+            return Palette.selection;
         }
         Behavior on x { NumberAnimation { duration: 150 } }
     }

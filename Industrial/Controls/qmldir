@@ -4,6 +4,7 @@ depends QtQuick.Controls 2.2
 designersupported
 
 Helper 1.0 helper.js
+singleton Palette 1.0 Palette.qml
 Shadow 1.0 Shadow.qml
 Hatch 1.0 Hatch.qml
 ApplicationWindow 1.0 ApplicationWindow.qml

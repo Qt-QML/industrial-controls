@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Templates 2.2 as T
+import "."
 
 T.SpinBox {
     id: control
@@ -73,7 +74,7 @@ T.SpinBox {
             }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? industrial.colors.onSelection : industrial.colors.onContainer
+            selectedTextColor: control.activeFocus ? Palette.selectionText : industrial.colors.onContainer
             validator: control.validator
         }
     }
@@ -85,7 +86,7 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : industrial.rounding
         rightCropping: radius
         bottomCropping: round ? 0 : radius
-        color: down.pressed && enabled ? industrial.colors.highlight : background.color
+        color: down.pressed && enabled ? Palette.highlight : background.color
         hovered: down.hovered
 
         Hatch {
@@ -99,9 +100,9 @@ T.SpinBox {
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return industrial.colors.disabled;
-                if (down.pressed) return industrial.colors.onHighlight;
+                if (down.pressed) return Palette.highlightText;
 
-                return industrial.colors.onButton;
+                return Palette.buttonText;
             }
         }
     }
@@ -113,7 +114,7 @@ T.SpinBox {
         radius: round ? Math.min(width, height) / 2 : industrial.rounding
         leftCropping: radius
         bottomCropping: round ? 0 : radius
-        color: up.pressed && enabled ? industrial.colors.highlight : background.color
+        color: up.pressed && enabled ? Palette.highlight : background.color
         hovered: up.hovered
 
         Hatch {
@@ -127,9 +128,9 @@ T.SpinBox {
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return industrial.colors.disabled;
-                if (up.pressed) return industrial.colors.onHighlight;
+                if (up.pressed) return Palette.highlightText;
 
-                return industrial.colors.onButton;
+                return Palette.buttonText;
             }
         }
     }

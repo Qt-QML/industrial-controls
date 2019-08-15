@@ -20,7 +20,7 @@ T.ProgressBar {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
             radius: control.round ? Math.min(width, height) / 2 : industrial.rounding
-            color: industrial.colors.selection
+            color: Palette.selection
         }
     }
 

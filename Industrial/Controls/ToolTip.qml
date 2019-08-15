@@ -7,12 +7,12 @@ T.ToolTip {
     contentItem: Label {
         text: control.text
         font: control.font
-        color: industrial.colors.onTip
+        color: Palette.tipText
         horizontalAlignment: Qt.AlignHCenter
     }
 
     background: Rectangle {
-        color: industrial.colors.tip
+        color: Palette.tip
         radius: 3
 
         MouseArea {

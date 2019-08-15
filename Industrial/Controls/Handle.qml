@@ -4,17 +4,17 @@ Rectangle {
     implicitWidth: industrial.handleSize
     implicitHeight: implicitWidth
     radius: width / 2
-    border.color: control.activeFocus ? industrial.colors.highlight : "transparent"
+    border.color: control.activeFocus ? Palette.highlight : "transparent"
     color: {
         if (!control.enabled) return industrial.colors.container;
-        if (control.pressed) return industrial.colors.highlight;
+        if (control.pressed) return Palette.highlight;
 
-        return industrial.colors.button;
+        return Palette.button;
     }
 
     Rectangle {
         anchors.fill: parent
-        color: industrial.colors.onButton
+        color: Palette.buttonText
         radius: parent.radius
         opacity: 0.1
         visible: hovered

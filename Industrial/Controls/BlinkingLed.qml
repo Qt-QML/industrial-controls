@@ -3,7 +3,7 @@ import QtQuick 2.6
 Led {
     id: root
 
-    property color blinkColor: industrial.colors.highlight
+    property color blinkColor: Palette.highlight
 
     property alias interval: timer.interval
 

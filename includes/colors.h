@@ -9,30 +9,30 @@ class Colors : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QColor background MEMBER m_background NOTIFY backgroundChanged)
-    Q_PROPERTY(QColor onBackground MEMBER m_onBackground NOTIFY onBackgroundChanged)
+    //Q_PROPERTY(QColor background MEMBER m_background NOTIFY backgroundChanged) -- Palette.background
+    //Q_PROPERTY(QColor onBackground MEMBER m_onBackground NOTIFY onBackgroundChanged)
     Q_PROPERTY(QColor surface MEMBER m_surface NOTIFY surfaceChanged)
     Q_PROPERTY(QColor onSurface MEMBER m_onSurface NOTIFY onSurfaceChanged)
     Q_PROPERTY(QColor container MEMBER m_container NOTIFY containerChanged)
     Q_PROPERTY(QColor onContainer MEMBER m_onContainer NOTIFY onContainerChanged)
-    Q_PROPERTY(QColor button MEMBER m_button NOTIFY buttonChanged)
-    Q_PROPERTY(QColor onButton MEMBER m_onButton NOTIFY onButtonChanged)
-    Q_PROPERTY(QColor tip MEMBER m_tip NOTIFY tipChanged)
-    Q_PROPERTY(QColor onTip MEMBER m_onTip NOTIFY onTipChanged)
-    Q_PROPERTY(QColor selection MEMBER m_selection NOTIFY selectionChanged)
-    Q_PROPERTY(QColor onSelection MEMBER m_onSelection NOTIFY onSelectionChanged)
-    Q_PROPERTY(QColor highlight MEMBER m_highlight NOTIFY highlightChanged)
-    Q_PROPERTY(QColor onHighlight MEMBER m_onHighlight NOTIFY onHighlightChanged)
+    //Q_PROPERTY(QColor button MEMBER m_button NOTIFY buttonChanged)
+    //Q_PROPERTY(QColor onButton MEMBER m_onButton NOTIFY onButtonChanged)
+    //Q_PROPERTY(QColor tip MEMBER m_tip NOTIFY tipChanged)
+    //Q_PROPERTY(QColor onTip MEMBER m_onTip NOTIFY onTipChanged)
+    //Q_PROPERTY(QColor selection MEMBER m_selection NOTIFY selectionChanged)
+    //Q_PROPERTY(QColor onSelection MEMBER m_onSelection NOTIFY onSelectionChanged)
+    //Q_PROPERTY(QColor highlight MEMBER m_highlight NOTIFY highlightChanged)
+    //Q_PROPERTY(QColor onHighlight MEMBER m_onHighlight NOTIFY onHighlightChanged)
 
     Q_PROPERTY(QColor control MEMBER m_control NOTIFY controlChanged)
     Q_PROPERTY(QColor disabled MEMBER m_disabled NOTIFY disabledChanged)
-    Q_PROPERTY(QColor link MEMBER m_link NOTIFY linkChanged)
+    //Q_PROPERTY(QColor link MEMBER m_link NOTIFY linkChanged)
 
-    Q_PROPERTY(QColor positive MEMBER m_positive NOTIFY positiveChanged)
-    Q_PROPERTY(QColor neutral MEMBER m_neutral NOTIFY neutralChanged)
-    Q_PROPERTY(QColor negative MEMBER m_negative NOTIFY negativeChanged)
+    //Q_PROPERTY(QColor positive MEMBER m_positive NOTIFY positiveChanged)
+    //Q_PROPERTY(QColor neutral MEMBER m_neutral NOTIFY neutralChanged)
+    //Q_PROPERTY(QColor negative MEMBER m_negative NOTIFY negativeChanged)
 
-    Q_PROPERTY(QColor shadow MEMBER m_shadow NOTIFY shadowChanged)
+    //Q_PROPERTY(QColor shadow MEMBER m_shadow NOTIFY shadowChanged)
 
 public:
     explicit Colors(QObject* parent = nullptr);

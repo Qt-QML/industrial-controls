@@ -34,7 +34,7 @@ Item {
             height: root.height
             overwriteMode: true
             selectionColor: highlighter.visible ? highlighter.color : industrial.colors.control
-            selectedTextColor: highlighter.visible ? industrial.colors.onSelection : industrial.colors.onContainer
+            selectedTextColor: highlighter.visible ? Palette.selectionText : industrial.colors.onContainer
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: {

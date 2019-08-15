@@ -9,9 +9,9 @@ BackgroundItem {
 
     property color indicatorColor: {
         if (!enabled) return industrial.colors.disabled;
-        if (down) return flat || !checked ? industrial.colors.highlight : industrial.colors.onHighlight;
+        if (down) return flat || !checked ? Palette.highlight : Palette.highlightText;
 
-        return industrial.colors.onButton;
+        return Palette.buttonText;
     }
 
     implicitWidth: industrial.checkmarkSize
@@ -20,8 +20,8 @@ BackgroundItem {
     color: {
         if (flat) return "transparent";
 
-        return checked ? down ? industrial.colors.highlight :
-                                industrial.colors.selection :
+        return checked ? down ? Palette.highlight :
+                                Palette.selection :
                                 industrial.colors.container;
     }
 

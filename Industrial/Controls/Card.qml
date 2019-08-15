@@ -51,9 +51,9 @@ Item {
 
         source: "qrc:/icons/menu_arrow.svg"
         color: {
-            if (area.pressed) return industrial.colors.selection;
-            if (area.containsMouse) return industrial.colors.highlight;
-            return industrial.colors.button
+            if (area.pressed) return Palette.selection;
+            if (area.containsMouse) return Palette.highlight;
+            return Palette.button
         }
 
         MouseArea {
