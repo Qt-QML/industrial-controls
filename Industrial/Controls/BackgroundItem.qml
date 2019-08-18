@@ -27,13 +27,13 @@ Item {
             anchors.bottomMargin: -bottomCropping
             anchors.leftMargin: -leftCropping
             anchors.rightMargin: -rightCropping
-            radius: Palette.rounding
-            color: flat ? "transparent" : industrial.colors.container
+            radius: Industrial.rounding
+            color: flat ? "transparent" : Industrial.colors.sunken
             border.color: borderColor
 
             Rectangle {
                 anchors.fill: parent
-                color: Palette.buttonText
+                color: Industrial.colors.buttonText
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

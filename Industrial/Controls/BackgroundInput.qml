@@ -7,7 +7,7 @@ BackgroundItem {
     property bool caution: false
     property bool isValid: true
     property bool highlighted: false
-    property int textPadding: industrial.padding
+    property int textPadding: Industrial.padding
 
     property alias textHeight: textMetrics.height
     property alias underline: highlighter.height
@@ -17,17 +17,17 @@ BackgroundItem {
     property alias highlighterColor: highlighter.color
 
     bottomCropping: radius
-    implicitWidth: Math.max(Palette.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Math.max(Industrial.baseSize * 4, textItem.implicitWidth)
 
     TextMetrics {
         id: textMetrics
-        font.pixelSize: industrial.auxFontSize
+        font.pixelSize: Industrial.auxFontSize
         text: textItem.text
     }
 
     Hatch {
         anchors.fill: parent
-        color: industrial.colors.surface
+        color: Industrial.colors.raised
         visible: !enabled
     }
 
@@ -35,16 +35,16 @@ BackgroundItem {
         id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
-        height: industrial.underline
+        height: Industrial.underline
         visible: control.enabled
         color: {
             if (highlighted) {
-                if (control.caution) return Palette.neutral;
-                if (!control.isValid) return Palette.negative;
-                return Palette.selection;
+                if (control.caution) return Industrial.colors.neutral;
+                if (!control.isValid) return Industrial.colors.negative;
+                return Industrial.colors.selection;
             }
 
-            return industrial.colors.control;
+            return Industrial.colors.control;
         }
     }
 
@@ -55,15 +55,15 @@ BackgroundItem {
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? industrial.auxFontSize : industrial.mainFontSize
+        font.pixelSize: inputed ? Industrial.auxFontSize : Industrial.mainFontSize
         color: {
-            if (!control.enabled) return industrial.colors.disabled;
-            if (control.caution) return Palette.neutral;
-            if (!control.isValid) return Palette.negative;
-            if (control.highlighted) return Palette.highlight;
+            if (!control.enabled) return Industrial.colors.disabled;
+            if (control.caution) return Industrial.colors.neutral;
+            if (!control.isValid) return Industrial.colors.negative;
+            if (control.highlighted) return Industrial.colors.highlight;
 
-            return industrial.colors.onContainer;
+            return Industrial.colors.textSunken;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: industrial.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: Industrial.animationTime } }
     }
 }

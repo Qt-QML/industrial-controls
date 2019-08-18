@@ -5,36 +5,36 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    padding: industrial.padding
+    padding: Industrial.padding
 
     GridLayout {
         anchors.fill: parent
-        anchors.margins: industrial.padding
-        rowSpacing: industrial.spacing
-        columnSpacing: industrial.spacing
+        anchors.margins: Industrial.padding
+        rowSpacing: Industrial.spacing
+        columnSpacing: Industrial.spacing
         columns: 4
 
         Label {}
 
         Label {
             text: qsTr("Enabled")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Invalid")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Disabled")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Text fields"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Text fields"); font.pixelSize: Industrial.auxFontSize }
 
         TextField {
             labelText: qsTr("Edit text here")
@@ -55,7 +55,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Passwords"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Passwords"); font.pixelSize: Industrial.auxFontSize }
 
         TextField {
             labelText: qsTr("Password")
@@ -77,7 +77,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Filter fields"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Filter fields"); font.pixelSize: Industrial.auxFontSize }
 
         FilterField {
             placeholderText: qsTr("Filter here")
@@ -98,7 +98,7 @@ Frame {
             Layout.fillWidth: true
         }
 
-        Label { text: qsTr("Combo boxes"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Combo boxes"); font.pixelSize: Industrial.auxFontSize }
 
         ComboBox {
             labelText: qsTr("Combobox")

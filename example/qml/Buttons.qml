@@ -5,48 +5,48 @@ import Industrial.Controls 1.0
 Frame {
     id: root
 
-    padding: industrial.padding
+    padding: Industrial.padding
 
     GridLayout {
         anchors.fill: parent
-        anchors.margins: industrial.padding
-        rowSpacing: industrial.spacing
-        columnSpacing: industrial.spacing
+        anchors.margins: Industrial.padding
+        rowSpacing: Industrial.spacing
+        columnSpacing: Industrial.spacing
         columns: 6
 
         Label {}
 
         Label {
             text: qsTr("Text")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Icon")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Text & icon")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Disabled text")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
         Label {
             text: qsTr("Disabled icon")
-            font.pixelSize: industrial.auxFontSize
+            font.pixelSize: Industrial.auxFontSize
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Common"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Common"); font.pixelSize: Industrial.auxFontSize }
 
         Button {
             text: qsTr("Common button")
@@ -76,7 +76,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Flat"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Flat"); font.pixelSize: Industrial.auxFontSize }
 
         Button {
             text: qsTr("Flat button")
@@ -111,7 +111,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Checkable"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Checkable"); font.pixelSize: Industrial.auxFontSize }
 
         Button {
             text: qsTr("Checkable")
@@ -146,7 +146,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Checkable & flat"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Checkable & flat"); font.pixelSize: Industrial.auxFontSize }
 
         Button {
             text: qsTr("Checkable flat")
@@ -186,7 +186,7 @@ Frame {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Label { text: qsTr("Delay"); font.pixelSize: industrial.auxFontSize }
+        Label { text: qsTr("Delay"); font.pixelSize: Industrial.auxFontSize }
 
         DelayButton {
             text: qsTr("Delay")

@@ -16,21 +16,21 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    font.pixelSize: industrial.mainFontSize
-    implicitWidth: Math.max(Palette.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: Palette.baseSize
+    font.pixelSize: Industrial.mainFontSize
+    implicitWidth: Math.max(Industrial.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Industrial.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: industrial.padding
+    padding: Industrial.padding
     delay: 1000
 
     background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        borderColor: control.activeFocus ? Palette.highlight : "transparent"
+        borderColor: control.activeFocus ? Industrial.colors.highlight : "transparent"
         hovered: control.hovered
-        radius: round ? Math.min(width, height) / 2 : Palette.rounding
-        color: control.flat ? "transparent" : Palette.button
+        radius: round ? Math.min(width, height) / 2 : Industrial.rounding
+        color: control.flat ? "transparent" : Industrial.colors.button
 
         Shadow {
             visible: control.shadow && !control.flat
@@ -39,7 +39,7 @@ T.DelayButton {
 
         Hatch {
             anchors.fill: parent
-            color: industrial.colors.surface
+            color: Industrial.colors.raised
             visible: !enabled
         }
     }
@@ -53,7 +53,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: Palette.buttonText
+            textColor: Industrial.colors.buttonText
         }
 
         Item {
@@ -65,7 +65,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: Palette.selection
+                color: Industrial.colors.selection
                 clip: true
             }
 
@@ -82,7 +82,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: Palette.selectionText
+                    textColor: Industrial.colors.selectionText
                 }
             }
         }

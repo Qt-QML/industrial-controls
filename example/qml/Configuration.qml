@@ -5,20 +5,19 @@ import Industrial.Widgets 1.0
 
 Popup {
     id: root
-    //width: Palette.baseSize * 8
-    width: Palette.baseSize * 8
+    width: Industrial.baseSize * 8
     closePolicy: Popup.CloseOnPressOutsideParent
 
     ColumnLayout{
         width: parent.width
-        spacing: industrial.spacing
+        spacing: Industrial.spacing
 
         Slider {
             from: 50
             to: 150
             text: qsTr("Lightness")
-            value: Palette.lightness
-            onMoved: { Palette.lightness = value}
+            value: Industrial.lightness
+            onMoved: { Industrial.lightness = value}
 
             Layout.fillWidth: true
         }
@@ -27,8 +26,8 @@ Popup {
             from: 0
             to: 8
             text: qsTr("Rounding")
-            value: Palette.rounding
-            onMoved: {Palette.rounding = value}
+            value: Industrial.rounding
+            onMoved: {Industrial.rounding = value}
             Layout.fillWidth: true
         }
 
@@ -37,19 +36,19 @@ Popup {
             to: 64
             stepSize: 4
             text: qsTr("Base size")
-            value:  Palette.baseSize
-            onPressedChanged: if (!pressed) Palette.baseSize = value
+            value:  Industrial.baseSize
+            onPressedChanged: if (!pressed) Industrial.baseSize = value
             Layout.fillWidth: true
         }
 
         RowLayout {
-            spacing: industrial.spacing
+            spacing: Industrial.spacing
 
             DualColorPicker {
-                Binding on primaryColor { value: themeConfigurator.baseColor; when: !opened }
-                Binding on secondaryColor { value: themeConfigurator.onBaseColor; when: !opened }
-                onPrimaryColorPicked: themeConfigurator.setBaseColor(color)
-                onSecondaryColorPicked: themeConfigurator.setOnBaseColor(color)
+                primaryColor: Industrial.colors.baseColor
+                onPrimaryColorPicked:Industrial.colors.baseColor = color
+                secondaryColor: Industrial.colors.textBaseColor
+                onSecondaryColorPicked: Industrial.colors.textBaseColor = color
             }
 
             Label {
@@ -59,13 +58,13 @@ Popup {
         }
 
         RowLayout {
-            spacing: industrial.spacing
+            spacing: Industrial.spacing
 
             DualColorPicker {
-                Binding on primaryColor { value: themeConfigurator.primaryColor; }
-                Binding on secondaryColor { value: themeConfigurator.onPrimaryColor;  }
-                onPrimaryColorPicked: themeConfigurator.setPrimaryColor(color)
-                onSecondaryColorPicked: themeConfigurator.setOnPrimaryColor(color)
+                primaryColor: Industrial.colors.primaryColor
+                onPrimaryColorPicked:Industrial.colors.primaryColor = color
+                secondaryColor: Industrial.colors.textPrimaryColor
+                onSecondaryColorPicked: Industrial.colors.textPrimaryColor = color
             }
 
             Label {

@@ -1,12 +1,13 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
+import "."
 
 RectangularGlow {
     id: shadow
 
     property Item source
 
-    glowRadius: industrial.shadowSize
+    glowRadius: Industrial.shadowSize
     spread: 0.2
     color: "#77000000"
     cornerRadius: (source.radius ? source.radius : 0) + glowRadius

@@ -5,12 +5,12 @@ import "."
 T.Pane {
     id: control
 
-    property color backgroundColor: industrial.colors.surface
+    property color backgroundColor: Industrial.colors.raised
 
-    padding: industrial.margins
+    padding: Industrial.margins
 
     background: Rectangle {
         color: backgroundColor
-        radius: Palette.rounding
+        radius: Industrial.rounding
     }
 }

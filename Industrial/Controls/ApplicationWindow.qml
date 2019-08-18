@@ -5,5 +5,5 @@ import "."
 Controls.ApplicationWindow {
     id: window
 
-    color: Palette.background
+    color: Industrial.colors.background
 }

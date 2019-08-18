@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 Item {
     id: content
 
-    property color textColor: industrial.colors.onSurface
+    property color textColor: Industrial.colors.textRaised
     property color iconColor: textColor
 
     property alias spacing: row.spacing
@@ -22,13 +22,13 @@ Item {
     RowLayout {
         id: row
         anchors.fill: parent
-        spacing: industrial.spacing
+        spacing: Industrial.spacing
 
         ColoredIcon {
             id: icon
-            implicitWidth: industrial.iconSize
-            implicitHeight: industrial.iconSize
-            color: enabled ? iconColor : industrial.colors.disabled
+            implicitWidth: Industrial.iconSize
+            implicitHeight: Industrial.iconSize
+            color: enabled ? iconColor : Industrial.colors.disabled
             visible: iconSource != ""
             //Layout.alignment: Qt.AlignCenter
             Layout.leftMargin: (content.height - width) / 2
@@ -37,8 +37,8 @@ Item {
         Text {
             id: label
             elide: Text.ElideRight
-            font.pixelSize: industrial.mainFontSize
-            color: enabled ? textColor : industrial.colors.disabled
+            font.pixelSize: Industrial.mainFontSize
+            color: enabled ? textColor : Industrial.colors.disabled
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             visible: text.length > 0

@@ -12,9 +12,9 @@ T.Button { // TODO: clickable
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
     property bool shadow: !flat
-    property color color: control.flat ? "transparent" : Palette.button
-    property color highlightColor: Palette.highlight
-    property color selectionColor: Palette.selection
+    property color color: control.flat ? "transparent" : Industrial.colors.button
+    property color highlightColor: Industrial.colors.highlight
+    property color selectionColor: Industrial.colors.selection
     property string tipText
 
     property alias iconSource: content.iconSource
@@ -27,22 +27,22 @@ T.Button { // TODO: clickable
     property alias backgroundColor: backgroundItem.color
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
-    implicitHeight: Palette.baseSize
+    implicitHeight: Industrial.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: industrial.padding
-    font.pixelSize: industrial.mainFontSize
+    padding: Industrial.padding
+    font.pixelSize: Industrial.mainFontSize
 
     background: BackgroundItem {
         id: backgroundItem
         hovered: control.hovered
         flat: control.flat
-        radius: round ? Math.min(width, height) / 2 : Palette.rounding
+        radius: round ? Math.min(width, height) / 2 : Industrial.rounding
         topCropping: topCropped ? radius : 0
         bottomCropping: bottomCropped ? radius : 0
         leftCropping: leftCropped ? radius : 0
         rightCropping: rightCropped ? radius : 0
-        borderColor: control.activeFocus ? Palette.highlight : "transparent"
+        borderColor: control.activeFocus ? Industrial.colors.highlight : "transparent"
         color: {
             if (control.pressed || control.pressedImpl) return control.highlightColor;
             if (control.highlighted || control.checked) return control.selectionColor;
@@ -56,7 +56,7 @@ T.Button { // TODO: clickable
 
         Hatch {
             anchors.fill: parent
-            color: industrial.colors.surface
+            color: Industrial.colors.raised
             visible: control.hatched
         }
     }
@@ -68,9 +68,9 @@ T.Button { // TODO: clickable
         text: control.text
         font: control.font
         textColor: {
-            if (control.pressed || control.pressedImpl) return Palette.highlightText;
-            if (control.highlighted || control.checked) return Palette.selectionText;
-            return Palette.buttonText;
+            if (control.pressed || control.pressedImpl) return Industrial.colors.highlightText;
+            if (control.highlighted || control.checked) return Industrial.colors.selectionText;
+            return Industrial.colors.buttonText;
         }
     }
 

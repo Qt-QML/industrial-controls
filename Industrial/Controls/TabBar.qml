@@ -5,17 +5,17 @@ import "."
 T.TabBar { // TODO: replace with model-based bar
     id: control
 
-    implicitWidth: Palette.baseSize * count * 6
-    implicitHeight: Palette.baseSize
+    implicitWidth: Industrial.baseSize * count * 6
+    implicitHeight: Industrial.baseSize
 
     background: Item {
         clip: true
 
         Rectangle {
             id: bg
-            color: industrial.colors.container
+            color: Industrial.colors.sunken
             anchors.fill: parent
-            radius: Palette.rounding
+            radius: Industrial.rounding
             anchors.bottomMargin: -radius
         }
     }

@@ -4,8 +4,6 @@
 #include <QQmlContext>
 
 // Internal
-#include "theme.h"
-#include "theme_configurator.h"
 
 int main(int argc, char* argv[])
 {
@@ -17,11 +15,6 @@ int main(int argc, char* argv[])
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/"));
 
-    ThemeConfigurator* themeConfigurator = new ThemeConfigurator(&app);
-    engine.rootContext()->setContextProperty(QStringLiteral("themeConfigurator"),
-                                             QVariant::fromValue(themeConfigurator));
-    engine.rootContext()->setContextProperty(QStringLiteral("industrial"),
-                                             QVariant::fromValue(themeConfigurator->theme()));
 
     engine.load(QStringLiteral("../qml/Main.qml"));
     if (engine.rootObjects().isEmpty()) return -1;
