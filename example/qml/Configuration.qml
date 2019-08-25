@@ -16,8 +16,8 @@ Popup {
             from: 50
             to: 150
             text: qsTr("Lightness")
-            value: Industrial.lightness
-            onMoved: { Industrial.lightness = value}
+            value: Industrial.colors.lightness * 100
+            onMoved: { Industrial.colors.lightness = value / 100}
 
             Layout.fillWidth: true
         }

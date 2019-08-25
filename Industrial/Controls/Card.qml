@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Controls 1.0 as Controls
 
 Item {
     id: control
@@ -14,8 +15,8 @@ Item {
     Rectangle {
         id: background
         anchors.fill: control
-        color: Industrial.colors.raised
-        radius: Industrial.colors.rounding
+        color: Controls.Industrial.colors.raised
+        radius: Controls.Industrial.rounding
         z: -1
 
         Shadow {
@@ -30,9 +31,9 @@ Item {
         iconSource: "qrc:/icons/dots.svg"
         flat: true
         enabled: menu.contentModel.count > 0
-        width: Industrial.baseSize * 0.5
-        height: Industrial.baseSize * 0.75
-        iconSize: height - Industrial.padding
+        width: Controls.Industrial.baseSize * 0.5
+        height: Controls.Industrial.baseSize * 0.75
+        iconSize: height - Controls.Industrial.padding
         padding: 0
         onClicked: menu.open()
 
@@ -46,20 +47,20 @@ Item {
         id: deepButton
         anchors.bottom: parent.bottom
         anchors.right: parent.right
-        width: Industrial.baseSize * 0.75
+        width: Controls.Industrial.baseSize * 0.75
         height: width
 
         source: "qrc:/icons/menu_arrow.svg"
         color: {
-            if (area.pressed) return Industrial.colors.selection;
-            if (area.containsMouse) return Industrial.colors.highlight;
-            return Industrial.colors.button
+            if (area.pressed) return Controls.Industrial.colors.selection;
+            if (area.containsMouse) return Controls.Industrial.colors.highlight;
+            return Controls.Industrial.colors.button
         }
 
         MouseArea {
             id: area
             anchors.centerIn: parent
-            width: Industrial.baseSize
+            width: Controls.Industrial.baseSize
             height: width
             hoverEnabled: true
             onPressed: deepIn()

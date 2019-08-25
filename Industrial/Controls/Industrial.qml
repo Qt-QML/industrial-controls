@@ -5,18 +5,21 @@ import QtQuick 2.0
 Item {
 
 
+    property color baseColor: themeConfigurator.baseColor
+    property color textBaseColor: themeConfigurator.textBaseColor
+    property color primaryColor: themeConfigurator.baseColor
+    property color textPrimaryColor: themeConfigurator.textBaseColor
 
-    property real lightness: colors.lightness * 100
-    onLightnessChanged: {
-        colors.lightness = lightness / 100
-    }
+
+
+
     property IndustrialColors colors: IndustrialColors{}
 
 
 
-
-    property real rounding: 4
-    property real baseSize: 32
+    property real lightness: themeConfigurator.lightness
+    property real rounding: themeConfigurator.rounding
+    property real baseSize: themeConfigurator.baseSize
     property real animationTime: 100
     property real underline: 2
     property real scrollSize: 2

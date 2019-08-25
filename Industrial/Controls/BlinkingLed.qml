@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import "."
 
 Led {
     id: root
@@ -9,7 +10,7 @@ Led {
 
     function blink() { timer.start(); }
 
-    color: timer.running ? blinkColor : industrial.colors.background
+    color: timer.running ? blinkColor : Industrial.colors.background
     glowRadius: timer.running ? root.width : Industrial.shadowSize
 
     Timer {

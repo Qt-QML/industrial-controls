@@ -7,7 +7,7 @@ T.ToolBar {
     padding: Industrial.padding
 
     background: Rectangle {
-        color: industrial.colors.sunken
+        color: Industrial.colors.sunken
 
         Shadow {
             source: parent
