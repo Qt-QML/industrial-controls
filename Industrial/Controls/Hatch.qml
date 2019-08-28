@@ -3,7 +3,7 @@ import QtQuick 2.6
 ShaderEffect {
     id: shader
 
-    property color color: Industrial.colors.negative
+    property color color: Theme.colors.negative
     property real size: 2
 
     property real _ratio: width * height / size

@@ -6,8 +6,8 @@ T.ProgressBar {
 
     property bool round: false
 
-    implicitWidth: Industrial.baseSize * 4
-    implicitHeight: Industrial.baseSize
+    implicitWidth: Theme.baseSize * 4
+    implicitHeight: Theme.baseSize
 
     background: BackgroundItem {}
 
@@ -19,14 +19,14 @@ T.ProgressBar {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            radius: control.round ? Math.min(width, height) / 2 : Industrial.rounding
-            color: Industrial.colors.selection
+            radius: control.round ? Math.min(width, height) / 2 : Theme.rounding
+            color: Theme.colors.selection
         }
     }
 
     Hatch {
         anchors.fill: parent
-        color: Industrial.colors.raised
+        color: Theme.colors.raised
         visible: !enabled
         z: 10
     }

@@ -11,14 +11,13 @@ Item {
 
 
     property color baseColor: colors.baseColor
-
     property color textBaseColor: colors.textBaseColor
-
     property color primaryColor: colors.primaryColor
-
     property color textPrimaryColor: colors.textPrimaryColor
-
     property real lightness: colors.lightness
+
+
+
 
     property real rounding: 10
 

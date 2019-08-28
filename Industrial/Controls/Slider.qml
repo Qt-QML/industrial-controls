@@ -1,6 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
-import "."
+
 
 T.Slider {
     id: control
@@ -10,7 +10,7 @@ T.Slider {
 
     property alias text: textItem.text
 
-    implicitWidth: Industrial.baseSize * 6
+    implicitWidth: Theme.baseSize * 6
     implicitHeight: handle.height + topPadding
     topPadding: textItem.visible ? textItem.contentHeight : 0
     focusPolicy: Qt.NoFocus
@@ -19,22 +19,22 @@ T.Slider {
     background: Rectangle {
         x: control.leftPadding
         y: control.topPadding + control.availableHeight / 2 - height / 2
-        implicitWidth: Industrial.baseSize * 6
+        implicitWidth: Theme.baseSize * 6
         width: control.availableWidth
-        height: Industrial.fillSize
+        height: Theme.fillSize
         radius: height / 2
-        color: flat ? Industrial.colors.control : Industrial.colors.sunken
+        color: flat ? Theme.colors.control : Theme.colors.sunken
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: Industrial.colors.selection
+            color: Theme.colors.selection
             radius: height / 2
         }
 
         Hatch {
             anchors.fill: parent
-            color: Industrial.colors.raised
+            color: Theme.colors.raised
             visible: !enabled
         }
     }
@@ -49,7 +49,7 @@ T.Slider {
             width: parent.width * 2
             height: width
             radius: width / 2
-            color: Industrial.colors.highlight
+            color: Theme.colors.highlight
             opacity: 0.5
             visible: control.pressed
         }
@@ -60,14 +60,14 @@ T.Slider {
         anchors.left: parent.left
         anchors.top: parent.top
         visible: text.length
-        font.pixelSize: Industrial.auxFontSize
+        font.pixelSize: Theme.auxFontSize
         color: {
-            if (!control.enabled) return Industrial.colors.disabled;
-            if (control.activeFocus) return Industrial.colors.selection;
+            if (!control.enabled) return Theme.colors.disabled;
+            if (control.activeFocus) return Theme.colors.selection;
 
-            return Industrial.colors.textRaised;
+            return Theme.colors.textRaised;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: Industrial.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }
 
     ToolTip {

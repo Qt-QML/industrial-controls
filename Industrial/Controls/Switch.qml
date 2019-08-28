@@ -12,11 +12,11 @@ T.Switch {
     property alias backgroundColor: backgroundItem.color
 
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: Industrial.baseSize
-    spacing: Industrial.spacing
+    implicitHeight: Theme.baseSize
+    spacing: Theme.spacing
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    font.pixelSize: Industrial.mainFontSize
+    font.pixelSize: Theme.mainFontSize
 
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
@@ -24,15 +24,15 @@ T.Switch {
         id: backgroundItem
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Industrial.baseSize
-        implicitHeight: Industrial.fillSize
+        implicitWidth: Theme.baseSize
+        implicitHeight: Theme.fillSize
         radius: height / 2
-        color: control.checked ? Industrial.colors.selection : control.flat ? Industrial.colors.control :
-                                                                              Industrial.colors.sunken
+        color: control.checked ? Theme.colors.selection : control.flat ? Theme.colors.control :
+                                                                              Theme.colors.sunken
 
         Hatch {
             anchors.fill: parent
-            color: Industrial.colors.raised
+            color: Theme.colors.raised
             visible: !control.enabled
         }
 
@@ -40,7 +40,7 @@ T.Switch {
             x: control.checked ? parent.width - width : 0
             anchors.verticalCenter: parent.verticalCenter
 
-            Behavior on x { PropertyAnimation { duration: Industrial.animationTime} }
+            Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
         }
     }
 

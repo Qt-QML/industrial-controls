@@ -5,7 +5,7 @@ import Industrial.Controls 1.0 as Controls
 Item {
     id: root
 
-    property color backgroundColor: Industrial.colors.raised
+    property color backgroundColor: Theme.colors.raised
     property string emptyText: qsTr("No items")
 
     property alias model: list.model
@@ -16,8 +16,8 @@ Item {
     function toIndex(index) { list.positionViewAtIndex(index) }
     function toEnd() { list.positionViewAtEnd() }
 
-    implicitWidth: list.contentWidth + Industrial.shadowSize + 1
-    implicitHeight: Math.max(list.contentHeight + Industrial.shadowSize + 1, Industrial.baseSize * 5)
+    implicitWidth: list.contentWidth + Theme.shadowSize + 1
+    implicitHeight: Math.max(list.contentHeight + Theme.shadowSize + 1, Theme.baseSize * 5)
     clip: true
 
     ListView {
@@ -25,9 +25,9 @@ Item {
         anchors.fill: parent
         anchors.leftMargin: 1
         anchors.topMargin: 1
-        anchors.rightMargin: Industrial.shadowSize
-        anchors.bottomMargin: Industrial.shadowSize
-        spacing: Industrial.spacing
+        anchors.rightMargin: Theme.shadowSize
+        anchors.bottomMargin: Theme.shadowSize
+        spacing: Theme.spacing
         headerPositioning: ListView.PullBackHeader
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
@@ -45,8 +45,8 @@ Item {
 
     Rectangle {
         x: 1
-        width: parent.width - Industrial.shadowSize - 1
-        height: Industrial.baseSize * 0.5
+        width: parent.width - Theme.shadowSize - 1
+        height: Theme.baseSize * 0.5
         anchors.top: parent.top
         visible: list.contentY > 0
         gradient: Gradient {
@@ -57,8 +57,8 @@ Item {
 
     Rectangle {
         x: 1
-        width: parent.width - Industrial.shadowSize - 1
-        height: Industrial.baseSize * 0.5
+        width: parent.width - Theme.shadowSize - 1
+        height: Theme.baseSize * 0.5
         anchors.bottom: parent.bottom
         visible: list.contentY < (list.contentHeight - list.height)
         gradient: Gradient {

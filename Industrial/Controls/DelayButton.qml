@@ -16,21 +16,21 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    font.pixelSize: Industrial.mainFontSize
-    implicitWidth: Math.max(Industrial.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: Industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    implicitWidth: Math.max(Theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: Industrial.padding
+    padding: Theme.padding
     delay: 1000
 
     background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        borderColor: control.activeFocus ? Industrial.colors.highlight : "transparent"
+        borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: control.hovered
-        radius: round ? Math.min(width, height) / 2 : Industrial.rounding
-        color: control.flat ? "transparent" : Industrial.colors.button
+        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        color: control.flat ? "transparent" : Theme.colors.button
 
         Shadow {
             visible: control.shadow && !control.flat
@@ -39,7 +39,7 @@ T.DelayButton {
 
         Hatch {
             anchors.fill: parent
-            color: Industrial.colors.raised
+            color: Theme.colors.raised
             visible: !enabled
         }
     }
@@ -53,7 +53,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: Industrial.colors.buttonText
+            textColor: Theme.colors.buttonText
         }
 
         Item {
@@ -65,7 +65,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: Industrial.colors.selection
+                color: Theme.colors.selection
                 clip: true
             }
 
@@ -82,7 +82,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: Industrial.colors.selectionText
+                    textColor: Theme.colors.selectionText
                 }
             }
         }

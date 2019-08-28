@@ -10,11 +10,11 @@ T.CheckBox {
     property alias flat: base.flat
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: Industrial.mainFontSize
-    height: Industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    height: Theme.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
-    spacing: Industrial.spacing
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
     hoverEnabled: true

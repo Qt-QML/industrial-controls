@@ -1,11 +1,11 @@
 import QtQuick 2.6
-import "."
+
 
 Label {
     id: control
 
     onLinkActivated: Qt.openUrlExternally(link)
-    linkColor: Industrial.colors.link
+    linkColor: Theme.colors.link
 
     MouseArea {
         anchors.fill: control

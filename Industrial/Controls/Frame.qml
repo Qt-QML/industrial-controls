@@ -4,9 +4,9 @@ import QtQuick.Controls 2.2 as T
 T.Frame {
     id: control
 
-    property color backgroundColor: Industrial.colors.raised
+    property color backgroundColor: Theme.colors.raised
 
-    padding: Industrial.margins
+    padding: Theme.margins
 
     background: Rectangle {
         color: backgroundColor

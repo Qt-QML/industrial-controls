@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
-import "."
+
 
 T.ItemDelegate {
     id: control
@@ -11,18 +11,18 @@ T.ItemDelegate {
     property alias horizontalAlignment: content.horizontalAlignment
     property alias iconSource: content.iconSource
 
-    implicitHeight: Industrial.baseSize
-    padding: Industrial.padding
-    font.pixelSize: Industrial.mainFontSize
+    implicitHeight: Theme.baseSize
+    padding: Theme.padding
+    font.pixelSize: Theme.mainFontSize
     hoverEnabled: true
 
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
         color: {
-            if (control.highlighted) return control.isValid ? Industrial.colors.selection :
-                                                              Industrial.colors.negative;
-            return Industrial.colors.sunken;
+            if (control.highlighted) return control.isValid ? Theme.colors.selection :
+                                                              Theme.colors.negative;
+            return Theme.colors.sunken;
         }
     }
 
@@ -32,6 +32,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? Industrial.colors.selectionText : Industrial.colors.textSunken
+        textColor: control.highlighted ? Theme.colors.selectionText : Theme.colors.textSunken
     }
 }

@@ -1,6 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
-import "."
+
 
 T.ScrollBar {
     id: control
@@ -12,7 +12,7 @@ T.ScrollBar {
     background: Item { }
 
     contentItem: Rectangle {
-        color: active && enabled ? Industrial.colors.highlight : "transparent"
+        color: active && enabled ? Theme.colors.highlight : "transparent"
         radius: width / 2
     }
 }

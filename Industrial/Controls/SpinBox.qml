@@ -1,12 +1,12 @@
 import QtQuick 2.9
 import QtQuick.Templates 2.2 as T
-import "."
+
 
 T.SpinBox {
     id: control
 
     property bool isValid: value >= from && value <= to
-    property color color: Industrial.colors.textSunken
+    property color color: Theme.colors.textSunken
     property bool round: false
 
     property alias caution: background.caution
@@ -14,12 +14,12 @@ T.SpinBox {
     property alias labelText: background.text
     property alias flat: background.flat
 
-    implicitWidth: background.implicitWidth + Industrial.baseSize * 2
+    implicitWidth: background.implicitWidth + Theme.baseSize * 2
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
-                             background.underline, Industrial.baseSize)
-    leftPadding: Industrial.baseSize
-    rightPadding: Industrial.baseSize
-    font.pixelSize: Industrial.mainFontSize
+                             background.underline, Theme.baseSize)
+    leftPadding: Theme.baseSize
+    rightPadding: Theme.baseSize
+    font.pixelSize: Theme.mainFontSize
     editable: true
     hoverEnabled: true
     clip: true
@@ -45,7 +45,7 @@ T.SpinBox {
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
-        textPadding: Industrial.baseSize + Industrial.padding
+        textPadding: Theme.baseSize + Theme.padding
     }
 
     MouseArea{
@@ -74,24 +74,24 @@ T.SpinBox {
             }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? Industrial.colors.selectionText : Industrial.colors.textSunken
+            selectedTextColor: control.activeFocus ? Theme.colors.selectionText : Theme.colors.textSunken
             validator: control.validator
         }
     }
 
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
-        width: Industrial.baseSize
+        width: Theme.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Theme.rounding
         rightCropping: radius
         bottomCropping: round ? 0 : radius
-        color: down.pressed && enabled ? Industrial.colors.highlight : background.color
+        color: down.pressed && enabled ? Theme.colors.highlight : background.color
         hovered: down.hovered
 
         Hatch {
             anchors.fill: parent
-            color: Industrial.colors.raised
+            color: Theme.colors.raised
             visible: !enabled
         }
 
@@ -99,27 +99,27 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
-                if (!enabled) return Industrial.colors.disabled;
-                if (down.pressed) return Industrial.colors.highlightText;
+                if (!enabled) return Theme.colors.disabled;
+                if (down.pressed) return Theme.colors.highlightText;
 
-                return Industrial.colors.buttonText;
+                return Theme.colors.buttonText;
             }
         }
     }
 
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
-        width: Industrial.baseSize
+        width: Theme.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Industrial.rounding
+        radius: round ? Math.min(width, height) / 2 : Theme.rounding
         leftCropping: radius
         bottomCropping: round ? 0 : radius
-        color: up.pressed && enabled ? Industrial.colors.highlight : background.color
+        color: up.pressed && enabled ? Theme.colors.highlight : background.color
         hovered: up.hovered
 
         Hatch {
             anchors.fill: parent
-            color: Industrial.colors.raised
+            color: Theme.colors.raised
             visible: !enabled
         }
 
@@ -127,10 +127,10 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
-                if (!enabled) return Industrial.colors.disabled;
-                if (up.pressed) return Industrial.colors.highlightText;
+                if (!enabled) return Theme.colors.disabled;
+                if (up.pressed) return Theme.colors.highlightText;
 
-                return Industrial.colors.buttonText;
+                return Theme.colors.buttonText;
             }
         }
     }
