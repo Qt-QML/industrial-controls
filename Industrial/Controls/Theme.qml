@@ -3,23 +3,27 @@ pragma Singleton // We indicate that this QML Type is a singleton
 import QtQuick 2.0
 
 Item {
-
-
-    property color baseColor: themeConfigurator.baseColor
-    property color textBaseColor: themeConfigurator.textBaseColor
-    property color primaryColor: themeConfigurator.baseColor
-    property color textPrimaryColor: themeConfigurator.textBaseColor
+    id: root
 
 
 
-
-    property IndustrialColors colors: IndustrialColors{}
-
+    property ThemeColors colors: ThemeColors{}
 
 
-    property real lightness: themeConfigurator.lightness
-    property real rounding: themeConfigurator.rounding
-    property real baseSize: themeConfigurator.baseSize
+    property color baseColor: colors.baseColor
+
+    property color textBaseColor: colors.textBaseColor
+
+    property color primaryColor: colors.primaryColor
+
+    property color textPrimaryColor: colors.textPrimaryColor
+
+    property real lightness: colors.lightness
+
+    property real rounding: 10
+
+    property real baseSize: 32
+
     property real animationTime: 100
     property real underline: 2
     property real scrollSize: 2

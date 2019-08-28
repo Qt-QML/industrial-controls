@@ -33,13 +33,11 @@ Item {
     property color shadow: "#80000000"
 
 
-
-
-    property real lightness: themeConfigurator.lightness
-    property color baseColor: themeConfigurator.baseColor
-    property color textBaseColor: themeConfigurator.textBaseColor
-    property color primaryColor: themeConfigurator.primaryColor
-    property color textPrimaryColor: themeConfigurator.textPrimaryColor
+    property real lightness: 1
+    property color baseColor: "#37474f"
+    property color textBaseColor: "#fafafa"
+    property color primaryColor: "#009688"
+    property color textPrimaryColor: "#161616"
 
     property real backgroundFactor: 0.6
     property real raisedFactor: 1
