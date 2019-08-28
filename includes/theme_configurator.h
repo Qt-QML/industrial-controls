@@ -3,9 +3,6 @@
 
 // Qt
 #include <QObject>
-#include <QColor>
-
-class Theme;
 
 class ThemeConfigurator: public QObject
 {
@@ -13,19 +10,12 @@ class ThemeConfigurator: public QObject
 
     Q_PROPERTY(QObject* theme WRITE setTheme)
 
-
 public:
     explicit ThemeConfigurator(QObject* parent = nullptr);
-
-
 
 public slots:
     void setTheme(QObject* theme);
 
 };
-
-
-
-
 
 #endif // THEME_CONFIGURATOR_H

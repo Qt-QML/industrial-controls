@@ -2,9 +2,6 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0
 import Industrial.Widgets 1.0
-import ThemeConfigurator 1.0
-
-
 
 Popup {
     id: root
@@ -13,10 +10,9 @@ Popup {
 
     ThemeConfigurator
     {
-        id: adapter
+        id: congigurator
         theme: Theme
     }
-
 
     ColumnLayout{
         width: parent.width
