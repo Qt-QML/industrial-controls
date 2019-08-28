@@ -16,6 +16,16 @@ public:
 public slots:
     void setTheme(QObject* theme);
 
+    void setRounding(int rounding);
+    void setBaseSize(int baseSize);
+
+    void configure();
+
+private:
+    QObject* m_theme = nullptr;
+
+    int m_rounding = 0;
+    int m_baseSize = 0;
 };
 
 #endif // THEME_CONFIGURATOR_H

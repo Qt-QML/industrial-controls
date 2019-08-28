@@ -5,29 +5,16 @@ import QtQuick 2.0
 Item {
     id: root
 
+    property ThemeColors colors: ThemeColors {}
 
-
-    property ThemeColors colors: ThemeColors{}
-
-
-    property color baseColor: colors.baseColor
-    property color textBaseColor: colors.textBaseColor
-    property color primaryColor: colors.primaryColor
-    property color textPrimaryColor: colors.textPrimaryColor
-    property real lightness: colors.lightness
-
-
-
-
-    property real rounding: 10
+    property real rounding: 4
 
     property real baseSize: 32
 
-    property real animationTime: 100
+    property real animationTime: 200
     property real underline: 2
     property real scrollSize: 2
     property real shadowSize: 3
-
 
     property real spacing:  baseSize / spacingFactor
     property real margins:  baseSize / marginsFactor
@@ -40,7 +27,7 @@ Item {
     property real mainFontSize: baseSize / mainFontFactor
     property real auxFontSize: baseSize / auxFontFactor
 
-
+    // TODO: перенести факторы в конфигуратор
     property real mainFontFactor:2.0
     property real auxFontFactor:2.5
     property real spacingFactor:4.0

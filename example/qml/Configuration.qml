@@ -10,7 +10,7 @@ Popup {
 
     ThemeConfigurator
     {
-        id: congigurator
+        id: configurator
         theme: Theme
     }
 
@@ -19,64 +19,22 @@ Popup {
         spacing: Theme.spacing
 
         Slider {
-            from: 50
-            to: 150
-            text: qsTr("Lightness")
-            value: Theme.colors.lightness * 100
-            onMoved: { Theme.colors.lightness = value / 100}
-
-            Layout.fillWidth: true
-        }
-
-        Slider {
             from: 0
             to: 8
             text: qsTr("Rounding")
             value: Theme.rounding
-            onMoved: {Theme.rounding = value}
+            onMoved: configurator.setRounding(value)
             Layout.fillWidth: true
         }
 
         Slider {
-            from: 24
-            to: 64
+            from: 16
+            to: 60
             stepSize: 4
             text: qsTr("Base size")
-            value:  Theme.baseSize
-            onPressedChanged: if (!pressed) Theme.baseSize = value
+            value: Theme.baseSize
+            onPressedChanged: if (!pressed) configurator.setBaseSize(value)
             Layout.fillWidth: true
-        }
-
-        RowLayout {
-            spacing: Theme.spacing
-
-            DualColorPicker {
-                primaryColor: Theme.colors.baseColor
-                onPrimaryColorPicked:Theme.colors.baseColor = color
-                secondaryColor: Theme.colors.textBaseColor
-                onSecondaryColorPicked: Theme.colors.textBaseColor = color
-            }
-
-            Label {
-                text: qsTr("Base color")
-                Layout.alignment: Qt.AlignCenter
-            }
-        }
-
-        RowLayout {
-            spacing: Theme.spacing
-
-            DualColorPicker {
-                primaryColor: Theme.colors.primaryColor
-                onPrimaryColorPicked:Theme.colors.primaryColor = color
-                secondaryColor: Theme.colors.textPrimaryColor
-                onSecondaryColorPicked: Theme.colors.textPrimaryColor = color
-            }
-
-            Label {
-                text: qsTr("Primary color")
-                Layout.alignment: Qt.AlignCenter
-            }
         }
     }
 }
