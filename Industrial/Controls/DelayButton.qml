@@ -30,7 +30,7 @@ T.DelayButton {
         borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: control.hovered
         radius: round ? Math.min(width, height) / 2 : Theme.rounding
-        color: control.flat ? "transparent" : Theme.colors.button
+        color: control.flat ? "transparent" : Theme.colors.control
 
         Shadow {
             visible: control.shadow && !control.flat
@@ -53,7 +53,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: Theme.colors.buttonText
+            textColor: Theme.colors.controlText
         }
 
         Item {
@@ -82,7 +82,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: Theme.colors.selectionText
+                    textColor: Theme.colors.selectedText
                 }
             }
         }

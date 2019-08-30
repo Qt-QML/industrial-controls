@@ -9,6 +9,7 @@ Item {
 
     property alias primaryColor: primary.color
     property alias secondaryColor: secondary.color
+    property color _tmpColor: "black"
 
     signal primaryColorPicked(color color)
     signal secondaryColorPicked(color color)
@@ -23,9 +24,9 @@ Item {
         flat: true
         iconSource: "qrc:/icons/swap.svg"
         onClicked: {
-            var tmp = primary.color;
-            primaryColorPicked(secondary.color);
-            secondaryColorPicked(tmp);
+            _tmpColor = primary.color;
+            primary.color = secondary.color;
+            secondary.color = _tmpColor;
         }
     }
 

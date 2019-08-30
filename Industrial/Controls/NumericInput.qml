@@ -12,5 +12,5 @@ TextInput {
     font: control.font
     color: control.enabled ? control.color : Theme.colors.disabled
     selectionColor: Theme.colors.selection
-    selectedTextColor: Theme.colors.selectionText
+    selectedTextColor: Theme.colors.selectedText
 }

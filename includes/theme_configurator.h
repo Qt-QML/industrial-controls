@@ -2,10 +2,10 @@
 #define THEME_CONFIGURATOR_H
 
 // Qt
-#include <QObject>
 #include <QColor>
+#include <QObject>
 
-class ThemeConfigurator: public QObject
+class ThemeConfigurator : public QObject
 {
     Q_OBJECT
 
@@ -21,12 +21,10 @@ public slots:
     void setBaseSize(int baseSize);
     void configure();
 
-
-    void setLightness(double lightness);
-    void setBaseColor(QColor color);
-    void setTextBaseColor(QColor color);
-    void setPrimaryColor(QColor color);
-    void setTextPrimaryColor(QColor color);
+    void setBaseColor(const QColor& color);
+    void setTextBaseColor(const QColor& color);
+    void setPrimaryColor(const QColor& color);
+    void setTextPrimaryColor(const QColor& color);
     void configureColor();
 
 private:
@@ -35,11 +33,10 @@ private:
     int m_rounding = 0;
     int m_baseSize = 0;
 
-    QColor m_baseColor = "#ffffff";
-    QColor m_textBaseColor = "#ffffff";
-    QColor m_primaryColor = "#ffffff";
-    QColor m_textPrimarySize = "#ffffff";
-    double m_lightness = 100;
+    QColor m_baseColor;
+    QColor m_textBaseColor;
+    QColor m_primaryColor;
+    QColor m_textPrimarySize;
 };
 
 #endif // THEME_CONFIGURATOR_H

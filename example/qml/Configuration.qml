@@ -36,5 +36,27 @@ Popup {
             onPressedChanged: if (!pressed) configurator.setBaseSize(value)
             Layout.fillWidth: true
         }
+
+        RowLayout {
+            spacing: Theme.spacing
+
+            Label { text: qsTr("Background & text") }
+
+            DualColorPicker {
+                primaryColor: Theme.colors.background
+                secondaryColor: Theme.colors.text
+            }
+        }
+
+        RowLayout {
+            spacing: Theme.spacing
+
+            Label { text: qsTr("Highlight & text") }
+
+            DualColorPicker {
+                primaryColor: Theme.colors.selection
+                secondaryColor: Theme.colors.selectedText
+            }
+        }
     }
 }

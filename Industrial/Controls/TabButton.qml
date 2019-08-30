@@ -31,6 +31,6 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: Theme.colors.textSunken
+        textColor: Theme.colors.text
     }
 }

@@ -9,12 +9,12 @@ Rectangle {
         if (!control.enabled) return Theme.colors.sunken;
         if (control.pressed) return Theme.colors.highlight;
 
-        return Theme.colors.button;
+        return Theme.colors.control;
     }
 
     Rectangle {
         anchors.fill: parent
-        color: Theme.colors.buttonText
+        color: Theme.colors.controlText
         radius: parent.radius
         opacity: 0.1
         visible: hovered

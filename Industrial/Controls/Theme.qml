@@ -16,10 +16,9 @@ Item {
     property real scrollSize: 2
     property real shadowSize: 3
 
-
-    property real spacing:  8
-    property real margins:  8
-    property real padding:  5.3
+    property real spacing: 8
+    property real margins: 8
+    property real padding: 6
     property real iconSize: 18
     property real fillSize: 4
     property real handleSize: 21

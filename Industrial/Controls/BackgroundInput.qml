@@ -62,7 +62,7 @@ BackgroundItem {
             if (!control.isValid) return Theme.colors.negative;
             if (control.highlighted) return Theme.colors.highlight;
 
-            return Theme.colors.textSunken;
+            return Theme.colors.text;
         }
         Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }

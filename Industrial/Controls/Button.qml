@@ -12,7 +12,7 @@ T.Button { // TODO: clickable
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
     property bool shadow: !flat
-    property color color: control.flat ? "transparent" : Theme.colors.button
+    property color color: control.flat ? "transparent" : Theme.colors.control
     property color highlightColor: Theme.colors.highlight
     property color selectionColor: Theme.colors.selection
     property string tipText
@@ -68,9 +68,9 @@ T.Button { // TODO: clickable
         text: control.text
         font: control.font
         textColor: {
-            if (control.pressed || control.pressedImpl) return Theme.colors.highlightText;
-            if (control.highlighted || control.checked) return Theme.colors.selectionText;
-            return Theme.colors.buttonText;
+            if (control.pressed || control.pressedImpl) return Theme.colors.highlightedText;
+            if (control.highlighted || control.checked) return Theme.colors.selectedText;
+            return Theme.colors.controlText;
         }
     }
 

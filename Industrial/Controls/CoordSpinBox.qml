@@ -15,7 +15,7 @@ T.Control {
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
-    property color color: Theme.colors.textSunken
+    property color color: Theme.colors.text
 
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))

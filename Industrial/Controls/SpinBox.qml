@@ -6,7 +6,7 @@ T.SpinBox {
     id: control
 
     property bool isValid: value >= from && value <= to
-    property color color: Theme.colors.textSunken
+    property color color: Theme.colors.text
     property bool round: false
 
     property alias caution: background.caution
@@ -74,7 +74,7 @@ T.SpinBox {
             }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? Theme.colors.selectionText : Theme.colors.textSunken
+            selectedTextColor: control.activeFocus ? Theme.colors.selectedText : Theme.colors.text
             validator: control.validator
         }
     }
@@ -100,9 +100,9 @@ T.SpinBox {
             source: "qrc:/icons/minus.svg"
             color: {
                 if (!enabled) return Theme.colors.disabled;
-                if (down.pressed) return Theme.colors.highlightText;
+                if (down.pressed) return Theme.colors.highlightedText;
 
-                return Theme.colors.buttonText;
+                return Theme.colors.controlText;
             }
         }
     }
@@ -128,9 +128,9 @@ T.SpinBox {
             source: "qrc:/icons/plus.svg"
             color: {
                 if (!enabled) return Theme.colors.disabled;
-                if (up.pressed) return Theme.colors.highlightText;
+                if (up.pressed) return Theme.colors.highlightedText;
 
-                return Theme.colors.buttonText;
+                return Theme.colors.controlText;
             }
         }
     }

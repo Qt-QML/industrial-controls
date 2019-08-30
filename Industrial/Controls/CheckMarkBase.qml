@@ -9,9 +9,9 @@ BackgroundItem {
 
     property color indicatorColor: {
         if (!enabled) return Theme.colors.disabled;
-        if (down) return flat || !checked ? Theme.colors.highlight : Theme.colors.highlightText;
+        if (down) return flat || !checked ? Theme.colors.highlight : Theme.colors.highlightedText;
 
-        return Theme.colors.buttonText;
+        return Theme.colors.controlText;
     }
 
     implicitWidth: Theme.checkmarkSize

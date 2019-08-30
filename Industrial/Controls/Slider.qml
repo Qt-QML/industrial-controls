@@ -65,7 +65,7 @@ T.Slider {
             if (!control.enabled) return Theme.colors.disabled;
             if (control.activeFocus) return Theme.colors.selection;
 
-            return Theme.colors.textRaised;
+            return Theme.colors.text;
         }
         Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }

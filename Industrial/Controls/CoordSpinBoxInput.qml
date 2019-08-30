@@ -34,7 +34,7 @@ Item {
             height: root.height
             overwriteMode: true
             selectionColor: highlighter.visible ? highlighter.color : Theme.colors.control
-            selectedTextColor: highlighter.visible ? Theme.colors.selectionText : Theme.colors.textSunken
+            selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: {

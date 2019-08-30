@@ -54,7 +54,7 @@ Item {
         color: {
             if (area.pressed) return Controls.Theme.colors.selection;
             if (area.containsMouse) return Controls.Theme.colors.highlight;
-            return Controls.Theme.colors.button
+            return Controls.Theme.colors.control
         }
 
         MouseArea {

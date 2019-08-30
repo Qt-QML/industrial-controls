@@ -22,7 +22,7 @@ Pane {
 
         Label {
             id: textLabel
-            color: Theme.colors.highlightText
+            color: Theme.colors.highlightedText
             font.pixelSize: Theme.auxFontSize
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter

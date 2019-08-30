@@ -32,6 +32,6 @@ T.ItemDelegate {
         anchors.margins: control.padding
         font: control.font
         text: control.text
-        textColor: control.highlighted ? Theme.colors.selectionText : Theme.colors.textSunken
+        textColor: control.highlighted ? Theme.colors.selectedText : Theme.colors.text
     }
 }
