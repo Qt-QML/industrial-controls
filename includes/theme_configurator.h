@@ -21,10 +21,10 @@ public slots:
     void setBaseSize(int baseSize);
     void configure();
 
-    void setBaseColor(const QColor& color);
-    void setTextBaseColor(const QColor& color);
-    void setPrimaryColor(const QColor& color);
-    void setTextPrimaryColor(const QColor& color);
+    void setBackgroundColor(const QColor& color);
+    void setTextColor(const QColor& color);
+    void setSelectionColor(const QColor& color);
+    void setSelectionTextColor(const QColor& color);
     void configureColor();
 
 private:
@@ -33,10 +33,10 @@ private:
     int m_rounding = 0;
     int m_baseSize = 0;
 
-    QColor m_baseColor;
-    QColor m_textBaseColor;
-    QColor m_primaryColor;
-    QColor m_textPrimarySize;
+    QColor m_backgroundColor;
+    QColor m_textColor;
+    QColor m_selectionColor;
+    QColor m_selectedTextColor;
 };
 
 #endif // THEME_CONFIGURATOR_H

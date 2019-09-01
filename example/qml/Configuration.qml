@@ -44,7 +44,9 @@ Popup {
 
             DualColorPicker {
                 primaryColor: Theme.colors.background
+                onPrimaryColorPicked: configurator.setBackgroundColor(color)
                 secondaryColor: Theme.colors.text
+                onSecondaryColorPicked: configurator.setTextColor(color)
             }
         }
 
@@ -55,7 +57,9 @@ Popup {
 
             DualColorPicker {
                 primaryColor: Theme.colors.selection
+                onPrimaryColorPicked: configurator.setSelectionColor(color)
                 secondaryColor: Theme.colors.selectedText
+                onSecondaryColorPicked: configurator.setSelectionTextColor(color)
             }
         }
     }
