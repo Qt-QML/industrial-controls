@@ -55,16 +55,13 @@ constexpr char tipText[] = "tipText";
 constexpr char selection[] = "selection";
 constexpr char selectedText[] = "selectedText";
 
-
 constexpr char highlight[] = "highlight";
 constexpr char highlightedText[] = "highlightedText";
-
 
 const double raisedFactor = 150;
 const double sunkenFactor = 190;
 const double disabledFactor = 60;
 const double controlFactor = 170;
-
 
 constexpr char link[] = "link";
 constexpr char positive[] = "positive";
@@ -76,7 +73,7 @@ const QColor linkColor = "#51a0e7";
 const QColor positiveColor = "#86c34a";
 const QColor neutralColor = "#ff9800";
 const QColor negativeColor = "#e53535";
-const QColor shadowColor =  "#80000000";
+const QColor shadowColor = "#80000000";
 
 } // namespace
 
@@ -190,19 +187,15 @@ void ThemeConfigurator::configureColor()
     if (!colors)
         return;
 
-
     // set base color
     colors->setProperty(::background, m_backgroundColor);
     colors->setProperty(::text, m_textColor);
     colors->setProperty(::selection, m_selectionColor);
     colors->setProperty(::selectedText, m_selectedTextColor);
 
-
-
     // set other colors
     colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
     colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
-
 
     colors->setProperty(::disabled, m_backgroundColor.lighter(disabledFactor));
 
@@ -215,14 +208,11 @@ void ThemeConfigurator::configureColor()
     colors->setProperty(::highlight, m_selectionColor);
     colors->setProperty(::highlightedText, m_selectedTextColor);
 
-
-
     colors->setProperty(::link, linkColor);
     colors->setProperty(::positive, positiveColor);
     colors->setProperty(::neutral, neutralColor);
     colors->setProperty(::negative, negativeColor);
     colors->setProperty(::shadow, shadowColor);
-
 }
 
 static void registerThemeTypes()

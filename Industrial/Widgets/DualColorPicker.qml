@@ -27,6 +27,9 @@ Item {
             _tmpColor = primary.color;
             primary.color = secondary.color;
             secondary.color = _tmpColor;
+
+            primaryColorPicked(primary.color);
+            secondaryColorPicked(secondary.color)
         }
     }
 
