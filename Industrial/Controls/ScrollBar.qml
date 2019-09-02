@@ -6,8 +6,8 @@ T.ScrollBar {
     id: control
 
     interactive: false
-    implicitWidth: Industrial.scrollSize
-    implicitHeight: Industrial.scrollSize
+    implicitWidth: Theme.scrollSize
+    implicitHeight: Theme.scrollSize
 
     background: Item { }
 

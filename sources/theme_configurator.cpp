@@ -59,8 +59,8 @@ constexpr char highlight[] = "highlight";
 constexpr char highlightedText[] = "highlightedText";
 
 const double raisedFactor = 150;
-const double sunkenFactor = 190;
-const double disabledFactor = 60;
+const double sunkenFactor = 125;
+const double disabledFactor = 40;
 const double controlFactor = 170;
 
 constexpr char link[] = "link";
@@ -75,6 +75,7 @@ const QColor neutralColor = "#ff9800";
 const QColor negativeColor = "#e53535";
 const QColor shadowColor = "#80000000";
 
+const int darkThemeThreshold = 122;
 } // namespace
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
@@ -187,19 +188,39 @@ void ThemeConfigurator::configureColor()
     if (!colors)
         return;
 
+
+
     // set base color
     colors->setProperty(::background, m_backgroundColor);
     colors->setProperty(::text, m_textColor);
     colors->setProperty(::selection, m_selectionColor);
     colors->setProperty(::selectedText, m_selectedTextColor);
 
+
+    // set darkWhite dependencies colors
+    bool isDarkTheme = m_backgroundColor.black() > ::darkThemeThreshold;
+    if(isDarkTheme)
+    {
+        colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
+
+        colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
+
+        colors->setProperty(::disabled, m_textColor.lighter(::disabledFactor));
+
+        colors->setProperty(::control, m_backgroundColor.lighter(::controlFactor));
+    }
+    else
+    {
+        colors->setProperty(::sunken, m_backgroundColor.darker(::sunkenFactor - 10));
+
+        colors->setProperty(::raised, m_backgroundColor.darker(::raisedFactor));
+
+        colors->setProperty(::disabled, m_textColor.darker(::disabledFactor));
+
+        colors->setProperty(::control, m_backgroundColor.darker(::controlFactor + 20));
+    }
+
     // set other colors
-    colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
-    colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
-
-    colors->setProperty(::disabled, m_backgroundColor.lighter(disabledFactor));
-
-    colors->setProperty(::control, m_backgroundColor.lighter(::controlFactor));
     colors->setProperty(::controlText, m_textColor);
 
     colors->setProperty(::tip, m_selectionColor);
