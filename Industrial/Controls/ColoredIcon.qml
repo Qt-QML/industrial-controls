@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtGraphicalEffects 1.0
 
+
 Item {
     id: root
 
@@ -10,7 +11,7 @@ Item {
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
-    width: industrial.iconSize
+    width: Theme.iconSize
     height: width
 
     Image {

@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2 as T
 
+
 T.Drawer {
     id: control
 
@@ -9,7 +10,7 @@ T.Drawer {
     dragMargin: 0
 
     background: Rectangle {
-        color: industrial.colors.container
+        color: Theme.colors.sunken
 
         Shadow {
             source: parent

@@ -6,72 +6,38 @@
 #include <QColor>
 #include <QObject>
 
-class Theme;
-
 class INDUSTRIAL_CONTROLS_EXPORT ThemeConfigurator : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(Theme* theme READ theme CONSTANT)
-
-    Q_PROPERTY(QColor baseColor READ baseColor WRITE setBaseColor NOTIFY baseColorChanged)
-    Q_PROPERTY(QColor onBaseColor READ onBaseColor WRITE setOnBaseColor NOTIFY onBaseColorChanged)
-    Q_PROPERTY(QColor primaryColor READ primaryColor WRITE setPrimaryColor NOTIFY primaryColorChanged)
-    Q_PROPERTY(QColor onPrimaryColor READ onPrimaryColor WRITE setOnPrimaryColor NOTIFY
-                   onPrimaryColorChanged)
-
-    Q_PROPERTY(int lightness READ lightness WRITE setLightness NOTIFY lightnessChanged)
-    Q_PROPERTY(int rounding READ rounding WRITE setRounding NOTIFY roundingChanged)
-    Q_PROPERTY(int baseSize READ baseSize WRITE setBaseSize NOTIFY baseSizeChanged)
+    Q_PROPERTY(QObject* theme WRITE setTheme)
 
 public:
     explicit ThemeConfigurator(QObject* parent = nullptr);
 
-    Theme* theme() const;
-
-    QColor baseColor() const;
-    QColor onBaseColor() const;
-    QColor primaryColor() const;
-    QColor onPrimaryColor() const;
-
-    int lightness() const;
-    int rounding() const;
-    int baseSize() const;
-
 public slots:
-    void setBaseColor(const QColor& baseColor);
-    void setOnBaseColor(const QColor& onBaseColor);
-    void setPrimaryColor(const QColor& primaryColor);
-    void setOnPrimaryColor(const QColor& onPrimaryColor);
+    void setTheme(QObject* theme);
 
-    void setLightness(int lightness);
     void setRounding(int rounding);
     void setBaseSize(int baseSize);
+    void configure();
 
-    void rebuildColors();
-    void rebuildSizes();
-
-signals:
-    void baseColorChanged();
-    void onBaseColorChanged();
-    void primaryColorChanged();
-    void onPrimaryColorChanged();
-
-    void lightnessChanged();
-    void roundingChanged();
-    void baseSizeChanged();
+    void setBackgroundColor(const QColor& color);
+    void setTextColor(const QColor& color);
+    void setSelectionColor(const QColor& color);
+    void setSelectionTextColor(const QColor& color);
+    void configureColor();
 
 private:
-    Theme* const m_theme;
+    QObject* m_theme = nullptr;
 
-    QColor m_baseColor;
-    QColor m_onBaseColor;
-    QColor m_primaryColor;
-    QColor m_onPrimaryColor;
+    int m_rounding = 0;
+    int m_baseSize = 0;
 
-    int m_lightness;
-    int m_rounding;
-    int m_baseSize;
+    QColor m_backgroundColor;
+    QColor m_textColor;
+    QColor m_selectionColor;
+    QColor m_selectedTextColor;
 };
 
 #endif // THEME_CONFIGURATOR_H

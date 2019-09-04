@@ -10,21 +10,21 @@ T.MenuItem {
     property alias horizontalAlignment: label.horizontalAlignment
 
     implicitWidth: parent.width
-    implicitHeight: industrial.baseSize
+    implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
-    leftPadding: icon.visible ? icon.width + industrial.padding * 2 : industrial.padding
-    font.pixelSize: industrial.mainFontSize
+    leftPadding: icon.visible ? icon.width + Theme.padding * 2 : Theme.padding
+    font.pixelSize: Theme.mainFontSize
     hoverEnabled: true
 
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
-        color: control.pressed ? industrial.colors.highlight : "transparent"
+        color: control.pressed ? Theme.colors.highlight : "transparent"
     }
 
     indicator: ColoredIcon {
         id: icon
-        x: industrial.padding
+        x: Theme.padding
         color: label.color
         anchors.verticalCenter: parent.verticalCenter
         source: {
@@ -34,7 +34,7 @@ T.MenuItem {
                                                                         "qrc:/icons/ok.svg"
             return "";
         }
-        width: industrial.baseSize - industrial.padding * 2
+        width: Theme.baseSize - Theme.padding * 2
         height: width
     }
 
@@ -43,9 +43,9 @@ T.MenuItem {
         font: control.font
         text: control.text
         color: {
-            if (!enabled) return industrial.colors.disabled;
-            if (control.pressed) return industrial.colors.onHighlight;
-            return industrial.colors.onContainer;
+            if (!enabled) return Theme.colors.disabled;
+            if (control.pressed) return Theme.colors.highlightedText;
+            return Theme.colors.text;
         }
     }
 }

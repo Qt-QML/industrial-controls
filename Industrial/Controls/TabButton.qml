@@ -12,25 +12,25 @@ T.TabButton {
     property alias backgroundColor: backgroundItem.color
 
     // TODO: flat
-    font.pixelSize: industrial.mainFontSize
-    implicitWidth: Math.max(industrial.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    implicitWidth: Math.max(Theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     //hoverEnabled: true NOTE: QTBUG
-    padding: industrial.padding
+    padding: Theme.padding
 
     background: BackgroundItem {
         id: backgroundItem
         bottomCropping: radius
-        borderColor: control.activeFocus ? industrial.colors.highlight : "transparent"
+        borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: control.hovered
-        color: control.checked ? industrial.colors.surface : "transparent"
+        color: control.checked ? Theme.colors.raised : "transparent"
     }
 
     contentItem: ContentItem {
         id: content
         text: control.text
         font: control.font
-        textColor: industrial.colors.onContainer
+        textColor: Theme.colors.text
     }
 }

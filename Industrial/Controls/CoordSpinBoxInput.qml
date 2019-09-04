@@ -33,8 +33,8 @@ Item {
             id: input
             height: root.height
             overwriteMode: true
-            selectionColor: highlighter.visible ? highlighter.color : industrial.colors.control
-            selectedTextColor: highlighter.visible ? industrial.colors.onSelection : industrial.colors.onContainer
+            selectionColor: highlighter.visible ? highlighter.color : Theme.colors.control
+            selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             onTextEdited: {

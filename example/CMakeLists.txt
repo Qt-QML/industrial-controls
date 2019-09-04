@@ -16,6 +16,9 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # 2ndparty libraries
 include(../CMakeLists.txt)
 
+# Add Qt Creator import path
+set(QML_IMPORT_PATH "${QML_IMPORT_DIRS}" CACHE STRING "Qt Creator extra qml import paths")
+
 # Find Qt libraries
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 

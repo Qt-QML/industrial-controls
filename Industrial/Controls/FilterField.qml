@@ -8,14 +8,14 @@ TextField {
 
     Button {
         anchors.right: parent.right
-        height: parent.height - industrial.underline
+        height: parent.height - Theme.underline
         leftCropped: true
         bottomCropped: true
         iconSource: "qrc:/icons/erase.svg"
         tipText: qsTr("Clear filter")
         color: control.backgroundColor
         shadow: false
-        radius: industrial.rounding
+        radius: Theme.rounding
         visible: control.text.length > 0 && control.enabled
         onClicked: control.clear()
     }

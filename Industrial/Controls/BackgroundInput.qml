@@ -7,7 +7,7 @@ BackgroundItem {
     property bool caution: false
     property bool isValid: true
     property bool highlighted: false
-    property int textPadding: industrial.padding
+    property int textPadding: Theme.padding
 
     property alias textHeight: textMetrics.height
     property alias underline: highlighter.height
@@ -17,17 +17,17 @@ BackgroundItem {
     property alias highlighterColor: highlighter.color
 
     bottomCropping: radius
-    implicitWidth: Math.max(industrial.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Math.max(Theme.baseSize * 4, textItem.implicitWidth)
 
     TextMetrics {
         id: textMetrics
-        font.pixelSize: industrial.auxFontSize
+        font.pixelSize: Theme.auxFontSize
         text: textItem.text
     }
 
     Hatch {
         anchors.fill: parent
-        color: industrial.colors.surface
+        color: Theme.colors.raised
         visible: !enabled
     }
 
@@ -35,16 +35,16 @@ BackgroundItem {
         id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
-        height: industrial.underline
+        height: Theme.underline
         visible: control.enabled
         color: {
             if (highlighted) {
-                if (control.caution) return industrial.colors.neutral;
-                if (!control.isValid) return industrial.colors.negative;
-                return industrial.colors.selection;
+                if (control.caution) return Theme.colors.neutral;
+                if (!control.isValid) return Theme.colors.negative;
+                return Theme.colors.selection;
             }
 
-            return industrial.colors.control;
+            return Theme.colors.control;
         }
     }
 
@@ -55,15 +55,15 @@ BackgroundItem {
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? industrial.auxFontSize : industrial.mainFontSize
+        font.pixelSize: inputed ? Theme.auxFontSize : Theme.mainFontSize
         color: {
-            if (!control.enabled) return industrial.colors.disabled;
-            if (control.caution) return industrial.colors.neutral;
-            if (!control.isValid) return industrial.colors.negative;
-            if (control.highlighted) return industrial.colors.highlight;
+            if (!control.enabled) return Theme.colors.disabled;
+            if (control.caution) return Theme.colors.neutral;
+            if (!control.isValid) return Theme.colors.negative;
+            if (control.highlighted) return Theme.colors.highlight;
 
-            return industrial.colors.onContainer;
+            return Theme.colors.text;
         }
-        Behavior on font.pixelSize { PropertyAnimation { duration: industrial.animationTime } }
+        Behavior on font.pixelSize { PropertyAnimation { duration: Theme.animationTime } }
     }
 }

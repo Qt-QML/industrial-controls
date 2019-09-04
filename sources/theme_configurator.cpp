@@ -1,234 +1,244 @@
 #include "theme_configurator.h"
-#include "theme.h"
 
-// Qt
+#include <QColor>
+#include <QCoreApplication>
 #include <QDebug>
+#include <QQmlEngine>
 
 namespace
 {
-const QColor linkColor = "#51a0e7";
-const QColor baseColor = "#37474f";
-const QColor onBaseColor = "#fafafa";
-const QColor primaryColor = "#009688";
-const QColor onPrimaryColor = "#161616";
+constexpr char rounding[] = "rounding";
+constexpr char baseSize[] = "baseSize";
+constexpr char animationTime[] = "animationTime";
+constexpr char underline[] = "underline";
+constexpr char scrollSize[] = "scrollSize";
+constexpr char shadowSize[] = "shadowSize";
 
+constexpr char spacing[] = "spacing";
+constexpr char margins[] = "margins";
+constexpr char padding[] = "padding";
+constexpr char iconSize[] = "iconSize";
+constexpr char fillSize[] = "fillSize";
+constexpr char handleSize[] = "handleSize";
+constexpr char checkmarkSize[] = "checkmarkSize";
+constexpr char floatSize[] = "floatSize";
+constexpr char mainFontSize[] = "mainFontSize";
+constexpr char auxFontSize[] = "auxFontSize";
+
+const double mainFontFactor = 2.0;
+const double auxFontFactor = 2.5;
+const double spacingFactor = 4.0;
+const double marginsFactor = 4.0;
+const double paddingFactor = 6.0;
+const double iconFactor = 1.75;
+const double fillFactor = 8.0;
+const double handleSizeFactor = 1.5;
+const double checkmarkFactor = 1.5;
+const double floatFactor = 0.75;
+
+// Colors
+constexpr char colors[] = "colors";
+
+constexpr char background[] = "background";
+constexpr char sunken[] = "sunken";
+constexpr char raised[] = "raised";
+constexpr char text[] = "text";
+
+constexpr char disabled[] = "disabled";
+
+constexpr char control[] = "control";
+constexpr char controlText[] = "controlText";
+
+constexpr char tip[] = "tip";
+constexpr char tipText[] = "tipText";
+
+constexpr char selection[] = "selection";
+constexpr char selectedText[] = "selectedText";
+
+constexpr char highlight[] = "highlight";
+constexpr char highlightedText[] = "highlightedText";
+
+const double raisedFactor = 150;
+const double sunkenFactor = 125;
+const double disabledFactor = 40;
+const double controlFactor = 170;
+
+constexpr char link[] = "link";
+constexpr char positive[] = "positive";
+constexpr char neutral[] = "neutral";
+constexpr char negative[] = "negative";
+constexpr char shadow[] = "shadow";
+
+const QColor linkColor = "#51a0e7";
 const QColor positiveColor = "#86c34a";
 const QColor neutralColor = "#ff9800";
 const QColor negativeColor = "#e53535";
-
 const QColor shadowColor = "#80000000";
 
-const int background = 60;
-const int surface = 100;
-const int container = 80;
-const int button = 140;
-
-const int disabled = 40;
-const int control = 120;
-
-const int tip = 80;
-const int selection = 100;
-const int highlight = 140;
-
-const int scrollSize = 2;
-const int underline = 2;
-const int shadowSize = 3;
-
-const float mainFontFactor = 2.0;
-const float auxFontFactor = 2.5;
-const float spacingFactor = 4.0;
-const float marginsFactor = 4.0;
-const float paddingFactor = 6.0;
-const float iconFactor = 1.75;
-const float fillFactor = 8.0;
-const float handleSizeFactor = 1.5;
-const float checkmarkFactor = 1.5;
-const float floatFactor = 0.75;
-
-const int animationTime = 100;
+const int darkThemeThreshold = 122;
 } // namespace
 
-ThemeConfigurator::ThemeConfigurator(QObject* parent) :
-    QObject(parent),
-    m_theme(new Theme(this)),
-    m_baseColor(::baseColor),
-    m_onBaseColor(::onBaseColor),
-    m_primaryColor(::primaryColor),
-    m_onPrimaryColor(::onPrimaryColor),
-    m_lightness(100),
-    m_rounding(4),
-    m_baseSize(32)
+ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
 {
-    m_theme->colors()->setLink(::linkColor);
-
-    m_theme->colors()->setPositive(::positiveColor);
-    m_theme->colors()->setNeutral(::neutralColor);
-    m_theme->colors()->setNegative(::negativeColor);
-
-    m_theme->colors()->setShadow(::shadowColor);
-
-    m_theme->setScrollSize(::scrollSize);
-    m_theme->setUnderline(::underline);
-    m_theme->setShadowSize(::shadowSize);
-
-    m_theme->setAnimationTime(::animationTime);
-
-    m_theme->setRounding(m_rounding);
-
-    this->rebuildColors();
-    this->rebuildSizes();
 }
 
-Theme* ThemeConfigurator::theme() const
+void ThemeConfigurator::setTheme(QObject* theme)
 {
-    return m_theme;
-}
+    if (m_theme == theme)
+        return;
 
-QColor ThemeConfigurator::baseColor() const
-{
-    return m_baseColor;
-}
+    m_theme = theme;
 
-QColor ThemeConfigurator::onBaseColor() const
-{
-    return m_onBaseColor;
-}
+    if (m_theme)
+    {
+        m_rounding = theme->property(::rounding).toInt();
+        m_baseSize = theme->property(::baseSize).toInt();
 
-QColor ThemeConfigurator::primaryColor() const
-{
-    return m_primaryColor;
-}
+        if (QObject* colors = m_theme->property(::colors).value<QObject*>())
+        {
+            m_backgroundColor = colors->property(::background).value<QColor>();
+            m_textColor = colors->property(::text).value<QColor>();
+            m_selectionColor = colors->property(::selection).value<QColor>();
+            m_selectedTextColor = colors->property(::selectedText).value<QColor>();
+        }
+    }
 
-QColor ThemeConfigurator::onPrimaryColor() const
-{
-    return m_onPrimaryColor;
-}
-
-int ThemeConfigurator::lightness() const
-{
-    return m_lightness;
-}
-
-int ThemeConfigurator::rounding() const
-{
-    return m_rounding;
-}
-
-int ThemeConfigurator::baseSize() const
-{
-    return m_baseSize;
-}
-
-void ThemeConfigurator::setBaseColor(const QColor& baseColor)
-{
-    if (m_baseColor == baseColor) return;
-
-    m_baseColor = baseColor;
-    emit baseColorChanged();
-
-    this->rebuildColors();
-}
-
-void ThemeConfigurator::setOnBaseColor(const QColor& fontColor)
-{
-    if (m_onBaseColor == fontColor) return;
-
-    m_onBaseColor = fontColor;
-    emit onBaseColorChanged();
-
-    this->rebuildColors();
-}
-
-void ThemeConfigurator::setPrimaryColor(const QColor& primaryColor)
-{
-    if (m_primaryColor == primaryColor) return;
-
-    m_primaryColor = primaryColor;
-    emit primaryColorChanged();
-
-    this->rebuildColors();
-}
-
-void ThemeConfigurator::setOnPrimaryColor(const QColor& onPrimaryColor)
-{
-    if (m_onPrimaryColor == onPrimaryColor) return;
-
-    m_onPrimaryColor = onPrimaryColor;
-    emit onPrimaryColorChanged();
-
-    this->rebuildColors();
-}
-
-void ThemeConfigurator::setLightness(int lightness)
-{
-    if (m_lightness == lightness) return;
-
-    m_lightness = lightness;
-    emit primaryColorChanged();
-
-    this->rebuildColors();
+    this->configure();
+    this->configureColor();
 }
 
 void ThemeConfigurator::setRounding(int rounding)
 {
-    if (m_rounding == rounding) return;
+    if (m_rounding == rounding)
+        return;
 
     m_rounding = rounding;
-    emit roundingChanged();
-
-    m_theme->setRounding(m_rounding);
+    this->configure();
 }
 
 void ThemeConfigurator::setBaseSize(int baseSize)
 {
-    if (m_baseSize == baseSize) return;
+    if (m_baseSize == baseSize)
+        return;
 
     m_baseSize = baseSize;
-    emit baseSizeChanged();
-
-    this->rebuildSizes();
+    this->configure();
 }
 
-void ThemeConfigurator::rebuildColors()
+void ThemeConfigurator::configure()
 {
-    QColor base = m_baseColor.lighter(m_lightness);
+    if (!m_theme)
+        return;
 
-    Colors* colors = m_theme->colors();
-
-    colors->setBackground(base.lighter(::background));
-    colors->setSurface(base.lighter(::surface));
-    colors->setContainer(base.lighter(::container));
-    colors->setButton(base.lighter(::button));
-
-    colors->setDisabled(base.lighter(::disabled));
-    colors->setControl(base.lighter(::control));
-
-    QColor onBase = m_onBaseColor.lighter(m_lightness + 40);
-    colors->setOnBackground(onBase);
-    colors->setOnSurface(onBase);
-    colors->setOnContainer(onBase);
-    colors->setOnButton(onBase);
-
-    colors->setTip(m_primaryColor.lighter(::tip));
-    colors->setSelection(m_primaryColor.lighter(::selection));
-    colors->setHighlight(m_primaryColor.lighter(::highlight)); // highlight color darker
-
-    colors->setOnTip(m_onBaseColor);
-    colors->setOnSelection(m_onBaseColor);
-    colors->setOnHighlight(m_onPrimaryColor);
+    m_theme->setProperty(::rounding, m_rounding);
+    m_theme->setProperty(::baseSize, m_baseSize);
+    m_theme->setProperty(::spacing, m_baseSize / ::spacingFactor);
+    m_theme->setProperty(::padding, m_baseSize / ::paddingFactor);
+    m_theme->setProperty(::iconSize, m_baseSize / ::iconFactor);
+    m_theme->setProperty(::fillSize, m_baseSize / ::fillFactor);
+    m_theme->setProperty(::handleSize, m_baseSize / ::handleSizeFactor);
+    m_theme->setProperty(::checkmarkSize, m_baseSize / ::checkmarkFactor);
+    m_theme->setProperty(::floatSize, m_baseSize / ::floatFactor);
+    m_theme->setProperty(::mainFontSize, m_baseSize / ::mainFontFactor);
+    m_theme->setProperty(::auxFontSize, m_baseSize / ::auxFontFactor);
 }
 
-void ThemeConfigurator::rebuildSizes()
+void ThemeConfigurator::setBackgroundColor(const QColor& color)
 {
-    m_theme->setBaseSize(m_baseSize);
-    m_theme->setMainFontSize(static_cast<int>(m_baseSize / ::mainFontFactor));
-    m_theme->setAuxFontSize(static_cast<int>(m_baseSize / ::auxFontFactor));
-    m_theme->setSpacing(static_cast<int>(m_baseSize / ::spacingFactor));
-    m_theme->setMargins(static_cast<int>(m_baseSize / ::marginsFactor));
-    m_theme->setPadding(static_cast<int>(m_baseSize / ::paddingFactor));
-    m_theme->setIconSize(static_cast<int>(m_baseSize / ::iconFactor));
-    m_theme->setFillSize(static_cast<int>(m_baseSize / ::fillFactor));
-    m_theme->setHandleSize(static_cast<int>(m_baseSize / ::handleSizeFactor));
-    m_theme->setCheckmarkSize(static_cast<int>(m_baseSize / ::checkmarkFactor));
-    m_theme->setFloatSize(static_cast<int>(m_baseSize / ::floatFactor));
+    if (m_backgroundColor == color)
+        return;
+
+    m_backgroundColor = color;
+    this->configureColor();
 }
+
+void ThemeConfigurator::setTextColor(const QColor& color)
+{
+    if (m_textColor == color)
+        return;
+
+    m_textColor = color;
+    this->configureColor();
+}
+
+void ThemeConfigurator::setSelectionColor(const QColor& color)
+{
+    if (m_selectionColor == color)
+        return;
+
+    m_selectionColor = color;
+    this->configureColor();
+}
+
+void ThemeConfigurator::setSelectionTextColor(const QColor& color)
+{
+    if (m_selectedTextColor == color)
+        return;
+
+    m_selectedTextColor = color;
+    this->configureColor();
+}
+
+void ThemeConfigurator::configureColor()
+{
+    if (!m_theme)
+        return;
+
+    QObject* colors = m_theme->property(::colors).value<QObject*>();
+    if (!colors)
+        return;
+
+
+
+    // set base color
+    colors->setProperty(::background, m_backgroundColor);
+    colors->setProperty(::text, m_textColor);
+    colors->setProperty(::selection, m_selectionColor);
+    colors->setProperty(::selectedText, m_selectedTextColor);
+
+
+    // set darkWhite dependencies colors
+    bool isDarkTheme = m_backgroundColor.black() > ::darkThemeThreshold;
+    if(isDarkTheme)
+    {
+        colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
+
+        colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
+
+        colors->setProperty(::disabled, m_textColor.lighter(::disabledFactor));
+
+        colors->setProperty(::control, m_backgroundColor.lighter(::controlFactor));
+    }
+    else
+    {
+        colors->setProperty(::sunken, m_backgroundColor.darker(::sunkenFactor - 10));
+
+        colors->setProperty(::raised, m_backgroundColor.darker(::raisedFactor));
+
+        colors->setProperty(::disabled, m_textColor.darker(::disabledFactor));
+
+        colors->setProperty(::control, m_backgroundColor.darker(::controlFactor + 20));
+    }
+
+    // set other colors
+    colors->setProperty(::controlText, m_textColor);
+
+    colors->setProperty(::tip, m_selectionColor);
+    colors->setProperty(::tipText, m_textColor);
+
+    colors->setProperty(::highlight, m_selectionColor);
+    colors->setProperty(::highlightedText, m_selectedTextColor);
+
+    colors->setProperty(::link, linkColor);
+    colors->setProperty(::positive, positiveColor);
+    colors->setProperty(::neutral, neutralColor);
+    colors->setProperty(::negative, negativeColor);
+    colors->setProperty(::shadow, shadowColor);
+}
+
+static void registerThemeTypes()
+{
+    qmlRegisterType<ThemeConfigurator>("Industrial.Controls", 1, 0, "ThemeConfigurator");
+}
+
+Q_COREAPP_STARTUP_FUNCTION(registerThemeTypes)

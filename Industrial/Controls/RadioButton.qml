@@ -7,11 +7,11 @@ T.RadioButton {
     property alias flat: base.flat
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: industrial.mainFontSize
-    height: industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    height: Theme.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
-    spacing: industrial.spacing
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     hoverEnabled: true
 
@@ -34,7 +34,7 @@ T.RadioButton {
 
         Hatch {
             anchors.fill: parent
-            color: industrial.colors.surface
+            color: Theme.colors.raised
             visible: !control.enabled
         }
     }

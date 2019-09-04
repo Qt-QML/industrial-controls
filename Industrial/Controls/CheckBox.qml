@@ -11,11 +11,11 @@ T.CheckBox {
     property alias iconSource: icon.source
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: industrial.mainFontSize
-    height: industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    height: Theme.baseSize
     focusPolicy: Qt.NoFocus
     leftPadding: 0
-    spacing: industrial.spacing
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
     hoverEnabled: true

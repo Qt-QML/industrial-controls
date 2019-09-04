@@ -1,5 +1,6 @@
 import QtQuick 2.9
 
+
 TextInput {
     id: root
 
@@ -9,7 +10,7 @@ TextInput {
     clip: true
     readOnly: !control.editable
     font: control.font
-    color: control.enabled ? control.color : industrial.colors.disabled
-    selectionColor: industrial.colors.selection
-    selectedTextColor: industrial.colors.onSelection
+    color: control.enabled ? control.color : Theme.colors.disabled
+    selectionColor: Theme.colors.selection
+    selectedTextColor: Theme.colors.selectedText
 }

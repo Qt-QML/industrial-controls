@@ -19,9 +19,9 @@ T.ComboBox {
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + content.implicitHeight + background.underline,
-                             industrial.baseSize * 1.3)
-    font.pixelSize: industrial.mainFontSize
-    padding: industrial.padding
+                             Theme.baseSize * 1.3)
+    font.pixelSize: Theme.mainFontSize
+    padding: Theme.padding
     clip: true
     textRole: "text"
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
@@ -30,7 +30,7 @@ T.ComboBox {
     indicator: ColoredIcon {
         x: control.width - width
         y: control.height - height
-        width: industrial.baseSize / 2
+        width: Theme.baseSize / 2
         height: width
         source: "qrc:/icons/menu_arrow.svg"
         color: background.highlighterColor
@@ -41,8 +41,8 @@ T.ComboBox {
         anchors.fill: parent
         flat: control.flat
         textPadding: {
-            if (displayIcon.length == 0) return industrial.padding;
-            return content.iconSize + industrial.padding + industrial.margins;
+            if (displayIcon.length == 0) return Theme.padding;
+            return content.iconSize + Theme.padding + Theme.margins;
         }
         inputed: displayText.length > 0
         highlighted: control.activeFocus
@@ -68,7 +68,7 @@ T.ComboBox {
         text: displayText
         iconSource: displayIcon
         verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-        textColor: control.enabled ? industrial.colors.onContainer : industrial.colors.disabled
+        textColor: control.enabled ? Theme.colors.text : Theme.colors.disabled
     }
 
     popup: Popup {

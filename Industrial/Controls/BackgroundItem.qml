@@ -1,5 +1,6 @@
 import QtQuick 2.6
 
+
 Item {
     id: control
 
@@ -26,13 +27,13 @@ Item {
             anchors.bottomMargin: -bottomCropping
             anchors.leftMargin: -leftCropping
             anchors.rightMargin: -rightCropping
-            radius: industrial.rounding
-            color: flat ? "transparent" : industrial.colors.container
+            radius: Theme.rounding
+            color: flat ? "transparent" : Theme.colors.sunken
             border.color: borderColor
 
             Rectangle {
                 anchors.fill: parent
-                color: industrial.colors.onButton
+                color: Theme.colors.controlText
                 radius: parent.radius
                 opacity: 0.1
                 visible: hovered

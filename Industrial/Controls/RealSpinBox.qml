@@ -52,7 +52,7 @@ SpinBox {
                 control.valueModified();
             }
             selectionColor: background.highlighterColor
-            selectedTextColor: control.activeFocus ? industrial.colors.onSelection : industrial.colors.onContainer
+            selectedTextColor: control.activeFocus ? Theme.colors.selectedText : Theme.colors.text
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             validator: control.validator
         }

@@ -1,20 +1,21 @@
 import QtQuick 2.6
 
+
 Led {
     id: root
 
-    property color blinkColor: industrial.colors.highlight
+    property color blinkColor: Theme.colors.highlight
 
     property alias interval: timer.interval
 
     function blink() { timer.start(); }
 
-    color: timer.running ? blinkColor : industrial.colors.background
-    glowRadius: timer.running ? root.width : industrial.shadowSize
+    color: timer.running ? blinkColor : Theme.colors.background
+    glowRadius: timer.running ? root.width : Theme.shadowSize
 
     Timer {
         id: timer
-        interval: industrial.animationTime
+        interval: Theme.animationTime
     }
 }
 
