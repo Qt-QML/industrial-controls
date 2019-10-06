@@ -6,8 +6,10 @@ Item {
     id: root
 
     property alias source: image.source
-    property alias mirror: image.mirror
+    property bool mirror: false
     property alias color: overlay.color
+    rotation: mirror ? 180 : 0
+
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
