@@ -8,6 +8,7 @@ Item {
     property color backgroundColor: Controls.Theme.colors.raised
     property string emptyText: qsTr("No items")
 
+    property alias spacing: list.spacing
     property alias model: list.model
     property alias header: list.header
     property alias delegate: list.delegate
