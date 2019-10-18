@@ -14,7 +14,7 @@ T.CheckBox {
     font.pixelSize: Theme.mainFontSize
     height: Theme.baseSize
     focusPolicy: Qt.NoFocus
-    leftPadding: 0
+    leftPadding: text.length ? 0 : (width - base.width) / 2
     spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
     implicitHeight: contentItem.height
