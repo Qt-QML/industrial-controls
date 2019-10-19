@@ -143,6 +143,20 @@ void ThemeConfigurator::configure()
     m_theme->setProperty(::auxFontSize, m_baseSize / ::auxFontFactor);
 }
 
+bool ThemeConfigurator::isDark()
+{
+    if (!m_theme)
+        return false;
+
+    QObject* colors = m_theme->property(::colors).value<QObject*>();
+    if (!colors)
+        return false;
+
+    QColor backroundColor = colors->property(::background).value<QColor>();
+
+    return backroundColor.black() > ::darkThemeThreshold;
+}
+
 void ThemeConfigurator::setBackgroundColor(const QColor& color)
 {
     if (m_backgroundColor == color)

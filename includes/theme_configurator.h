@@ -22,11 +22,14 @@ public slots:
     void setBaseSize(int baseSize);
     void configure();
 
+    bool isDark();
     void setBackgroundColor(const QColor& color);
     void setTextColor(const QColor& color);
     void setSelectionColor(const QColor& color);
     void setSelectionTextColor(const QColor& color);
     void configureColor();
+
+
 
 private:
     QObject* m_theme = nullptr;
