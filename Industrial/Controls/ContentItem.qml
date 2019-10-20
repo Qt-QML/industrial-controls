@@ -16,8 +16,8 @@ Item {
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
-    implicitWidth: row.implicitWidth
-    implicitHeight: row.implicitHeight
+    implicitWidth: icon.implicitWidth + label.implicitWidth + row.spacing
+    implicitHeight: icon.implicitHeight + label.implicitHeight + row.spacing
 
     RowLayout {
         id: row
