@@ -33,9 +33,8 @@ Item {
 
             Rectangle {
                 anchors.fill: parent
-                color: Theme.colors.controlText
+                color: Theme.colors.hover
                 radius: parent.radius
-                opacity: 0.1
                 visible: hovered
             }
         }
