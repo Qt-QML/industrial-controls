@@ -9,8 +9,8 @@ Rectangle {
 
     signal colorPicked(color color)
 
-    implicitWidth: Controls.Theme.baseSize * 1.5
-    implicitHeight: Controls.Theme.baseSize * 1.5
+    implicitWidth: Theme.baseSize * 1.5
+    implicitHeight: Theme.baseSize * 1.5
 
     Shadow { source: parent }
 
@@ -32,14 +32,14 @@ Rectangle {
 
             GridLayout {
                 columns: 3
-                columnSpacing: Controls.Theme.spacing
-                rowSpacing: Controls.Theme.spacing
+                columnSpacing: Theme.spacing
+                rowSpacing: Theme.spacing
 
                 Label { text: qsTr("R") }
 
                 Slider {
                     id: rSlider
-                    implicitWidth: Controls.Theme.baseSize * 5
+                    implicitWidth: Theme.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.r = value / to
@@ -47,8 +47,8 @@ Rectangle {
 
                 Rectangle {
                     id: previewRect
-                    implicitWidth: Controls.Theme.baseSize * 3
-                    implicitHeight: Controls.Theme.baseSize * 3
+                    implicitWidth: Theme.baseSize * 3
+                    implicitHeight: Theme.baseSize * 3
                     Layout.alignment: Qt.AlignVCenter
                     Layout.rowSpan: 3
                     color: "transparent"
@@ -65,7 +65,7 @@ Rectangle {
 
                 Slider {
                     id: gSlider
-                    implicitWidth: Controls.Theme.baseSize * 5
+                    implicitWidth: Theme.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.g = value / to
@@ -75,7 +75,7 @@ Rectangle {
 
                 Slider {
                     id: bSlider
-                    implicitWidth: Controls.Theme.baseSize * 5
+                    implicitWidth: Theme.baseSize * 5
                     from: 0
                     to: 255
                     onMoved: previewRect.color.b = value / to

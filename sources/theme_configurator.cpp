@@ -102,9 +102,6 @@ void ThemeConfigurator::setTheme(QObject* theme)
             m_selectedTextColor = colors->property(::selectedText).value<QColor>();
         }
     }
-
-    this->configure();
-    this->configureColor();
 }
 
 void ThemeConfigurator::setRounding(int rounding)
@@ -113,7 +110,6 @@ void ThemeConfigurator::setRounding(int rounding)
         return;
 
     m_rounding = rounding;
-    this->configure();
 }
 
 void ThemeConfigurator::setBaseSize(int baseSize)
@@ -122,10 +118,9 @@ void ThemeConfigurator::setBaseSize(int baseSize)
         return;
 
     m_baseSize = baseSize;
-    this->configure();
 }
 
-void ThemeConfigurator::configure()
+void ThemeConfigurator::configureSizes()
 {
     if (!m_theme)
         return;
@@ -133,6 +128,7 @@ void ThemeConfigurator::configure()
     m_theme->setProperty(::rounding, m_rounding);
     m_theme->setProperty(::baseSize, m_baseSize);
     m_theme->setProperty(::spacing, m_baseSize / ::spacingFactor);
+    m_theme->setProperty(::margins, m_baseSize / ::marginsFactor);
     m_theme->setProperty(::padding, m_baseSize / ::paddingFactor);
     m_theme->setProperty(::iconSize, m_baseSize / ::iconFactor);
     m_theme->setProperty(::fillSize, m_baseSize / ::fillFactor);
@@ -143,57 +139,27 @@ void ThemeConfigurator::configure()
     m_theme->setProperty(::auxFontSize, m_baseSize / ::auxFontFactor);
 }
 
-bool ThemeConfigurator::isDark()
-{
-    if (!m_theme)
-        return false;
-
-    QObject* colors = m_theme->property(::colors).value<QObject*>();
-    if (!colors)
-        return false;
-
-    QColor backroundColor = colors->property(::background).value<QColor>();
-
-    return backroundColor.black() > ::darkThemeThreshold;
-}
-
 void ThemeConfigurator::setBackgroundColor(const QColor& color)
 {
-    if (m_backgroundColor == color)
-        return;
-
     m_backgroundColor = color;
-    this->configureColor();
 }
 
 void ThemeConfigurator::setTextColor(const QColor& color)
 {
-    if (m_textColor == color)
-        return;
-
     m_textColor = color;
-    this->configureColor();
 }
 
 void ThemeConfigurator::setSelectionColor(const QColor& color)
 {
-    if (m_selectionColor == color)
-        return;
-
     m_selectionColor = color;
-    this->configureColor();
 }
 
 void ThemeConfigurator::setSelectionTextColor(const QColor& color)
 {
-    if (m_selectedTextColor == color)
-        return;
-
     m_selectedTextColor = color;
-    this->configureColor();
 }
 
-void ThemeConfigurator::configureColor()
+void ThemeConfigurator::configureColors()
 {
     if (!m_theme)
         return;
@@ -201,8 +167,6 @@ void ThemeConfigurator::configureColor()
     QObject* colors = m_theme->property(::colors).value<QObject*>();
     if (!colors)
         return;
-
-
 
     // set base color
     colors->setProperty(::background, m_backgroundColor);
@@ -210,27 +174,20 @@ void ThemeConfigurator::configureColor()
     colors->setProperty(::selection, m_selectionColor);
     colors->setProperty(::selectedText, m_selectedTextColor);
 
-
     // set darkWhite dependencies colors
-    bool isDarkTheme = m_backgroundColor.black() > ::darkThemeThreshold;
-    if(isDarkTheme)
+    bool darkTheme = m_backgroundColor.black() > ::darkThemeThreshold;
+    if (darkTheme)
     {
         colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
-
         colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
-
         colors->setProperty(::disabled, m_textColor.lighter(::disabledFactor));
-
         colors->setProperty(::control, m_backgroundColor.lighter(::controlFactor));
     }
     else
     {
         colors->setProperty(::sunken, m_backgroundColor.darker(::sunkenFactor - 10));
-
         colors->setProperty(::raised, m_backgroundColor.darker(::raisedFactor));
-
         colors->setProperty(::disabled, m_textColor.darker(::disabledFactor));
-
         colors->setProperty(::control, m_backgroundColor.darker(::controlFactor + 20));
     }
 
@@ -249,10 +206,3 @@ void ThemeConfigurator::configureColor()
     colors->setProperty(::negative, negativeColor);
     colors->setProperty(::shadow, shadowColor);
 }
-
-static void registerThemeTypes()
-{
-    qmlRegisterType<ThemeConfigurator>("Industrial.Controls", 1, 0, "ThemeConfigurator");
-}
-
-Q_COREAPP_STARTUP_FUNCTION(registerThemeTypes)

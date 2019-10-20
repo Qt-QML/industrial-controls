@@ -1,8 +1,8 @@
 #ifndef THEME_CONFIGURATOR_H
 #define THEME_CONFIGURATOR_H
 
-// Qt
 #include "export.h"
+
 #include <QColor>
 #include <QObject>
 
@@ -20,20 +20,18 @@ public slots:
 
     void setRounding(int rounding);
     void setBaseSize(int baseSize);
-    void configure();
+    virtual void configureSizes();
 
-    bool isDark();
     void setBackgroundColor(const QColor& color);
     void setTextColor(const QColor& color);
     void setSelectionColor(const QColor& color);
     void setSelectionTextColor(const QColor& color);
-    void configureColor();
+    virtual void configureColors();
 
-
-
-private:
+protected:
     QObject* m_theme = nullptr;
 
+private:
     int m_rounding = 0;
     int m_baseSize = 0;
 

@@ -23,7 +23,7 @@ Popup {
             to: 8
             text: qsTr("Rounding")
             value: Theme.rounding
-            onMoved: configurator.setRounding(value)
+            onMoved: { configurator.setRounding(value); configurator.configureSizes() }
             Layout.fillWidth: true
         }
 
@@ -33,7 +33,7 @@ Popup {
             stepSize: 4
             text: qsTr("Base size")
             value: Theme.baseSize
-            onPressedChanged: if (!pressed) configurator.setBaseSize(value)
+            onPressedChanged: { if (!pressed) { configurator.setBaseSize(value); configurator.configureSizes() } }
             Layout.fillWidth: true
         }
 
@@ -44,9 +44,9 @@ Popup {
 
             DualColorPicker {
                 primaryColor: Theme.colors.background
-                onPrimaryColorPicked: configurator.setBackgroundColor(color)
+                onPrimaryColorPicked: { configurator.setBackgroundColor(color); configurator.configureColors() }
                 secondaryColor: Theme.colors.text
-                onSecondaryColorPicked: configurator.setTextColor(color)
+                onSecondaryColorPicked: { configurator.setTextColor(color); configurator.configureColors() }
             }
         }
 
@@ -57,9 +57,9 @@ Popup {
 
             DualColorPicker {
                 primaryColor: Theme.colors.selection
-                onPrimaryColorPicked: configurator.setSelectionColor(color)
+                onPrimaryColorPicked: { configurator.setSelectionColor(color); configurator.configureColors() }
                 secondaryColor: Theme.colors.selectedText
-                onSecondaryColorPicked: configurator.setSelectionTextColor(color)
+                onSecondaryColorPicked: { configurator.setSelectionTextColor(color); configurator.configureColors() }
             }
         }
     }
