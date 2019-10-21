@@ -11,8 +11,6 @@ Item {
 
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
-    width: Theme.iconSize
-    height: width
 
     Image {
         id: image
