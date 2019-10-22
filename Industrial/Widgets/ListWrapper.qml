@@ -8,9 +8,12 @@ Item {
     property color backgroundColor: Controls.Theme.colors.raised
     property string emptyText: qsTr("No items")
 
+    property alias contentY: list.contentY
     property alias spacing: list.spacing
     property alias model: list.model
     property alias header: list.header
+    property alias footer: list.footer
+    property alias highlight: list.highlight
     property alias delegate: list.delegate
 
     function toBeginning() { list.positionViewAtBeginning() }
@@ -29,7 +32,7 @@ Item {
         anchors.rightMargin: Controls.Theme.shadowSize
         anchors.bottomMargin: Controls.Theme.shadowSize
         spacing: Controls.Theme.spacing
-        headerPositioning: ListView.PullBackHeader
+        headerPositioning: ListView.OverlayHeader
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
 
