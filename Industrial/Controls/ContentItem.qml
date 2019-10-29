@@ -16,8 +16,18 @@ Item {
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
-    implicitWidth: icon.implicitWidth + label.implicitWidth + row.spacing
-    implicitHeight: icon.implicitHeight + label.implicitHeight + row.spacing
+    implicitWidth: {
+        if (icon.visible) {
+            if (label.visible)
+                return icon.implicitWidth + label.implicitWidth + row.spacing;
+            return icon.implicitWidth;
+        }
+        else if (label.visible) {
+            return label.implicitWidth
+        }
+        return 0;
+    }
+    implicitHeight: Math.max(icon.implicitHeight, label.implicitHeight)
 
     RowLayout {
         id: row
