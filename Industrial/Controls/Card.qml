@@ -8,6 +8,7 @@ Item {
 
     property alias deepEnabled: deepButton.visible
     property alias menuEnabled: menuButton.enabled
+    property alias menu: menu
     property alias menuItems: menu.contentChildren
     property alias backgroundColor: background.color
     readonly property alias margin: menuButton.width
@@ -23,6 +24,7 @@ Item {
             source: parent
         }
     }
+
 
     Button {
         id: menuButton
@@ -40,6 +42,18 @@ Item {
         Menu {
             id: menu
             y: parent.height
+
+            function addEntry(text, iconSource) {
+                var item = menuItem.createObject(null, { text: text, iconSource: iconSource });
+                menu.addItem(item);
+                menuButton.enabled = true;
+                return item;
+            }
+
+            Component {
+                id: menuItem
+                MenuItem {}
+            }
         }
     }
 
