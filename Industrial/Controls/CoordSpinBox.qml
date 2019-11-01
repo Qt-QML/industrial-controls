@@ -32,8 +32,6 @@ T.Control {
     property Item _focusedItem
 
 
-
-
     function stringToReal(str, decimalPoint) {
         if (decimalPoint !== ".") return parseFloat(str.replace(decimalPoint, "."));
         return parseFloat(str);

@@ -45,7 +45,6 @@ SpinBox 1.0 SpinBox.qml
 RealSpinBox 1.0 RealSpinBox.qml
 CoordSpinBox 1.0 CoordSpinBox.qml
 ScrollBar 1.0 ScrollBar.qml
-ColoredIcon 1.0 ColoredIcon.qml
 ToolTip 1.0 ToolTip.qml
 Drawer 1.0 Drawer.qml
 Separator 1.0 Separator.qml
