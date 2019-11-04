@@ -96,6 +96,7 @@ T.SpinBox {
         }
 
         ColoredIcon {
+            height: parent.height
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
@@ -124,6 +125,7 @@ T.SpinBox {
         }
 
         ColoredIcon {
+            height: parent.height
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
