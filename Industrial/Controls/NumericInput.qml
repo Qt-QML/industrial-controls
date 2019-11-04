@@ -13,4 +13,14 @@ TextInput {
     color: control.enabled ? control.color : Theme.colors.disabled
     selectionColor: Theme.colors.selection
     selectedTextColor: Theme.colors.selectedText
+
+
+    property bool changed: false
+
+    signal finished()
+
+    onFinished: changed = false
+    onTextEdited: changed = true
+    onActiveFocusChanged:  if (!activeFocus && changed) finished()
+    onEditingFinished: if (changed) finished()
 }
