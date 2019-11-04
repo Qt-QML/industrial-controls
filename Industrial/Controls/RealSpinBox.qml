@@ -28,6 +28,10 @@ SpinBox {
     from: realFrom / precision
     isValid: !isNaN(realValue)
 
+    function decimals(num) {
+        return (num.toString().split('.')[1] || []).length;
+    }
+
     validator: DoubleValidator {
         decimals: Helper.decimals(precision)
         notation: DoubleValidator.StandardNotation
