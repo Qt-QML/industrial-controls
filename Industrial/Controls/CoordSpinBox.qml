@@ -226,6 +226,16 @@ T.Control {
     }
 
     Rectangle {
+        anchors.bottom: control.bottom
+        width: parent.width
+        x: 0
+        height: Theme.underline
+        color: {
+            return Theme.colors.border;
+        }
+    }
+
+    Rectangle {
         id: highlighter
         anchors.bottom: control.bottom
         width: _focusedItem ? _focusedItem.width : 0

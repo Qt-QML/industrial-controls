@@ -16,7 +16,7 @@ BackgroundItem {
 
     implicitWidth: Theme.checkmarkSize
     implicitHeight: Theme.checkmarkSize
-    borderColor: flat ? Theme.colors.control : "transparent"
+    borderColor: flat ? Theme.colors.border : "transparent"
     color: {
         if (flat) return "transparent";
 
