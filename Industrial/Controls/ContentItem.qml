@@ -23,7 +23,7 @@ Item {
             return icon.implicitWidth;
         }
         else if (label.visible) {
-            return label.implicitWidth
+            return label.implicitWidth + 1;
         }
         return 0;
     }
