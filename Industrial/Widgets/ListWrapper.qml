@@ -15,6 +15,7 @@ Item {
     property alias footer: list.footer
     property alias highlight: list.highlight
     property alias delegate: list.delegate
+    property alias currentIndex: list.currentIndex
 
     function toBeginning() { list.positionViewAtBeginning() }
     function toIndex(index) { list.positionViewAtIndex(index) }
@@ -35,6 +36,8 @@ Item {
         headerPositioning: ListView.OverlayHeader
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
+        highlightResizeDuration: 0
+        highlightMoveDuration: Controls.Theme.animationTime
 
         Controls.ScrollBar.vertical: Controls.ScrollBar {
             visible: list.contentHeight > list.height

@@ -3,7 +3,6 @@ depends QtQuick.Templates 2.2
 depends QtQuick.Controls 2.2
 designersupported
 
-Helper 1.0 helper.js
 
 singleton Theme 1.0 Theme.qml
 ThemeColors 1.0 ThemeColors.qml
@@ -46,7 +45,6 @@ SpinBox 1.0 SpinBox.qml
 RealSpinBox 1.0 RealSpinBox.qml
 CoordSpinBox 1.0 CoordSpinBox.qml
 ScrollBar 1.0 ScrollBar.qml
-ColoredIcon 1.0 ColoredIcon.qml
 ToolTip 1.0 ToolTip.qml
 Drawer 1.0 Drawer.qml
 Separator 1.0 Separator.qml
