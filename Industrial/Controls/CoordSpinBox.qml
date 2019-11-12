@@ -2,8 +2,6 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Templates 2.2 as T
 
-import "helper.js" as Helper
-
 T.Control {
     id: control
 
@@ -89,8 +87,8 @@ T.Control {
     function updateValueFromControls() {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
-        var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
-        var val = Helper.dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
+        var secs = stringToReal(sInput.input.text, locale.decimalPoint);
+        var val = dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
         if (val > to) value = to;
         else if (val < -to) value = -to;
@@ -101,22 +99,22 @@ T.Control {
 
     function updateControlsFromValue() {
         if (!isNaN(value)) {
-            var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
+            var dms = degreesToDms(value, isLongitude, secondsPrecision);
             _sign = dms.sign;
-            dInput.input.text = Helper.pad(dms.deg, dInput.maximumLength);
-            mInput.input.text = Helper.pad(dms.min, mInput.maximumLength);
-            sInput.input.text = Helper.padReal(dms.sec, 2, secondsPrecision, locale.decimalPoint);
+            dInput.input.text = pad(dms.deg, dInput.maximumLength);
+            mInput.input.text = pad(dms.min, mInput.maximumLength);
+            sInput.input.text = padReal(dms.sec, 2, secondsPrecision, locale.decimalPoint);
         }
         else {
-            dInput.input.text = Helper.pad(0, dInput.maximumLength);
-            mInput.input.text = Helper.pad(0, mInput.maximumLength);
-            sInput.input.text = Helper.padReal(0, 2, secondsPrecision, locale.decimalPoint);
+            dInput.input.text = pad(0, dInput.maximumLength);
+            mInput.input.text = pad(0, mInput.maximumLength);
+            sInput.input.text = padReal(0, 2, secondsPrecision, locale.decimalPoint);
         }
         caution = false;
     }
 
     function changeValue(digit, add) {
-        var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
+        var dms = degreesToDms(value, isLongitude, secondsPrecision);
 
         switch (digit) {
         case 0:
@@ -130,7 +128,7 @@ T.Control {
             break;
         }
 
-        var newValue = Helper.dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
+        var newValue = dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
         var newSign = newValue < 0 ? -1 : 1
         if (dms.sign !== newSign) {
             value = 0;
@@ -277,6 +275,16 @@ T.Control {
                 Layout.fillHeight: true
                 Layout.bottomMargin: background.highlighterHeight
             }
+        }
+    }
+
+    Rectangle {
+        anchors.bottom: control.bottom
+        width: parent.width
+        x: 0
+        height: Theme.underline
+        color: {
+            return Theme.colors.border;
         }
     }
 

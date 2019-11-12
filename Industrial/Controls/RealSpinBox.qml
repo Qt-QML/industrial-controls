@@ -1,7 +1,5 @@
 import QtQuick 2.6
 
-import "helper.js" as Helper
-
 SpinBox {
     id: control
 
@@ -33,7 +31,7 @@ SpinBox {
     }
 
     validator: DoubleValidator {
-        decimals: Helper.decimals(precision)
+        decimals: getDecimals(precision)
         notation: DoubleValidator.StandardNotation
         bottom: Math.min(realFrom, realTo)
         top: Math.max(realFrom, realTo)
@@ -63,7 +61,7 @@ SpinBox {
     }
 
     textFromValue: function(value, locale) {
-        return (value * precision).toFixed(Helper.decimals(precision)).replace(".", locale.decimalPoint)
+        return (value * precision).toFixed(getDecimals(precision)).replace(".", locale.decimalPoint)
     }
 
     valueFromText: function(text, locale) {
@@ -72,5 +70,10 @@ SpinBox {
         if (val > to) return to;
 
         return val;
+    }
+
+
+    function getDecimals(num) {
+        return (num.toString().split('.')[1] || []).length;
     }
 }

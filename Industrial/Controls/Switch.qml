@@ -29,6 +29,8 @@ T.Switch {
         radius: height / 2
         color: control.checked ? Theme.colors.selection : control.flat ? Theme.colors.control :
                                                                               Theme.colors.sunken
+        border.width: 1
+        border.color: flat ? Theme.colors.border : "transparent"
 
         Hatch {
             anchors.fill: parent

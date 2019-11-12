@@ -44,7 +44,7 @@ BackgroundItem {
                 return Theme.colors.selection;
             }
 
-            return Theme.colors.control;
+            return Theme.colors.border;
         }
     }
 

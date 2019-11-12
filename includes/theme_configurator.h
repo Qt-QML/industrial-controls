@@ -20,13 +20,10 @@ public slots:
 
     void setRounding(int rounding);
     void setBaseSize(int baseSize);
-    virtual void configureSizes();
+    void configureSizes();
 
-    void setBackgroundColor(const QColor& color);
-    void setTextColor(const QColor& color);
-    void setSelectionColor(const QColor& color);
-    void setSelectionTextColor(const QColor& color);
-    virtual void configureColors();
+    void setDark(bool dark);
+    void configureColors();
 
 protected:
     QObject* m_theme = nullptr;
@@ -34,11 +31,7 @@ protected:
 private:
     int m_rounding = 0;
     int m_baseSize = 0;
-
-    QColor m_backgroundColor;
-    QColor m_textColor;
-    QColor m_selectionColor;
-    QColor m_selectedTextColor;
+    bool m_dark = false;
 };
 
 #endif // THEME_CONFIGURATOR_H

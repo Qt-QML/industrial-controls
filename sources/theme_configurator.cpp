@@ -58,22 +58,38 @@ constexpr char selectedText[] = "selectedText";
 constexpr char highlight[] = "highlight";
 constexpr char highlightedText[] = "highlightedText";
 
-const double raisedFactor = 115;
-const double sunkenFactor = 85;
-const double disabledFactor = 50;
-const double controlFactor = 150;
-
 constexpr char link[] = "link";
 constexpr char positive[] = "positive";
 constexpr char neutral[] = "neutral";
 constexpr char negative[] = "negative";
 constexpr char shadow[] = "shadow";
 
+
 const QColor linkColor = "#51a0e7";
 const QColor positiveColor = "#86c34a";
 const QColor neutralColor = "#ff9800";
 const QColor negativeColor = "#e53535";
 const QColor shadowColor = "#80000000";
+
+const QColor darkBackgroundColor = "#2c393f";
+const QColor darkTextColor = "#ffffff";
+const QColor darkSelectionColor = "#009688";
+const QColor darkSelectedTextColor = "#000000";
+
+const QColor brightBackgroundColor = "#f7f9f9";
+const QColor brightTextColor = "#273339";
+const QColor brightSelectionColor = "#20b2aa";
+const QColor brightSelectedTextColor = "#ffffff";
+
+const double brightRaisedFactor = 105;
+const double brightSunkenFactor = 95;
+const double brightDisabledFactor = 70;
+const double brightControlFactor = 105;
+
+const double darkRaisedFactor = 115;
+const double darkSunkenFactor = 85;
+const double darkDisabledFactor = 50;
+const double darkControlFactor = 150;
 } // namespace
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
@@ -91,14 +107,6 @@ void ThemeConfigurator::setTheme(QObject* theme)
     {
         m_rounding = theme->property(::rounding).toInt();
         m_baseSize = theme->property(::baseSize).toInt();
-
-        if (QObject* colors = m_theme->property(::colors).value<QObject*>())
-        {
-            m_backgroundColor = colors->property(::background).value<QColor>();
-            m_textColor = colors->property(::text).value<QColor>();
-            m_selectionColor = colors->property(::selection).value<QColor>();
-            m_selectedTextColor = colors->property(::selectedText).value<QColor>();
-        }
     }
 }
 
@@ -116,6 +124,11 @@ void ThemeConfigurator::setBaseSize(int baseSize)
         return;
 
     m_baseSize = baseSize;
+}
+
+void ThemeConfigurator::setDark(bool dark)
+{
+    m_dark = dark;
 }
 
 void ThemeConfigurator::configureSizes()
@@ -137,26 +150,6 @@ void ThemeConfigurator::configureSizes()
     m_theme->setProperty(::auxFontSize, m_baseSize / ::auxFontFactor);
 }
 
-void ThemeConfigurator::setBackgroundColor(const QColor& color)
-{
-    m_backgroundColor = color;
-}
-
-void ThemeConfigurator::setTextColor(const QColor& color)
-{
-    m_textColor = color;
-}
-
-void ThemeConfigurator::setSelectionColor(const QColor& color)
-{
-    m_selectionColor = color;
-}
-
-void ThemeConfigurator::setSelectionTextColor(const QColor& color)
-{
-    m_selectedTextColor = color;
-}
-
 void ThemeConfigurator::configureColors()
 {
     if (!m_theme)
@@ -166,31 +159,44 @@ void ThemeConfigurator::configureColors()
     if (!colors)
         return;
 
-    // set base color
-    colors->setProperty(::background, m_backgroundColor);
-    colors->setProperty(::text, m_textColor);
-    colors->setProperty(::selection, m_selectionColor);
-    colors->setProperty(::selectedText, m_selectedTextColor);
+    // set theme base color
+    if (m_dark)
+    {
+        colors->setProperty(::background, ::darkBackgroundColor);
+        colors->setProperty(::text, ::darkTextColor);
+        colors->setProperty(::selection, ::darkSelectionColor);
+        colors->setProperty(::selectedText, ::darkSelectedTextColor);
 
-    // set other colors
-    colors->setProperty(::disabled, m_textColor.lighter(::disabledFactor));
+        colors->setProperty(::disabled, ::darkTextColor.lighter(::darkDisabledFactor));
+        colors->setProperty(::sunken, ::darkBackgroundColor.lighter(::darkSunkenFactor));
+        colors->setProperty(::raised, ::darkBackgroundColor.lighter(::darkRaisedFactor));
+        colors->setProperty(::control, ::darkBackgroundColor.lighter(::darkControlFactor));
+    }
+    else
+    {
+        colors->setProperty(::background, ::brightBackgroundColor);
+        colors->setProperty(::text, ::brightTextColor);
+        colors->setProperty(::selection, ::brightSelectionColor);
+        colors->setProperty(::selectedText, ::brightSelectedTextColor);
 
-    // set other colors
-    colors->setProperty(::sunken, m_backgroundColor.lighter(::sunkenFactor));
-    colors->setProperty(::raised, m_backgroundColor.lighter(::raisedFactor));
-    colors->setProperty(::control, m_backgroundColor.lighter(::controlFactor));
+        colors->setProperty(::disabled, ::brightTextColor.lighter(::brightDisabledFactor));
+        colors->setProperty(::sunken, ::brightBackgroundColor.lighter(::brightSunkenFactor));
+        colors->setProperty(::raised, ::brightBackgroundColor.lighter(::brightRaisedFactor));
+        colors->setProperty(::control, ::brightBackgroundColor.darker(::brightControlFactor));
+    }
 
-    colors->setProperty(::controlText, m_textColor);
+    // set other theme colors
+    colors->setProperty(::controlText, m_dark ? darkTextColor : brightTextColor);
+    colors->setProperty(::tip, m_dark ? darkSelectionColor : brightSelectionColor);
+    colors->setProperty(::tipText, m_dark ? darkTextColor : brightTextColor);
+    colors->setProperty(::highlight, m_dark ? darkSelectionColor : brightSelectionColor);
+    colors->setProperty(::highlightedText, m_dark ? darkSelectedTextColor : brightSelectedTextColor);
 
-    colors->setProperty(::tip, m_selectionColor);
-    colors->setProperty(::tipText, m_textColor);
 
-    colors->setProperty(::highlight, m_selectionColor);
-    colors->setProperty(::highlightedText, m_selectedTextColor);
-
-    colors->setProperty(::link, linkColor);
-    colors->setProperty(::positive, positiveColor);
-    colors->setProperty(::neutral, neutralColor);
-    colors->setProperty(::negative, negativeColor);
-    colors->setProperty(::shadow, shadowColor);
+    // set independent colors
+    colors->setProperty(::link, ::linkColor);
+    colors->setProperty(::positive, ::positiveColor);
+    colors->setProperty(::neutral, ::neutralColor);
+    colors->setProperty(::negative, ::negativeColor);
+    colors->setProperty(::shadow, ::shadowColor);
 }

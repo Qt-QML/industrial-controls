@@ -6,6 +6,7 @@ Item {
     property color raised: "#37474f"            // Фон возвышенных элементов (панели)
     property color text: "#ffffff"              // Текст (иконки и другие элементы на фоне окна, утопленных и возвышенных элементов)
     property color hover: "#16ffffff"           // Подсветка элемента при наведении мыши
+    property color border: "#2c393f"            // Цвет обводки
 
     property color disabled: "#161c20"          // Неактивный цвет (штриховка на контролах, отключенные элементы
 

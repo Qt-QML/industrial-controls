@@ -11,7 +11,7 @@ Popup {
     ThemeConfigurator
     {
         id: configurator
-        theme: Theme
+        Component.onCompleted:  configurator.setTheme(Theme);
     }
 
     ColumnLayout{
@@ -60,6 +60,17 @@ Popup {
                 onPrimaryColorPicked: { configurator.setSelectionColor(color); configurator.configureColors() }
                 secondaryColor: Theme.colors.selectedText
                 onSecondaryColorPicked: { configurator.setSelectionTextColor(color); configurator.configureColors() }
+            }
+        }
+
+        RowLayout {
+            spacing: Theme.spacing
+            CheckBox {
+                id: _checkbox
+                text: qsTr("DarkTheme")
+                Layout.fillWidth: true
+                onCheckStateChanged: {configurator.setDark(_checkbox.checked); configurator.configureColors(); }
+
             }
         }
     }
