@@ -1,11 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>Industrial/Controls/qmldir</file>
-
-
         <file>Industrial/Controls/Theme.qml</file>
         <file>Industrial/Controls/ThemeColors.qml</file>
-
         <file>Industrial/Controls/Shadow.qml</file>
         <file>Industrial/Controls/Hatch.qml</file>
         <file>Industrial/Controls/ApplicationWindow.qml</file>
@@ -58,7 +55,8 @@
         <file>Industrial/Widgets/qmldir</file>
         <file>Industrial/Widgets/ColorPicker.qml</file>
         <file>Industrial/Widgets/DualColorPicker.qml</file>
-        <file>Industrial/Widgets/ListWrapper.qml</file>
         <file>Industrial/Widgets/Draggable.qml</file>
+        <file>Industrial/Widgets/ListWrapper.qml</file>
+        <file>Industrial/Widgets/ListTable.qml</file>
     </qresource>
 </RCC>
