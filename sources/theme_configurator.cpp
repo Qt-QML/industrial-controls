@@ -43,6 +43,7 @@ constexpr char background[] = "background";
 constexpr char sunken[] = "sunken";
 constexpr char raised[] = "raised";
 constexpr char text[] = "text";
+constexpr char border[] = "border";
 
 constexpr char disabled[] = "disabled";
 
@@ -76,7 +77,7 @@ const QColor darkTextColor = "#ffffff";
 const QColor darkSelectionColor = "#009688";
 const QColor darkSelectedTextColor = "#000000";
 
-const QColor brightBackgroundColor = "#f7f9f9";
+const QColor brightBackgroundColor = "#f4f6f7";
 const QColor brightTextColor = "#273339";
 const QColor brightSelectionColor = "#20b2aa";
 const QColor brightSelectedTextColor = "#ffffff";
@@ -84,12 +85,15 @@ const QColor brightSelectedTextColor = "#ffffff";
 const double brightRaisedFactor = 105;
 const double brightSunkenFactor = 95;
 const double brightDisabledFactor = 70;
-const double brightControlFactor = 105;
+const double brightControlFactor = 125;
+const double brightBorderFactor = 135;
 
 const double darkRaisedFactor = 115;
 const double darkSunkenFactor = 85;
 const double darkDisabledFactor = 50;
 const double darkControlFactor = 150;
+const double darkBorderFactor = 150;
+
 } // namespace
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
@@ -171,6 +175,7 @@ void ThemeConfigurator::configureColors()
         colors->setProperty(::sunken, ::darkBackgroundColor.lighter(::darkSunkenFactor));
         colors->setProperty(::raised, ::darkBackgroundColor.lighter(::darkRaisedFactor));
         colors->setProperty(::control, ::darkBackgroundColor.lighter(::darkControlFactor));
+        colors->setProperty(::border, ::darkBackgroundColor.lighter(::darkBorderFactor));
     }
     else
     {
@@ -183,6 +188,7 @@ void ThemeConfigurator::configureColors()
         colors->setProperty(::sunken, ::brightBackgroundColor.lighter(::brightSunkenFactor));
         colors->setProperty(::raised, ::brightBackgroundColor.lighter(::brightRaisedFactor));
         colors->setProperty(::control, ::brightBackgroundColor.darker(::brightControlFactor));
+        colors->setProperty(::border, ::brightBackgroundColor.darker(::brightBorderFactor));
     }
 
     // set other theme colors
@@ -191,6 +197,7 @@ void ThemeConfigurator::configureColors()
     colors->setProperty(::tipText, m_dark ? darkTextColor : brightTextColor);
     colors->setProperty(::highlight, m_dark ? darkSelectionColor : brightSelectionColor);
     colors->setProperty(::highlightedText, m_dark ? darkSelectedTextColor : brightSelectedTextColor);
+
 
 
     // set independent colors

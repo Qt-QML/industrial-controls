@@ -23,7 +23,7 @@ T.Slider {
         width: control.availableWidth
         height: Theme.fillSize
         radius: height / 2
-        color: flat ? Theme.colors.background : Theme.colors.sunken
+        color: flat ? "transparent" : Theme.colors.sunken
         border.width: 1
         border.color: flat ? Theme.colors.border : "transparent"
 

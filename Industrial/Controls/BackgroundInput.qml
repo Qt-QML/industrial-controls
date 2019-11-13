@@ -43,8 +43,7 @@ BackgroundItem {
                 if (!control.isValid) return Theme.colors.negative;
                 return Theme.colors.selection;
             }
-
-            return Theme.colors.border;
+            return Theme.colors.control;
         }
     }
 
