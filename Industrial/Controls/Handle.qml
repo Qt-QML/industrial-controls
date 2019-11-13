@@ -4,7 +4,7 @@ Rectangle {
     implicitWidth: Theme.handleSize
     implicitHeight: implicitWidth
     radius: width / 2
-    border.color: control.activeFocus ? Theme.colors.highlight : control.flat ? Theme.colors.border : "transparent"
+    border.color: control.activeFocus ? Theme.colors.highlight : "transparent"
     color: {
         if (!control.enabled) return Theme.colors.sunken;
         if (control.pressed) return Theme.colors.highlight;
