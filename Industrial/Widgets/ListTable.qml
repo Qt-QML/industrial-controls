@@ -21,6 +21,7 @@ Controls.Pane {
         anchors.fill: parent
         spacing: 0
         backgroundColor: root.backgroundColor
+        currentIndex: -1
         header: RowLayout {
             width: parent.width
             spacing: 0
