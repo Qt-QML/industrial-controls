@@ -43,6 +43,7 @@ constexpr char background[] = "background";
 constexpr char sunken[] = "sunken";
 constexpr char raised[] = "raised";
 constexpr char text[] = "text";
+constexpr char hover[] = "hover";
 constexpr char border[] = "border";
 
 constexpr char disabled[] = "disabled";
@@ -65,7 +66,6 @@ constexpr char neutral[] = "neutral";
 constexpr char negative[] = "negative";
 constexpr char shadow[] = "shadow";
 
-
 const QColor linkColor = "#51a0e7";
 const QColor positiveColor = "#86c34a";
 const QColor neutralColor = "#ff9800";
@@ -76,11 +76,13 @@ const QColor darkBackgroundColor = "#2c393f";
 const QColor darkTextColor = "#ffffff";
 const QColor darkSelectionColor = "#009688";
 const QColor darkSelectedTextColor = "#000000";
+const QColor darkHoverColor = "#16ffffff";
 
 const QColor brightBackgroundColor = "#f4f6f7";
 const QColor brightTextColor = "#273339";
 const QColor brightSelectionColor = "#20b2aa";
 const QColor brightSelectedTextColor = "#ffffff";
+const QColor brightHoverColor = "#16000000";
 
 const double brightRaisedFactor = 105;
 const double brightSunkenFactor = 95;
@@ -170,6 +172,7 @@ void ThemeConfigurator::configureColors()
         colors->setProperty(::text, ::darkTextColor);
         colors->setProperty(::selection, ::darkSelectionColor);
         colors->setProperty(::selectedText, ::darkSelectedTextColor);
+        colors->setProperty(::hover, ::darkHoverColor);
 
         colors->setProperty(::disabled, ::darkTextColor.lighter(::darkDisabledFactor));
         colors->setProperty(::sunken, ::darkBackgroundColor.lighter(::darkSunkenFactor));
@@ -183,6 +186,7 @@ void ThemeConfigurator::configureColors()
         colors->setProperty(::text, ::brightTextColor);
         colors->setProperty(::selection, ::brightSelectionColor);
         colors->setProperty(::selectedText, ::brightSelectedTextColor);
+        colors->setProperty(::hover, ::brightHoverColor);
 
         colors->setProperty(::disabled, ::brightTextColor.lighter(::brightDisabledFactor));
         colors->setProperty(::sunken, ::brightBackgroundColor.lighter(::brightSunkenFactor));
@@ -197,8 +201,6 @@ void ThemeConfigurator::configureColors()
     colors->setProperty(::tipText, m_dark ? darkTextColor : brightTextColor);
     colors->setProperty(::highlight, m_dark ? darkSelectionColor : brightSelectionColor);
     colors->setProperty(::highlightedText, m_dark ? darkSelectedTextColor : brightSelectedTextColor);
-
-
 
     // set independent colors
     colors->setProperty(::link, ::linkColor);
