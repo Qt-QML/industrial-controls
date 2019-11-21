@@ -14,6 +14,7 @@ Rectangle {
 
     signal entered()
     signal exited()
+    signal clicked()
 
     // Size of the area at the top and bottom of the list where drag-scrolling happens
     property int scrollEdgeSize: 6
@@ -24,7 +25,8 @@ Rectangle {
 
     width: contentItem.width
     height: topPlaceholder.height + wrapperParent.height + bottomPlaceholder.height
-    color: "transparent"
+    radius: Theme.rounding
+    color: mouseArea.containsMouse ? Theme.colors.hover : "transparent"
 
     // Make contentItem a child of contentItemWrapper
     onContentItemChanged: {
@@ -44,12 +46,12 @@ Rectangle {
 
     Item {
         id: wrapperParent
+        height: contentItem.height
         anchors {
             left: parent.left
             right: parent.right
             top: topPlaceholder.bottom
         }
-        height: contentItem.height
 
         Item {
             id: contentItemWrapper
@@ -68,7 +70,8 @@ Rectangle {
                 hoverEnabled: true
                 onEntered: root.entered()
                 onExited: root.exited()
-                onReleased: if (drag.active)  emitMoveItemRequested()
+                onReleased: if (drag.active) emitMoveItemRequested()
+                onClicked: root.clicked()
             }
         }
     }
