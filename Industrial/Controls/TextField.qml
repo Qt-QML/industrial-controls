@@ -22,6 +22,9 @@ T.TextField {
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignBottom
 
+    property bool allowAdditionalSymbols: false
+    validator:  RegExpValidator { regExp: !control.allowAdditionalSymbols ? /^[a-zA-Z0-9!@#$&()\\-`.+,/\"]*$/ : ".*"}
+
     background: BackgroundInput {
         id: background
         anchors.fill: parent
