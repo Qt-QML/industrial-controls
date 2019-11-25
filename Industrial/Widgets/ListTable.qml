@@ -22,19 +22,26 @@ Controls.Pane {
         spacing: 0
         backgroundColor: root.backgroundColor
         currentIndex: -1
-        header: RowLayout {
+        header: ListFader {
             width: parent.width
-            spacing: 0
+            factor: 0.6
 
-            Repeater {
-                model: headerModel
+            RowLayout {
+                id: row
+                anchors.fill: parent
+                spacing: 0
 
-                Controls.Label {
-                    text: modelData.text
-                    font.bold: true
-                    font.pixelSize: Controls.Theme.auxFontSize
-                    horizontalAlignment: Text.AlignHCenter
-                    Layout.preferredWidth: modelData.size
+                Repeater {
+                    model: headerModel
+
+                    Controls.Label {
+                        text: modelData.text
+                        font.bold: true
+                        font.pixelSize: Controls.Theme.auxFontSize
+                        horizontalAlignment: Text.AlignHCenter
+                        Layout.preferredWidth: modelData.size
+                        Layout.alignment: Qt.AlignTop
+                    }
                 }
             }
         }
