@@ -15,6 +15,7 @@ Rectangle {
     signal entered()
     signal exited()
     signal clicked()
+    signal doubleClicked()
 
     // Size of the area at the top and bottom of the list where drag-scrolling happens
     property int scrollEdgeSize: 6
@@ -72,6 +73,7 @@ Rectangle {
                 onExited: root.exited()
                 onReleased: if (drag.active) emitMoveItemRequested()
                 onClicked: root.clicked()
+                onDoubleClicked: root.doubleClicked()
             }
         }
     }
