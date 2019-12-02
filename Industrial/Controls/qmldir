@@ -22,6 +22,7 @@ ButtonBar 1.0 ButtonBar.qml
 TabButton 1.0 TabButton.qml
 TabBar 1.0 TabBar.qml
 BottomBar 1.0 BottomBar.qml
+CheckMarkBase 1.0 CheckMarkBase.qml
 CheckBox 1.0 CheckBox.qml
 Switch 1.0 Switch.qml
 RadioButton 1.0 RadioButton.qml

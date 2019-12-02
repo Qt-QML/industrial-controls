@@ -20,7 +20,8 @@ Item {
     property real margins: 8
     property real padding: 6
     property real iconSize: 18
-    property real fillSize: 4
+    property real sliderSize: 4
+    property real switchSize: 8
     property real handleSize: 21
     property real checkmarkSize: 21
     property real floatSize: 42

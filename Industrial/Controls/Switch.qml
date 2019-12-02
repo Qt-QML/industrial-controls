@@ -25,7 +25,7 @@ T.Switch {
         x: control.leftPadding
         y: parent.height / 2 - height / 2
         implicitWidth: Theme.baseSize
-        implicitHeight: Theme.fillSize
+        implicitHeight: Theme.switchSize
         radius: height / 2
         color: control.checked ? Theme.colors.selection : control.flat ? "transparent" :
                                                                               Theme.colors.sunken
