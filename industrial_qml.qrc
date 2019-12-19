@@ -40,6 +40,8 @@
         <file>Industrial/Controls/AddressField.qml</file>
         <file>Industrial/Controls/ItemDelegate.qml</file>
         <file>Industrial/Controls/Popup.qml</file>
+        <file>Industrial/Controls/Dialog.qml</file>
+        <file>Industrial/Controls/DialogButtonBox.qml</file>
         <file>Industrial/Controls/Card.qml</file>
         <file>Industrial/Controls/SpinBox.qml</file>
         <file>Industrial/Controls/NumericInput.qml</file>
