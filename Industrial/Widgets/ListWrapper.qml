@@ -48,12 +48,14 @@ Item {
 
         header: ListFader {
             width: parent.width
-            visible: list.contentY > 0
+            faderOffset: 1
+            faderHeight: list.contentY
         }
 
         footer: ListFader {
             width: parent.width
-            visible: list.contentY < (list.contentHeight - list.height)
+            faderOffset: Controls.Theme.shadowSize
+            faderHeight: (list.contentHeight - list.height) - list.contentY
             mirrored: true
         }
 

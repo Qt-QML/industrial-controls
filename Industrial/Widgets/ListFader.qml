@@ -5,18 +5,26 @@ Item {
     id: root
 
     property bool mirrored: false
-    property real factor : 0.1
+    property int faderOffset: 0
+    property int faderHeight: Controls.Theme.baseSize
 
-    implicitHeight: Controls.Theme.baseSize
+    implicitHeight: 0
     z: 1000
 
     Rectangle {
-        anchors.fill: parent
-        anchors.bottomMargin: mirrored ? -height * factor : 0
-        anchors.topMargin: mirrored ? 0 : -height * factor
+        width: parent.width
+        height: parent.height + faderOffset
+        y: mirrored ? 0 : -faderOffset
+        color: backgroundColor
+    }
 
+    Rectangle {
+        width: parent.width
+        height: root.height + Math.min(faderHeight, Controls.Theme.baseSize)
+        visible: height
+        y: mirrored ? -height : root.height
         gradient: Gradient {
-            GradientStop { color: backgroundColor; position: mirrored ? 1.0 - factor : factor }
+            GradientStop { color: backgroundColor; position: mirrored ? 1.0 : 0.0 }
             GradientStop { color: "transparent"; position: mirrored ? 0.0 : 1.0 }
         }
     }

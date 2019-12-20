@@ -23,11 +23,13 @@ Controls.Pane {
         backgroundColor: root.backgroundColor
         header: ListFader {
             width: parent.width
-            factor: 0.6
+            height: row.height
+            faderOffset: 1
+            faderHeight: list.contentY
 
             RowLayout {
                 id: row
-                anchors.fill: parent
+                width: parent.width
                 spacing: 0
 
                 Repeater {
