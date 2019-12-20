@@ -23,7 +23,7 @@ T.TabButton {
         id: backgroundItem
         bottomCropping: radius
         borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
-        hovered: control.hovered
+        hovered: !control.checked && control.hovered
         color: control.checked ? Theme.colors.raised : "transparent"
     }
 
