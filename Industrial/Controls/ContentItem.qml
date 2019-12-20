@@ -40,8 +40,7 @@ Item {
             implicitHeight: Theme.iconSize
             color: enabled ? iconColor : Theme.colors.disabled
             visible: iconSource != ""
-            //Layout.alignment: Qt.AlignCenter
-            Layout.leftMargin: (content.height - width) / 2
+            Layout.leftMargin: (Math.min(content.height, content.width) - width) / 2
         }
 
         Text {

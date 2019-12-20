@@ -72,7 +72,6 @@ SpinBox {
         return val;
     }
 
-
     function getDecimals(num) {
         return (num.toString().split('.')[1] || []).length;
     }

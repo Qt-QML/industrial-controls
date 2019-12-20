@@ -29,12 +29,10 @@ T.Control {
 
     property Item _focusedItem
 
-
     function stringToReal(str, decimalPoint) {
         if (decimalPoint !== ".") return parseFloat(str.replace(decimalPoint, "."));
         return parseFloat(str);
     }
-
 
     function realToString(num, decimalPoint) {
         var str = num.toString();
@@ -54,7 +52,6 @@ T.Control {
         return pad(split.length > 0 ? split[0] : 0, sizeBefore) + decimalPoint +
                pad(split.length > 1 ? split[1] : 0, sizeBefore);
     }
-
 
     function degreesToDms(degrees, lng, secondsPrecision) {
         var sign = degrees < 0 ? -1 : 1
@@ -81,8 +78,6 @@ T.Control {
     function dmsToDegree(sign, deg, min, sec) {
         return sign * (deg + min / 60.0 + sec / 3600.0);
     }
-
-
 
     function updateValueFromControls() {
         var degs = Math.abs(dInput.input.text);

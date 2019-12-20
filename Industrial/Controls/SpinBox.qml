@@ -1,7 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Templates 2.2 as T
 
-
 T.SpinBox {
     id: control
 
@@ -96,7 +95,8 @@ T.SpinBox {
         }
 
         ColoredIcon {
-            height: parent.height
+            width: Theme.iconSize
+            height: width
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
@@ -125,7 +125,8 @@ T.SpinBox {
         }
 
         ColoredIcon {
-            height: parent.height
+            width: Theme.iconSize
+            height: width
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
