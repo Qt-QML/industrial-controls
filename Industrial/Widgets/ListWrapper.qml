@@ -8,6 +8,7 @@ Item {
     property color backgroundColor: Controls.Theme.colors.raised
     property string emptyText: qsTr("No items")
 
+    property alias list: list
     property alias contentY: list.contentY
     property alias spacing: list.spacing
     property alias model: list.model
@@ -38,6 +39,7 @@ Item {
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
         highlightResizeDuration: 0
+        currentIndex: -1
         highlightMoveDuration: Controls.Theme.animationTime
 
         Controls.ScrollBar.vertical: Controls.ScrollBar {

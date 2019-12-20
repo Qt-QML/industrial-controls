@@ -7,7 +7,7 @@ Controls.Pane {
 
     property var headerModel : [ { text: "Header", size: root.width } ]
 
-    property alias list: list
+    property alias list: list.list
     property alias currentIndex: list.currentIndex
     property alias model: list.model
     property alias delegate: list.delegate
@@ -21,7 +21,6 @@ Controls.Pane {
         anchors.fill: parent
         spacing: 0
         backgroundColor: root.backgroundColor
-        currentIndex: -1
         header: ListFader {
             width: parent.width
             factor: 0.6
