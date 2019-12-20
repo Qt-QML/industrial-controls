@@ -12,7 +12,7 @@ T.DialogButtonBox {
     }
 
     delegate: Button {
-        width: (box.width - box.padding) / box.count - box.spacing
+        width: (box.width - box.padding * 2 - Theme.spacing) / box.count
     }
 }
 

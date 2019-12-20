@@ -43,6 +43,7 @@ AddressField 1.0 AddressField.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Popup 1.0 Popup.qml
 Dialog 1.0 Dialog.qml
+DialogButtonBox 1.0 DialogButtonBox.qml
 SpinBox 1.0 SpinBox.qml
 RealSpinBox 1.0 RealSpinBox.qml
 CoordSpinBox 1.0 CoordSpinBox.qml
