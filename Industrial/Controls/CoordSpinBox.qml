@@ -22,12 +22,15 @@ T.Control {
     property alias backgroundColor: background.color
     property alias labelText: background.text
     property alias flat: background.flat
+    readonly property bool focused: _focusedItem && _focusedItem.visible
 
     property int _sign: 1
     readonly property bool _increaseEnabled: Math.abs(value) < to
     readonly property bool _decreaseEnabled: Math.abs(value) > from
 
     property Item _focusedItem
+
+    signal valueModified(real value)
 
     function stringToReal(str, decimalPoint) {
         if (decimalPoint !== ".") return parseFloat(str.replace(decimalPoint, "."));
@@ -90,6 +93,7 @@ T.Control {
         else value = val;
 
         updateControlsFromValue();
+        valueModified(value);
     }
 
     function updateControlsFromValue() {
@@ -130,6 +134,7 @@ T.Control {
         } else {
             value = newValue;
         }
+        valueModified(value);
     }
 
     Component.onCompleted: updateControlsFromValue()
@@ -278,9 +283,7 @@ T.Control {
         width: parent.width
         x: 0
         height: Theme.underline
-        color: {
-            return Theme.colors.border;
-        }
+        color: Theme.colors.border;
     }
 
     Rectangle {
