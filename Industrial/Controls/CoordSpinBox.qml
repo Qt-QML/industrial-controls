@@ -88,6 +88,8 @@ T.Control {
         var secs = stringToReal(sInput.input.text, locale.decimalPoint);
         var val = dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
+        if (Math.abs(value - val) < Number.EPSILON) return;
+
         if (val > to) value = to;
         else if (val < -to) value = -to;
         else value = val;
@@ -248,6 +250,7 @@ T.Control {
                 onClicked: {
                     value = -value;
                     updateControlsFromValue();
+                    valueModified(value);
                 }
                 Layout.fillHeight: true
                 Layout.bottomMargin: background.highlighterHeight
