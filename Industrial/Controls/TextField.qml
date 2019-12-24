@@ -23,7 +23,7 @@ T.TextField {
     verticalAlignment: Text.AlignBottom
 
     validator: RegExpValidator {
-        regExp: /^[a-zA-Z0-9!@#$&()\\-`.+,/\"]*$/
+        regExp: /^[A-zЁёА-я0-9 !@#$&()\\-`.+,/\"]*$/
     }
 
     background: BackgroundInput {
