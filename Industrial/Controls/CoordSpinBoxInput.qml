@@ -27,7 +27,6 @@ Item {
 
     Row {
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -background.underline * 1.5
 
         NumericInput {
             id: input
