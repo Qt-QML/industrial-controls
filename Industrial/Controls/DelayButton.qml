@@ -8,7 +8,10 @@ T.DelayButton {
     property bool flat: false
     property bool shadow: !flat
     property bool round: false
-
+    property bool topCropped: false
+    property bool bottomCropped: false
+    property bool leftCropped: false
+    property bool rightCropped: false
     property alias iconSource: content.iconSource
     property alias textColor: content.textColor
     property alias iconColor: content.iconColor
@@ -30,6 +33,10 @@ T.DelayButton {
         borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: control.hovered
         radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        topCropping: topCropped ? radius : 0
+        bottomCropping: bottomCropped ? radius : 0
+        leftCropping: leftCropped ? radius : 0
+        rightCropping: rightCropped ? radius : 0
         color: control.flat ? "transparent" : Theme.colors.control
 
         Shadow {
