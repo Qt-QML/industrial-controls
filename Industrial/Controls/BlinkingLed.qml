@@ -1,6 +1,5 @@
 import QtQuick 2.6
 
-
 Led {
     id: root
 

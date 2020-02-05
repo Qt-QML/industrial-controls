@@ -1,6 +1,5 @@
 import QtQuick 2.9
 
-
 TextInput {
     id: root
 

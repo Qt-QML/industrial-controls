@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 
-T.Button { // TODO: clickable
+T.Button {
     id: control
 
     property bool round: false
