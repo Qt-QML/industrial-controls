@@ -11,7 +11,6 @@ T.Button {
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
-    property bool shadow: !flat
     property color color: control.flat ? "transparent" : Theme.colors.control
     property color highlightColor: Theme.colors.highlight
     property color selectionColor: Theme.colors.selection
@@ -47,11 +46,6 @@ T.Button {
             if (control.pressed || control.pressedImpl) return control.highlightColor;
             if (control.highlighted || control.checked) return control.selectionColor;
             return control.color;
-        }
-
-        Shadow {
-            visible: control.shadow && !control.flat
-            source: parent
         }
 
         Hatch {
