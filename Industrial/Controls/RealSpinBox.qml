@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import Industrial.Controls 1.0 as Controls
 
 SpinBox {
     id: control
@@ -30,7 +31,7 @@ SpinBox {
         return (num.toString().split('.')[1] || []).length;
     }
 
-    validator: DoubleValidator {
+    validator: Controls.CustomDoubleValidator {
         decimals: getDecimals(precision)
         notation: DoubleValidator.StandardNotation
         bottom: Math.min(realFrom, realTo)
