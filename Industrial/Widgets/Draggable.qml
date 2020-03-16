@@ -72,7 +72,7 @@ Rectangle {
                 onEntered: root.entered()
                 onExited: root.exited()
                 onReleased: if (drag.active) emitMoveItemRequested()
-                onClicked: {
+                onOnceClicked: {
                     root.clicked(mouse)
                 }
                 onDoubleClicked: {
