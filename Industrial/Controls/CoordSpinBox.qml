@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Templates 2.2 as T
+import Industrial.Controls 1.0 as Controls
 
 T.Control {
     id: control
@@ -86,16 +87,26 @@ T.Control {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
         var secs = stringToReal(sInput.input.text, locale.decimalPoint);
+        if (isNaN(secs))
+        {
+            secs = 0;
+        }
+
         var val = dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
-        if (Math.abs(value - val) < Number.EPSILON) return;
+        if (Math.abs(value - val) >= Number.EPSILON)
+        {
+            if (val > to) value = to;
+            else if (val < -to) value = -to;
+            else value = val;
 
-        if (val > to) value = to;
-        else if (val < -to) value = -to;
-        else value = val;
-
-        updateControlsFromValue();
-        valueModified(value);
+            updateControlsFromValue();
+            valueModified(value);
+        }
+        else if (dInput.input.text === "" || mInput.input.text === "" || sInput.input.text === "")
+        {
+            updateControlsFromValue();
+        }
     }
 
     function updateControlsFromValue() {
@@ -227,7 +238,7 @@ T.Control {
                 id: sInput
                 implicitWidth: Theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 input.maximumLength: 3 + secondsPrecision
-                input.validator: DoubleValidator { bottom: 0; top: 60 }
+                input.validator: Controls.CustomDoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
                 sign: "\""
                 onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
