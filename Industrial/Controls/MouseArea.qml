@@ -3,7 +3,8 @@ import Industrial.Controls 1.0 as Controls
 
 MouseArea {
     id: control
-
+    
+    property int maxDoubleClickInterval: 250;
     property var savedEvent: null;
 
     signal onceClicked(var mouse)
@@ -20,7 +21,7 @@ MouseArea {
 
     Timer {
         id: timer
-        interval: 250
+        interval: control.maxDoubleClickInterval
         onTriggered: {
            if (savedEvent) {
                onceClicked(savedEvent);
