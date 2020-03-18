@@ -1,31 +1,30 @@
 import QtQuick 2.6
-import Industrial.Controls 1.0 as Controls
 
 MouseArea {
     id: control
     
-    property int maxDoubleClickInterval: 250;
-    property var savedEvent: null;
+    property int maxDoubleClickInterval: 250
+    property var _savedEvent: null
 
     signal onceClicked(var mouse)
 
     onClicked: {
-        savedEvent = mouse;
+        _savedEvent = mouse;
         timer.start();
     }
 
     onDoubleClicked: {
         timer.stop();
-        savedEvent = null;
+        _savedEvent = null;
     }
 
     Timer {
         id: timer
         interval: control.maxDoubleClickInterval
         onTriggered: {
-           if (savedEvent) {
-               onceClicked(savedEvent);
-               savedEvent = null;
+           if (_savedEvent) {
+               onceClicked(_savedEvent);
+               _savedEvent = null;
            }
         }
     }
