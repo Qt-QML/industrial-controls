@@ -87,15 +87,13 @@ T.Control {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
         var secs = stringToReal(sInput.input.text, locale.decimalPoint);
-        if (isNaN(secs))
-        {
+        if (isNaN(secs)) {
             secs = 0;
         }
 
         var val = dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
-        if (Math.abs(value - val) >= Number.EPSILON)
-        {
+        if (isNaN(value) || Math.abs(value - val) >= Number.EPSILON) {
             if (val > to) value = to;
             else if (val < -to) value = -to;
             else value = val;
@@ -103,8 +101,7 @@ T.Control {
             updateControlsFromValue();
             valueModified(value);
         }
-        else if (dInput.input.text === "" || mInput.input.text === "" || sInput.input.text === "")
-        {
+        else if (dInput.input.text === "" || mInput.input.text === "" || sInput.input.text === "") {
             updateControlsFromValue();
         }
     }
