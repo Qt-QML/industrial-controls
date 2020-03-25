@@ -88,7 +88,7 @@ const QColor brightHoverColor = "#16000000";
 
 const double brightRaisedFactor = 105;
 const double brightSunkenFactor = 95;
-const double brightDisabledFactor = 70;
+const double brightDisabledFactor = 250;
 const double brightControlFactor = 125;
 const double brightBorderFactor = 135;
 
