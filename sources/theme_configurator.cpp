@@ -88,13 +88,14 @@ const QColor brightHoverColor = "#16000000";
 
 const double brightRaisedFactor = 105;
 const double brightSunkenFactor = 95;
-const double brightDisabledFactor = 70;
+const double brightDisabledFactor = 250;
 const double brightControlFactor = 125;
 const double brightBorderFactor = 135;
 
 const double darkRaisedFactor = 115;
 const double darkSunkenFactor = 85;
 const double darkDisabledFactor = 50;
+const double darkBlueDisabledFactor = 1.15; // how disabled color bluer than normal diasbled
 const double darkControlFactor = 150;
 const double darkBorderFactor = 150;
 
@@ -177,7 +178,10 @@ void ThemeConfigurator::configureColors()
         colors->setProperty(::selectedText, ::darkSelectedTextColor);
         colors->setProperty(::hover, ::darkHoverColor);
 
-        colors->setProperty(::disabled, ::darkTextColor.lighter(::darkDisabledFactor));
+        // make disabled color bluer
+        QColor disabledColor = ::darkTextColor.lighter(::darkDisabledFactor);
+        disabledColor.setBlue(disabledColor.blue() * darkBlueDisabledFactor);
+        colors->setProperty(::disabled, disabledColor);
         colors->setProperty(::sunken, ::darkBackgroundColor.lighter(::darkSunkenFactor));
         colors->setProperty(::raised, ::darkBackgroundColor.lighter(::darkRaisedFactor));
         colors->setProperty(::control, ::darkBackgroundColor.lighter(::darkControlFactor));
