@@ -34,6 +34,10 @@ Rectangle {
         contentItem.parent = contentItemWrapper;
     }
 
+    function cancelDND() {
+        console.log("try to cancel the process")
+    }
+
     Rectangle {
         id: topPlaceholder
         anchors {
@@ -61,6 +65,19 @@ Rectangle {
             Drag.hotSpot {
                 x: contentItem.width / 2
                 y: contentItem.height / 2
+            }
+
+            onXChanged: {
+                console.log("x=" + x)
+                if (root.draggedItemParent && (x < 0 || x > root.draggedItemParent.width)) {
+                    cancelDND()
+                }
+            }
+            onYChanged: {
+                console.log("y=" + y)
+                if (root.draggedItemParent && (y < 0 || y > root.draggedItemParent.height)) {
+                    cancelDND()
+                }
             }
 
             MouseArea {
