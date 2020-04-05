@@ -9,6 +9,7 @@ Rectangle {
     property Item draggedItemParent
 
     property alias containsMouse: mouseArea.containsMouse
+    property bool isDragActive: false
 
     signal moveItemRequested(int from, int to)
 
@@ -35,7 +36,10 @@ Rectangle {
     }
 
     function cancelDND() {
-        console.log("try to cancel the process")
+        //TODO: если кто знает как, то вот тут было бы круто
+        //вызвать отмену ДНД, и тогда все костыли с isDragActive
+        //можно удалять
+        //isDragActive - удалить целиком, везде, где используется
     }
 
     Rectangle {
@@ -88,7 +92,10 @@ Rectangle {
                 hoverEnabled: true
                 onEntered: root.entered()
                 onExited: root.exited()
-                onReleased: if (drag.active) emitMoveItemRequested()
+                onReleased: if (drag.active) {
+                                root.isDragActive = false
+                                emitMoveItemRequested()
+                            }
                 onOnceClicked: {
                     root.clicked(mouse)
                 }
@@ -178,6 +185,7 @@ Rectangle {
             }
             PropertyChanges {
                 target: root
+                isDragActive: true
                 _scrollingDirection: {
                     var yCoord = _listView.mapFromItem(mouseArea, 0, mouseArea.mouseY).y;
                     if (yCoord < scrollEdgeSize) {
@@ -201,9 +209,13 @@ Rectangle {
                 target: bottomDropArea
                 height: contentItem.height * 2
             }
+            PropertyChanges {
+                target: root
+                isDragActive: false
+            }
         },
         State {
-            when: topDropAreaLoader.item.containsDrag
+            when: !!topDropAreaLoader.item && topDropAreaLoader.item.containsDrag
             name: "droppingAbove"
             PropertyChanges {
                 target: topPlaceholder
@@ -212,6 +224,10 @@ Rectangle {
             PropertyChanges {
                 target: topDropAreaLoader
                 height: contentItem.height * 2
+            }
+            PropertyChanges {
+                target: root
+                isDragActive: false
             }
         }
     ]

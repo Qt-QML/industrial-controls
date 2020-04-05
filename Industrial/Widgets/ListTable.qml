@@ -13,6 +13,7 @@ Controls.Pane {
     property alias delegate: list.delegate
     property alias highlight: list.highlight
     property alias emptyText: list.emptyText
+    property bool isDragActive: false
 
     backgroundColor: Controls.Theme.colors.background
 
