@@ -8,6 +8,8 @@ Rectangle {
 
     property Item draggedItemParent
 
+    property bool dragEnabled: true
+
     property alias containsMouse: mouseArea.containsMouse
     property bool isDragActive: false
 
@@ -85,7 +87,7 @@ Rectangle {
             MouseArea {
                 id: mouseArea
                 anchors.fill: parent
-                drag.target: parent
+                drag.target: root.dragEnabled ? parent : null
                 drag.smoothed: false
                 hoverEnabled: true
                 onEntered: root.entered()
