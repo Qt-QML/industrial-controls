@@ -5,6 +5,7 @@ T.Slider {
     id: control
 
     property bool flat: false
+    property bool toolTipVisible: true
     property int digits: 0
     property real visualValue: from + position * (to - from)
 
@@ -74,7 +75,7 @@ T.Slider {
 
     ToolTip {
         parent: handle
-        visible: hovered || pressed
+        visible: toolTipVisible && (hovered || pressed)
         text: visualValue.toFixed(digits)
     }
 }
