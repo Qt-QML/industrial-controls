@@ -13,6 +13,9 @@ BackgroundItem {
     property alias underline: highlighter.height
     property alias text: textItem.text
     property alias textColor: textItem.color
+
+    property alias fontPixelSize: textItem.fontPixelSizeWhenInputed
+
     property alias highlighterHeight: highlighter.height
     property alias highlighterColor: highlighter.color
 
@@ -21,7 +24,7 @@ BackgroundItem {
 
     TextMetrics {
         id: textMetrics
-        font.pixelSize: Theme.auxFontSize
+        font.pixelSize: textItem.fontPixelSizeWhenInputed
         text: textItem.text
     }
 
@@ -49,12 +52,13 @@ BackgroundItem {
 
     Text {
         id: textItem
+        property real fontPixelSizeWhenInputed: Theme.auxFontSize
         anchors.left: parent.left
         anchors.leftMargin: control.textPadding
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         height: implicitHeight
-        font.pixelSize: inputed ? Theme.auxFontSize : Theme.mainFontSize
+        font.pixelSize: inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize
         color: {
             if (!control.enabled) return Theme.colors.disabled;
             if (control.caution) return Theme.colors.neutral;
