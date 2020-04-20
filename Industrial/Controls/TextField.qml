@@ -8,6 +8,7 @@ T.TextField {
     property alias backgroundColor: background.color
     property alias isValid: background.isValid
     property alias labelText: background.text
+    property alias labelFontPixelSize: background.fontPixelSize
 
     implicitWidth: background.implicitWidth
     implicitHeight: Math.max(background.textHeight + contentHeight + background.underline,
