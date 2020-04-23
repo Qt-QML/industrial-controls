@@ -17,6 +17,7 @@ Item {
     property alias highlight: list.highlight
     property alias delegate: list.delegate
     property alias currentIndex: list.currentIndex
+    property alias count: list.count
 
     function toBeginning() { list.positionViewAtBeginning() }
     function toIndex(index) { list.positionViewAtIndex(index) }
