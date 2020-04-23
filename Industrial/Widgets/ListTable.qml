@@ -22,6 +22,7 @@ Controls.Pane {
     property alias highlight: list.highlight
     property alias emptyText: list.emptyText
     property bool isDragActive: false
+    property alias count: list.count
 
     backgroundColor: Controls.Theme.colors.background
 
