@@ -30,6 +30,7 @@
         <file>Industrial/Controls/Link.qml</file>
         <file>Industrial/Controls/Menu.qml</file>
         <file>Industrial/Controls/MenuItem.qml</file>
+        <file>Industrial/Controls/MenuButton.qml</file>
         <file>Industrial/Controls/MouseArea.qml</file>
         <file>Industrial/Controls/ProgressBar.qml</file>
         <file>Industrial/Controls/Led.qml</file>
