@@ -8,6 +8,7 @@ ThemeColors 1.0 ThemeColors.qml
 
 Shadow 1.0 Shadow.qml
 Hatch 1.0 Hatch.qml
+ColoredIcon 1.0 ColoredIcon.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
 Pane 1.0 Pane.qml
 Frame 1.0 Frame.qml
