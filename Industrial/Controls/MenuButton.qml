@@ -1,13 +1,14 @@
 import QtQuick 2.6
-import QtQuick.Templates 2.2 as T
 
 Button {
     id: control
 
     property alias model: repeater.model
+    property alias delegate: repeater.delegate
 
     signal triggered(var modelData)
 
+    enabled: repeater.count
     onClicked: menu.isOpen ? menu.close() : menu.open()
 
     Menu {
@@ -17,7 +18,7 @@ Button {
         Repeater {
             id: repeater
 
-            MenuItem {
+            delegate: MenuItem {
                 text: modelData
                 onTriggered: control.triggered(modelData)
             }
