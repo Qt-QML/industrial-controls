@@ -1,12 +1,11 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0 as Controls
 
-Item {
-    id: root
+Rectangle {
+    id: listRoot
 
-    property color backgroundColor: Controls.Theme.colors.raised
     property string emptyText: qsTr("No items")
+    property int offset: 2
 
     property alias list: list
     property alias contentY: list.contentY
@@ -23,18 +22,16 @@ Item {
     function toIndex(index) { list.positionViewAtIndex(index) }
     function toEnd() { list.positionViewAtEnd() }
 
-    implicitWidth: list.contentWidth + Controls.Theme.shadowSize + 1
-    implicitHeight: Math.max(list.contentHeight + Controls.Theme.shadowSize + 1, Controls.Theme.baseSize * 5)
+    implicitWidth: list.contentWidth
+    implicitHeight: Math.max(list.contentHeight, Controls.Theme.baseSize * 5)
+    color: Controls.Theme.colors.background
+    radius: Controls.Theme.rounding
     clip: true
 
     ListView {
         id: list
         anchors.fill: parent
-        anchors.leftMargin: 1
-        anchors.topMargin: 1
-        anchors.rightMargin: Controls.Theme.shadowSize
-        anchors.bottomMargin: Controls.Theme.shadowSize
-        spacing: Controls.Theme.spacing
+        spacing: offset
         headerPositioning: ListView.OverlayHeader
         footerPositioning: ListView.OverlayFooter
         flickableDirection: Flickable.AutoFlickIfNeeded
@@ -49,13 +46,13 @@ Item {
 
         header: ListFader {
             width: parent.width
-            faderOffset: 1
+            faderOffset: offset
             faderHeight: list.contentY
         }
 
         footer: ListFader {
             width: parent.width
-            faderOffset: Controls.Theme.shadowSize
+            faderOffset: offset
             faderHeight: (list.contentHeight - list.height) - list.contentY
             mirrored: true
         }

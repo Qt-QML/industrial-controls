@@ -61,6 +61,7 @@
         <file>Industrial/Widgets/DualColorPicker.qml</file>
         <file>Industrial/Widgets/Draggable.qml</file>
         <file>Industrial/Widgets/ListWrapper.qml</file>
+        <file>Industrial/Widgets/ListItem.qml</file>
         <file>Industrial/Widgets/ListFader.qml</file>
         <file>Industrial/Widgets/ListTable.qml</file>
     </qresource>

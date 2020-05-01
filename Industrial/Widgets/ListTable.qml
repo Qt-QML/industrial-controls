@@ -30,7 +30,7 @@ Controls.Pane {
         id: list
         anchors.fill: parent
         spacing: 0
-        backgroundColor: root.backgroundColor
+        color: root.backgroundColor
         header: ListFader {
             width: parent.width
             height: row.height

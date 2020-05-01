@@ -7,9 +7,8 @@ Item {
     property alias source: image.source
     property bool mirror: false
     property alias color: overlay.color
+
     rotation: mirror ? 180 : 0
-
-
     implicitWidth: image.implicitWidth
     implicitHeight: image.implicitHeight
 
