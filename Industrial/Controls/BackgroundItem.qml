@@ -14,6 +14,7 @@ Item {
 
     property alias radius: background.radius
     property alias color: background.color
+    property alias hoverColor: hover.color
 
     Item {
         anchors.fill: parent
@@ -31,6 +32,7 @@ Item {
             border.color: borderColor
 
             Rectangle {
+                id: hover
                 anchors.fill: parent
                 color: Theme.colors.hover
                 radius: parent.radius

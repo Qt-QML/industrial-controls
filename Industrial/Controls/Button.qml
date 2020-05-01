@@ -24,6 +24,7 @@ T.Button {
     property alias radius: backgroundItem.radius
     property alias contentWidth: content.width
     property alias backgroundColor: backgroundItem.color
+    property alias hoverColor: backgroundItem.hoverColor
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
