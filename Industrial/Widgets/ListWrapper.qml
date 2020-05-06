@@ -23,7 +23,7 @@ Rectangle {
     function toEnd() { list.positionViewAtEnd() }
 
     implicitWidth: list.contentWidth
-    implicitHeight: Math.max(list.contentHeight, Controls.Theme.baseSize * 5)
+    implicitHeight: Math.max(list.contentHeight, Controls.Theme.baseSize)
     color: Controls.Theme.colors.background
     radius: Controls.Theme.rounding
     clip: true
