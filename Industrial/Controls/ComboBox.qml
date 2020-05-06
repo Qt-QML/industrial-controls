@@ -8,7 +8,7 @@ T.ComboBox {
     property var currentItem: model && model[currentIndex] ? model[currentIndex] : undefined
     property string iconRole: "icon"
     property string displayIcon: currentItem && currentItem[control.iconRole] !== undefined ?
-                                      currentItem[control.iconRole] : ""
+                                     currentItem[control.iconRole] : ""
 
     property alias isValid: background.isValid
     property alias labelText: background.text
@@ -16,6 +16,13 @@ T.ComboBox {
     property alias backgroundColor: background.color
     property alias contentColor: content.textColor
     property alias horizontalAlignment: content.horizontalAlignment
+
+    function findIndex(item) {
+        for (var i = 0 ;i < count; ++i) {
+            if (item === model[i]) return i;
+        }
+        return -1;
+    }
 
     implicitWidth: background.implicitWidth
     implicitHeight: labelText.length ? Theme.baseSize * 1.3 : Theme.baseSize
