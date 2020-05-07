@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2 as T
 
 T.ToolTip {
     id: control
+    property bool сloseOnClick: true
 
     contentItem: Label {
         text: control.text
@@ -17,7 +18,7 @@ T.ToolTip {
 
         MouseArea {
             anchors.fill: parent
-            onPressed: control.close()
+            onPressed: if(control.сloseOnClick) control.close()
         }
     }
 }
