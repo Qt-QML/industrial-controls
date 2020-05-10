@@ -2,22 +2,17 @@ import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
 
-ColumnLayout {
-    id: control
+Row {
+    id: row
+    spacing: 1
 
-    property alias model: repeater.model
-    property int currentIndex: 0
+    onVisibleChildrenChanged: {
+        for (var i = 0; i < visibleChildren.length; ++i) {
+            var item = visibleChildren[i];
 
-    spacing: Theme.padding / 2
-
-    Repeater {
-        id: repeater
-
-        Button {
-            Layout.preferredWidth: Theme.baseSize * 7
-            text: modelData
-            onClicked: if (!highlighted) currentIndex = index
-            highlighted: currentIndex == index
+            item.width = Qt.binding(function () { return row.width / visibleChildren.length - 1; })
+            item.leftCropped = i > 0;
+            item.rightCropped = i < visibleChildren.length - 1;
         }
     }
 }
