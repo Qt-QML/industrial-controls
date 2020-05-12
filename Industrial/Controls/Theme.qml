@@ -13,8 +13,9 @@ Item {
 
     property real animationTime: 200
     property real underline: 2
-    property real scrollSize: 2
+    property real scrollSize: 10
     property real shadowSize: 3
+    property bool scrollInteractive: true
 
     property real spacing: 8
     property real margins: 8

@@ -4,7 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.ScrollBar {
     id: control
 
-    interactive: false
+    interactive: Theme.scrollInteractive
     implicitWidth: Theme.scrollSize
     implicitHeight: Theme.scrollSize
 
