@@ -56,6 +56,7 @@
         <file>Industrial/Controls/Drawer.qml</file>
         <file>Industrial/Controls/Separator.qml</file>
         <file>Industrial/Controls/Notification.qml</file>
+        <file>Industrial/Controls/SelectorFrame.qml</file>
         <file>Industrial/Widgets/qmldir</file>
         <file>Industrial/Widgets/ColorPicker.qml</file>
         <file>Industrial/Widgets/DualColorPicker.qml</file>
