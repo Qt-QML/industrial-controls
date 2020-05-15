@@ -14,12 +14,13 @@ Item {
 
     MouseArea {
         id: area
-
+        
         property int startX: 0
         property int startY: 0
 
         anchors.fill: parent
-
+        propagateComposedEvents: true
+        
         onPressed: {
             if (mouse.modifiers & Qt.ShiftModifier) {
                 frame.width = 0
@@ -28,6 +29,8 @@ Item {
                 startY = mouse.y
                 
                 frame.visible = true
+            } else {
+                mouse.accepted = false
             }
         }
 
@@ -49,7 +52,8 @@ Item {
         }
 
         onReleased: {
-            frameItem.release(frame.x, frame.y, frame.width, frame.height)
+            if (mouse.modifiers & Qt.ShiftModifier)
+                frameItem.release(frame.x, frame.y, frame.width, frame.height)
             frame.visible = false            
         }
 
