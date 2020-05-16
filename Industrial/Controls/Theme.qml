@@ -15,6 +15,7 @@ Item {
     property real underline: 2
     property real scrollSize: 2
     property real shadowSize: 3
+    property bool scrollInteractive: false
 
     property real spacing: 8
     property real margins: 8
