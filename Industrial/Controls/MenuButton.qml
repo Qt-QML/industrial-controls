@@ -9,7 +9,8 @@ Button {
     signal triggered(var modelData)
 
     enabled: repeater.count
-    onClicked: menu.isOpen ? menu.close() : menu.open()
+    onClicked: menu.visible ? menu.close() : menu.open()
+    onEnabledChanged: if (!enabled && menu.visible) menu.close()
 
     Menu {
         id: menu
