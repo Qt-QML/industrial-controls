@@ -15,7 +15,7 @@ Item {
         width: parent.width
         height: parent.height + faderOffset
         y: mirrored ? 0 : -faderOffset
-        color: listRoot.color
+        color: Controls.Theme.colors.background
     }
 
     Rectangle {
@@ -24,7 +24,7 @@ Item {
         visible: height
         y: mirrored ? -height : root.height
         gradient: Gradient {
-            GradientStop { color: listRoot.color; position: mirrored ? 1.0 : 0.0 }
+            GradientStop { color: Controls.Theme.colors.background; position: mirrored ? 1.0 : 0.0 }
             GradientStop { color: "transparent"; position: mirrored ? 0.0 : 1.0 }
         }
     }
