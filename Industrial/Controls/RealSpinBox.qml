@@ -50,7 +50,7 @@ SpinBox {
             overwriteMode: true
             Binding on text {
                 value: control.textFromValue(control.value, control.locale)
-                when: !activeFocus
+                when: !activeFocus || up.hovered || down.hovered
             }
             onTextEdited: caution = true
             onEditingFinished: {

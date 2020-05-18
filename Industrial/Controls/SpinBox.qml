@@ -27,7 +27,12 @@ T.SpinBox {
     clip: true
     to: 100
 
-    onActiveFocusChanged: if (activeFocus) input.forceActiveFocus()
+    onActiveFocusChanged: {
+        if (activeFocus)
+            input.forceActiveFocus();
+        else
+            finished();
+    }
 
     Connections {
         target: up
@@ -57,7 +62,7 @@ T.SpinBox {
         acceptedButtons: Qt.NoButton
         propagateComposedEvents: true
         onWheel: {
-            if(wheel.angleDelta.y>0) control.increase();
+            if (wheel.angleDelta.y > 0) control.increase();
             else control.decrease();
         }
     }
@@ -73,7 +78,7 @@ T.SpinBox {
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             Binding on text {
                 value: control.textFromValue(control.value, control.locale);
-                when: !activeFocus
+                when: !activeFocus || up.hovered || down.hovered
             }
             onTextEdited: {
                 control.value = control.valueFromText(text, control.locale)
