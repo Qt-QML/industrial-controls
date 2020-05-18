@@ -48,12 +48,16 @@ SpinBox {
             anchors.bottomMargin: background.underline * 1.5 // FIXME: to theme
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
             overwriteMode: true
-            Binding on text { value: control.textFromValue(control.value, control.locale) }
+            Binding on text {
+                value: control.textFromValue(control.value, control.locale)
+                when: !activeFocus
+            }
             onTextEdited: caution = true
             onEditingFinished: {
                 control.validate();
                 control.valueModified();
             }
+            onFinished: control.finished()
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.colors.selectedText : Theme.colors.text
             inputMethodHints: Qt.ImhFormattedNumbersOnly

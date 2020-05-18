@@ -4,14 +4,17 @@ import QtQuick.Templates 2.2 as T
 T.SpinBox {
     id: control
 
-    property bool isValid: value >= from && value <= to
+    property bool isValid: text.length
     property color color: Theme.colors.text
     property bool round: false
 
+    property alias text: input.text
     property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
     property alias flat: background.flat
+
+    signal finished()
 
     implicitWidth: background.implicitWidth + Theme.baseSize * 2
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
@@ -23,6 +26,8 @@ T.SpinBox {
     hoverEnabled: true
     clip: true
     to: 100
+
+    onActiveFocusChanged: if (activeFocus) input.forceActiveFocus()
 
     Connections {
         target: up
@@ -66,11 +71,15 @@ T.SpinBox {
             anchors.fill: parent
             anchors.bottomMargin: background.underline * 1.5
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-            Binding on text { value: control.textFromValue(control.value, control.locale) }
-            onTextEdited: {
-                control.value = control.valueFromText(text, control.locale);
-                control.valueModified();
+            Binding on text {
+                value: control.textFromValue(control.value, control.locale);
+                when: !activeFocus
             }
+            onTextEdited: {
+                control.value = control.valueFromText(text, control.locale)
+                control.valueModified()
+            }
+            onFinished: control.finished()
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.colors.selectedText : Theme.colors.text
