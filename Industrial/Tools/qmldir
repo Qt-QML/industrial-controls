@@ -1,0 +1,5 @@
+module Industrial.Tools
+depends Industrial.Controls 1.0
+designersupported
+
+SelectorFrame 1.0 SelectorFrame.qml
