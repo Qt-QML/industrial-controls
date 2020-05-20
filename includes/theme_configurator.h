@@ -5,6 +5,7 @@
 
 #include <QColor>
 #include <QObject>
+#include <QJsonObject>
 
 class INDUSTRIAL_CONTROLS_EXPORT ThemeConfigurator : public QObject
 {
@@ -25,6 +26,13 @@ public slots:
     void setDark(bool dark);
     void configureColors();
 
+    void configureThemeFromConfig();
+    void configureColorsFromConfig();
+
+    void setPathToConfig(const QString &path);
+
+    void saveThemeToJson();
+
 protected:
     QObject* m_theme = nullptr;
 
@@ -32,6 +40,12 @@ private:
     int m_rounding = 0;
     int m_baseSize = 0;
     bool m_dark = false;
+    QString m_pathToConfig;
+
+    bool checkConfig();
+    QJsonObject saveObjectToJson(QObject* obj);
+    QJsonDocument loadJson(QString fileName);
+    void saveJson(QJsonDocument document, QString fileName);
 };
 
 #endif // THEME_CONFIGURATOR_H
