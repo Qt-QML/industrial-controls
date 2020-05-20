@@ -222,18 +222,7 @@ void ThemeConfigurator::configureColors()
 
 void ThemeConfigurator::configureThemeFromConfig()
 {
-    QString val;
-    QFile file;
-    file.setFileName(m_pathToConfig);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        qDebug() << "[CONFIG] ERROR: don't open config file" << m_pathToConfig;
-    }
-    val = file.readAll();
-    QJsonParseError parseError;
-    QJsonDocument d = QJsonDocument::fromJson(val.toUtf8(), &parseError);
-
-
+    configureColorsFromConfig();
 }
 
 void ThemeConfigurator::configureColorsFromConfig()
