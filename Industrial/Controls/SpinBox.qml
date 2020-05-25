@@ -16,7 +16,7 @@ T.SpinBox {
 
     signal finished()
 
-    implicitWidth: background.implicitWidth + Theme.baseSize * 2
+    implicitWidth: Theme.baseSize * 4
     implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
                              background.underline, Theme.baseSize)
     leftPadding: Theme.baseSize
