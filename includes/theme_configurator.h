@@ -27,10 +27,7 @@ public slots:
     void configureColors();
 
     void configureThemeFromConfig();
-    void configureColorsFromConfig();
-
     void setPathToConfig(const QString &path);
-
     void saveThemeToJson();
 
 protected:
@@ -42,8 +39,8 @@ private:
     bool m_dark = false;
     QString m_pathToConfig;
 
-    bool checkConfig();
     QJsonObject saveObjectToJson(QObject* obj);
+    void loadObjectFromJson(QObject* obj, QJsonDocument doc, const QString &path);
     QJsonDocument loadJson(QString fileName);
     void saveJson(QJsonDocument document, QString fileName);
 };

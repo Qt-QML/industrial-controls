@@ -103,9 +103,18 @@ const double darkBorderFactor = 150;
 
 } // namespace
 
+namespace
+{
+    const QString themeFilename = "theme.json";
+    const QString themeColorNight = "colors_night";
+    const QString themeColorDay = "colors_day";
+    const QString themeSizes = "sizes";
+
+}
+
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
 {
-    m_pathToConfig = qApp->applicationDirPath() + "/" + "theme.json";
+    m_pathToConfig = qApp->applicationDirPath() + "/" + themeFilename;
 }
 
 void ThemeConfigurator::setTheme(QObject* theme)
@@ -220,28 +229,23 @@ void ThemeConfigurator::configureColors()
     colors->setProperty(::shadow, ::shadowColor);
 }
 
-void ThemeConfigurator::configureThemeFromConfig()
-{
-    configureColorsFromConfig();
-}
-
-void ThemeConfigurator::configureColorsFromConfig()
-{
-    QJsonObject root = loadJson(m_pathToConfig).object();
-    if (root.isEmpty()) {
-        return;
-    }
-    QJsonValueRef ref = root.find(m_dark ? "colors_night" : "colors_day").value();
-    if (ref.isNull()) {
-        return;
-    }
-    QJsonObject color = ref.toObject();
-    qDebug() << "+++" << color;
-}
-
 void ThemeConfigurator::setPathToConfig(const QString &path)
 {
     m_pathToConfig = path;
+}
+
+void ThemeConfigurator::configureThemeFromConfig()
+{
+    if (!m_theme)
+        return;
+    QObject* colors = m_theme->property(::colors).value<QObject*>();
+    if (!colors)
+        return;
+    QJsonDocument doc = loadJson(m_pathToConfig);
+
+    QString colorPath = (m_dark) ? themeColorNight : themeColorDay;
+    loadObjectFromJson(colors, doc, colorPath);
+    loadObjectFromJson(m_theme, doc, themeSizes);
 }
 
 void ThemeConfigurator::saveThemeToJson()
@@ -250,11 +254,11 @@ void ThemeConfigurator::saveThemeToJson()
     QJsonObject root;
     setDark(false);
     configureColors();
-    root["colors_day"] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
+    root[themeColorDay] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
     setDark(true);
     configureColors();
-    root["colors_night"] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
-    root["sizes"] = saveObjectToJson(m_theme);
+    root[themeColorNight] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
+    root[themeSizes] = saveObjectToJson(m_theme);
     doc.setObject(root);
     saveJson(doc, m_pathToConfig);
 }
@@ -288,4 +292,19 @@ QJsonObject ThemeConfigurator::saveObjectToJson(QObject* obj)
     }
 
     return res;
+}
+
+void ThemeConfigurator::loadObjectFromJson(QObject* obj, QJsonDocument doc, const QString &path)
+{
+    QJsonObject root = doc.object();
+    QJsonObject json = root[path].toObject();
+
+    auto mo = obj->metaObject();
+    QVariant v;
+    for (int i = mo->propertyOffset(); i < mo->propertyCount(); ++i) {
+        if (json.contains(mo->property(i).name())) {
+            v = json[mo->property(i).name()].toVariant();
+            mo->property(i).write(obj, v);
+        }
+    }
 }
