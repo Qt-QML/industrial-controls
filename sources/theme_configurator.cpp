@@ -105,16 +105,13 @@ const double darkBorderFactor = 150;
 
 namespace
 {
-    const QString themeFilename = "theme.json";
     const QString themeColorNight = "colors_night";
     const QString themeColorDay = "colors_day";
     const QString themeSizes = "sizes";
-
 }
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
 {
-    m_pathToConfig = qApp->applicationDirPath() + "/" + themeFilename;
 }
 
 void ThemeConfigurator::setTheme(QObject* theme)
