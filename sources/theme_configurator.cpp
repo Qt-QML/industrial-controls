@@ -3,6 +3,8 @@
 #include <QColor>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QFile>
+#include <QJsonParseError>
 #include <QQmlEngine>
 
 namespace
@@ -100,6 +102,13 @@ const double darkControlFactor = 150;
 const double darkBorderFactor = 150;
 
 } // namespace
+
+namespace
+{
+    const QString themeColorNight = "colors_night";
+    const QString themeColorDay = "colors_day";
+    const QString themeSizes = "sizes";
+}
 
 ThemeConfigurator::ThemeConfigurator(QObject* parent) : QObject(parent)
 {
@@ -215,4 +224,84 @@ void ThemeConfigurator::configureColors()
     colors->setProperty(::neutral, ::neutralColor);
     colors->setProperty(::negative, ::negativeColor);
     colors->setProperty(::shadow, ::shadowColor);
+}
+
+void ThemeConfigurator::setPathToConfig(const QString &path)
+{
+    m_pathToConfig = path;
+}
+
+void ThemeConfigurator::configureThemeFromConfig()
+{
+    if (!m_theme)
+        return;
+    QObject* colors = m_theme->property(::colors).value<QObject*>();
+    if (!colors)
+        return;
+    QJsonDocument doc = loadJson(m_pathToConfig);
+
+    QString colorPath = (m_dark) ? themeColorNight : themeColorDay;
+    loadObjectFromJson(colors, doc, colorPath);
+    loadObjectFromJson(m_theme, doc, themeSizes);
+}
+
+void ThemeConfigurator::saveThemeToJson()
+{
+    QJsonDocument doc;
+    QJsonObject root;
+    setDark(false);
+    configureColors();
+    root[themeColorDay] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
+    setDark(true);
+    configureColors();
+    root[themeColorNight] = saveObjectToJson(m_theme->property(::colors).value<QObject*>());
+    root[themeSizes] = saveObjectToJson(m_theme);
+    doc.setObject(root);
+    saveJson(doc, m_pathToConfig);
+}
+
+QJsonDocument ThemeConfigurator::loadJson(QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::ReadOnly);
+    return QJsonDocument().fromJson(jsonFile.readAll());
+}
+
+void ThemeConfigurator::saveJson(QJsonDocument document, QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::WriteOnly);
+    jsonFile.write(document.toJson());
+}
+
+QJsonObject ThemeConfigurator::saveObjectToJson(QObject* obj)
+{
+    QJsonObject res;
+
+    auto mo = obj->metaObject();
+    std::vector<std::pair<QString, QVariant> > v;
+    v.reserve(mo->propertyCount() - mo->propertyOffset());
+    for (int i = mo->propertyOffset(); i < mo->propertyCount(); ++i) {
+      v.emplace_back(mo->property(i).name(), mo->property(i).read(obj));
+    }
+    std::sort(v.begin(), v.end());
+    for (auto &i : v) {
+        qDebug() << i.first << "=>" << i.second;
+        res[i.first] = i.second.toString();
+    }
+
+    return res;
+}
+
+void ThemeConfigurator::loadObjectFromJson(QObject* obj, QJsonDocument doc, const QString &path)
+{
+    QJsonObject root = doc.object();
+    QJsonObject json = root[path].toObject();
+
+    auto mo = obj->metaObject();
+    QVariant v;
+    for (int i = mo->propertyOffset(); i < mo->propertyCount(); ++i) {
+        if (json.contains(mo->property(i).name())) {
+            v = json[mo->property(i).name()].toVariant();
+            mo->property(i).write(obj, v);
+        }
+    }
 }
