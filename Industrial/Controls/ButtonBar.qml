@@ -7,12 +7,24 @@ Row {
     spacing: 1
 
     onVisibleChildrenChanged: {
+        var buttons = [];
+        var buttonsCnt = 0;
+
         for (var i = 0; i < visibleChildren.length; ++i) {
             var item = visibleChildren[i];
 
-            item.width = Qt.binding(function () { return row.width / visibleChildren.length - 1; })
-            item.leftCropped = i > 0;
-            item.rightCropped = i < visibleChildren.length - 1;
+            if (item instanceof Button) {
+                buttons.push(item);
+                buttonsCnt++;
+            }
+        }
+
+        for (var j = 0; j < buttonsCnt; ++j) {
+            var button = buttons[j];
+
+            button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; })
+            button.leftCropped = j > 0;
+            button.rightCropped = j < buttonsCnt - 1;
         }
     }
 }
