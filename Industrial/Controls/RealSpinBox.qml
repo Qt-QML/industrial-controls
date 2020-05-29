@@ -9,6 +9,8 @@ SpinBox {
     property real realTo: 100
     property real precision: 0.01
 
+    _input: input
+
     function validate() {
         value = valueFromText(input.text, locale);
         caution = false;

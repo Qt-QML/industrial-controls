@@ -14,6 +14,8 @@ T.SpinBox {
     property alias labelText: background.text
     property alias flat: background.flat
 
+    property QtObject _input: input
+
     signal finished()
 
     implicitWidth: Theme.baseSize * 4
@@ -29,7 +31,7 @@ T.SpinBox {
 
     onActiveFocusChanged: {
         if (activeFocus)
-            input.forceActiveFocus();
+            _input.forceActiveFocus();
         else
             finished();
     }
