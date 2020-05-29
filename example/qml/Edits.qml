@@ -2,7 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0
 
-Frame {
+Pane {
     id: root
 
     padding: Theme.padding
@@ -37,19 +37,16 @@ Frame {
         Label { text: qsTr("Text fields"); font.pixelSize: Theme.auxFontSize }
 
         TextField {
-            labelText: qsTr("Edit text here")
             Layout.fillWidth: true
         }
 
         TextField {
-            labelText: qsTr("Invalid text edit")
             text: qsTr("Errored text")
             isValid: false
             Layout.fillWidth: true
         }
 
         TextField {
-            labelText: qsTr("Blocked text edit")
             text: qsTr("Example text")
             enabled: false
             Layout.fillWidth: true
@@ -80,7 +77,7 @@ Frame {
         Label { text: qsTr("Filter fields"); font.pixelSize: Theme.auxFontSize }
 
         FilterField {
-            placeholderText: qsTr("Filter here")
+            labelText: qsTr("Filter here")
             Layout.fillWidth: true
         }
 
