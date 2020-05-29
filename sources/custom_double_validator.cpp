@@ -1,4 +1,5 @@
 #include "custom_double_validator.h"
+
 #include <QCoreApplication>
 #include <QQmlEngine>
 
@@ -12,6 +13,7 @@ Q_COREAPP_STARTUP_FUNCTION(registerCustomDoubleValidator)
 CustomDoubleValidator::CustomDoubleValidator(QObject* parent) : QDoubleValidator(parent)
 {
 }
+
 CustomDoubleValidator::CustomDoubleValidator(double bottom, double top, int decimals,
                                              QObject* parent) :
     QDoubleValidator(bottom, top, decimals, parent)
@@ -20,11 +22,14 @@ CustomDoubleValidator::CustomDoubleValidator(double bottom, double top, int deci
 
 QValidator::State CustomDoubleValidator::validate(QString& s, int& pos) const
 {
+    Q_UNUSED(pos)
+
     if (s.isEmpty() || (s.startsWith("-") && s.length() == 1))
     {
         // allow empty field or standalone minus sign
         return QValidator::Intermediate;
     }
+
     // check length of decimal places
     QChar point = this->locale().decimalPoint();
     if (s.indexOf(point) != -1)
@@ -35,6 +40,7 @@ QValidator::State CustomDoubleValidator::validate(QString& s, int& pos) const
             return QValidator::Invalid;
         }
     }
+
     // check range of value
     bool isNumber;
     double value = locale().toDouble(s, &isNumber);
@@ -42,5 +48,6 @@ QValidator::State CustomDoubleValidator::validate(QString& s, int& pos) const
     {
         return QValidator::Acceptable;
     }
+
     return QValidator::Invalid;
 }

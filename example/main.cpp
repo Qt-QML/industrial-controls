@@ -2,8 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "theme_configurator.h"
-
+#include "theme_loader.h"
 
 int main(int argc, char* argv[])
 {
@@ -11,7 +10,7 @@ int main(int argc, char* argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<ThemeConfigurator>("Industrial.Controls", 1, 0, "ThemeConfigurator");
+    qmlRegisterType<ThemeLoader>("Industrial.Controls", 1, 0, "ThemeLoader");
 
     QQmlApplicationEngine engine;
     engine.addImportPath(QStringLiteral("qrc:/"));

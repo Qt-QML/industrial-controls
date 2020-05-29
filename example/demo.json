@@ -1,0 +1,39 @@
+{
+    "colors_common": {
+        "border": "#2c393f",
+        "disabled": "#161c20",
+        "highlightedText": "#000000",
+        "link": "#51a0e7",
+        "negative": "#e53535",
+        "neutral": "#ff9800",
+        "positive": "#86c34a",
+        "selectedText": "#000000",
+        "shadow": "#80000000"
+    },
+    "colors_day": {
+        "background": "#eff0f1",
+        "control": "#e7e8e8",
+        "controlText": "#000000",
+        "highlight": "#3eecd8",
+        "hover": "#1600ddc7",
+        "raised": "#f6f7f7",
+        "selection": "#33c5b4",
+        "sunken": "#e7e8e8",
+        "text": "#000000",
+        "tip": "#63e6d9",
+        "tipText": "#000000"
+    },
+    "colors_night": {
+        "background": "#212b30",
+        "control": "#4d636f",
+        "controlText": "#ffffff",
+        "highlight": "#19d6c4",
+        "hover": "#16ffffff",
+        "raised": "#37474f",
+        "selection": "#009688",
+        "sunken": "#2c393f",
+        "text": "#ffffff",
+        "tip": "#009688",
+        "tipText": "#ffffff"
+    }
+}

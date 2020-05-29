@@ -11,6 +11,7 @@ class CustomDoubleValidator : public QDoubleValidator
 public:
     CustomDoubleValidator(QObject* parent = nullptr);
     CustomDoubleValidator(double bottom, double top, int decimals, QObject* parent);
+
     QValidator::State validate(QString& s, int& pos) const override;
 };
 

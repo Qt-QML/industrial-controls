@@ -5,6 +5,7 @@ designersupported
 
 singleton Theme 1.0 Theme.qml
 ThemeColors 1.0 ThemeColors.qml
+ThemeFactors 1.0 ThemeFactors.qml
 
 Shadow 1.0 Shadow.qml
 Hatch 1.0 Hatch.qml

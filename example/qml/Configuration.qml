@@ -8,10 +8,14 @@ Popup {
     width: Theme.baseSize * 8
     closePolicy: Popup.CloseOnPressOutsideParent
 
-    ThemeConfigurator
+    ThemeLoader
     {
-        id: configurator
-        Component.onCompleted:  configurator.setTheme(Theme);
+        id: themeLoader
+        filename: "../demo.json"
+        Component.onCompleted: {
+            setTheme(Theme);
+            save();
+        }
     }
 
     ColumnLayout{
@@ -19,59 +23,29 @@ Popup {
         spacing: Theme.spacing
 
         Slider {
-            from: 0
-            to: 8
-            text: qsTr("Rounding")
-            value: Theme.rounding
-            onMoved: { configurator.setRounding(value); configurator.configureSizes() }
-            Layout.fillWidth: true
-        }
-
-        Slider {
             from: 16
             to: 60
             stepSize: 4
             text: qsTr("Base size")
             value: Theme.baseSize
-            onPressedChanged: { if (!pressed) { configurator.setBaseSize(value); configurator.configureSizes() } }
+            onPressedChanged: { if (!pressed) { Theme.baseSize = value } }
             Layout.fillWidth: true
         }
 
-        RowLayout {
-            spacing: Theme.spacing
+        ButtonBar {
+            Layout.fillWidth: true
 
-            Label { text: qsTr("Background & text") }
+             Button {
+                 text: qsTr("Day")
+                 highlighted: !Theme.night
+                 onClicked: Theme.night = false
+             }
 
-            DualColorPicker {
-                primaryColor: Theme.colors.background
-                onPrimaryColorPicked: { configurator.setBackgroundColor(color); configurator.configureColors() }
-                secondaryColor: Theme.colors.text
-                onSecondaryColorPicked: { configurator.setTextColor(color); configurator.configureColors() }
-            }
-        }
-
-        RowLayout {
-            spacing: Theme.spacing
-
-            Label { text: qsTr("Highlight & text") }
-
-            DualColorPicker {
-                primaryColor: Theme.colors.selection
-                onPrimaryColorPicked: { configurator.setSelectionColor(color); configurator.configureColors() }
-                secondaryColor: Theme.colors.selectedText
-                onSecondaryColorPicked: { configurator.setSelectionTextColor(color); configurator.configureColors() }
-            }
-        }
-
-        RowLayout {
-            spacing: Theme.spacing
-            CheckBox {
-                id: _checkbox
-                text: qsTr("DarkTheme")
-                Layout.fillWidth: true
-                onCheckStateChanged: {configurator.setDark(_checkbox.checked); configurator.configureColors(); }
-
-            }
+             Button {
+                 text: qsTr("Night")
+                 highlighted: Theme.night
+                 onClicked: Theme.night = true
+             }
         }
     }
 }

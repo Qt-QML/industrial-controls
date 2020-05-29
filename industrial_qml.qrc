@@ -3,6 +3,7 @@
         <file>Industrial/Controls/qmldir</file>
         <file>Industrial/Controls/Theme.qml</file>
         <file>Industrial/Controls/ThemeColors.qml</file>
+        <file>Industrial/Controls/ThemeFactors.qml</file>
         <file>Industrial/Controls/Shadow.qml</file>
         <file>Industrial/Controls/Hatch.qml</file>
         <file>Industrial/Controls/ApplicationWindow.qml</file>
