@@ -20,7 +20,7 @@ BackgroundItem {
     property alias highlighterColor: highlighter.color
 
     bottomCropping: radius
-    implicitWidth: Math.max(Theme.baseSize * 4, textItem.implicitWidth)
+    implicitWidth: Theme.baseSize * 4
 
     TextMetrics {
         id: textMetrics
@@ -63,7 +63,7 @@ BackgroundItem {
             if (!control.enabled) return Theme.colors.disabled;
             if (control.caution) return Theme.colors.neutral;
             if (!control.isValid) return Theme.colors.negative;
-            if (control.highlighted) return Theme.colors.highlight;
+            if (control.highlighted) return Theme.colors.selection;
 
             return Theme.colors.text;
         }
