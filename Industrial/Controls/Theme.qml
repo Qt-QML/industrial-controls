@@ -2,7 +2,7 @@ pragma Singleton // We indicate that this QML Type is a singleton
 
 import QtQuick 2.6
 
-Item {
+QtObject {
     id: root
 
     property bool night: true

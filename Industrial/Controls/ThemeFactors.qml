@@ -1,6 +1,6 @@
 import QtQuick 2.6
 
-Item {
+QtObject {
     property real mainFontSize: 2.0     // Основной шрифт
     property real auxFontSize: 2.5      // Вспомогательный шрифт
     property real spacing: 2.5          // Отступы между компонентами
