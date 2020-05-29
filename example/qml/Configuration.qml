@@ -8,14 +8,10 @@ Popup {
     width: Theme.baseSize * 8
     closePolicy: Popup.CloseOnPressOutsideParent
 
-    ThemeLoader
-    {
+    ThemeLoader {
         id: themeLoader
         filename: "../demo.json"
-        Component.onCompleted: {
-            setTheme(Theme);
-            save();
-        }
+        theme: Theme
     }
 
     ColumnLayout{
@@ -46,6 +42,12 @@ Popup {
                  highlighted: Theme.night
                  onClicked: Theme.night = true
              }
+        }
+
+        Button {
+            text: qsTr("Reload")
+            onClicked: themeLoader.load();
+            Layout.fillWidth: true
         }
     }
 }

@@ -11,15 +11,15 @@
         "shadow": "#80000000"
     },
     "colors_day": {
-        "background": "#eff0f1",
+        "background": "#edeeef",
         "control": "#e7e8e8",
-        "controlText": "#000000",
+        "controlText": "#27333a",
         "highlight": "#3eecd8",
         "hover": "#1600ddc7",
-        "raised": "#f6f7f7",
+        "raised": "#fcfcfc",
         "selection": "#33c5b4",
-        "sunken": "#e7e8e8",
-        "text": "#000000",
+        "sunken": "#e2e4e6",
+        "text": "#2c373a",
         "tip": "#63e6d9",
         "tipText": "#000000"
     },
