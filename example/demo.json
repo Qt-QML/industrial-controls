@@ -1,4 +1,6 @@
 {
+    "animation_time": 200,
+    "base_size": 32,
     "colors_common": {
         "border": "#2c393f",
         "disabled": "#161c20",
@@ -35,5 +37,24 @@
         "text": "#ffffff",
         "tip": "#009688",
         "tipText": "#ffffff"
-    }
+    },
+    "factors": {
+        "auxFontSize": 2.5,
+        "checkmarkSize": 1.6,
+        "floatSize": 0.8,
+        "handleSize": 1.6,
+        "iconSize": 1.6,
+        "mainFontSize": 2,
+        "margins": 4,
+        "padding": 5,
+        "rounding": 8,
+        "scrollSize": 16,
+        "shadow": 10,
+        "sliderSize": 8,
+        "spacing": 2.5,
+        "switchSize": 4,
+        "underline": 16
+    },
+    "night": true,
+    "scroll_interactive": false
 }

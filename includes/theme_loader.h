@@ -33,9 +33,6 @@ signals:
 private:
     QObject* m_theme = nullptr;
     QString m_filename;
-
-    void updatePropertiesFromJson(QObject* object, const QJsonDocument& doc, const QString& path);
-    QJsonDocument loadJson(const QString& fileName);
 };
 
 #endif // THEME_LOADER_H

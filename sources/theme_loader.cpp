@@ -9,11 +9,17 @@
 namespace
 {
 constexpr char night[] = "night";
-
+constexpr char baseSize[] = "baseSize";
+constexpr char scrollInteractive[] = "scrollInteractive";
+constexpr char animationTime[] = "animationTime";
 constexpr char dayColors[] = "dayColors";
 constexpr char nightColors[] = "nightColors";
 constexpr char factors[] = "factors";
 
+constexpr char nightPath[] = "night";
+constexpr char baseSizePath[] = "base_size";
+constexpr char scrollInteractivePath[] = "scroll_interactive";
+constexpr char animationTimePath[] = "animation_time";
 constexpr char commonColorsPath[] = "colors_common";
 constexpr char dayColorsPath[] = "colors_day";
 constexpr char nightColorsPath[] = "colors_night";
@@ -77,19 +83,41 @@ void ThemeLoader::load()
     if (!m_theme)
         return;
 
-    QJsonDocument doc = this->loadJson(m_filename);
+    QFile jsonFile(m_filename);
+    if (!jsonFile.open(QFile::ReadOnly))
+        return;
 
+    QJsonObject json = QJsonDocument::fromJson(jsonFile.readAll()).object();
     QObject* dayColors = m_theme->property(::dayColors).value<QObject*>();
-    if (dayColors)
-        this->updatePropertiesFromJson(dayColors, doc, ::dayColorsPath);
-
     QObject* nightColors = m_theme->property(::nightColors).value<QObject*>();
-    if (nightColors)
-        this->updatePropertiesFromJson(nightColors, doc, ::nightColorsPath);
+
+    if (json.contains(::commonColorsPath))
+    {
+        QVariantMap commonColors = json.value(::commonColorsPath).toObject().toVariantMap();
+
+        if (dayColors)
+            ::propertiesToObject(dayColors, commonColors);
+        if (nightColors)
+            ::propertiesToObject(nightColors, commonColors);
+    }
+
+    if (dayColors && json.contains(::dayColorsPath))
+        ::propertiesToObject(dayColors, json.value(::dayColorsPath).toObject().toVariantMap());
+    if (nightColors && json.contains(::nightColorsPath))
+        ::propertiesToObject(nightColors, json.value(::nightColorsPath).toObject().toVariantMap());
 
     QObject* factors = m_theme->property(::factors).value<QObject*>();
-    if (factors)
-        this->updatePropertiesFromJson(factors, doc, ::factorsPath);
+    if (factors && json.contains(::factorsPath))
+        ::propertiesToObject(factors, json.value(::factorsPath).toObject().toVariantMap());
+
+    if (json.contains(::nightPath))
+        m_theme->setProperty(::night, json.value(::nightPath).toVariant());
+    if (json.contains(::baseSizePath))
+        m_theme->setProperty(::baseSize, json.value(::baseSizePath).toVariant());
+    if (json.contains(::scrollInteractivePath))
+        m_theme->setProperty(::scrollInteractive, json.value(::scrollInteractivePath).toVariant());
+    if (json.contains(::animationTimePath))
+        m_theme->setProperty(::animationTime, json.value(::animationTimePath).toVariant());
 }
 
 void ThemeLoader::save()
@@ -113,9 +141,18 @@ void ThemeLoader::save()
         }
     }
 
+    QObject* factors = m_theme->property(::factors).value<QObject*>();
+    QVariantMap factorsMap = factors ? ::propertiesFromObject(factors) : QVariantMap();
+
     root[::commonColorsPath] = QJsonObject::fromVariantMap(commonColorsMap);
     root[::dayColorsPath] = QJsonObject::fromVariantMap(dayColorsMap);
     root[::nightColorsPath] = QJsonObject::fromVariantMap(nightColorsMap);
+    root[::factorsPath] = QJsonObject::fromVariantMap(factorsMap);
+
+    root[::nightPath] = QJsonValue::fromVariant(m_theme->property(::night));
+    root[::baseSizePath] = QJsonValue::fromVariant(m_theme->property(::baseSize));
+    root[::scrollInteractivePath] = QJsonValue::fromVariant(m_theme->property(::scrollInteractive));
+    root[::animationTimePath] = QJsonValue::fromVariant(m_theme->property(::animationTime));
 
     QJsonDocument document;
     document.setObject(root);
@@ -124,28 +161,4 @@ void ThemeLoader::save()
 
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
-}
-
-void ThemeLoader::updatePropertiesFromJson(QObject* object, const QJsonDocument& doc,
-                                           const QString& path)
-{
-    QJsonObject root = doc.object();
-    QJsonObject json = root[path].toObject();
-
-    auto meta = object->metaObject();
-    for (int i = meta->propertyOffset(); i < meta->propertyCount(); ++i)
-    {
-        if (json.contains(meta->property(i).name()))
-        {
-            meta->property(i).write(object, json[meta->property(i).name()].toVariant());
-        }
-    }
-}
-
-QJsonDocument ThemeLoader::loadJson(const QString& fileName)
-{
-    QFile jsonFile(fileName);
-    jsonFile.open(QFile::ReadOnly);
-
-    return QJsonDocument().fromJson(jsonFile.readAll());
 }

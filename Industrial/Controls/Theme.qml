@@ -6,21 +6,22 @@ Item {
     id: root
 
     property bool night: true
-
-    readonly property ThemeColors colors: night ? nightColors : dayColors
+    property real baseSize: 32
+    property bool scrollInteractive: false
+    property real animationTime: 200
 
     property ThemeColors dayColors: ThemeColors {
-       background: "#eff0f1"
-       sunken: "#e7e8e8"
-       raised: "#f6f7f7"
-       text: "#000000"
+       background: "#edeeef"
+       sunken: "#e2e4e6"
+       raised: "#fcfcfc"
+       text: "#2c373a"
        hover: "#1600ddc7"
        border: "#2c393f"
 
        disabled: "#161c20"
 
        control: "#e7e8e8"
-       controlText: "#000000"
+       controlText: "#27333a"
        tip: "#63e6d9"
        tipText: "#000000"
 
@@ -34,14 +35,11 @@ Item {
     property ThemeColors nightColors: ThemeColors {}
     property ThemeFactors factors: ThemeFactors {}
 
-    property real baseSize: 32
+    readonly property ThemeColors colors: night ? nightColors : dayColors
 
-    property real rounding: 4
-    property real underline: 2
-    property real shadowSize: 3
-    property bool scrollInteractive: false
-
-    property real animationTime: 200
+    readonly property real rounding: baseSize / factors.rounding
+    readonly property real underline: baseSize / factors.underline
+    readonly property real shadowSize: baseSize / factors.shadow
 
     readonly property real mainFontSize: baseSize / factors.mainFontSize
     readonly property real auxFontSize: baseSize / factors.auxFontSize

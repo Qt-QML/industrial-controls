@@ -12,6 +12,7 @@ Popup {
         id: themeLoader
         filename: "../demo.json"
         theme: Theme
+//        Component.onCompleted: save()
     }
 
     ColumnLayout{
