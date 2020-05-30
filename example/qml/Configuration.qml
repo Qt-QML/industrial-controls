@@ -10,7 +10,7 @@ Popup {
 
     ThemeLoader {
         id: themeLoader
-        filename: "../demo.json"
+        filename: "../theme.json"
         theme: Theme
 //        Component.onCompleted: save()
     }
