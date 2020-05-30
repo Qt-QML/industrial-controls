@@ -15,7 +15,6 @@ QtObject {
        sunken: "#e2e4e6"
        raised: "#fcfcfc"
        text: "#2c373a"
-       hover: "#1600ddc7"
        border: "#2c393f"
 
        disabled: "#161c20"

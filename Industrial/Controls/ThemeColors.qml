@@ -5,7 +5,7 @@ QtObject {
     property color background: "#2c393f"        // Фона окна
     property color sunken: "#263136"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
     property color text: "#ffffff"              // Текст (иконки и другие элементы на фоне окна, утопленных и возвышенных элементов)
-    property color hover: "#16ffffff"           // Подсветка элемента при наведении мыши
+    property color hover: "#1600ddc7"           // Подсветка элемента при наведении мыши
     property color border: "#2c393f"            // Цвет обводки
 
     property color disabled: "#161c20"          // Неактивный цвет (штриховка на контролах, отключенные элементы
