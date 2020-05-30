@@ -47,10 +47,7 @@ T.ComboBox {
         id: background
         anchors.fill: parent
         flat: control.flat
-        textPadding: {
-            if (displayIcon.length == 0) return Theme.padding;
-            return content.iconSize + Theme.padding + Theme.margins;
-        }
+        textPadding: Theme.padding
         inputed: displayText.length > 0
         highlighted: control.activeFocus
     }
