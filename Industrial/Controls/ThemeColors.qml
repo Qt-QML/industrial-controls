@@ -1,9 +1,9 @@
 import QtQuick 2.6
 
 QtObject {
-    property color background: "#212b30"        // Фона окна
-    property color sunken: "#2c393f"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
-    property color raised: "#37474f"            // Фон возвышенных элементов (панели)
+    property color raised: "#334248"            // Фон возвышенных элементов (панели)
+    property color background: "#2c393f"        // Фона окна
+    property color sunken: "#263136"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
     property color text: "#ffffff"              // Текст (иконки и другие элементы на фоне окна, утопленных и возвышенных элементов)
     property color hover: "#16ffffff"           // Подсветка элемента при наведении мыши
     property color border: "#2c393f"            // Цвет обводки

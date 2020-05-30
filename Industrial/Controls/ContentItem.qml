@@ -31,7 +31,8 @@ Item {
 
     RowLayout {
         id: row
-        anchors.fill: parent
+        anchors.centerIn: parent
+        width: parent.width
         spacing: Theme.spacing
 
         ColoredIcon {
@@ -52,7 +53,6 @@ Item {
             verticalAlignment: Text.AlignVCenter
             visible: text.length > 0
             Layout.fillWidth: true
-            Layout.alignment: Qt.AlignCenter
         }
     }
 }
