@@ -143,73 +143,68 @@
     <message>
         <location filename="../Industrial/Widgets/ColorPicker.qml" line="38"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../Industrial/Widgets/ColorPicker.qml" line="64"/>
         <source>G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../Industrial/Widgets/ColorPicker.qml" line="74"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../Industrial/Widgets/ColorPicker.qml" line="85"/>
         <source>Assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Задать</translation>
     </message>
 </context>
 <context>
     <name>Configuration</name>
     <message>
-        <location filename="../example/qml/Configuration.qml" line="24"/>
-        <source>Rounding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Configuration.qml" line="34"/>
+        <location filename="../example/qml/Configuration.qml" line="26"/>
         <source>Base size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Configuration.qml" line="43"/>
-        <source>Background &amp; text</source>
+        <location filename="../example/qml/Configuration.qml" line="36"/>
+        <source>Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Configuration.qml" line="56"/>
-        <source>Highlight &amp; text</source>
+        <location filename="../example/qml/Configuration.qml" line="42"/>
+        <source>Night</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Configuration.qml" line="70"/>
-        <source>DarkTheme</source>
+        <location filename="../example/qml/Configuration.qml" line="49"/>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CoordSpinBox</name>
     <message>
-        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="18"/>
+        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="19"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation>З</translation>
     </message>
     <message>
-        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="18"/>
+        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="19"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ю</translation>
     </message>
     <message>
-        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="19"/>
+        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="20"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation>В</translation>
     </message>
     <message>
-        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="19"/>
+        <location filename="../Industrial/Controls/CoordSpinBox.qml" line="20"/>
         <source>N</source>
-        <translation type="unfinished"></translation>
+        <translation>С</translation>
     </message>
 </context>
 <context>
@@ -226,7 +221,7 @@
     </message>
     <message>
         <location filename="../example/qml/Edits.qml" line="32"/>
-        <location filename="../example/qml/Edits.qml" line="123"/>
+        <location filename="../example/qml/Edits.qml" line="120"/>
         <source>Disabled</source>
         <translation type="unfinished"></translation>
     </message>
@@ -236,114 +231,103 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="40"/>
-        <source>Edit text here</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Edits.qml" line="45"/>
-        <source>Invalid text edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Edits.qml" line="46"/>
+        <location filename="../example/qml/Edits.qml" line="44"/>
         <source>Errored text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="52"/>
-        <location filename="../example/qml/Edits.qml" line="74"/>
+        <location filename="../example/qml/Edits.qml" line="71"/>
         <source>Blocked text edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="53"/>
-        <location filename="../example/qml/Edits.qml" line="75"/>
+        <location filename="../example/qml/Edits.qml" line="50"/>
+        <location filename="../example/qml/Edits.qml" line="72"/>
         <source>Example text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="58"/>
+        <location filename="../example/qml/Edits.qml" line="55"/>
         <source>Passwords</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="61"/>
+        <location filename="../example/qml/Edits.qml" line="58"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="67"/>
+        <location filename="../example/qml/Edits.qml" line="64"/>
         <source>Password too short</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="80"/>
+        <location filename="../example/qml/Edits.qml" line="77"/>
         <source>Filter fields</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="83"/>
+        <location filename="../example/qml/Edits.qml" line="80"/>
         <source>Filter here</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="88"/>
+        <location filename="../example/qml/Edits.qml" line="85"/>
         <source>Invalid filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="89"/>
+        <location filename="../example/qml/Edits.qml" line="86"/>
         <source>Errored filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="95"/>
+        <location filename="../example/qml/Edits.qml" line="92"/>
         <source>Blocked filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="96"/>
+        <location filename="../example/qml/Edits.qml" line="93"/>
         <source>Example filter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="101"/>
+        <location filename="../example/qml/Edits.qml" line="98"/>
         <source>Combo boxes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="104"/>
+        <location filename="../example/qml/Edits.qml" line="101"/>
         <source>Combobox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="105"/>
+        <location filename="../example/qml/Edits.qml" line="102"/>
         <source>This</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="105"/>
+        <location filename="../example/qml/Edits.qml" line="102"/>
         <source>Is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="105"/>
+        <location filename="../example/qml/Edits.qml" line="102"/>
         <source>Example</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="105"/>
+        <location filename="../example/qml/Edits.qml" line="102"/>
         <source>Combo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="110"/>
+        <location filename="../example/qml/Edits.qml" line="107"/>
         <source>Invalid combobox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Edits.qml" line="122"/>
+        <location filename="../example/qml/Edits.qml" line="119"/>
         <source>Disabled combobox</source>
         <translation type="unfinished"></translation>
     </message>
@@ -351,14 +335,13 @@
 <context>
     <name>FilterField</name>
     <message>
-        <location filename="../Industrial/Controls/FilterField.qml" line="6"/>
         <source>Filter</source>
-        <translation>Фильтр</translation>
+        <translation type="vanished">Фильтр</translation>
     </message>
     <message>
-        <location filename="../Industrial/Controls/FilterField.qml" line="15"/>
+        <location filename="../Industrial/Controls/FilterField.qml" line="14"/>
         <source>Clear filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить фильтр</translation>
     </message>
 </context>
 <context>
@@ -384,57 +367,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="41"/>
-        <source>Spinbox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Inputs.qml" line="46"/>
-        <source>Flat spinbox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Inputs.qml" line="53"/>
-        <source>Disabled spinbox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../example/qml/Inputs.qml" line="58"/>
+        <location filename="../example/qml/Inputs.qml" line="55"/>
         <source>Real spinboxes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="62"/>
+        <location filename="../example/qml/Inputs.qml" line="59"/>
         <source>Real spinbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="67"/>
+        <location filename="../example/qml/Inputs.qml" line="64"/>
         <source>Flat real spinbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="74"/>
+        <location filename="../example/qml/Inputs.qml" line="71"/>
         <source>Disabled real spinbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="79"/>
+        <location filename="../example/qml/Inputs.qml" line="76"/>
         <source>Coord spinboxes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="83"/>
+        <location filename="../example/qml/Inputs.qml" line="80"/>
         <source>Coordinates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="88"/>
+        <location filename="../example/qml/Inputs.qml" line="85"/>
         <source>Flat coordinates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../example/qml/Inputs.qml" line="96"/>
+        <location filename="../example/qml/Inputs.qml" line="93"/>
         <source>Disabled coordinates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -442,7 +410,7 @@
 <context>
     <name>ListWrapper</name>
     <message>
-        <location filename="../Industrial/Widgets/ListWrapper.qml" line="9"/>
+        <location filename="../Industrial/Widgets/ListWrapper.qml" line="7"/>
         <source>No items</source>
         <translation type="unfinished"></translation>
     </message>
