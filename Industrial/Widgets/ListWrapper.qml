@@ -18,6 +18,8 @@ Rectangle {
     property alias currentIndex: list.currentIndex
     property alias count: list.count
 
+    property bool alwaysShowFooterFader: false
+
     function toBeginning() { list.positionViewAtBeginning() }
     function toIndex(index) { list.positionViewAtIndex(index) }
     function toEnd() { list.positionViewAtEnd() }
@@ -42,7 +44,12 @@ Rectangle {
         preferredHighlightBegin: Controls.Theme.baseSize * 2
         preferredHighlightEnd: Controls.Theme.baseSize * 2
         highlightRangeMode: ListView.ApplyRange
+        property bool showFooter: true
 
+        onContentYChanged: {
+            var currentBottomIndex = indexAt(1, contentY+height-Controls.Theme.baseSize)
+            list.showFooter = currentBottomIndex+1 !== listRoot.count
+        }
 
         Controls.ScrollBar.vertical: Controls.ScrollBar {
             visible: list.contentHeight > list.height
@@ -55,6 +62,7 @@ Rectangle {
         }
 
         footer: ListFader {
+            visible: listRoot.alwaysShowFooterFader || list.showFooter
             width: parent.width
             faderOffset: offset
             faderHeight: (list.contentHeight - list.height) - list.contentY
