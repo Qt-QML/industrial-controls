@@ -55,9 +55,9 @@ T.ComboBox {
     delegate: ItemDelegate {
         width: control.width
         horizontalAlignment: control.horizontalAlignment
-        text: modelData[control.textRole] !== undefined ?
+        text: modelData && modelData[control.textRole] !== undefined ?
                   modelData[control.textRole] : modelData
-        iconSource: modelData[control.iconRole] !== undefined ?
+        iconSource: modelData && modelData[control.iconRole] !== undefined ?
                         modelData[control.iconRole] : ""
         font: control.font
         highlighted: control.currentIndex === index
