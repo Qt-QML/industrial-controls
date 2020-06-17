@@ -47,8 +47,8 @@ Rectangle {
         property bool showFooter: true
 
         onContentYChanged: {
-            var currentBottomIndex = indexAt(1, contentY+height-Controls.Theme.baseSize)
-            list.showFooter = currentBottomIndex+1 !== listRoot.count
+            var currentBottomIndex = indexAt(1, contentY + height - Controls.Theme.baseSize)
+            list.showFooter = currentBottomIndex + 1 !== listRoot.count
         }
 
         Controls.ScrollBar.vertical: Controls.ScrollBar {
