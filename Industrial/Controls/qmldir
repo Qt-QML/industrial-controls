@@ -42,6 +42,7 @@ Slider 1.0 Slider.qml
 ComboBox 1.0 ComboBox.qml
 TextField 1.0 TextField.qml
 FilterField 1.0 FilterField.qml
+PasswordField 1.0 PasswordField.qml
 AddressField 1.0 AddressField.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Popup 1.0 Popup.qml
