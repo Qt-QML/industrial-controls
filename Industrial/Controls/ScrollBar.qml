@@ -11,7 +11,7 @@ T.ScrollBar {
     background: Item {}
 
     contentItem: Rectangle {
-        color: active && enabled ? Theme.colors.highlight : Theme.colors.control
-        radius: width / 2
+        color: active && enabled ? Theme.colors.selection : Theme.colors.control
+        radius: Theme.rounding
     }
 }
