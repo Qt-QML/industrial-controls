@@ -1,16 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   id="svg2"
-   height="32"
-   width="32">
-  <path
-     id="rect3339"
-     d="M 12.673052,1 V 12.673053 H 0.9999999 v 6.653894 H 12.673052 V 31 h 6.653895 V 19.326947 H 31 V 12.673053 H 19.326947 V 1 Z"
-     style="fill:#ffffff;stroke-width:1.23441124" />
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25.3333 17.3333H17.3333V25.3333H14.6667V17.3333H6.66667V14.6667H14.6667V6.66666H17.3333V14.6667H25.3333V17.3333Z" fill="white"/>
 </svg>
