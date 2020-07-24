@@ -1,29 +1,43 @@
 # CMake version string
 cmake_minimum_required(VERSION 3.2.1)
 
-# Import path
-set(INDUSTRIAL_CONTROLS_IMPORT_PATH ${CMAKE_CURRENT_LIST_DIR})
+# Project
+project(industrial_controls)
+
+# Find QtCore module
+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Qml)
+
+# Target
+add_library(${PROJECT_NAME} SHARED "")
 
 # Qml import dirs
-list(APPEND QML_IMPORT_DIRS ${INDUSTRIAL_CONTROLS_IMPORT_PATH})
+set (QML_IMPORT_PATH ${QML_IMPORT_PATH} ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "Qt Creator extra qml import paths" FORCE)
 
-# Industrial includes
-set(INDUSTRIAL_CONTROLS_INCLUDES "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/includes")
+# Includes
+target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_LIST_DIR}/includes")
 
-# Industrial sources & resources
-file(GLOB_RECURSE INDUSTRIAL_CONTROLS_SOURCES
-    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/includes/*.h"
-    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/sources/*.h"
-    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/sources/*.cpp"
-)
-
-# Industrial resources
-file(GLOB_RECURSE INDUSTRIAL_CONTROLS_RESOURCES
-    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/*.qrc"
-)
+# Sources
+file(GLOB_RECURSE SOURCES "*.h" "*.cpp" "*.hpp")
+target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
 # Create translations QRC file
-set(INDUSTRIAL_CONTROLS_TS "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/translations/*.ts")
+file(GLOB TS_FILES "translations/*.ts")
+tr_to_qrc("${CMAKE_CURRENT_BINARY_DIR}/industrial_controls_tr_ts.qrc")
+
+# Resources
+file(GLOB_RECURSE QRC_FILES "*.qrc")
+
+# Compile resources
+qt5_add_resources(QRC_SOURCES ${QRC_FILES})
+target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
+
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Qml)
+
+#example
+set(INDUSTRIAL_CONTROLS_EXAMPLE false)
+if(INDUSTRIAL_CONTROLS_EXAMPLE)
+    add_subdirectory(example)
+endif(INDUSTRIAL_CONTROLS_EXAMPLE)
 
 
 
