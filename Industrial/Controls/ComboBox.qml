@@ -16,6 +16,7 @@ T.ComboBox {
     property alias backgroundColor: background.color
     property alias contentColor: content.textColor
     property alias horizontalAlignment: content.horizontalAlignment
+    property Component delegateContent
 
     function findIndex(item) {
         for (var i = 0 ;i < count; ++i) {
@@ -53,6 +54,7 @@ T.ComboBox {
     }
 
     delegate: ItemDelegate {
+        id: delegate
         width: control.width
         horizontalAlignment: control.horizontalAlignment
         text: modelData && modelData[control.textRole] !== undefined ?
@@ -62,6 +64,15 @@ T.ComboBox {
         font: control.font
         highlighted: control.currentIndex === index
         isValid: control.isValid
+
+        Loader {
+            property var delegateModel: modelData
+
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.margins
+            anchors.verticalCenter: parent.verticalCenter
+            sourceComponent: delegateContent
+        }
     }
 
     contentItem: ContentItem {
