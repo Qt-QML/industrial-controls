@@ -39,5 +39,5 @@ if(INDUSTRIAL_CONTROLS_EXAMPLE)
     add_subdirectory(example)
 endif(INDUSTRIAL_CONTROLS_EXAMPLE)
 
-
-
+# Set Windows export
+fleet_set_definition("INDUSTRIAL_CONTROLS_DLL")
