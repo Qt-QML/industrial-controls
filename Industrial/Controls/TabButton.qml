@@ -12,7 +12,9 @@ T.TabButton {
     property alias backgroundColor: backgroundItem.color
 
     // TODO: flat
-    font.pixelSize: Theme.mainFontSize
+    font.pixelSize: Theme.auxFontSize
+    font.weight: Font.Medium
+    font.capitalization: Font.AllUppercase
     implicitWidth: Math.max(Theme.baseSize, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
@@ -31,6 +33,7 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: Theme.colors.text
+        textColor: control.checked ? Theme.colors.highlight : Theme.colors.text
+        opacity: (control.hovered || control.checked) ? 1 : 0.75
     }
 }
