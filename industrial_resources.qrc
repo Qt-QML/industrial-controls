@@ -34,5 +34,6 @@
         <file>icons/north.svg</file>
         <file>icons/password_show.svg</file>
         <file>icons/password_hide.svg</file>
+        <file>icons/panel.svg</file>
     </qresource>
 </RCC>
