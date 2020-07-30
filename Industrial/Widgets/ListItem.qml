@@ -19,7 +19,7 @@ Rectangle {
         collapsedItem.anchors.fill = root
     }
 
-    color: Controls.Theme.colors.raised
+    color: Controls.Theme.colors.background
 
     states: [
         State {

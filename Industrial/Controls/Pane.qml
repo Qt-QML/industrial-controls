@@ -4,7 +4,7 @@ import QtQuick.Controls 2.2 as T
 T.Pane {
     id: control
 
-    property color backgroundColor: Theme.colors.raised
+    property color backgroundColor: Theme.colors.background
 
     padding: Theme.margins
 

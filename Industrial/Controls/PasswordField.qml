@@ -13,7 +13,7 @@ TextField {
 
     Button {
         id: showPasswordButton
-        iconSource: passwordVisible ? "/icons/password_hide.png" : "/icons/password_show.png"
+        iconSource: passwordVisible ? "/icons/password_hide.svg" : "/icons/password_show.svg"
         visible: root.text.length
         anchors.right: parent.right
         height: parent.height - Theme.underline
