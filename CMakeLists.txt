@@ -7,6 +7,10 @@ project(industrial_controls)
 # Find QtCore module
 find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Qml LinguistTools)
 
+# Instruct CMake to run moc & rcc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
 # Target
 add_library(${PROJECT_NAME} SHARED "")
 
@@ -17,10 +21,8 @@ set (QML_IMPORT_PATH ${QML_IMPORT_PATH} ${CMAKE_CURRENT_LIST_DIR} CACHE STRING "
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_LIST_DIR}/includes")
 
 # Sources
-file(GLOB_RECURSE SOURCES "*.h" "*.hpp")
-file(GLOB_RECURSE INTERNAL_INCLUDES "*.cpp")
-target_sources(${PROJECT_NAME} PUBLIC ${SOURCES})
-target_sources(${PROJECT_NAME} PRIVATE ${INTERNAL_INCLUDES})
+file(GLOB_RECURSE SOURCES "*.h" "*.hpp" "*.cpp")
+target_sources(${PROJECT_NAME} PRIVATE ${SOURCES})
 
 # Create translations QRC file
 file(GLOB TS_FILES "translations/*.ts")
