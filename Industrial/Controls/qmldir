@@ -3,6 +3,8 @@ depends QtQuick.Templates 2.2
 depends QtQuick.Controls 2.2
 designersupported
 
+Helper 1.0 helper.js
+
 singleton Theme 1.0 Theme.qml
 ThemeColors 1.0 ThemeColors.qml
 ThemeFactors 1.0 ThemeFactors.qml

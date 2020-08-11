@@ -33,65 +33,15 @@ T.Control {
 
     signal valueModified(real value)
 
-    function stringToReal(str, decimalPoint) {
-        if (decimalPoint !== ".") return parseFloat(str.replace(decimalPoint, "."));
-        return parseFloat(str);
-    }
-
-    function realToString(num, decimalPoint) {
-        var str = num.toString();
-        if (decimalPoint !== ".") return str.replace(".", decimalPoint);
-        return str;
-    }
-
-    function pad(num, size) {
-        var str = num.toString();
-        while (str.length < size) str = "0" + str;
-        return str;
-    }
-
-    function padReal(num, sizeBefore, sizeAfter, decimalPoint) {
-        var split = realToString(num, decimalPoint).split(decimalPoint, 2);
-
-        return pad(split.length > 0 ? split[0] : 0, sizeBefore) + decimalPoint +
-               pad(split.length > 1 ? split[1] : 0, sizeBefore);
-    }
-
-    function degreesToDms(degrees, lng, secondsPrecision) {
-        var sign = degrees < 0 ? -1 : 1
-        var abs = Math.abs(degrees);
-        var deg = Math.floor(abs);
-        var frac = (abs - deg) * 60;
-
-        if (Math.ceil(frac) - frac <= Math.pow(10, -7)) frac = Math.ceil(frac);
-
-        var min = Math.floor(frac);
-        var sec = (frac - min) * 60;
-
-        var degLimit = (lng ? 180 : 90);
-        if (deg > degLimit) deg = degLimit;
-
-        return {
-            sign: sign,
-            deg: deg,
-            min: min,
-            sec: sec.toFixed(secondsPrecision)
-        }
-    }
-
-    function dmsToDegree(sign, deg, min, sec) {
-        return sign * (deg + min / 60.0 + sec / 3600.0);
-    }
-
     function updateValueFromControls() {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
-        var secs = stringToReal(sInput.input.text, locale.decimalPoint);
+        var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
         if (isNaN(secs)) {
             secs = 0;
         }
 
-        var val = dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
+        var val = Helper.dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
         if (isNaN(value) || Math.abs(value - val) >= Number.EPSILON) {
             if (val > to) value = to;
@@ -108,22 +58,22 @@ T.Control {
 
     function updateControlsFromValue() {
         if (!isNaN(value)) {
-            var dms = degreesToDms(value, isLongitude, secondsPrecision);
+            var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
             _sign = dms.sign;
-            dInput.input.text = pad(dms.deg, dInput.maximumLength);
-            mInput.input.text = pad(dms.min, mInput.maximumLength);
-            sInput.input.text = padReal(dms.sec, 2, secondsPrecision, locale.decimalPoint);
+            dInput.input.text = Helper.pad(dms.deg, dInput.maximumLength);
+            mInput.input.text = Helper.pad(dms.min, mInput.maximumLength);
+            sInput.input.text = Helper.padReal(dms.sec, 2, secondsPrecision, locale.decimalPoint);
         }
         else {
-            dInput.input.text = pad(0, dInput.maximumLength);
-            mInput.input.text = pad(0, mInput.maximumLength);
-            sInput.input.text = padReal(0, 2, secondsPrecision, locale.decimalPoint);
+            dInput.input.text = Helper.pad(0, dInput.maximumLength);
+            mInput.input.text = Helper.pad(0, mInput.maximumLength);
+            sInput.input.text = Helper.padReal(0, 2, secondsPrecision, locale.decimalPoint);
         }
         caution = false;
     }
 
     function changeValue(digit, add) {
-        var dms = degreesToDms(value, isLongitude, secondsPrecision);
+        var dms = Helper.degreesToDms(value, isLongitude, secondsPrecision);
 
         switch (digit) {
         case 0:
@@ -137,7 +87,7 @@ T.Control {
             break;
         }
 
-        var newValue = dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
+        var newValue = Helper.dmsToDegree(dms.sign, dms.deg, dms.min, dms.sec);
         var newSign = newValue < 0 ? -1 : 1
         if (dms.sign !== newSign) {
             value = 0;

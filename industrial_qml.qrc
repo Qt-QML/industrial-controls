@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>Industrial/Controls/qmldir</file>
+        <file>Industrial/Controls/helper.js</file>
         <file>Industrial/Controls/Theme.qml</file>
         <file>Industrial/Controls/ThemeColors.qml</file>
         <file>Industrial/Controls/ThemeFactors.qml</file>
