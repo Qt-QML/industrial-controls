@@ -412,7 +412,7 @@
     <message>
         <location filename="../Industrial/Widgets/ListWrapper.qml" line="7"/>
         <source>No items</source>
-        <translation type="unfinished"></translation>
+        <translation>Нет элеметнов</translation>
     </message>
 </context>
 <context>

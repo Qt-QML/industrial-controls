@@ -50,16 +50,6 @@ function dmsToDegree(sign, deg, min, sec) {
     return sign * (deg + min / 60.0 + sec / 3600.0);
 }
 
-function degreesToDmsString(degrees, lng, secondsPrecision) {
-    if (isNaN(degrees)) return "NaN"
-    var dms = degreesToDms(degrees, lng, secondsPrecision);
-    return pad(dms.deg, lng ? 3 : 2) + "\u00B0" +
-           pad(dms.min, 2) + "\'" +
-           pad(dms.sec, 3 + secondsPrecision) + "\"" +
-           (dms.sign < 0 ? lng ? qsTr("W") : qsTr("S") : lng ? qsTr("E") : qsTr("N"));
-}
-
-
 function roundTo125(value)
 {
     var magnitude = Math.floor(Math.log(value) / Math.LN10);
