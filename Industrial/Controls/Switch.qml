@@ -4,6 +4,7 @@ import QtQuick.Templates 2.2 as T
 T.Switch {
     id: control
 
+    property real handleSizeFactor: 1.2
     property bool inputChecked: checked
     property bool flat: false
     property string tipText
@@ -27,10 +28,26 @@ T.Switch {
         implicitWidth: Theme.baseSize
         implicitHeight: Theme.switchSize
         radius: height / 2
-        color: control.checked ? Theme.colors.selection : control.flat ? "transparent" :
-                                                                              Theme.colors.sunken
-        border.width: 1
-        border.color: flat ? Theme.colors.border : "transparent"
+        color: {
+            if (!control.flat){
+                if (control.checked ) return Theme.colors.selection;
+                if (control.pressed) return Theme.colors.highlight;
+                return Theme.colors.sunken;
+            }
+            else {
+                "transparent"
+            }
+        }
+        border.width: 2
+        border.color: {
+            if (control.flat){
+                if (control.checked ) return Theme.colors.selection;
+                return Theme.colors.border;
+            }
+            else {
+                "transparent"
+            }
+        }
 
         Hatch {
             anchors.fill: parent
@@ -38,11 +55,25 @@ T.Switch {
             visible: !control.enabled
         }
 
-        Handle {
+        Rectangle {
+            height: Theme.switchSize
+            width: height
             x: control.checked ? parent.width - width : 0
-            anchors.verticalCenter: parent.verticalCenter
-
+            radius: height / 2
+            color: "#00FFFFFF"
             Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
+            Handle {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Theme.switchSize / handleSizeFactor
+                width: height
+                color: {
+                    if (!control.enabled) return Theme.colors.sunken;
+                    if (control.checked) return Theme.colors.highlight;
+                    if (control.pressed) return Theme.colors.highlight;
+                    return Theme.colors.control;
+                }
+            }
         }
     }
 
