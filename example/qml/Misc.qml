@@ -109,6 +109,8 @@ Pane {
 
         Slider {
             text: qsTr("Flat slider")
+            value: to - _slider.value
+            to: 100
             flat: true
             Layout.fillWidth: true
         }
@@ -136,6 +138,26 @@ Pane {
         }
 
         Item { Layout.fillHeight: true }
+
+        Label { text: qsTr("Click bar"); font.pixelSize: Theme.auxFontSize }
+
+        ClickBar {
+            id: _clickbar
+            from: 1
+            value: 50
+            to: 100
+            Layout.fillWidth: true
+            //rotation: 90
+        }
+
+        ClickBar {
+            from: 1
+            value: to - _clickbar.value
+            to: 100
+            Layout.fillWidth: true
+            flat: true
+            //rotation: 90
+        }
     }
 }
 
