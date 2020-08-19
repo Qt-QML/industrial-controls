@@ -11,7 +11,6 @@ T.Slider {
     property bool toolTipVisible: true
     property int digits: 0
     property real visualValue: from + position * (to - from)
-
     property alias text: textItem.text
 
     implicitWidth: Theme.baseSize * 6
@@ -25,6 +24,7 @@ T.Slider {
         color: !flat ? Theme.colors.sunken : "transparent"
         border.width: 2
         border.color: flat ? Theme.colors.border : "transparent"
+
         Rectangle {
             id: mask
             visible: false
@@ -32,12 +32,12 @@ T.Slider {
             color: Theme.colors.negative
             radius: parent.height / 2
         }
-
     }
 
     contentItem: Item {
         id: indicator
         visible: false
+
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
