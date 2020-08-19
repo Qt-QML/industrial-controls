@@ -29,24 +29,16 @@ T.Switch {
         implicitHeight: Theme.switchSize
         radius: height / 2
         color: {
-            if (!control.flat){
-                if (control.checked ) return Theme.colors.selection;
-                if (control.pressed) return Theme.colors.highlight;
-                return Theme.colors.sunken;
-            }
-            else {
-                "transparent"
-            }
+            if (control.flat) return "transparent";
+            if (control.checked) return Theme.colors.selection;
+            if (control.pressed) return Theme.colors.highlight;
+            return Theme.colors.sunken;
         }
         border.width: 2
         border.color: {
-            if (control.flat){
-                if (control.checked ) return Theme.colors.selection;
-                return Theme.colors.border;
-            }
-            else {
-                "transparent"
-            }
+            if (control.checked ) return Theme.colors.selection;
+            if (control.flat) return Theme.colors.border;
+            return "transparent"
         }
 
         Hatch {
@@ -60,7 +52,7 @@ T.Switch {
             width: height
             x: control.checked ? parent.width - width : 0
             radius: height / 2
-            color: "#00FFFFFF"
+            color: "transparent"
             Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
             Handle {
                 anchors.verticalCenter: parent.verticalCenter
