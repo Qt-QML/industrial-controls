@@ -5,8 +5,9 @@ T.MenuItem {
     id: control
 
     property url iconSource: ""
-    property alias iconColor: icon.color
+    property bool selected: false
 
+    property alias iconColor: icon.color
     property alias horizontalAlignment: label.horizontalAlignment
 
     implicitWidth: parent.width
@@ -19,7 +20,11 @@ T.MenuItem {
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
-        color: control.pressed ? Theme.colors.highlight : "transparent"
+        color: {
+            if (selected) return Theme.colors.selection;
+            if (control.pressed) return Theme.colors.highlight;
+            return "transparent";
+        }
     }
 
     indicator: ColoredIcon {
@@ -44,6 +49,7 @@ T.MenuItem {
         text: control.text
         color: {
             if (!enabled) return Theme.colors.disabled;
+            if (selected) return Theme.colors.selectedText;
             if (control.pressed) return Theme.colors.highlightedText;
             return Theme.colors.text;
         }

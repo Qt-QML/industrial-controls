@@ -3,8 +3,12 @@ import QtQuick 2.6
 Button {
     id: control
 
+    property int currentIndex: -1
+
     property alias model: repeater.model
     property alias delegate: repeater.delegate
+    property alias menuX: menu.x
+    property alias menuY: menu.y
 
     signal triggered(var modelData)
 
@@ -21,6 +25,7 @@ Button {
 
             delegate: MenuItem {
                 text: modelData
+                selected: index == control.currentIndex
                 onTriggered: control.triggered(modelData)
             }
         }
