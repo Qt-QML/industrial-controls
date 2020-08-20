@@ -11,7 +11,7 @@ T.Button {
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
-    property color color: control.flat ? "transparent" : Theme.colors.control
+    property color color: Theme.colors.control
     property color highlightColor: Theme.colors.highlight
     property color selectionColor: Theme.colors.selection
     property string tipText
@@ -23,7 +23,7 @@ T.Button {
     property alias textColor: content.textColor
     property alias radius: backgroundItem.radius
     property alias contentWidth: content.width
-    property alias backgroundColor: backgroundItem.color
+    property alias backgroundOpacity: backgroundItem.opacity
     property alias hoverColor: backgroundItem.hoverColor
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
@@ -46,7 +46,7 @@ T.Button {
         color: {
             if (control.pressed || control.pressedImpl) return control.highlightColor;
             if (control.highlighted || control.checked) return control.selectionColor;
-            return control.color;
+            return control.flat ? "transparent" : control.color;
         }
 
         Hatch {

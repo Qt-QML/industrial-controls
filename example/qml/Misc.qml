@@ -89,7 +89,6 @@ Pane {
             Layout.fillWidth: true
         }
 
-
         Switch {
             text: qsTr("Disabled switch")
             enabled: false
