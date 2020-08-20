@@ -9,7 +9,7 @@ QtObject {
     property real iconSize: 1.6         // Размер пиктограм
     property real scrollSize: 16        // Размер скроллбара
     property real sliderSize: 8.0       // Высота слайдера
-    property real switchSize: 4.0       // Высота свича
+    property real switchSize: 1.6       // Высота свича
     property real handleSize: 1.6       // Хендл у слайдеров и свичей
     property real checkmarkSize: 1.6    // Чекбоксы и радио
     property real floatSize: 0.8        // Плавающие кнопки
