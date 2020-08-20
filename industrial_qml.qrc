@@ -69,5 +69,6 @@
         <file>Industrial/Widgets/ListTable.qml</file>
         <file>Industrial/Tools/qmldir</file>
         <file>Industrial/Tools/SelectorFrame.qml</file>
+        <file>Industrial/Controls/ClickBar.qml</file>
     </qresource>
 </RCC>
