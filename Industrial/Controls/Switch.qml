@@ -5,7 +5,7 @@ T.Switch {
     id: control
 
     property bool inputChecked: checked
-    property bool flat: false
+    property bool flat: base.flat
     property string tipText
     property alias textColor: text.color
     property alias backgroundColor: base.color
@@ -25,8 +25,10 @@ T.Switch {
         implicitWidth: Theme.baseSize * 1.2
         implicitHeight: Theme.switchSize
         radius: height / 2
+        flat: control.flat
         down: control.down
         hovered: control.hovered
+        checked: control.checked
         opacity: {
             if(!control.flat && control.enabled) { if (control.down || control.checked) return 0.5; }
             return 1

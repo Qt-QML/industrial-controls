@@ -34,7 +34,7 @@ T.RadioButton {
 
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !control.enabled
         }
     }

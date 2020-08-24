@@ -32,7 +32,7 @@ T.CheckBox {
             id: icon
             height: Theme.baseSize
             anchors.fill: parent
-            anchors.margins: parent.width * 0.1
+            //anchors.margins: parent.width * 0.1
             source: "qrc:/icons/ok.svg"
             visible: control.checked || control.down
             color: base.indicatorColor
