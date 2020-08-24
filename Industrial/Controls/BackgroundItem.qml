@@ -10,6 +10,7 @@ Item {
     property int leftCropping: 0
     property int rightCropping: 0
     readonly property int offset: radius + 1
+    property real borderWidth: Theme.border
     property color borderColor: "transparent"
 
     property alias radius: background.radius
@@ -29,12 +30,15 @@ Item {
             anchors.rightMargin: -rightCropping
             radius: Theme.rounding
             color: flat ? "transparent" : Theme.colors.sunken
+            border.width: borderWidth
             border.color: borderColor
 
             Rectangle {
                 id: hover
                 anchors.fill: parent
-                color: Theme.colors.hover
+                //color: Theme.colors.hover
+                color: Theme.colors.highlight
+                opacity: 0.20
                 radius: parent.radius
                 visible: hovered
             }

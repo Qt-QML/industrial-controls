@@ -25,19 +25,19 @@ T.Slider {
         height: Theme.sliderSize
         radius: height / 2
         color: flat ? "transparent" : Theme.colors.sunken
-        border.width: 1
-        border.color: flat ? Theme.colors.border : "transparent"
+        border.width: 2
+        border.color: flat ? Theme.colors.control : "transparent"
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: Theme.colors.selection
+            color: !flat ? Theme.colors.selection : Theme.colors.control
             radius: height / 2
         }
 
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !enabled
         }
     }
@@ -53,7 +53,7 @@ T.Slider {
             height: width
             radius: width / 2
             color: Theme.colors.highlight
-            opacity: 0.5
+            opacity: 0.2
             visible: control.pressed
         }
     }

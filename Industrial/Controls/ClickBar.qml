@@ -22,8 +22,8 @@ T.Slider {
     background: Rectangle {
         radius: parent.height / 2
         color: !flat ? Theme.colors.sunken : "transparent"
-        border.width: 2
-        border.color: flat ? Theme.colors.border : "transparent"
+        border.width: Theme.border
+        border.color: flat ? Theme.colors.control : "transparent"
 
         Rectangle {
             id: mask
@@ -41,7 +41,16 @@ T.Slider {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            color: Theme.colors.selection
+            color:  !flat ? Theme.colors.selection : Theme.colors.control
+
+            Rectangle {
+                id: hover
+                anchors.fill: parent
+                color: Theme.colors.highlight
+                opacity: 0.90
+                radius: parent.radius
+                visible: hovered
+            }
         }
     }
 
@@ -73,7 +82,7 @@ T.Slider {
 
     Hatch {
         anchors.fill: parent
-        color: Theme.colors.raised
+        color: Theme.colors.background
         visible: !enabled
     }
 

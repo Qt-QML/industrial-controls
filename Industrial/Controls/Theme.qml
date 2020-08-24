@@ -52,4 +52,5 @@ QtObject {
     readonly property real handleSize: baseSize / factors.handleSize
     readonly property real checkmarkSize: baseSize / factors.checkmarkSize
     readonly property real floatSize: baseSize / factors.floatSize
+    readonly property real border: baseSize / factors.border
 }

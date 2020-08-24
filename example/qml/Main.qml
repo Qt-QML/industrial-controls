@@ -8,7 +8,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Industrial demo")
     width: Theme.baseSize * 28
-    height: Theme.baseSize * 12
+    height: Theme.baseSize * 16
 
     Loader {
         id: loader
