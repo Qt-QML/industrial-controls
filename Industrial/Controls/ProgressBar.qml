@@ -5,13 +5,24 @@ import QtGraphicalEffects 1.0
 T.ProgressBar {
     id: control
 
+    property bool flat: false
+
     implicitWidth: Theme.baseSize * 4
     implicitHeight: Theme.baseSize
 
-    background: BackgroundItem {
-        id: mask
-        visible: true
+    background: Rectangle {
         radius: parent.height / 2
+        color: !flat ? Theme.colors.sunken : "transparent"
+        border.width: Theme.border
+        border.color: flat ? Theme.colors.control : "transparent"
+
+        Rectangle {
+            id: mask
+            visible: false
+            anchors.fill: parent
+            color: Theme.colors.negative
+            radius: parent.height / 2
+        }
     }
 
     contentItem: Item {
@@ -20,7 +31,7 @@ T.ProgressBar {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            color: Theme.colors.selection
+            color:  !flat ? Theme.colors.selection : Theme.colors.control
         }
     }
 
@@ -32,7 +43,7 @@ T.ProgressBar {
 
     Hatch {
         anchors.fill: parent
-        color: Theme.colors.raised
+        color: Theme.colors.background
         visible: !enabled
         z: 10
     }

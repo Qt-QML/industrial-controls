@@ -4,13 +4,11 @@ import QtQuick.Templates 2.2 as T
 T.Switch {
     id: control
 
-    property real handleSizeFactor: 1.2
     property bool inputChecked: checked
     property bool flat: false
     property string tipText
-
     property alias textColor: text.color
-    property alias backgroundColor: backgroundItem.color
+    property alias backgroundColor: base.color
 
     implicitWidth: contentItem.implicitWidth
     implicitHeight: Theme.baseSize
@@ -18,53 +16,41 @@ T.Switch {
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
     font.pixelSize: Theme.mainFontSize
-
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
-    indicator: Rectangle {
-        id: backgroundItem
+    indicator: CheckMarkBase {
+        id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Theme.baseSize
+        implicitWidth: Theme.baseSize * 1.2
         implicitHeight: Theme.switchSize
         radius: height / 2
-        color: {
-            if (control.flat) return "transparent";
-            if (control.checked) return Theme.colors.selection;
-            if (control.pressed) return Theme.colors.highlight;
-            return Theme.colors.sunken;
+        down: control.down
+        hovered: control.hovered
+        opacity: {
+            if(!control.flat && control.enabled) { if (control.down || control.checked) return 0.5; }
+            return 1
         }
-        border.width: 2
-        border.color: {
-            if (control.checked ) return Theme.colors.selection;
-            if (control.flat) return Theme.colors.border;
-            return "transparent"
-        }
+    }
 
-        Hatch {
-            anchors.fill: parent
-            color: Theme.colors.raised
-            visible: !control.enabled
-        }
+    Rectangle {
+        height: base.height
+        width: height
+        anchors.verticalCenter: base.verticalCenter
+        color: "transparent"
+        x: control.checked ? base.width - width : 0
+        Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
 
-        Rectangle {
-            height: Theme.switchSize
+        Handle {
+            height: Theme.switchSize - Theme.border * 4
             width: height
-            x: control.checked ? parent.width - width : 0
-            radius: height / 2
-            color: "transparent"
-            Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
-            Handle {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: Theme.switchSize / handleSizeFactor
-                width: height
-                color: {
-                    if (!control.enabled) return Theme.colors.sunken;
-                    if (control.checked) return Theme.colors.highlight;
-                    if (control.pressed) return Theme.colors.highlight;
-                    return Theme.colors.control;
-                }
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            color: {
+                if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
+                if (control.checked) return Theme.colors.highlight;
+                if (control.pressed) return Theme.colors.highlight;
+                return Theme.colors.control;
             }
         }
     }

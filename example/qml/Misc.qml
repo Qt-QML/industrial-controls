@@ -52,6 +52,7 @@ Pane {
             text: qsTr("Disabled checkbox")
             checked: _checkbox.checked
             enabled: false
+            flat: true
             Layout.fillWidth: true
         }
 
@@ -72,6 +73,7 @@ Pane {
             text: qsTr("Disabled radio button")
             enabled: false
             checked: true
+            flat: true
             Layout.fillWidth: true
         }
 
@@ -93,6 +95,7 @@ Pane {
             text: qsTr("Disabled switch")
             enabled: false
             checked: _switch.checked
+            //flat: true
             Layout.fillWidth: true
         }
 
@@ -132,11 +135,16 @@ Pane {
         ProgressBar {
             value: to - _slider.value
             to: 100
-            enabled: false
+            flat: true
             Layout.fillWidth: true
         }
 
-        Item { Layout.fillHeight: true }
+        ProgressBar {
+            value: to - _slider.value
+            to: 100
+            enabled: false
+            Layout.fillWidth: true
+        }
 
         Label { text: qsTr("Click bar"); font.pixelSize: Theme.auxFontSize }
 
@@ -155,6 +163,15 @@ Pane {
             to: 100
             Layout.fillWidth: true
             flat: true
+            //rotation: 90
+        }
+
+        ClickBar {
+            from: 1
+            value: to - _clickbar.value
+            to: 100
+            Layout.fillWidth: true
+            enabled: false
             //rotation: 90
         }
     }

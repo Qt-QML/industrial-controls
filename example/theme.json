@@ -1,7 +1,9 @@
 {
+    "animation_time": 200,
+    "base_size": 32,
     "colors_common": {
         "border": "#2c393f",
-        "disabled": "#7f7f7f",
+        "disabled": "#161c20",
         "highlightedText": "#000000",
         "hover": "#1600ddc7",
         "link": "#51a0e7",
@@ -12,45 +14,47 @@
         "shadow": "#80000000"
     },
     "colors_day": {
-        "raised": "#fcfcfc",
         "background": "#edeeef",
-        "sunken": "#e2e4e6",
         "control": "#e7e8e8",
         "controlText": "#27333a",
         "highlight": "#3eecd8",
+        "raised": "#fcfcfc",
         "selection": "#33c5b4",
+        "sunken": "#e2e4e6",
         "text": "#2c373a",
         "tip": "#63e6d9",
         "tipText": "#000000"
     },
     "colors_night": {
-        "raised": "#334248",
         "background": "#2c393f",
-        "sunken": "#263136",
-        "control": "#4d636f",
+        "control": "#5a717c",
         "controlText": "#ffffff",
         "highlight": "#19d6c4",
+        "raised": "#334248",
         "selection": "#009688",
+        "sunken": "#212c30",
         "text": "#ffffff",
         "tip": "#009688",
         "tipText": "#ffffff"
     },
     "factors": {
         "auxFontSize": 2.5,
+        "border": 18,
         "checkmarkSize": 1.6,
         "floatSize": 0.8,
         "handleSize": 1.6,
         "iconSize": 1.6,
         "mainFontSize": 2,
         "margins": 4,
-        "padding": 5,
+        "padding": 4,
         "rounding": 8,
         "scrollSize": 16,
         "shadow": 10,
         "sliderSize": 8,
         "spacing": 2.5,
-        "switchSize": 4,
+        "switchSize": 1.4,
         "underline": 16
     },
+    "night": true,
     "scroll_interactive": false
 }
