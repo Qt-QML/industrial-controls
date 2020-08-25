@@ -106,7 +106,7 @@ T.SpinBox {
 
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !enabled
         }
 
@@ -136,7 +136,7 @@ T.SpinBox {
 
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !enabled
         }
 

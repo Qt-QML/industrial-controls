@@ -30,7 +30,7 @@ BackgroundItem {
 
     Hatch {
         anchors.fill: parent
-        color: Theme.colors.raised
+        color: Theme.colors.background
         visible: !enabled
     }
 
