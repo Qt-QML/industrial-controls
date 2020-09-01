@@ -30,7 +30,7 @@ T.Button {
     implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: Theme.padding
+    //padding: Theme.padding
     font.pixelSize: Theme.mainFontSize
 
     background: BackgroundItem {
@@ -51,7 +51,7 @@ T.Button {
 
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: control.hatched
         }
     }

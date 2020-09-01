@@ -37,6 +37,7 @@ Pane {
         Label { text: qsTr("Text fields"); font.pixelSize: Theme.auxFontSize }
 
         TextField {
+            placeholderText: qsTr("Example text")
             Layout.fillWidth: true
         }
 
@@ -123,5 +124,239 @@ Pane {
         }
 
         Item { Layout.fillHeight: true }
+
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Sample fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Placeholder")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                placeholderText: qsTr("Placeholder")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Password")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                echoMode: TextInput.Password
+                text: qsTr("Password")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Filter fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            FilterField {
+                table: true
+                text: qsTr("Filter fields")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Combobox")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            ComboBox {
+                table: true
+                model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combobox") ]
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+        }
+        //--
+
+        /*
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Sample fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                isValid: false
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Placeholder")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                isValid: false
+                placeholderText: qsTr("Placeholder")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Password")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                isValid: false
+                echoMode: TextInput.Password
+                text: qsTr("Password")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Filter fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            FilterField {
+                table: true
+                isValid: false
+                text: qsTr("Filter fields")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Combobox")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            ComboBox {
+                table: true
+                isValid: false
+                model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combobox") ]
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+        }
+        //--
+        */
+
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Sample fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                enabled: false
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Placeholder")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                enabled: false
+                placeholderText: qsTr("Placeholder")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Password")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            TextField {
+                table: true
+                enabled: false
+                echoMode: TextInput.Password
+                text: qsTr("Password")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Filter fields")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            FilterField {
+                table: true
+                enabled: false
+                text: qsTr("Filter fields")
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+            //
+            Label {
+                text: qsTr("Combobox")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            ComboBox {
+                table: true
+                enabled: false
+                model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combobox") ]
+                anchors.right: Layout.right
+                Layout.fillWidth: true
+            }
+        }
+        //--
     }
 }

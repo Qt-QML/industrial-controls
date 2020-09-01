@@ -19,6 +19,7 @@ T.Control {
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
 
+    property alias table: background.table // табличный вид
     property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
@@ -102,18 +103,23 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(background.implicitWidth, row.height)
+    /*
     implicitHeight: Math.max(background.textHeight +
                              Math.max(dInput.implicitHeight, sInput.implicitHeight) +
                              background.underline, Theme.baseSize)
+    */
+    implicitHeight: Theme.baseSize * 1.25
     font.pixelSize: Theme.mainFontSize
 
     background: BackgroundInput {
         id: background
+        hovered: control.hovered //to hover
         anchors.fill: parent
         textPadding: Theme.baseSize + Theme.padding
         highlighted: _focusedItem
         highlighterColor: Theme.colors.control
         isValid: control.isValid
+        spin: true
     }
 
     contentItem: FocusScope {
@@ -135,14 +141,22 @@ T.Control {
                 id: downButton
                 flat: true
                 round: control.round
-                color: background.color
+                highlightColor: Theme.colors.selection
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _decreaseEnabled
-                hatched: !enabled
+                //hatched: !enabled
                 rightCropped: true
                 bottomCropped: true
                 iconSource: "qrc:/icons/minus.svg"
+                iconColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
                 pressedImpl: _decreaseEnabled && _focusedItem && _focusedItem.down
                 onClicked: {
                     if (!_focusedItem) return;
@@ -195,14 +209,23 @@ T.Control {
                 Layout.fillHeight: true
             }
 
+            //кнопка с буквой
             Button {
                 id: suffixButton
                 implicitWidth: Theme.baseSize
                 flat: true
-                font.bold: true
+                highlightColor: Theme.colors.selection
                 focusPolicy: Qt.NoFocus
                 enabled: value != 0
-                hatched: !enabled && control.enabled
+                textColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
+                //hatched: !enabled && control.enabled
                 rightCropped: true
                 leftCropped: true
                 text: suffix
@@ -217,16 +240,24 @@ T.Control {
 
             Button {
                 id: upButton
-                color: background.color
+                highlightColor: Theme.colors.selection
                 flat: true
                 round: control.round
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _increaseEnabled
-                hatched: !enabled
+                //hatched: !enabled
                 leftCropped: true
                 bottomCropped: true
-                iconSource: "qrc:/icons/plus.svg"
+                iconSource: "qrc:/icons/plus.svg"                
+                iconColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
                 pressedImpl: _increaseEnabled && _focusedItem && _focusedItem.up
                 onClicked: {
                     if (!_focusedItem) return;
@@ -248,19 +279,30 @@ T.Control {
         color: Theme.colors.border;
     }
 
+    //нижний маркер
+    Rectangle {
+        id: highlighterback
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: Theme.underline
+        visible: control.enabled
+        color: {
+            if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
+            if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
+            if (background.highlighted) return Theme.colors.selection;
+            return Theme.colors.control;
+        }
+    }
+
+    //плавающий маркер
     Rectangle {
         id: highlighter
-        anchors.bottom: control.bottom
+        anchors.bottom: parent.bottom
         width: _focusedItem ? _focusedItem.width : 0
-        x: _focusedItem ? _focusedItem.x : 0
-        visible: _focusedItem
         height: Theme.underline
-        color: {
-            if (caution) return Theme.colors.neutral;
-            if (!isValid) return Theme.colors.negative;
-
-            return Theme.colors.selection;
-        }
+        x: _focusedItem ? _focusedItem.x : 0
+        visible: _focusedItem       
+        color: Theme.colors.text;
         Behavior on x { NumberAnimation { duration: 150 } }
     }
 }

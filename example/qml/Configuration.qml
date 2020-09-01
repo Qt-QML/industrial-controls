@@ -21,10 +21,10 @@ Popup {
 
         Slider {
             from: 16
-            to: 60
+            to: 96
             stepSize: 4
             text: qsTr("Base size")
-            value: Theme.baseSize
+            value: 72
             onPressedChanged: { if (!pressed) { Theme.baseSize = value } }
             Layout.fillWidth: true
         }

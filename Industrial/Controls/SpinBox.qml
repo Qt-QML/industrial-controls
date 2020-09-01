@@ -8,6 +8,7 @@ T.SpinBox {
     property color color: Theme.colors.text
     property bool round: false
 
+    property alias table: background.table // табличный вид
     property alias text: input.text
     property alias caution: background.caution
     property alias backgroundColor: background.color
@@ -19,13 +20,13 @@ T.SpinBox {
     signal finished()
 
     implicitWidth: Theme.baseSize * 4
-    implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight +
-                             background.underline, Theme.baseSize)
+    //implicitHeight: Math.max(background.textHeight + contentItem.implicitHeight + background.underline, Theme.baseSize)
+    implicitHeight: Theme.baseSize * 1.25
     leftPadding: Theme.baseSize
     rightPadding: Theme.baseSize
+    bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
     font.pixelSize: Theme.mainFontSize
     editable: true
-    hoverEnabled: true
     clip: true
     to: 100
 
@@ -53,10 +54,12 @@ T.SpinBox {
 
     background: BackgroundInput {
         id: background
+        hovered: control.hovered //to hover
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
         textPadding: Theme.baseSize + Theme.padding
+        spin: true
     }
 
     MouseArea{
@@ -98,17 +101,24 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         width: Theme.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        //radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        radius: {
+            if (round) return Math.min(width, height) / 2
+            if (table) return 0
+            return Theme.rounding
+        }
         rightCropping: radius
         bottomCropping: round ? 0 : radius
-        color: down.pressed && enabled ? Theme.colors.highlight : background.color
+        color: down.pressed && enabled ? Theme.colors.selection : "transparent"
         hovered: down.hovered
 
+        /*
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !enabled
         }
+        */
 
         ColoredIcon {
             width: Theme.iconSize
@@ -116,10 +126,12 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/minus.svg"
             color: {
-                if (!enabled) return Theme.colors.disabled;
                 if (down.pressed) return Theme.colors.highlightedText;
-
-                return Theme.colors.controlText;
+                if (down.hovered) return Theme.colors.text;
+                if (!enabled) return Theme.colors.disabled;
+                if (control.caution) return Theme.colors.neutral;
+                if (!control.isValid) return Theme.colors.negative;
+                return Theme.colors.description;
             }
         }
     }
@@ -128,17 +140,24 @@ T.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         width: Theme.baseSize
         height: parent.height - background.highlighterHeight
-        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        //radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        radius: {
+            if (round) return Math.min(width, height) / 2
+            if (table) return 0
+            return Theme.rounding
+        }
         leftCropping: radius
         bottomCropping: round ? 0 : radius
-        color: up.pressed && enabled ? Theme.colors.highlight : background.color
+        color: up.pressed && enabled ? Theme.colors.selection : "transparent"
         hovered: up.hovered
 
+        /*
         Hatch {
             anchors.fill: parent
-            color: Theme.colors.raised
+            color: Theme.colors.background
             visible: !enabled
         }
+        */
 
         ColoredIcon {
             width: Theme.iconSize
@@ -146,10 +165,12 @@ T.SpinBox {
             anchors.centerIn: parent
             source: "qrc:/icons/plus.svg"
             color: {
-                if (!enabled) return Theme.colors.disabled;
                 if (up.pressed) return Theme.colors.highlightedText;
-
-                return Theme.colors.controlText;
+                if (up.hovered) return Theme.colors.text;
+                if (!enabled) return Theme.colors.disabled;
+                if (control.caution) return Theme.colors.neutral;
+                if (!control.isValid) return Theme.colors.negative;
+                return Theme.colors.description;
             }
         }
     }

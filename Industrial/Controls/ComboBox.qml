@@ -10,6 +10,7 @@ T.ComboBox {
     property string displayIcon: currentItem && currentItem[control.iconRole] !== undefined ?
                                      currentItem[control.iconRole] : ""
 
+    property alias table: background.table // табличный вид
     property alias isValid: background.isValid
     property alias labelText: background.text
     property alias labelColor: background.textColor
@@ -26,8 +27,8 @@ T.ComboBox {
     }
 
     implicitWidth: background.implicitWidth
-    implicitHeight: labelText.length ? Theme.baseSize * 1.3 : Theme.baseSize
-
+    //implicitHeight: labelText.length ? Theme.baseSize * 1.3 : Theme.baseSize
+    implicitHeight: Theme.baseSize * 1.25
     font.pixelSize: Theme.mainFontSize
     padding: Theme.padding
     clip: true
@@ -37,15 +38,24 @@ T.ComboBox {
 
     indicator: ColoredIcon {
         x: control.width - width
-        y: control.height - height
+        y: table ? control.height - height - Theme.border : control.height - height
         width: Theme.baseSize / 2
         height: width
         source: "qrc:/icons/menu_arrow.svg"
-        color: background.highlighterColor
+        //color: background.highlighterColor
+        color: {
+            if (!control.enabled) return Theme.colors.background;
+            if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
+            if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
+            if (control.activeFocus) return Theme.colors.selection;
+            //if (table) return Theme.colors.control;
+            return Theme.colors.control;
+        }
     }
 
     background: BackgroundInput {
         id: background
+        hovered: control.hovered //to hover
         anchors.fill: parent
         flat: control.flat
         textPadding: Theme.padding
@@ -53,6 +63,7 @@ T.ComboBox {
         highlighted: control.activeFocus
     }
 
+    //Пункт меню выпадающего списка
     delegate: ItemDelegate {
         id: delegate
         width: control.width
@@ -75,27 +86,34 @@ T.ComboBox {
         }
     }
 
+    //пункт внутри инпута
     contentItem: ContentItem {
         id: content
         anchors.fill: control
         anchors.topMargin: background.textHeight - background.underline
+        anchors.leftMargin: Theme.padding
         font: control.font
         text: displayText
         iconSource: displayIcon
-        verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
         textColor: control.enabled ? Theme.colors.text : Theme.colors.disabled
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
     }
 
     popup: Popup {
         y: control.height
         backgroundColor: background.color
         width: control.width
-        implicitHeight: contentItem.implicitHeight
-        padding: 1
+        implicitHeight: contentItem.implicitHeight + Theme.padding * 2
+        //padding: 0
+        leftPadding: 0
+        rightPadding: 0
+        topPadding: Theme.padding
+        bottomPadding: Theme.padding
 
         contentItem: ListView {
             clip: true
-            implicitHeight: contentHeight + 2
+            implicitHeight: contentHeight
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
             boundsBehavior: Flickable.StopAtBounds

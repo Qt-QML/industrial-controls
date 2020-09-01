@@ -95,6 +95,105 @@ Pane {
             Layout.fillWidth: true
         }
 
+        Label {}
+
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Spin")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            SpinBox {
+                id: spin1
+                table: true
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Real")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            RealSpinBox {
+                id: realSpin1
+                table: true
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Coords")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            CoordSpinBox {
+                id: coordSpin1
+                table: true
+                Layout.fillWidth: true
+            }
+        }
+        //--
+
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Spin")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            SpinBox {
+                id: spin2
+                table: true
+                enabled: false
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Real")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            RealSpinBox {
+                id: realSpin2
+                table: true
+                enabled: false
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Coords")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            CoordSpinBox {
+                id: coordSpin2
+                table: true
+                enabled: false
+                Layout.fillWidth: true
+            }
+        }
+        //--
+
         // TODO: altitude & distance pickers
 
         Item { Layout.fillHeight: true }
