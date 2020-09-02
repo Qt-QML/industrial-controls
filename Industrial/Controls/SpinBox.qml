@@ -100,7 +100,7 @@ T.SpinBox {
     down.indicator: BackgroundItem {
         x: control.mirrored ? parent.width - width : 0
         width: Theme.baseSize
-        height: parent.height - background.highlighterHeight
+        height: parent.height - (table ? Theme.border : Theme.underline)
         //radius: round ? Math.min(width, height) / 2 : Theme.rounding
         radius: {
             if (round) return Math.min(width, height) / 2
@@ -139,7 +139,7 @@ T.SpinBox {
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: Theme.baseSize
-        height: parent.height - background.highlighterHeight
+        height: parent.height - (table ? Theme.border : Theme.underline)
         //radius: round ? Math.min(width, height) / 2 : Theme.rounding
         radius: {
             if (round) return Math.min(width, height) / 2

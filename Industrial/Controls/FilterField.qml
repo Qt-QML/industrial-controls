@@ -8,7 +8,7 @@ TextField {
     Button {
         id: button
         anchors.right: parent.right
-        height: parent.height - Theme.underline
+        height: parent.height - (table ? Theme.border : Theme.underline)
         leftCropped: true
         //rightCropped: table ? true : false
         bottomCropped: true

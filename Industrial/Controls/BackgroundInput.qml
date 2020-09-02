@@ -27,8 +27,7 @@ BackgroundItem {
     borderColor: {
         if (table){
             //if (control.hovered) return Theme.colors.hover;
-            //if (highlighted) return Theme.colors.selection;
-            if (!control.enabled) return Theme.colors.background;
+            //if (!control.enabled) return Theme.colors.background;
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
             if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
             if (highlighted) return Theme.colors.selection;
@@ -60,7 +59,7 @@ BackgroundItem {
         anchors.bottom: parent.bottom
         width: parent.width
         height: table ? Theme.border : Theme.underline
-        visible: control.enabled
+        visible: control.enabled || table
         color: {
             if (!control.enabled) return Theme.colors.background;
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;

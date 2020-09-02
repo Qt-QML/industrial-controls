@@ -1,6 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Templates 2.1 as T
 import QtQuick.Layouts 1.3
+import Industrial.Controls 1.0 as Controls
 
 T.ComboBox {
     id: control
@@ -37,21 +38,55 @@ T.ComboBox {
                      currentItem[control.textRole] : currentItem
 
     indicator: ColoredIcon {
-        x: control.width - width
-        y: table ? control.height - height - Theme.border : control.height - height
-        width: Theme.baseSize / 2
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: Theme.padding
+        width: Theme.baseSize / 1.4
         height: width
-        source: "qrc:/icons/menu_arrow.svg"
-        //color: background.highlighterColor
+        source: control.popup.visible ? "qrc:/icons/up.svg" : "qrc:/icons/down.svg"
         color: {
             if (!control.enabled) return Theme.colors.background;
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
             if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
             if (control.activeFocus) return Theme.colors.selection;
             //if (table) return Theme.colors.control;
-            return Theme.colors.control;
+            return Theme.colors.description;
         }
     }
+
+    /*
+    Button {
+        anchors.right: parent.right
+        //y: table ? control.height - height - Theme.border : control.height - height
+        height: parent.height - (table ? Theme.border : Theme.underline)
+        flat: true
+        round: control.round
+        autoRepeat: true
+        focusPolicy: Qt.NoFocus
+        enabled: _focusedItem && _increaseEnabled
+        //hatched: !enabled
+        leftCropped: true
+        bottomCropped: true
+        //highlightColor: Theme.colors.selection
+        color: {
+            if (!control.enabled) return Theme.colors.background;
+            if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
+            if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
+            if (background.highlighted) return Theme.colors.selection;
+            if (table) return Theme.colors.background;
+            return Theme.colors.control;
+        }
+        iconSource: "qrc:/icons/plus.svg"
+        iconColor: {
+            if (control.pressed) return Theme.colors.highlightedText;
+            if (control.hovered) return Theme.colors.text;
+            if (!control.enabled) return Theme.colors.disabled;
+            if (control.caution) return Theme.colors.neutral;
+            if (!control.isValid) return Theme.colors.negative;
+            return Theme.colors.description;
+        }
+    }
+    */
 
     background: BackgroundInput {
         id: background

@@ -284,12 +284,13 @@ T.Control {
         id: highlighterback
         anchors.bottom: parent.bottom
         width: parent.width
-        height: Theme.underline
+        height: table ? Theme.border : Theme.underline
         visible: control.enabled
         color: {
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
             if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
             if (background.highlighted) return Theme.colors.selection;
+            if (table) return Theme.colors.background;
             return Theme.colors.control;
         }
     }
@@ -299,7 +300,7 @@ T.Control {
         id: highlighter
         anchors.bottom: parent.bottom
         width: _focusedItem ? _focusedItem.width : 0
-        height: Theme.underline
+        height: table ? Theme.border : Theme.underline
         x: _focusedItem ? _focusedItem.x : 0
         visible: _focusedItem       
         color: Theme.colors.text;
