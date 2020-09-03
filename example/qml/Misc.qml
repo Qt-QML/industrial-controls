@@ -52,7 +52,7 @@ Pane {
             text: qsTr("Disabled checkbox")
             checked: _checkbox.checked
             enabled: false
-            flat: true
+            //flat: true
             Layout.fillWidth: true
         }
 
@@ -73,7 +73,7 @@ Pane {
             text: qsTr("Disabled radio button")
             enabled: false
             checked: true
-            flat: true
+            //flat: true
             Layout.fillWidth: true
         }
 
@@ -95,7 +95,7 @@ Pane {
             text: qsTr("Disabled switch")
             enabled: false
             checked: _switch.checked
-            //flat: true
+            flat: true
             Layout.fillWidth: true
         }
 

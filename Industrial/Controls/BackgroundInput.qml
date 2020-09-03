@@ -74,21 +74,21 @@ BackgroundItem {
     Text {
         id: textItem
         property real fontPixelSizeWhenInputed: Theme.auxFontSize / 1.2
-        height:                 implicitHeight
-        //anchors.leftMargin:     control.textPadding
-        leftPadding:            control.textPadding
-        rightPadding:           control.textPadding
+        height: implicitHeight
+        //anchors.leftMargin: control.textPadding
+        leftPadding: control.textPadding
+        rightPadding: control.textPadding
 
-        anchors.horizontalCenter:   spin ? parent.horizontalCenter : undefined
-        anchors.left:               spin ? undefined : parent.left
+        anchors.horizontalCenter: spin ? parent.horizontalCenter : undefined
+        anchors.left: spin ? undefined : parent.left
 
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter //неактивный посередине
-        anchors.top:            inputed ? parent.top : undefined //активный сверху
-        bottomPadding:          inputed ? undefined : Theme.border
-        topPadding:             inputed ? Theme.border : undefined
-        //bottomPadding:          Theme.border
-        //topPadding:             Theme.border
-        font.pixelSize:         inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize
+        anchors.top: inputed ? parent.top : undefined //активный сверху
+        bottomPadding: inputed ? undefined : Theme.border
+        topPadding: inputed ? Theme.border : undefined
+        //bottomPadding: Theme.border
+        //topPadding: Theme.border
+        font.pixelSize: inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize
 
         color: {
             if (!control.enabled) return Theme.colors.disabled;
