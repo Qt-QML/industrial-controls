@@ -28,8 +28,8 @@ T.ComboBox {
     }
 
     implicitWidth: background.implicitWidth
-    //implicitHeight: labelText.length ? Theme.baseSize * 1.3 : Theme.baseSize
-    implicitHeight: Theme.baseSize * 1.25
+    //implicitHeight: Theme.baseSize * 1.25
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
     padding: Theme.padding
     clip: true

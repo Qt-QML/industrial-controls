@@ -12,8 +12,8 @@ T.TextField {
     property alias labelFontPixelSize: background.fontPixelSize
 
     implicitWidth: background.implicitWidth
-    //implicitHeight: Math.max(background.textHeight + contentHeight + background.underline, Theme.baseSize)
-    implicitHeight: Theme.baseSize * 1.25
+    //implicitHeight: Theme.baseSize * 1.25
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
     color: control.enabled ? Theme.colors.text : Theme.colors.disabled
     selectionColor: background.highlighterColor
