@@ -54,40 +54,6 @@ T.ComboBox {
         }
     }
 
-    /*
-    Button {
-        anchors.right: parent.right
-        //y: table ? control.height - height - Theme.border : control.height - height
-        height: parent.height - (table ? Theme.border : Theme.underline)
-        flat: true
-        round: control.round
-        autoRepeat: true
-        focusPolicy: Qt.NoFocus
-        enabled: _focusedItem && _increaseEnabled
-        //hatched: !enabled
-        leftCropped: true
-        bottomCropped: true
-        //highlightColor: Theme.colors.selection
-        color: {
-            if (!control.enabled) return Theme.colors.background;
-            if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
-            if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
-            if (background.highlighted) return Theme.colors.selection;
-            if (table) return Theme.colors.background;
-            return Theme.colors.control;
-        }
-        iconSource: "qrc:/icons/plus.svg"
-        iconColor: {
-            if (control.pressed) return Theme.colors.highlightedText;
-            if (control.hovered) return Theme.colors.text;
-            if (!control.enabled) return Theme.colors.disabled;
-            if (control.caution) return Theme.colors.neutral;
-            if (!control.isValid) return Theme.colors.negative;
-            return Theme.colors.description;
-        }
-    }
-    */
-
     background: BackgroundInput {
         id: background
         hovered: control.hovered //to hover
@@ -137,7 +103,8 @@ T.ComboBox {
 
     popup: Popup {
         y: control.height
-        backgroundColor: background.color
+        //backgroundColor: background.color
+        backgroundColor: Theme.colors.sunken
         width: control.width
         implicitHeight: contentItem.implicitHeight + Theme.padding * 2
         //padding: 0

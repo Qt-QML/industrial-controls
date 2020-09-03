@@ -160,7 +160,7 @@ Pane {
             SpinBox {
                 id: spin2
                 table: true
-                enabled: false
+                flat: true
                 Layout.fillWidth: true
             }
 
@@ -174,7 +174,7 @@ Pane {
             RealSpinBox {
                 id: realSpin2
                 table: true
-                enabled: false
+                flat: true
                 Layout.fillWidth: true
             }
 
@@ -187,6 +187,56 @@ Pane {
 
             CoordSpinBox {
                 id: coordSpin2
+                table: true
+                flat: true
+                Layout.fillWidth: true
+            }
+        }
+        //--
+
+        //--
+        GridLayout {
+            columnSpacing: Theme.spacing
+            rowSpacing: 0
+            columns: 2
+
+            //
+            Label {
+                text: qsTr("Spin")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            SpinBox {
+                id: spin3
+                table: true
+                enabled: false
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Real")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            RealSpinBox {
+                id: realSpin3
+                table: true
+                enabled: false
+                Layout.fillWidth: true
+            }
+
+            //
+            Label {
+                text: qsTr("Coords")
+                font.pixelSize: Theme.auxFontSize
+                color: Theme.colors.description
+            }
+
+            CoordSpinBox {
+                id: coordSpin3
                 table: true
                 enabled: false
                 Layout.fillWidth: true

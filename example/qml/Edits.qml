@@ -199,7 +199,7 @@ Pane {
         }
         //--
 
-        /*
+
         //--
         GridLayout {
             columnSpacing: Theme.spacing
@@ -215,7 +215,7 @@ Pane {
 
             TextField {
                 table: true
-                isValid: false
+                flat: true
                 anchors.right: Layout.right
                 Layout.fillWidth: true
             }
@@ -228,7 +228,7 @@ Pane {
 
             TextField {
                 table: true
-                isValid: false
+                flat: true
                 placeholderText: qsTr("Placeholder")
                 anchors.right: Layout.right
                 Layout.fillWidth: true
@@ -242,7 +242,7 @@ Pane {
 
             TextField {
                 table: true
-                isValid: false
+                flat: true
                 echoMode: TextInput.Password
                 text: qsTr("Password")
                 anchors.right: Layout.right
@@ -257,7 +257,7 @@ Pane {
 
             FilterField {
                 table: true
-                isValid: false
+                flat: true
                 text: qsTr("Filter fields")
                 anchors.right: Layout.right
                 Layout.fillWidth: true
@@ -271,14 +271,14 @@ Pane {
 
             ComboBox {
                 table: true
-                isValid: false
+                flat: true
                 model: [ qsTr("This"), qsTr("Is"), qsTr("Example"), qsTr("Combobox") ]
                 anchors.right: Layout.right
                 Layout.fillWidth: true
             }
         }
         //--
-        */
+
 
         //--
         GridLayout {

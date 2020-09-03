@@ -65,6 +65,7 @@ BackgroundItem {
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
             if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
             if (highlighted) return Theme.colors.selection;
+            if (table && flat) return Theme.colors.control;
             if (table) return Theme.colors.background;
             return Theme.colors.control;
         }
