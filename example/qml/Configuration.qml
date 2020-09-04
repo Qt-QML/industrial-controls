@@ -23,8 +23,8 @@ Popup {
             from: 16
             to: 96
             stepSize: 4
+            value: 72
             text: qsTr("Base size")
-            value: 80
             onPressedChanged: { if (!pressed) { Theme.baseSize = value } }
             Layout.fillWidth: true
         }

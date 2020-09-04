@@ -18,11 +18,13 @@ T.ItemDelegate {
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
+        /*
         color: {
-            if (control.highlighted) return control.isValid ? Theme.colors.selection :
-                                                              Theme.colors.negative;
+            if (control.highlighted) return control.isValid ? Theme.colors.selection : Theme.colors.negative;
             return Theme.colors.sunken;
         }
+        */
+        color: control.highlighted ? Theme.colors.selection : Theme.colors.sunken
     }
 
     contentItem: ContentItem {

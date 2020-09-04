@@ -11,10 +11,12 @@ T.Popup {
 
     background: Rectangle {
         color: backgroundColor
-        radius: 2
+        radius: Theme.baseSize / 8
 
         Shadow {
             source: parent
+            glowRadius: Theme.shadowSize * 4
+            anchors.verticalCenterOffset: Theme.baseSize / 8
         }
     }
 }

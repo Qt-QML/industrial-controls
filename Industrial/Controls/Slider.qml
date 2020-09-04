@@ -31,7 +31,8 @@ T.Slider {
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            color: !flat ? Theme.colors.selection : Theme.colors.control
+            //color: !flat ? Theme.colors.selection : Theme.colors.control
+            color: Theme.colors.selection
             radius: height / 2
         }
 
