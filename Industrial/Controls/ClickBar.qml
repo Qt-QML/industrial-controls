@@ -2,8 +2,6 @@ import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 import QtGraphicalEffects 1.0
 
-// ToDo: orientation vertical
-
 T.Slider {
     id: control
 
@@ -15,7 +13,6 @@ T.Slider {
 
     implicitWidth: Theme.baseSize * 6
     implicitHeight: Theme.baseSize
-    topPadding: textItem.visible ? textItem.contentHeight : 0
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
 
@@ -41,7 +38,6 @@ T.Slider {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            //color: !flat ? Theme.colors.selection : Theme.colors.control
             color: Theme.colors.selection
 
             Rectangle {
@@ -89,9 +85,7 @@ T.Slider {
 
     Text {
         id: textItem
-        anchors.left: parent.left
-        anchors.top: parent.top
-        visible: text.length
+        anchors.centerIn: parent
         font.pixelSize: Theme.auxFontSize
         color: {
             if (!control.enabled) return Theme.colors.disabled;
