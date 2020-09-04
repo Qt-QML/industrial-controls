@@ -38,7 +38,7 @@ T.Slider {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            color: !flat ? Theme.colors.selection : Theme.colors.control
+            color: Theme.colors.selection
 
             Rectangle {
                 id: hover

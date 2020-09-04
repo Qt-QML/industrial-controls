@@ -41,7 +41,7 @@ T.Switch {
         anchors.verticalCenter: base.verticalCenter
         color: "transparent"
         x: control.checked ? base.width - width : 0
-        Behavior on x { PropertyAnimation { duration: Theme.animationTime} }
+        Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
 
         Handle {
             height: Theme.switchSize - Theme.border * 4
