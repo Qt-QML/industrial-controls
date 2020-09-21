@@ -13,7 +13,7 @@ QtObject {
     property real handleSize: 1.6       // Хендл у слайдеров и свичей
     property real checkmarkSize: 1.6    // Чекбоксы и радио
     property real floatSize: 0.8        // Плавающие кнопки
-    property real rounding: 8           // Радиус скругления
+    property real rounding: 0.125       // Радиус скругления
     property real underline: 16         // Подчёркивание
     property real shadow: 10            // Размер тени
     property real border: 18            // Размер бордера
