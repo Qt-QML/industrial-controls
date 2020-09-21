@@ -36,7 +36,7 @@ QtObject {
 
     readonly property ThemeColors colors: night ? nightColors : dayColors
 
-    readonly property real rounding: baseSize / factors.rounding
+    readonly property real rounding: baseSize * factors.rounding
     readonly property real underline: baseSize / factors.underline
     readonly property real shadowSize: baseSize / factors.shadow
 
