@@ -16,6 +16,7 @@ BackgroundItem {
     property alias underline: highlighter.height
     property alias text: textItem.text
     property alias textColor: textItem.color
+    property alias textWidth: textItem.width
 
     property alias fontPixelSize: textItem.fontPixelSizeWhenInputed
 
@@ -25,20 +26,18 @@ BackgroundItem {
     radius: table ? 0 : Theme.rounding
     bottomCropping: table ? 0 : radius
     borderColor: {
-        if (table){
-            //if (control.hovered) return Theme.colors.hover;
-            //if (!control.enabled) return Theme.colors.background;
+        if (table) {
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
             if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
             if (highlighted) return Theme.colors.selection;
             return "transparent"
         }
-        if (flat){
+        if (flat) {
             return "transparent" //todo
         }
         return "transparent"
     }
-    //bottomCropping: radius
+
     implicitWidth: Theme.baseSize * 4
 
     TextMetrics {
@@ -53,7 +52,7 @@ BackgroundItem {
         visible: !enabled
     }
 
-    //нижний маркер
+    // bottom marker
     Rectangle {
         id: highlighter
         anchors.bottom: parent.bottom
@@ -71,12 +70,11 @@ BackgroundItem {
         }
     }
 
-    //лейбл и плейсехолдер
+    // label & placeholder
     Text {
         id: textItem
         property real fontPixelSizeWhenInputed: Theme.auxFontSize / 1.2
         height: implicitHeight
-        //anchors.leftMargin: control.textPadding
         leftPadding: control.textPadding
         rightPadding: control.textPadding
 
@@ -87,8 +85,6 @@ BackgroundItem {
         anchors.top: inputed ? parent.top : undefined //активный сверху
         bottomPadding: inputed ? undefined : Theme.border
         topPadding: inputed ? Theme.border : undefined
-        //bottomPadding: Theme.border
-        //topPadding: Theme.border
         font.pixelSize: inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize
 
         color: {
