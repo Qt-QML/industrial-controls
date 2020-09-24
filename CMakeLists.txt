@@ -48,7 +48,7 @@ target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
 target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Gui Qt5::Qml)
 
 # Example
-option(INDUSTRIAL_CONTROLS_EXAMPLE "Industrial Controls Example" OFF)
+option(INDUSTRIAL_CONTROLS_EXAMPLE "Industrial Controls Example" TRUE)
 if(INDUSTRIAL_CONTROLS_EXAMPLE)
     add_subdirectory(example)
 endif(INDUSTRIAL_CONTROLS_EXAMPLE)

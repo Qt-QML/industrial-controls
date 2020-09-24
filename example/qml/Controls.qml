@@ -18,6 +18,7 @@ ColumnLayout {
         TabButton { text: "Inputs" }
         TabButton { text: "Misc" }
         TabButton { text: "Menu" }
+        TabButton { text: "Test" }
         TabButton { text: "Disabled"; enabled: false }
     }
 
@@ -31,5 +32,6 @@ ColumnLayout {
         Inputs {}
         Misc {}
         Menus {}
+        Test {}
     }
 }
