@@ -9,3 +9,4 @@ ListItem 1.0 ListItem.qml
 ListFader 1.0 ListFader.qml
 ListTable 1.0 ListTable.qml
 Draggable 1.0 Draggable.qml
+SplitView 1.0 SplitView.qml

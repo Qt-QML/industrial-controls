@@ -67,6 +67,7 @@
         <file>Industrial/Widgets/ListItem.qml</file>
         <file>Industrial/Widgets/ListFader.qml</file>
         <file>Industrial/Widgets/ListTable.qml</file>
+        <file>Industrial/Widgets/SplitView.qml</file>
         <file>Industrial/Tools/qmldir</file>
         <file>Industrial/Tools/SelectorFrame.qml</file>
         <file>Industrial/Controls/ClickBar.qml</file>
