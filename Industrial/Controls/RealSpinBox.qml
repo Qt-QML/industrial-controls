@@ -50,8 +50,8 @@ SpinBox {
 
     property bool mouseDown: false
     property bool slideMode: true
+    property int startX: 0
     property int oldX: 0
-    property int newX: 0
 
     MouseArea{
 
@@ -65,33 +65,44 @@ SpinBox {
         onPressed: {
             if (!control.activeFocus) {
                 slideMode = true;
-                input.color = "#aaafff"
+                input.color = "#aaafff";
+                input.focus = false;
                 control.forceActiveFocus();
             }
             if (control.activeFocus && slideMode) {
                 mouseDown = true;
             }
-            oldX = mouse.x;
+            startX = mouse.x;
+            oldX = startX;
         }
 
         onPositionChanged: {
             if (mouseDown && slideMode) {
+                if ((mouse.x - oldX) > 0) control.increase();
+                else control.decrease();
+                oldX = mouse.x;
                 console.log("x: ", mouse.x);
             }
         }
+
         onReleased: {
             mouseDown = false;
-            newX = mouse.x;
-            if (oldX == newX && slideMode) {
+            if (startX == mouse.x && slideMode) {
                 slideMode = false;
                 input.color = "#fffaaa"
-                newX = 0;
 
                 cursorShape = Qt.IBeamCursor;
                 //mouse.accepted = false;
                 input.forceActiveFocus();
                 //input.selectAll();
             }
+        }
+
+        onWheel: {
+            if (!control.activeFocus) control.forceActiveFocus();
+            if (wheel.angleDelta.y > 0) control.increase();
+            else control.decrease();
+            //console.log(input.text);
         }
     }
 
