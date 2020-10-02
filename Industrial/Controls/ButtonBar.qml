@@ -4,6 +4,9 @@ import QtQuick.Layouts 1.3
 
 Row {
     id: row
+    
+    property bool setButtonWidth: true
+    
     spacing: 1
 
     onVisibleChildrenChanged: {
@@ -22,7 +25,9 @@ Row {
         for (var j = 0; j < buttonsCnt; ++j) {
             var button = buttons[j];
 
-            button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; })
+            if (row.setButtonWidth) {
+                button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; });
+            }
             button.leftCropped = j > 0;
             button.rightCropped = j < buttonsCnt - 1;
         }

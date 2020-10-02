@@ -71,5 +71,8 @@
         <file>Industrial/Tools/qmldir</file>
         <file>Industrial/Tools/SelectorFrame.qml</file>
         <file>Industrial/Controls/ClickBar.qml</file>
+        <file>Industrial/Widgets/FileBrowser.qml</file>
+        <file>Industrial/Widgets/TableView.qml</file>
+        <file>Industrial/Widgets/TableViewColumn.qml</file>
     </qresource>
 </RCC>
