@@ -4,14 +4,16 @@ import QtQuick.Controls 2.2 as T
 T.Menu {
     id: control
 
-    property color backgroundColor: Theme.colors.sunken
+    property alias backgroundColor: backgroundRect.color
 
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
     background: Rectangle {
+        id: backgroundRect
+
         implicitWidth: Theme.baseSize * 6
         implicitHeight: Theme.baseSize
-        color: backgroundColor
+        color: Theme.colors.sunken
 
         Shadow {
             visible: !control.flat

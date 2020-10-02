@@ -3,9 +3,10 @@ import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
 
 Row {
-    property bool setButtonWidth: true
-
     id: row
+    
+    property bool setButtonWidth: true
+    
     spacing: 1
 
     onVisibleChildrenChanged: {
