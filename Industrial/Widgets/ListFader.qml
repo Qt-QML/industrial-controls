@@ -7,6 +7,7 @@ Item {
     property bool mirrored: false
     property int faderOffset: 0
     property int faderHeight: Controls.Theme.baseSize
+    property color faderColor: Controls.Theme.colors.background
 
     implicitHeight: 0
     z: 1000
@@ -15,7 +16,7 @@ Item {
         width: parent.width
         height: parent.height + faderOffset
         y: mirrored ? 0 : -faderOffset
-        color: Controls.Theme.colors.background
+        color: faderColor
     }
 
     Rectangle {
@@ -24,7 +25,7 @@ Item {
         visible: height
         y: mirrored ? -height : root.height
         gradient: Gradient {
-            GradientStop { color: Controls.Theme.colors.background; position: mirrored ? 1.0 : 0.0 }
+            GradientStop { color: faderColor; position: mirrored ? 1.0 : 0.0 }
             GradientStop { color: "transparent"; position: mirrored ? 0.0 : 1.0 }
         }
     }

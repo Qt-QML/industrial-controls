@@ -31,4 +31,6 @@ QtObject {
     property color neutral: "#ff9800"           // Нейтральный (текст и предупреждения)
     property color negative: "#e53535"          // Негативный (текст и предупреждения)
     property color shadow: "#80000000"          // Тень
+
+    property color fileIcon: "#eabf3f"          // Иконка файла (FileBrowser)
 }

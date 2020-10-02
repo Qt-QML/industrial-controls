@@ -3,6 +3,8 @@ import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
 
 Row {
+    property bool setButtonWidth: true
+
     id: row
     spacing: 1
 
@@ -22,7 +24,9 @@ Row {
         for (var j = 0; j < buttonsCnt; ++j) {
             var button = buttons[j];
 
-            button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; })
+            if (row.setButtonWidth) {
+                button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; });
+            }
             button.leftCropped = j > 0;
             button.rightCropped = j < buttonsCnt - 1;
         }

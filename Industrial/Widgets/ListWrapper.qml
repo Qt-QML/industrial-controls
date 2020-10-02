@@ -6,6 +6,7 @@ Rectangle {
 
     property string emptyText: qsTr("No items")
     property int offset: 2
+    property var faderColor: undefined
 
     property alias list: list
     property alias contentY: list.contentY
@@ -59,6 +60,11 @@ Rectangle {
             width: parent.width
             faderOffset: offset
             faderHeight: list.contentY
+
+            Binding on faderColor {
+                when: listRoot.faderColor !== undefined
+                value: listRoot.faderColor
+            }
         }
 
         footer: ListFader {
@@ -67,6 +73,11 @@ Rectangle {
             faderOffset: offset
             faderHeight: (list.contentHeight - list.height) - list.contentY
             mirrored: true
+
+            Binding on faderColor {
+                when: listRoot.faderColor !== undefined
+                value: listRoot.faderColor
+            }
         }
 
         Controls.Label {

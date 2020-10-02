@@ -37,5 +37,8 @@
         <file>icons/password_hide.svg</file>
         <file>icons/panel-show.svg</file>
         <file>icons/panel-hide.svg</file>
+        <file>icons/file.svg</file>
+        <file>icons/folder.svg</file>
+        <file>icons/folder-2.svg</file>
     </qresource>
 </RCC>
