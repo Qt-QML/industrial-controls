@@ -268,6 +268,7 @@ Item {
                 }
 
                 Controls.ColoredIcon {
+                    width: height
                     height: parent.height
                     visible: root.currentSortRole === modelData.role
 
