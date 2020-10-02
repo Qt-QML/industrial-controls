@@ -72,6 +72,9 @@ SpinBox {
             if (control.activeFocus && slideMode) {
                 mouseDown = true;
             }
+            else {
+                input.cursorPosition = input.positionAt(mouse.x, mouse.y);
+            }
             startX = mouse.x;
             oldX = startX;
         }
