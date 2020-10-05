@@ -23,13 +23,6 @@ SpinBox {
         realValue = value * precision;
     }
 
-    //onActiveFocusChanged: validate()
-    onActiveFocusChanged: {
-        slideMode = true;
-        mouseArea.cursorShape = Qt.SplitHCursor;
-        validate();
-    }
-
     to: realTo / precision
     from: realFrom / precision
     isValid: !isNaN(realValue)
@@ -48,10 +41,19 @@ SpinBox {
 
 
 
+
+
     property bool mouseDown: false
-    property bool slideMode: true
+    property bool mouseSlide: true
     property int startX: 0
     property int oldX: 0
+
+    //onActiveFocusChanged: validate()
+    onActiveFocusChanged: {
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
+        validate();
+    }
 
     MouseArea{
 
@@ -64,38 +66,37 @@ SpinBox {
 
         onPressed: {
             if (!control.activeFocus) {
-                slideMode = true;
+                mouseSlide = true;
                 input.color = "#aaafff";
                 input.focus = false;
                 control.forceActiveFocus();
             }
-            if (control.activeFocus && slideMode) {
+            if (control.activeFocus && mouseSlide) {
                 mouseDown = true;
             }
             else {
-                input.cursorPosition = input.positionAt(mouse.x, mouse.y);
+                mouse.accepted = false;
+                //input.cursorPosition = input.positionAt(mouse.x, mouse.y);
             }
             startX = mouse.x;
             oldX = startX;
         }
 
         onPositionChanged: {
-            if (mouseDown && slideMode) {
+            if (mouseDown && mouseSlide) {
                 if ((mouse.x - oldX) > 0) control.increase();
                 else control.decrease();
                 oldX = mouse.x;
-                console.log("x: ", mouse.x);
+                //console.log("x: ", mouse.x);
             }
         }
 
         onReleased: {
             mouseDown = false;
-            if (startX == mouse.x && slideMode) {
-                slideMode = false;
+            if (startX == mouse.x && mouseSlide) {
+                mouseSlide = false;
                 input.color = "#fffaaa"
-
                 cursorShape = Qt.IBeamCursor;
-                //mouse.accepted = false;
                 input.forceActiveFocus();
                 //input.selectAll();
             }

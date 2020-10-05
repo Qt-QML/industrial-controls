@@ -8,7 +8,7 @@ T.SpinBox {
     property color color: Theme.colors.text
     property bool round: false
 
-    property alias table: background.table // табличный вид
+    property alias table: background.table
     property alias text: input.text
     property alias caution: background.caution
     property alias backgroundColor: background.color
@@ -20,7 +20,6 @@ T.SpinBox {
     signal finished()
 
     implicitWidth: Theme.baseSize * 4
-    //implicitHeight: Theme.baseSize * 1.25
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     leftPadding: Theme.baseSize
     rightPadding: Theme.baseSize
@@ -29,13 +28,6 @@ T.SpinBox {
     editable: true
     clip: true
     to: 100
-
-    onActiveFocusChanged: {
-        if (activeFocus)
-            _input.forceActiveFocus();
-        else
-            finished();
-    }
 
     Connections {
         target: up
@@ -54,7 +46,7 @@ T.SpinBox {
 
     background: BackgroundInput {
         id: background
-        hovered: control.hovered //to hover
+        hovered: control.hovered
         anchors.fill: parent
         highlighted: control.activeFocus
         isValid: control.isValid
@@ -62,15 +54,85 @@ T.SpinBox {
         spin: true
     }
 
+
+
+
+    property bool mouseDown: false
+    property bool mouseSlide: true
+    property int startX: 0
+    property int oldX: 0
+
+    function validate() {
+        value = valueFromText(input.text, locale);
+        caution = false;
+        input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
+    }
+
+    onActiveFocusChanged: {
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
+        validate();
+    }
+
     MouseArea{
-        anchors.fill: parent
-        acceptedButtons: Qt.NoButton
-        propagateComposedEvents: true
+
+        id: mouseArea
+
+        height: parent.height
+        width: parent.width - down.indicator.width - up.indicator.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        cursorShape: Qt.SplitHCursor;
+
+        onPressed: {
+            if (!control.activeFocus) {
+                mouseSlide = true;
+                input.color = "#aaafff";
+                input.focus = false;
+                control.forceActiveFocus();
+            }
+            if (control.activeFocus && mouseSlide) {
+                mouseDown = true;
+            }
+            else {
+                mouse.accepted = false;
+                //input.cursorPosition = input.positionAt(mouse.x, mouse.y);
+            }
+            startX = mouse.x;
+            oldX = startX;
+        }
+
+        onPositionChanged: {
+            if (mouseDown && mouseSlide) {
+                if ((mouse.x - oldX) > 0) control.increase();
+                else control.decrease();
+                oldX = mouse.x;
+                //console.log("x: ", mouse.x);
+            }
+        }
+
+        onReleased: {
+            mouseDown = false;
+            if (startX == mouse.x && mouseSlide) {
+                mouseSlide = false;
+                input.color = "#fffaaa"
+                cursorShape = Qt.IBeamCursor;
+                input.forceActiveFocus();
+                //input.selectAll();
+            }
+        }
+
         onWheel: {
+            if (!control.activeFocus) control.forceActiveFocus();
             if (wheel.angleDelta.y > 0) control.increase();
             else control.decrease();
+            //console.log(input.text);
         }
     }
+
+
+
+
+
 
     contentItem: Item {
         anchors.centerIn: parent
@@ -81,6 +143,7 @@ T.SpinBox {
             anchors.fill: parent
             anchors.bottomMargin: background.underline * 1.5
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+            overwriteMode: false
             Binding on text {
                 value: control.textFromValue(control.value, control.locale);
                 when: !activeFocus || up.hovered || down.hovered
@@ -101,7 +164,6 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         width: Theme.baseSize
         height: parent.height - (table ? Theme.border : Theme.underline)
-        //radius: round ? Math.min(width, height) / 2 : Theme.rounding
         radius: {
             if (round) return Math.min(width, height) / 2
             if (table) return 0
@@ -111,14 +173,6 @@ T.SpinBox {
         bottomCropping: round ? 0 : radius
         color: down.pressed && enabled ? Theme.colors.selection : "transparent"
         hovered: down.hovered
-
-        /*
-        Hatch {
-            anchors.fill: parent
-            color: Theme.colors.background
-            visible: !enabled
-        }
-        */
 
         ColoredIcon {
             width: Theme.iconSize
@@ -140,7 +194,6 @@ T.SpinBox {
         x: control.mirrored ? 0 : parent.width - width
         width: Theme.baseSize
         height: parent.height - (table ? Theme.border : Theme.underline)
-        //radius: round ? Math.min(width, height) / 2 : Theme.rounding
         radius: {
             if (round) return Math.min(width, height) / 2
             if (table) return 0
@@ -150,14 +203,6 @@ T.SpinBox {
         bottomCropping: round ? 0 : radius
         color: up.pressed && enabled ? Theme.colors.selection : "transparent"
         hovered: up.hovered
-
-        /*
-        Hatch {
-            anchors.fill: parent
-            color: Theme.colors.background
-            visible: !enabled
-        }
-        */
 
         ColoredIcon {
             width: Theme.iconSize

@@ -18,12 +18,80 @@ Item {
 
     implicitHeight: input.contentHeight
 
-    MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-        cursorShape: Qt.IBeamCursor
-        onClicked: input.forceActiveFocus();
+
+
+
+
+    //property control
+
+    property bool mouseDown: false
+    property bool mouseSlide: true
+    property int startX: 0
+    property int oldX: 0
+
+    function validate() {
+        value = valueFromText(input.text, locale);
+        caution = false;
+        input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
     }
+
+    onActiveFocusChanged: {
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
+        validate();
+    }
+
+    MouseArea{
+
+        id: mouseArea
+        anchors.fill: parent
+        cursorShape: Qt.SplitHCursor;
+
+        onPressed: {
+            if (!control.activeFocus) {
+                mouseSlide = true;
+                input.color = "#aaafff";
+                input.focus = false;
+                control.forceActiveFocus();
+            }
+            if (control.activeFocus && mouseSlide) mouseDown = true;
+            else mouse.accepted = false;
+            startX = mouse.x;
+            oldX = startX;
+        }
+
+        onPositionChanged: {
+            if (mouseDown && mouseSlide) {
+                if ((mouse.x - oldX) > 0) increaseValue();
+                else decreaseValue();
+                oldX = mouse.x;
+                //console.log("x: ", mouse.x);
+            }
+        }
+
+        onReleased: {
+            mouseDown = false;
+            if (startX == mouse.x && mouseSlide) {
+                mouseSlide = false;
+                input.color = "#fffaaa"
+                cursorShape = Qt.IBeamCursor;
+                input.forceActiveFocus();
+                //input.selectAll();
+            }
+        }
+
+        onWheel: {
+            if (!control.activeFocus) forceActiveFocus();
+            if (wheel.angleDelta.y > 0) increaseValue();
+            else decreaseValue();
+            //console.log(input.text);
+        }
+    }
+
+
+
+
+
 
     Row {
         anchors.centerIn: parent
@@ -31,7 +99,7 @@ Item {
         NumericInput {
             id: input
             height: root.height
-            overwriteMode: true
+            overwriteMode: false
             selectionColor: highlighter.visible ? highlighterback.color : Theme.colors.control
             selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
