@@ -5,8 +5,24 @@ import Industrial.Controls 1.0 as Controls
 Item {
     id: root
 
+    implicitHeight: topItemMinHeight + bottomItemMinHeight + Controls.Theme.sliderSize * 2
     property Component topItemDelegate
     property Component bottomItemDelegate
+    property real topItemMinHeight: topElement.item.implicitHeight
+    property real bottomItemMinHeight: bottomElement.item.implicitHeight
+    property alias handleColor: handleRectangle.color
+
+    onTopItemMinHeightChanged: {
+        if(topItemMinHeight > handle.y && topItemMinHeight < root.height - handle.height - bottomItemMinHeight) {
+            handle.y = topItemMinHeight
+        }
+    }
+
+    onBottomItemMinHeightChanged: {
+        if(root.height - handle.height - bottomItemMinHeight > 0 && root.height - handle.height - bottomItemMinHeight < handle.y) {
+            handle.y = root.height - handle.height - bottomItemMinHeight;
+        }
+    }
 
     Loader {
         id: topElement
@@ -21,8 +37,10 @@ Item {
         id: handle
         height: Controls.Theme.sliderSize * 2
         width: parent.width
+        y: topItemMinHeight
 
         Rectangle {
+            id: handleRectangle
             anchors.fill: parent
             color: Controls.Theme.colors.raised
             radius: height / 2
@@ -35,7 +53,7 @@ Item {
             height: parent.height * 4
             width: height
             rotation: 90
-            color: Controls.Theme.colors.text
+            color: Controls.Theme.colors.description
             source: "qrc:/icons/dots.svg"
         }
 
@@ -46,12 +64,13 @@ Item {
             drag.threshold: 0
             drag.target: handle
             drag.axis: Drag.YAxis
-            drag.minimumY: 0
-            drag.maximumY: root.height - handle.height
+            drag.minimumY: topItemMinHeight
+            drag.maximumY: root.height - handle.height - bottomItemMinHeight
         }
     }
 
     Loader {
+        id: bottomElement
         anchors.top: handle.bottom
         anchors.bottom: root.bottom
         anchors.left: root.left

@@ -17,7 +17,14 @@ SpinBox {
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
     }
 
-    onRealValueChanged: value = Math.round(realValue / precision)
+    onRealValueChanged: {
+        if (isNaN(realValue)) {
+            input.text = qsTr("N/D")
+        } else {
+            value = Math.round(realValue / precision)
+        }
+    }
+
     onValueChanged: {
         if (caution) validate();
         realValue = value * precision;
@@ -75,7 +82,6 @@ SpinBox {
         var val = parseFloat(text.replace(locale.decimalPoint, '.')) / precision;
         if (val < from) return from;
         if (val > to) return to;
-
         return val;
     }
 
