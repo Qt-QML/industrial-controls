@@ -39,10 +39,11 @@ file(APPEND ${TRANSLATIONS_QRC} "\n\t</qresource>\n</RCC>")
 list(APPEND QRC_FILES ${TRANSLATIONS_QRC})
 
 # Resources
-file(GLOB_RECURSE QRC_FILES "*.qrc")
+file(GLOB_RECURSE LOC_QRC_FILES "*.qrc")
+
 
 # Compile resources
-qt5_add_resources(QRC_SOURCES ${QRC_FILES})
+qt5_add_resources(QRC_SOURCES ${QRC_FILES} ${LOC_QRC_FILES})
 target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Gui Qt5::Qml)
