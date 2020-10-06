@@ -4,12 +4,14 @@ import QtQuick.Controls 2.2 as T
 T.Pane {
     id: control
 
-    property color backgroundColor: Theme.colors.background
+    property alias backgroundColor: rect.color
+    property alias radius: rect.radius
 
     padding: Theme.margins
 
     background: Rectangle {
-        color: backgroundColor
+        id: rect
+        color: Theme.colors.background
         radius: Theme.rounding
     }
 }

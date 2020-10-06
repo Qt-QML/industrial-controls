@@ -21,8 +21,9 @@ T.Button {
     property alias iconSize: content.iconSize
     property alias textSize: content.textSize
     property alias textColor: content.textColor
-    property alias radius: backgroundItem.radius
     property alias contentWidth: content.width
+    property alias horizontalAlignment: content.horizontalAlignment
+    property alias radius: backgroundItem.radius
     property alias backgroundOpacity: backgroundItem.opacity
     property alias hoverColor: backgroundItem.hoverColor
 
