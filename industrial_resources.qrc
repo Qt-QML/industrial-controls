@@ -15,7 +15,11 @@
         <file>icons/up.svg</file>
         <file>icons/down.svg</file>
         <file>icons/left.svg</file>
+        <file>icons/left-2.svg</file>
+        <file>icons/left-3.svg</file>
         <file>icons/right.svg</file>
+        <file>icons/right-2.svg</file>
+        <file>icons/right-3.svg</file>
         <file>icons/cancel.svg</file>
         <file>icons/remove.svg</file>
         <file>icons/erase.svg</file>

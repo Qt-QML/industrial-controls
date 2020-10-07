@@ -4,9 +4,18 @@ import QtQuick.Templates 2.2 as T
 T.SpinBox {
     id: control
 
+    property int stepSizeDefault: 1
+    property int stepSizeShift: 10
+    property int stepSizeControl: 100
+    property bool mouseDown: false
+    property bool mouseSlide: true
+    property int startX: 0
+    property int oldX: 0
+
     property bool isValid: text.length
     property color color: Theme.colors.text
     property bool round: false
+    property string tipText
 
     property alias table: background.table
     property alias text: input.text
@@ -19,6 +28,7 @@ T.SpinBox {
 
     signal finished()
 
+    stepSize: stepSizeDefault
     implicitWidth: Theme.baseSize * 4
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     leftPadding: Theme.baseSize
@@ -27,7 +37,7 @@ T.SpinBox {
     font.pixelSize: Theme.mainFontSize
     editable: true
     clip: true
-    to: 100
+    to: 10000
 
     Connections {
         target: up
@@ -54,17 +64,10 @@ T.SpinBox {
         spin: true
     }
 
-
-
-
-    property bool mouseDown: false
-    property bool mouseSlide: true
-    property int startX: 0
-    property int oldX: 0
-
     function validate() {
         value = valueFromText(input.text, locale);
         caution = false;
+        input.focus = false;
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
     }
 
@@ -75,9 +78,7 @@ T.SpinBox {
     }
 
     MouseArea{
-
         id: mouseArea
-
         height: parent.height
         width: parent.width - down.indicator.width - up.indicator.width
         anchors.horizontalCenter: parent.horizontalCenter
@@ -86,8 +87,6 @@ T.SpinBox {
         onPressed: {
             if (!control.activeFocus) {
                 mouseSlide = true;
-                input.color = "#aaafff";
-                input.focus = false;
                 control.forceActiveFocus();
             }
             if (control.activeFocus && mouseSlide) {
@@ -95,7 +94,6 @@ T.SpinBox {
             }
             else {
                 mouse.accepted = false;
-                //input.cursorPosition = input.positionAt(mouse.x, mouse.y);
             }
             startX = mouse.x;
             oldX = startX;
@@ -104,9 +102,8 @@ T.SpinBox {
         onPositionChanged: {
             if (mouseDown && mouseSlide) {
                 if ((mouse.x - oldX) > 0) control.increase();
-                else control.decrease();
+                else if ((mouse.x - oldX) < 0) control.decrease();
                 oldX = mouse.x;
-                //console.log("x: ", mouse.x);
             }
         }
 
@@ -114,10 +111,8 @@ T.SpinBox {
             mouseDown = false;
             if (startX == mouse.x && mouseSlide) {
                 mouseSlide = false;
-                input.color = "#fffaaa"
                 cursorShape = Qt.IBeamCursor;
                 input.forceActiveFocus();
-                //input.selectAll();
             }
         }
 
@@ -125,14 +120,21 @@ T.SpinBox {
             if (!control.activeFocus) control.forceActiveFocus();
             if (wheel.angleDelta.y > 0) control.increase();
             else control.decrease();
-            //console.log(input.text);
         }
     }
 
-
-
-
-
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeControl;
+        else return;
+        event.accepted = true;
+    }
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeDefault;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeDefault;
+        else return;
+        event.accepted = true;
+    }
 
     contentItem: Item {
         anchors.centerIn: parent
@@ -178,7 +180,11 @@ T.SpinBox {
             width: Theme.iconSize
             height: width
             anchors.centerIn: parent
-            source: "qrc:/icons/minus.svg"
+            source: {
+                if (stepSize == stepSizeControl) return "qrc:/icons/left-3.svg"
+                if (stepSize == stepSizeShift) return "qrc:/icons/left-2.svg"
+                return "qrc:/icons/left.svg"
+            }
             color: {
                 if (down.pressed) return Theme.colors.highlightedText;
                 if (down.hovered) return Theme.colors.text;
@@ -208,7 +214,11 @@ T.SpinBox {
             width: Theme.iconSize
             height: width
             anchors.centerIn: parent
-            source: "qrc:/icons/plus.svg"
+            source: {
+                if (stepSize == stepSizeControl) return "qrc:/icons/right-3.svg"
+                if (stepSize == stepSizeShift) return "qrc:/icons/right-2.svg"
+                return "qrc:/icons/right.svg"
+            }
             color: {
                 if (up.pressed) return Theme.colors.highlightedText;
                 if (up.hovered) return Theme.colors.text;

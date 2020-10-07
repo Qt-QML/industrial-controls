@@ -13,6 +13,7 @@ SpinBox {
 
     function validate() {
         value = valueFromText(input.text, locale);
+        input.focus = false;
         caution = false;
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
     }
@@ -39,16 +40,6 @@ SpinBox {
         top: Math.max(realFrom, realTo)
     }
 
-
-
-
-
-    property bool mouseDown: false
-    property bool mouseSlide: true
-    property int startX: 0
-    property int oldX: 0
-
-    //onActiveFocusChanged: validate()
     onActiveFocusChanged: {
         mouseSlide = true;
         mouseArea.cursorShape = Qt.SplitHCursor;
@@ -56,9 +47,7 @@ SpinBox {
     }
 
     MouseArea{
-
         id: mouseArea
-
         height: parent.height
         width: parent.width - down.indicator.width - up.indicator.width
         anchors.horizontalCenter: parent.horizontalCenter
@@ -67,8 +56,6 @@ SpinBox {
         onPressed: {
             if (!control.activeFocus) {
                 mouseSlide = true;
-                input.color = "#aaafff";
-                input.focus = false;
                 control.forceActiveFocus();
             }
             if (control.activeFocus && mouseSlide) {
@@ -76,7 +63,6 @@ SpinBox {
             }
             else {
                 mouse.accepted = false;
-                //input.cursorPosition = input.positionAt(mouse.x, mouse.y);
             }
             startX = mouse.x;
             oldX = startX;
@@ -85,9 +71,8 @@ SpinBox {
         onPositionChanged: {
             if (mouseDown && mouseSlide) {
                 if ((mouse.x - oldX) > 0) control.increase();
-                else control.decrease();
+                else if ((mouse.x - oldX) < 0) control.decrease();
                 oldX = mouse.x;
-                //console.log("x: ", mouse.x);
             }
         }
 
@@ -95,10 +80,8 @@ SpinBox {
             mouseDown = false;
             if (startX == mouse.x && mouseSlide) {
                 mouseSlide = false;
-                input.color = "#fffaaa"
                 cursorShape = Qt.IBeamCursor;
                 input.forceActiveFocus();
-                //input.selectAll();
             }
         }
 
@@ -106,12 +89,8 @@ SpinBox {
             if (!control.activeFocus) control.forceActiveFocus();
             if (wheel.angleDelta.y > 0) control.increase();
             else control.decrease();
-            //console.log(input.text);
         }
     }
-
-
-
 
     contentItem: Item {
         anchors.centerIn: parent
