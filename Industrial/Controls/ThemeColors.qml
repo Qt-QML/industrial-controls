@@ -3,17 +3,15 @@ import QtQuick 2.6
 QtObject {
     property color raised: "#334248"            // Фон возвышенных элементов (панели)
     property color background: "#2c393f"        // Фона окна
-    //property color sunken: "#263136"
     property color sunken: "#212C30"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
     property color text: "#ffffff"              // Текст (иконки и другие элементы на фоне окна, утопленных и возвышенных элементов)
-    //property color hover: "#1600ddc7"
     property color hover: "#3319d6c4"           // Подсветка элемента при наведении мыши
     property color border: "#2c393f"            // Цвет обводки
 
     property color disabled: "#161c20"          // Неактивный цвет (штриховка на контролах, отключенные элементы    
 
-    //property color control: "#4D636F"
     property color control: "#5A717C"           // Фон кнопки, а так же хэндлов свичей и слайдеров
+    property color line: "#80A717C"             // Линии, цвет control + 0.5 прозрачность
     property color controlText: "#ffffff"       // Текст кнопки
 
     property color tip: "#009688"               // Фон подсказки
