@@ -13,9 +13,11 @@ SpinBox {
 
     function validate() {
         value = valueFromText(input.text, locale);
-        input.focus = false;
         caution = false;
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
+        input.focus = false;
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
     }
 
     onRealValueChanged: value = Math.round(realValue / precision)
@@ -28,7 +30,7 @@ SpinBox {
     from: realFrom / precision
     isValid: !isNaN(realValue)
 
-    //TODO: getDecimals(num) одинаковые функции, а эта вроде не используется
+    //TODO: убрать, getDecimals(num) одинаковые функции, а эта вроде не используется
     function decimals(num) {
         return (num.toString().split('.')[1] || []).length;
     }
@@ -41,8 +43,6 @@ SpinBox {
     }
 
     onActiveFocusChanged: {
-        mouseSlide = true;
-        mouseArea.cursorShape = Qt.SplitHCursor;
         validate();
     }
 
@@ -82,6 +82,7 @@ SpinBox {
                 mouseSlide = false;
                 cursorShape = Qt.IBeamCursor;
                 input.forceActiveFocus();
+                input.selectAll();
             }
         }
 

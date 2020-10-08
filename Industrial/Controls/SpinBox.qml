@@ -67,13 +67,13 @@ T.SpinBox {
     function validate() {
         value = valueFromText(input.text, locale);
         caution = false;
-        input.focus = false;
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
+        input.focus = false;
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
     }
 
     onActiveFocusChanged: {
-        mouseSlide = true;
-        mouseArea.cursorShape = Qt.SplitHCursor;
         validate();
     }
 
@@ -113,6 +113,7 @@ T.SpinBox {
                 mouseSlide = false;
                 cursorShape = Qt.IBeamCursor;
                 input.forceActiveFocus();
+                input.selectAll();
             }
         }
 
@@ -155,6 +156,10 @@ T.SpinBox {
                 control.valueModified()
             }
             onFinished: control.finished()
+            onEditingFinished: {
+                control.validate();
+                control.valueModified();
+            }
             maximumLength: control.to.toString().length + 1
             selectionColor: background.highlighterColor
             selectedTextColor: control.activeFocus ? Theme.colors.selectedText : Theme.colors.text

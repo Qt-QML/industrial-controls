@@ -3,6 +3,11 @@ import QtQuick 2.9
 Item {
     id: root
 
+    //property bool mouseDown: false
+    //property bool control.mouseSlide: true
+    property int startX: 0
+    property int oldX: 0
+
     property Item previousItem
     property Item nextItem
 
@@ -18,97 +23,12 @@ Item {
 
     implicitHeight: input.contentHeight
 
-
-
-
-
-    property bool mouseDown: false
-    property bool mouseSlide: true
-    property int startX: 0
-    property int oldX: 0
-
     function validate() {
-        value = valueFromText(input.text, locale);
+        control.caution = false;
         input.focus = false;
-        caution = false;
-        input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
-    }
-
-    onActiveFocusChanged: {
-        //input.focus = false;
         mouseSlide = true;
         mouseArea.cursorShape = Qt.SplitHCursor;
-        validate();
     }
-
-    MouseArea{
-
-        id: mouseArea
-        anchors.fill: parent
-        cursorShape: Qt.SplitHCursor;
-
-
-        onPressed: {
-
-            //mouse.accepted = true;
-
-            console.log("0");
-            if (!input.activeFocus) {
-                mouseSlide = true;
-                input.color = "#aaafff";
-                //input.focus = false;
-                input.forceActiveFocus();
-                //console.log("1");
-                //mouseDown = true;
-                mouse.accepted = true;
-            }
-            if (input.activeFocus && mouseSlide) {
-                mouseDown = true;
-                mouse.accepted = true;
-                //console.log("2");
-            }
-            else {
-                input.color = "red";
-                mouse.accepted = false;
-                //console.log("3");
-            }
-            startX = mouse.x;
-            oldX = startX;
-        }
-
-        onPositionChanged: {
-            if (mouseDown && mouseSlide) {
-                if ((mouse.x - oldX) > 0) increaseValue();
-                else decreaseValue();
-                oldX = mouse.x;
-                //console.log("x: ", mouse.x);
-            }
-        }
-
-        onReleased: {
-            mouseDown = false;
-            if (startX == mouse.x && mouseSlide) {
-                mouseSlide = false;
-                input.color = "#fffaaa"
-                cursorShape = Qt.IBeamCursor;
-                input.forceActiveFocus();
-                //input.selectAll();
-                //console.log("4");
-            }
-        }
-
-        onWheel: {
-            if (!control.activeFocus) input.forceActiveFocus();
-            if (wheel.angleDelta.y > 0) increaseValue();
-            else decreaseValue();
-            //console.log(input.text);
-        }
-    }
-
-
-
-
-
 
     Row {
         anchors.centerIn: parent
@@ -123,46 +43,36 @@ Item {
 
             bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
 
-            /////////
-            //onFinished: control.finished()
-            validator: control.validator
-            ////////
-
-/*
             onTextEdited: {
                 if (cursorPosition < maximumLength) {
-                    control.caution = true;
-                    console.log("11");
+                    //control.caution = true; //TODO: Delete
                 } else {
                     updateValueFromControls();
-                    if (nextItem && activeFocus) nextItem.forceActiveFocus();
-                    console.log("11-11");
+                    if (nextItem && activeFocus) { nextItem.forceActiveFocus(); nextItem.selectAll(); }
                 }
             }
             onActiveFocusChanged: {
                 if (activeFocus) {
                     _focusedItem = root;
-                    //cursorPosition = 0;
-                    console.log("22");
+                    cursorPosition = 0;
                 }
                 else {
                     updateValueFromControls();
-                    console.log("22-22");
+                    validate();
                 }
             }
             onEditingFinished: {
                 updateValueFromControls();
-                if (nextItem && activeFocus) nextItem.forceActiveFocus();
-                console.log("33");
-            }/*
+                if (nextItem && activeFocus) { nextItem.forceActiveFocus(); nextItem.selectAll(); }
+                if (!nextItem) validate();
+            }
             onCursorPositionChanged: {
                 if (cursorPosition == 2 && length == 5) {
                     if (_lastCursorPosition == 1) cursorPosition = 3;
                     else if (_lastCursorPosition == 3) cursorPosition = 1;
                 }
                 _lastCursorPosition = cursorPosition
-                console.log("44");
-            }*/
+            }
 
             Keys.onPressed: {
                 if (event.key === Qt.Key_Left && previousItem && cursorPosition === 0) {
@@ -206,6 +116,51 @@ Item {
             color: input.color
             verticalAlignment: input.verticalAlignment
             bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
+        }
+    }
+
+    MouseArea{
+        id: mouseArea
+        anchors.fill: parent
+        cursorShape: Qt.SplitHCursor;
+
+        onPressed: {
+            if (!input.activeFocus) {
+                control.mouseSlide = true;
+                input.forceActiveFocus();
+            }
+            if (input.activeFocus && control.mouseSlide) {
+                control.mouseDown = true;
+            }
+            else {
+                mouse.accepted = false;
+            }
+            startX = mouse.x;
+            oldX = startX;
+        }
+
+        onPositionChanged: {
+            if (control.mouseDown && control.mouseSlide) {
+                if ((mouse.x - oldX) > 0) increaseValue();
+                else if ((mouse.x - oldX) < 0) decreaseValue();
+                oldX = mouse.x;
+            }
+        }
+
+        onReleased: {
+            control.mouseDown = false;
+            if (startX == mouse.x && control.mouseSlide) {
+                control.mouseSlide = false;
+                cursorShape = Qt.IBeamCursor;
+                input.forceActiveFocus();
+                input.selectAll();
+            }
+        }
+
+        onWheel: {
+            if (!control.activeFocus) input.forceActiveFocus();
+            if (wheel.angleDelta.y > 0) increaseValue();
+            else decreaseValue();
         }
     }
 }
