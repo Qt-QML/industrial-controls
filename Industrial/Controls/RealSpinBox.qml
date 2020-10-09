@@ -15,6 +15,9 @@ SpinBox {
         value = valueFromText(input.text, locale);
         caution = false;
         input.text = Qt.binding(function() { return control.textFromValue(value, locale) });
+        input.focus = false;
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
     }
 
     onRealValueChanged: {
@@ -30,12 +33,11 @@ SpinBox {
         realValue = value * precision;
     }
 
-    onActiveFocusChanged: validate()
-
     to: realTo / precision
     from: realFrom / precision
     isValid: !isNaN(realValue)
 
+    //TODO: убрать, getDecimals(num) одинаковые функции, а эта вроде не используется
     function decimals(num) {
         return (num.toString().split('.')[1] || []).length;
     }
@@ -47,6 +49,58 @@ SpinBox {
         top: Math.max(realFrom, realTo)
     }
 
+    onActiveFocusChanged: {
+        validate();
+    }
+
+    //FIXME: повторяющийся код из SpinBox
+    MouseArea{
+        id: mouseArea
+        height: parent.height
+        width: parent.width - down.indicator.width - up.indicator.width
+        anchors.horizontalCenter: parent.horizontalCenter
+        cursorShape: Qt.SplitHCursor;
+
+        onPressed: {
+            if (!control.activeFocus) {
+                mouseSlide = true;
+                control.forceActiveFocus();
+            }
+            if (control.activeFocus && mouseSlide) {
+                mouseDown = true;
+            }
+            else {
+                mouse.accepted = false;
+            }
+            startX = mouse.x;
+            oldX = startX;
+        }
+
+        onPositionChanged: {
+            if (mouseDown && mouseSlide) {
+                if ((mouse.x - oldX) > 0) control.increase();
+                else if ((mouse.x - oldX) < 0) control.decrease();
+                oldX = mouse.x;
+            }
+        }
+
+        onReleased: {
+            mouseDown = false;
+            if (startX == mouse.x && mouseSlide) {
+                mouseSlide = false;
+                cursorShape = Qt.IBeamCursor;
+                input.forceActiveFocus();
+                input.selectAll();
+            }
+        }
+
+        onWheel: {
+            if (!control.activeFocus) control.forceActiveFocus();
+            if (wheel.angleDelta.y > 0) control.increase();
+            else control.decrease();
+        }
+    }
+
     contentItem: Item {
         anchors.centerIn: parent
         implicitHeight: input.contentHeight
@@ -56,7 +110,7 @@ SpinBox {
             anchors.fill: parent
             anchors.bottomMargin: background.underline * 1.5 // FIXME: to theme
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-            overwriteMode: true
+            overwriteMode: false
             Binding on text {
                 value: control.textFromValue(control.value, control.locale)
                 when: !activeFocus || up.hovered || down.hovered

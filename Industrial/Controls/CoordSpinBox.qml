@@ -6,6 +6,14 @@ import Industrial.Controls 1.0 as Controls
 T.Control {
     id: control
 
+    property int stepSizeDefault: 1
+    property int stepSizeShift: 10
+    property int stepSizeControl: 100
+    property int stepSize: stepSizeDefault
+
+    property bool mouseDown: false
+    property bool mouseSlide: true
+
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
     property bool round: false
@@ -103,7 +111,7 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(background.implicitWidth, row.height)
-    //implicitHeight: Theme.baseSize * 1.25
+    //implicitHeight: Theme.baseSize * 1.25 //TODO: delete
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
 
@@ -141,10 +149,13 @@ T.Control {
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _decreaseEnabled
-                //hatched: !enabled
                 rightCropped: true
                 bottomCropped: true
-                iconSource: "qrc:/icons/minus.svg"
+                iconSource: {
+                    if (stepSize == stepSizeControl) return "qrc:/icons/left_3.svg"
+                    if (stepSize == stepSizeShift) return "qrc:/icons/left_2.svg"
+                    return "qrc:/icons/left.svg"
+                }
                 iconColor: {
                     if (pressed) return Theme.colors.highlightedText;
                     if (hovered) return Theme.colors.text;
@@ -156,7 +167,6 @@ T.Control {
                 pressedImpl: _decreaseEnabled && _focusedItem && _focusedItem.down
                 onClicked: {
                     if (!_focusedItem) return;
-
                     updateValueFromControls();
                     _focusedItem.decreaseValue();
                 }
@@ -172,8 +182,8 @@ T.Control {
                 input.validator: IntValidator { bottom: control.from; top: control.to }
                 nextItem: mInput.input
                 sign: "\u00B0"
-                onIncreaseValue: if (_increaseEnabled) changeValue(0, 1)
-                onDecreaseValue: if (_decreaseEnabled) changeValue(0, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(0, stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(0, -stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
@@ -186,8 +196,8 @@ T.Control {
                 previousItem: dInput.input
                 nextItem: sInput.input
                 sign: "\'"
-                onIncreaseValue: if (_increaseEnabled) changeValue(1, 1)
-                onDecreaseValue: if (_decreaseEnabled) changeValue(1, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(1, stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(1, -stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
@@ -199,13 +209,12 @@ T.Control {
                 input.validator: Controls.CustomDoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
                 sign: "\""
-                onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
-                onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision))
+                onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision) * stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision) * stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
-            //кнопка с буквой
             Button {
                 id: suffixButton
                 implicitWidth: Theme.baseSize
@@ -221,7 +230,6 @@ T.Control {
                     if (!control.isValid) return Theme.colors.negative;
                     return Theme.colors.description;
                 }
-                //hatched: !enabled && control.enabled
                 rightCropped: true
                 leftCropped: true
                 text: suffix
@@ -242,10 +250,13 @@ T.Control {
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _increaseEnabled
-                //hatched: !enabled
                 leftCropped: true
                 bottomCropped: true
-                iconSource: "qrc:/icons/plus.svg"                
+                iconSource: {
+                    if (stepSize == stepSizeControl) return "qrc:/icons/right_3.svg"
+                    if (stepSize == stepSizeShift) return "qrc:/icons/right_2.svg"
+                    return "qrc:/icons/right.svg"
+                }
                 iconColor: {
                     if (pressed) return Theme.colors.highlightedText;
                     if (hovered) return Theme.colors.text;
@@ -302,5 +313,18 @@ T.Control {
         visible: _focusedItem       
         color: Theme.colors.text;
         Behavior on x { NumberAnimation { duration: 150 } }
+    }
+
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeControl;
+        else return;
+        event.accepted = true;
+    }
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeDefault;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeDefault;
+        else return;
+        event.accepted = true;
     }
 }

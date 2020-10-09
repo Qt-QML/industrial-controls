@@ -3,6 +3,9 @@ import QtQuick 2.9
 Item {
     id: root
 
+    property int startX: 0
+    property int oldX: 0
+
     property Item previousItem
     property Item nextItem
 
@@ -18,11 +21,11 @@ Item {
 
     implicitHeight: input.contentHeight
 
-    MouseArea {
-        anchors.fill: parent
-        hoverEnabled: true
-        cursorShape: Qt.IBeamCursor
-        onClicked: input.forceActiveFocus();
+    function validate() {
+        control.caution = false;
+        input.focus = false;
+        mouseSlide = true;
+        mouseArea.cursorShape = Qt.SplitHCursor;
     }
 
     Row {
@@ -31,20 +34,20 @@ Item {
         NumericInput {
             id: input
             height: root.height
-            overwriteMode: true
+            overwriteMode: false
             selectionColor: highlighter.visible ? highlighterback.color : Theme.colors.control
             selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
             bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
 
-
             onTextEdited: {
-                if (cursorPosition < maximumLength) {
-                    control.caution = true;
-                } else {
+                if (cursorPosition >= maximumLength) {
                     updateValueFromControls();
-                    if (nextItem && activeFocus) nextItem.forceActiveFocus();
+                    if (nextItem && activeFocus) {
+                        nextItem.forceActiveFocus();
+                        nextItem.selectAll();
+                    }
                 }
             }
             onActiveFocusChanged: {
@@ -54,11 +57,16 @@ Item {
                 }
                 else {
                     updateValueFromControls();
+                    validate();
                 }
             }
             onEditingFinished: {
                 updateValueFromControls();
-                if (nextItem && activeFocus) nextItem.forceActiveFocus();
+                if (nextItem && activeFocus) {
+                    nextItem.forceActiveFocus();
+                    nextItem.selectAll();
+                }
+                if (!nextItem) validate();
             }
             onCursorPositionChanged: {
                 if (cursorPosition == 2 && length == 5) {
@@ -110,6 +118,51 @@ Item {
             color: input.color
             verticalAlignment: input.verticalAlignment
             bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
+        }
+    }
+
+    MouseArea{
+        id: mouseArea
+        anchors.fill: parent
+        cursorShape: Qt.SplitHCursor;
+
+        onPressed: {
+            if (!input.activeFocus) {
+                control.mouseSlide = true;
+                input.forceActiveFocus();
+            }
+            if (input.activeFocus && control.mouseSlide) {
+                control.mouseDown = true;
+            }
+            else {
+                mouse.accepted = false;
+            }
+            startX = mouse.x;
+            oldX = startX;
+        }
+
+        onPositionChanged: {
+            if (control.mouseDown && control.mouseSlide) {
+                if ((mouse.x - oldX) > 0) increaseValue();
+                else if ((mouse.x - oldX) < 0) decreaseValue();
+                oldX = mouse.x;
+            }
+        }
+
+        onReleased: {
+            control.mouseDown = false;
+            if (startX == mouse.x && control.mouseSlide) {
+                control.mouseSlide = false;
+                cursorShape = Qt.IBeamCursor;
+                input.forceActiveFocus();
+                input.selectAll();
+            }
+        }
+
+        onWheel: {
+            if (!control.activeFocus) input.forceActiveFocus();
+            if (wheel.angleDelta.y > 0) increaseValue();
+            else decreaseValue();
         }
     }
 }
