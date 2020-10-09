@@ -42,11 +42,12 @@ Item {
             bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
 
             onTextEdited: {
-                if (cursorPosition < maximumLength) {
-                    //control.caution = true; //TODO: Delete
-                } else {
+                if (cursorPosition >= maximumLength) {
                     updateValueFromControls();
-                    if (nextItem && activeFocus) { nextItem.forceActiveFocus(); nextItem.selectAll(); }
+                    if (nextItem && activeFocus) {
+                        nextItem.forceActiveFocus();
+                        nextItem.selectAll();
+                    }
                 }
             }
             onActiveFocusChanged: {
@@ -61,7 +62,10 @@ Item {
             }
             onEditingFinished: {
                 updateValueFromControls();
-                if (nextItem && activeFocus) { nextItem.forceActiveFocus(); nextItem.selectAll(); }
+                if (nextItem && activeFocus) {
+                    nextItem.forceActiveFocus();
+                    nextItem.selectAll();
+                }
                 if (!nextItem) validate();
             }
             onCursorPositionChanged: {

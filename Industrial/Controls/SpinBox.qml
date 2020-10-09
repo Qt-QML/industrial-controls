@@ -186,8 +186,8 @@ T.SpinBox {
             height: width
             anchors.centerIn: parent
             source: {
-                if (stepSize == stepSizeControl) return "qrc:/icons/left-3.svg"
-                if (stepSize == stepSizeShift) return "qrc:/icons/left-2.svg"
+                if (stepSize == stepSizeControl) return "qrc:/icons/left_3.svg"
+                if (stepSize == stepSizeShift) return "qrc:/icons/left_2.svg"
                 return "qrc:/icons/left.svg"
             }
             color: {
@@ -220,8 +220,8 @@ T.SpinBox {
             height: width
             anchors.centerIn: parent
             source: {
-                if (stepSize == stepSizeControl) return "qrc:/icons/right-3.svg"
-                if (stepSize == stepSizeShift) return "qrc:/icons/right-2.svg"
+                if (stepSize == stepSizeControl) return "qrc:/icons/right_3.svg"
+                if (stepSize == stepSizeShift) return "qrc:/icons/right_2.svg"
                 return "qrc:/icons/right.svg"
             }
             color: {
