@@ -3,8 +3,6 @@ import QtQuick 2.9
 Item {
     id: root
 
-    //property bool mouseDown: false
-    //property bool control.mouseSlide: true
     property int startX: 0
     property int oldX: 0
 

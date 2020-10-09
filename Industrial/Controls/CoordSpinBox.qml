@@ -14,10 +14,6 @@ T.Control {
     property bool mouseDown: false
     property bool mouseSlide: true
 
-    //property cursorShape: Qt.SplitHCursor
-
-
-
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
     property bool round: false
@@ -115,7 +111,7 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(background.implicitWidth, row.height)
-    //implicitHeight: Theme.baseSize * 1.25
+    //implicitHeight: Theme.baseSize * 1.25 //TODO: delete
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
 
@@ -219,7 +215,6 @@ T.Control {
                 Layout.fillHeight: true
             }
 
-            //кнопка с буквой
             Button {
                 id: suffixButton
                 implicitWidth: Theme.baseSize

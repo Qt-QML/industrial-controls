@@ -46,6 +46,7 @@ SpinBox {
         validate();
     }
 
+    //FIXME: повторяющийся код из SpinBox
     MouseArea{
         id: mouseArea
         height: parent.height
