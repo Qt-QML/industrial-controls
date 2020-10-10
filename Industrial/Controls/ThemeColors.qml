@@ -3,15 +3,15 @@ import QtQuick 2.6
 QtObject {
     property color raised: "#334248"            // Фон возвышенных элементов (панели)
     property color background: "#2c393f"        // Фона окна
-    property color sunken: "#212C30"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
+    property color sunken: "#212c30"            // Фон утопленных элементов (поля ввода, фон слайдеров и чекбоксов и т.д)
     property color text: "#ffffff"              // Текст (иконки и другие элементы на фоне окна, утопленных и возвышенных элементов)
     property color hover: "#3319d6c4"           // Подсветка элемента при наведении мыши
     property color border: "#2c393f"            // Цвет обводки
 
     property color disabled: "#161c20"          // Неактивный цвет (штриховка на контролах, отключенные элементы    
 
-    property color control: "#5A717C"           // Фон кнопки, а так же хэндлов свичей и слайдеров
-    property color line: "#805A717C"             // Линии, цвет control + 0.5 прозрачность
+    property color control: "#5a717c"           // Фон кнопки, а так же хэндлов свичей и слайдеров
+    property color line: "#805a717c"            // Линии, цвет control + 0.5 прозрачность
     property color controlText: "#ffffff"       // Текст кнопки
 
     property color tip: "#009688"               // Фон подсказки
@@ -23,7 +23,7 @@ QtObject {
     property color highlight: "#19d6c4"         // Фон подсветки (при активации)
     property color highlightedText: "#000000"   // Текст подсветки
 
-    property color description: "#899EA9"       // Вспомогательный текст
+    property color description: "#899ea9"       // Вспомогательный текст
     property color link: "#51a0e7"              // Ссылка (на фоне окна, утопленных и возвышенных элементов)
     property color positive: "#86c34a"          // Позитивный (текст и предупреждения)
     property color neutral: "#ff9800"           // Нейтральный (текст и предупреждения)
