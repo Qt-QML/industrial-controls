@@ -3,7 +3,7 @@
     "base_size": 32,
     "colors_common": {
         "border": "#2c393f",
-        "disabled": "#161c20",
+        "disabled": "#5C6970",
         "highlightedText": "#000000",
         "hover": "#3319d6c4",
         "link": "#51a0e7",

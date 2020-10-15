@@ -8,7 +8,7 @@ QtObject {
     property color hover: "#3319d6c4"           // Подсветка элемента при наведении мыши
     property color border: "#2c393f"            // Цвет обводки
 
-    property color disabled: "#161c20"          // Неактивный цвет (штриховка на контролах, отключенные элементы    
+    property color disabled: "#5C6970"          // Неактивный цвет (штриховка на контролах, отключенные элементы
 
     property color control: "#5a717c"           // Фон кнопки, а так же хэндлов свичей и слайдеров
     property color line: "#805a717c"            // Линии, цвет control + 0.5 прозрачность
