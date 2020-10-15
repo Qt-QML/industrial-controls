@@ -104,6 +104,7 @@ T.SpinBox {
                 if ((mouse.x - oldX) > 0) control.increase();
                 else if ((mouse.x - oldX) < 0) control.decrease();
                 oldX = mouse.x;
+                control.valueModified();
             }
         }
 
@@ -121,6 +122,7 @@ T.SpinBox {
             if (!control.activeFocus) control.forceActiveFocus();
             if (wheel.angleDelta.y > 0) control.increase();
             else control.decrease();
+            control.valueModified();
         }
     }
 
