@@ -12,6 +12,8 @@ Rectangle {
     implicitWidth: Theme.baseSize * 1.5
     implicitHeight: Theme.baseSize * 1.5
 
+    onColorPicked: popup.close()
+
     Shadow { source: parent }
 
     MouseArea {
