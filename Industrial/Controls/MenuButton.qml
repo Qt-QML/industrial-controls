@@ -7,6 +7,7 @@ Button {
 
     property alias model: repeater.model
     property alias delegate: repeater.delegate
+    property alias menuSize: menu.menuSize
     property alias menuX: menu.x
     property alias menuY: menu.y
 

@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2 as T
 T.Menu {
     id: control
 
+    property alias menuSize: backgroundRect.implicitWidth
     property alias backgroundColor: backgroundRect.color
 
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
