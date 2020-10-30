@@ -46,5 +46,7 @@
         <file>icons/folder-2.svg</file>
         <file>icons/image.svg</file>
         <file>icons/clock.svg</file>
+        <file>icons/load.svg</file>
+        <file>icons/savenexit-2.svg</file>
     </qresource>
 </RCC>

@@ -6,6 +6,7 @@ T.TextField {
 
     property alias table: background.table // табличный вид
     property alias flat: background.flat // плоский вид
+    property alias underline: background.underline
     property alias backgroundColor: background.color
     property alias isValid: background.isValid
     property alias labelText: background.text
