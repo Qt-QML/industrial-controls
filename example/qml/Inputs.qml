@@ -95,6 +95,70 @@ Pane {
             Layout.fillWidth: true
         }
 
+        Label { text: qsTr("Date input"); font.pixelSize: Theme.auxFontSize }
+
+        DateTimeField {
+            id: dateTimeField
+            mode: "date"
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "date"
+            flat: true
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "date"
+            text: dateTimeField.text
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Time input"); font.pixelSize: Theme.auxFontSize }
+
+        DateTimeField {
+            id: dateTimeField2
+            mode: "time"
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "time"
+            flat: true
+            isValid: false
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "time"
+            text: dateTimeField2.text
+            enabled: false
+            Layout.fillWidth: true
+        }
+
+        Label { text: qsTr("Date and time input"); font.pixelSize: Theme.auxFontSize }
+
+        DateTimeField {
+            id: dateTimeField3
+            mode: "dateTime"
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "dateTime"
+            flat: true
+            Layout.fillWidth: true
+        }
+
+        DateTimeField {
+            mode: "dateTime"
+            text: dateTimeField3.text
+            enabled: false
+            Layout.fillWidth: true
+        }
+
         Label {}
 
         //--
