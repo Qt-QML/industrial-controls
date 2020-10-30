@@ -23,13 +23,13 @@ Controls.TextField {
     validator: RegExpValidator {regExp:
         switch (mode) {
             case "date":
-                /(0[1-9]|[12][1-9]|3[01])[\.](0[1-9]|1[012])[\.](20[0-9]{2})/;
+                /(0[1-9]|[12][0-9]|3[01])[\.](0[1-9]|1[012])[\.](20[0-9]{2})/;
                 break;
             case "time":
-                /([01][0-9]|2[1-3])[\:]([0-5][0-9])/;
+                /([01][0-9]|2[0-3])[\:]([0-5][0-9])/;
                 break;
             case "dateTime":
-                /(0[1-9]|[12][1-9]|3[01])[\.](0[1-9]|1[012])[\.](20[0-9]{2})[\ ]([01][0-9]|2[1-3])[\:]([0-5][0-9])/;
+                /(0[1-9]|[12][0-9]|3[01])[\.](0[1-9]|1[012])[\.](20[0-9]{2})[\ ]([01][0-9]|2[0-3])[\:]([0-5][0-9])/;
                 break;
         }
     }
@@ -53,7 +53,6 @@ Controls.TextField {
         if (acceptableInput) return [ Date.fromLocaleString(Qt.locale(), control.text.split(" ")[0], dateMask) , control.text.split(" ")[1]];
         var date = new Date();
         return [date, date.toLocaleString(Qt.locale(), timeMask)];
-        console.log(date.toLocaleString(Qt.locale(), timeMask))
     }
 
     onActiveFocusChanged: {
@@ -64,9 +63,13 @@ Controls.TextField {
         validate();
     }
 
+    onEditingFinished: {
+        validate();
+    }
+
     Button {
         id: button
-        iconSource: "qrc:/icons/plus.svg"
+        iconSource: mode == "time" ? "qrc:/icons/clock.svg" : "qrc:/icons/calendar.svg"
         color: (control.focus && popup.visible) ? ((!control.isValid) ? Theme.colors.negative : ((control.caution) ? Theme.colors.neutral : Theme.colors.selection)) : "transparent"
         hoverColor: (!control.isValid) ? Theme.colors.negative : ((control.caution) ? Theme.colors.neutral : Theme.colors.highlight)
         highlightColor: (!control.isValid) ? Theme.colors.negative : ((control.caution) ? Theme.colors.neutral : Theme.colors.selection)
@@ -89,18 +92,22 @@ Controls.TextField {
         onClicked: control.forceActiveFocus();
 
         onReleased: {
-            popup.visible = true;
+            popup.open();
 
             switch (mode) {
                 case "date":
                     calendarPicker.selectedDate = inputStringToDate(control.text);
                     break;
                 case "time":
-                    timePicker.selectedTime = inputStringToTime(control.text);
+                    //timePicker.selectedTime = inputStringToTime(control.text); //TODO отправлять параметры через selectedTime как в CalendarPicker
+                    timePicker.hours = inputStringToTime(control.text).split(":")[0] * 1;
+                    timePicker.minutes = inputStringToTime(control.text).split(":")[1] * 1;
                     break;
                 case "dateTime":
                     calendarPicker.selectedDate =  inputStringToDateTime(control.text)[0];
-                    timePicker.selectedTime = inputStringToDateTime(control.text)[1];
+                    //timePicker.selectedTime = inputStringToDateTime(control.text)[1]; //TODO отправлять параметры через selectedTime как в CalendarPicker
+                    timePicker.hours = inputStringToDateTime(control.text)[1].split(":")[0] * 1;
+                    timePicker.minutes = inputStringToDateTime(control.text)[1].split(":")[1] * 1;
                     break;
             }
         }
@@ -122,7 +129,7 @@ Controls.TextField {
         width: row.width + Theme.padding * 2
         height: row.height + Theme.padding * 2
         padding: Theme.padding
-        visible: false
+        //visible: false
 
         Row {
             id: row
@@ -134,21 +141,21 @@ Controls.TextField {
                 navigationBarVisible: true
                 weekNumbersVisible: false
                 visible: (mode == "date" || mode == "dateTime")
-                selectedDate: inputStringToDate()
-                onReleased: inputTextEdit()
+                //selectedDate: inputStringToDate()//TODO удалить
+                onReleased: inputStringWrite()
             }
 
             TimePicker {
                 id: timePicker
                 anchors.verticalCenter: parent.verticalCenter
                 visible: (mode == "time" || mode == "dateTime")
-                onTimeChaged: inputTextEdit()
+                onTimeChanged: inputStringWrite()
             }
         }
     }
 
-    function inputTextEdit() {
-        switch (mode) {
+    function inputStringWrite() {
+        switch (control.mode) {
             case "date":
                 control.text = calendarPicker.selectedDate.toLocaleDateString(dateMask);
                 break;

@@ -74,5 +74,8 @@
         <file>Industrial/Widgets/FileBrowser.qml</file>
         <file>Industrial/Widgets/TableView.qml</file>
         <file>Industrial/Widgets/TableViewColumn.qml</file>
+        <file>Industrial/Widgets/CalendarPicker.qml</file>
+        <file>Industrial/Controls/DateTimeField.qml</file>
+        <file>Industrial/Widgets/TimePicker.qml</file>
     </qresource>
 </RCC>
