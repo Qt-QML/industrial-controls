@@ -45,7 +45,7 @@ QtObject {
     readonly property real spacing: baseSize * factors.spacing
     readonly property real margins: baseSize * factors.margins
     readonly property real padding: baseSize * factors.padding
-    readonly property int iconSize: baseSize * factors.iconSize
+    readonly property int  iconSize: baseSize * factors.iconSize
     readonly property real scrollSize: baseSize * factors.scrollSize
     readonly property real sliderSize: baseSize * factors.sliderSize
     readonly property real switchSize: baseSize * factors.switchSize

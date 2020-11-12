@@ -42,8 +42,8 @@ T.ComboBox {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         anchors.rightMargin: Theme.padding
-        width: Theme.baseSize / 1.4
-        height: width
+        height: Theme.iconSize
+        width: height
         source: control.popup.visible ? "qrc:/icons/up.svg" : "qrc:/icons/down.svg"
         color: {
             if (!control.enabled) return Theme.colors.background;
