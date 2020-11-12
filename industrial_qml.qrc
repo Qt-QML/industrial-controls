@@ -77,5 +77,6 @@
         <file>Industrial/Widgets/CalendarPicker.qml</file>
         <file>Industrial/Controls/DateTimeField.qml</file>
         <file>Industrial/Widgets/TimePicker.qml</file>
+        <file>Industrial/Controls/ListButton.qml</file>
     </qresource>
 </RCC>
