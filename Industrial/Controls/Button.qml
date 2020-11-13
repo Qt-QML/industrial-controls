@@ -74,6 +74,6 @@ T.Button {
     ToolTip {
         visible: (toolTipAlwaysVisible || (control.hovered || control.down)) && tipText
         text: tipText
-        delay: toolTipAlwaysVisible ? 0 : 1000
+        delay: 0
     }
 }
