@@ -11,6 +11,7 @@ T.Button {
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
+    property bool toolTipAlwaysVisible: false
     property color color: Theme.colors.control
     property color highlightColor: Theme.colors.highlight
     property color selectionColor: Theme.colors.selection
@@ -71,8 +72,8 @@ T.Button {
     }
 
     ToolTip {
-        visible: (control.hovered || control.down) && tipText
+        visible: (toolTipAlwaysVisible || (control.hovered || control.down)) && tipText
         text: tipText
-        delay: 1000
+        delay: toolTipAlwaysVisible ? 0 : 1000
     }
 }
