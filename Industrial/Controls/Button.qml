@@ -11,11 +11,11 @@ T.Button {
     property bool leftCropped: false
     property bool rightCropped: false
     property bool hatched: !enabled && !flat
+    property bool toolTipAlwaysVisible: false
     property color color: Theme.colors.control
     property color highlightColor: Theme.colors.highlight
     property color selectionColor: Theme.colors.selection
     property string tipText
-    property string shortcutSequence
 
     property alias iconSource: content.iconSource
     property alias iconColor: content.iconColor
@@ -27,8 +27,6 @@ T.Button {
     property alias radius: backgroundItem.radius
     property alias backgroundOpacity: backgroundItem.opacity
     property alias hoverColor: backgroundItem.hoverColor
-
-    signal shortcutActivated()
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
@@ -74,22 +72,8 @@ T.Button {
     }
 
     ToolTip {
-        visible: (control.hovered || control.down) && tipText
+        visible: (toolTipAlwaysVisible || (control.hovered || control.down)) && tipText
         text: tipText
-        delay: 1000
-    }
-
-    ToolTip {
-        visible: isControlPress && tipText && shortcutSequence && !layoutSource.locked
-        text: tipText + "\n"+shortcutSequence
-        delay: 100
-    }
-
-    Shortcut {
-        sequence: shortcutSequence
-        enabled: !layoutSource.locked
-        onActivated: {
-            shortcutActivated();
-        }
+        delay: toolTipAlwaysVisible ? 0 : 1000
     }
 }
