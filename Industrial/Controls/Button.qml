@@ -27,6 +27,8 @@ T.Button {
     property alias radius: backgroundItem.radius
     property alias backgroundOpacity: backgroundItem.opacity
     property alias hoverColor: backgroundItem.hoverColor
+    property alias toolTipX: toolTip.x
+    property alias toolTipY: toolTip.y
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
@@ -72,6 +74,7 @@ T.Button {
     }
 
     ToolTip {
+        id: toolTip
         visible: (toolTipAlwaysVisible || (control.hovered || control.down)) && tipText
         text: tipText
         delay: 0
