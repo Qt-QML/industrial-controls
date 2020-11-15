@@ -17,7 +17,7 @@ T.Menu {
     background: Rectangle {
         id: backgroundRect
 
-        implicitWidth: Theme.baseSize
+        implicitWidth: Theme.baseSize //calculated in onOpened
         implicitHeight: Theme.baseSize
 
         color: Theme.colors.sunken
