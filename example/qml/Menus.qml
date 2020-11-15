@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.5////////////
+import QtQuick.Controls 2.5
 import Industrial.Controls 1.0
 
 
