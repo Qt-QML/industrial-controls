@@ -4,16 +4,19 @@ import QtQuick.Templates 2.2 as T
 T.MenuItem {
     id: control
 
-    property url iconSource: ""
+    property string iconSource: ""
     property bool selected: false
 
     property alias iconColor: icon.color
     property alias horizontalAlignment: label.horizontalAlignment
 
-    implicitWidth: parent.width
+    implicitWidth: label.implicitWidth + leftPadding + rightPadding
     implicitHeight: Theme.baseSize
+
     focusPolicy: Qt.NoFocus
-    leftPadding: icon.visible ? icon.width + Theme.padding * 2 : Theme.padding
+    padding: 0
+    leftPadding: icon.source == "" ? Theme.padding * 2 : icon.width + Theme.padding * 3
+    rightPadding: Theme.padding * 2
     font.pixelSize: Theme.mainFontSize
     hoverEnabled: true
 
@@ -29,18 +32,22 @@ T.MenuItem {
 
     indicator: ColoredIcon {
         id: icon
-        x: Theme.padding
-        color: label.color
+        x: Theme.padding * 2
         anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;
-
-            if (control.checked) return control.iconSource.length > 0 ? control.iconSource:
-                                                                        "qrc:/icons/ok.svg"
+            if (control.checked) return control.iconSource.length > 0 ? control.iconSource: "qrc:/icons/ok.svg";
             return "";
         }
-        width: Theme.baseSize - Theme.padding * 2
-        height: width
+        height: Theme.iconSize
+        width: height
+        //color: label.color
+        color: {
+            if (!enabled) return Theme.colors.disabled;
+            if (control.pressed) return Theme.colors.highlightedText;
+            if (checked) return Theme.colors.highlight;
+            return Theme.colors.description;
+        }
     }
 
     contentItem: Label {
@@ -49,7 +56,6 @@ T.MenuItem {
         text: control.text
         color: {
             if (!enabled) return Theme.colors.disabled;
-            if (selected) return Theme.colors.selectedText;
             if (control.pressed) return Theme.colors.highlightedText;
             return Theme.colors.text;
         }

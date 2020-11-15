@@ -1,6 +1,7 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.5////////////
 import Industrial.Controls 1.0
+
 
 Pane {
     id: root
@@ -27,23 +28,84 @@ Pane {
         title: qsTr("Menu")
 
         MenuItem {
-            text: qsTr("Info")
+            text: qsTr("New...")
+            onTriggered: console.log(text)
         }
 
         MenuItem {
-            text: qsTr("Add")
-            iconSource: "qrc:/icons/plus.svg"
+            text: qsTr("Open...")
+            onTriggered: console.log(text)
         }
 
         MenuItem {
-            text: qsTr("Remove")
-            iconSource: "qrc:/icons/remove.svg"
+            text: qsTr("Save")
+            onTriggered: console.log(text)
+        }
+
+        MenuSeparator {}
+
+        Menu {
+            title: qsTr("Icons")
+
+            MenuItem {
+                text: qsTr("Info")
+                iconSource: "qrc:/icons/info.svg"
+                onTriggered: console.log(text)
+            }
+
+            MenuItem {
+                text: qsTr("Configure")
+                iconSource: "qrc:/icons/configure.svg"
+                onTriggered: console.log(text)
+            }
+
+            MenuItem {
+                text: qsTr("Plugins")
+                iconSource: "qrc:/icons/plugins.svg"
+                onTriggered: console.log(text)
+            }
+
+            MenuItem {
+                text: qsTr("Calendar")
+                iconSource: "qrc:/icons/calendar.svg"
+                onTriggered: console.log(text)
+            }
+        }
+
+        Menu {
+            title: qsTr("Checkable")
+
+            MenuItem {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            MenuItem {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            MenuItem {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            MenuItem {
+                text: qsTr("Check and some more text...")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+        }
+
+        MenuSeparator {}
+
+        MenuItem {
+            text: qsTr("Exit")
             enabled: false
-        }
-
-        MenuItem {
-            text: qsTr("Check")
-            checkable: true
+            onTriggered: console.log(text)
         }
     }
 }
