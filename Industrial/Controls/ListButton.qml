@@ -22,7 +22,6 @@ Rectangle {
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        hoverEnabled: true
         propagateComposedEvents: true
         onPressed: {
             control.mouseAreaPressed()

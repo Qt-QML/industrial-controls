@@ -114,7 +114,7 @@ Rectangle {
             top: wrapperParent.bottom
         }
         height: 0
-        color: Theme.colors.highlight
+        color: Theme.colors.hover
     }
 
     SmoothedAnimation {
