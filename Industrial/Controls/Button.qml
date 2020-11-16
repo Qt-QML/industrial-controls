@@ -34,7 +34,7 @@ T.Button {
     implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: Theme.padding
+    padding: text.length > 0 ? Theme.padding : 0
     font.pixelSize: Theme.mainFontSize
 
     background: BackgroundItem {

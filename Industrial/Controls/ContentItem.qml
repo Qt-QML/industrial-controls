@@ -41,6 +41,7 @@ Item {
             implicitHeight: Theme.iconSize
             color: enabled ? iconColor : Theme.colors.disabled
             visible: iconSource != ""
+            Layout.leftMargin: text.length > 0 ? (Math.min(content.height, content.width) - width) / 2 : (content.width - width) / 2
         }
 
         Text {
