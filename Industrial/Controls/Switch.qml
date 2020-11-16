@@ -22,8 +22,8 @@ T.Switch {
         id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Theme.baseSize * 1.2
-        implicitHeight: Theme.switchSize
+        width: Theme.switchSize * 3//Theme.baseSize * 1.2
+        height: Theme.switchSize * 3
         radius: height / 2
         flat: control.flat
         down: control.down
@@ -35,27 +35,24 @@ T.Switch {
         }
     }
 
-    Rectangle {
-        height: base.height
+    Handle {
+        id: handle
+        height: base.height - Theme.border * 6
         width: height
-        anchors.verticalCenter: base.verticalCenter
-        color: "transparent"
-        x: control.checked ? base.width - width : 0
+        //anchors.verticalCenter: parent.verticalCenter
+        x: control.checked ? base.width - width - Theme.border * 3 : Theme.border * 3
+        //y: base.height - height - Theme.border * 3
+        y: base.height / 2 - height / 2
         Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
-
-        Handle {
-            height: Theme.switchSize - Theme.border * 4
-            width: height
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: {
-                if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
-                if (control.checked) return Theme.colors.highlight;
-                if (control.pressed) return Theme.colors.highlight;
-                return Theme.colors.control;
-            }
+        color: {
+            if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
+            if (control.checked) return Theme.colors.highlight;
+            if (control.pressed) return Theme.colors.highlight;
+            return Theme.colors.control;
         }
     }
+
+    //Component.onCompleted: console.log(Theme.checkmarkSize)
 
     contentItem: Label {
         id: text
