@@ -78,5 +78,6 @@
         <file>Industrial/Controls/DateTimeField.qml</file>
         <file>Industrial/Widgets/TimePicker.qml</file>
         <file>Industrial/Controls/ListButton.qml</file>
+        <file>Industrial/Controls/MenuSeparator.qml</file>
     </qresource>
 </RCC>
