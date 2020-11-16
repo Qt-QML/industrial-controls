@@ -22,8 +22,8 @@ T.Switch {
         id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: Theme.baseSize * 1.2
-        implicitHeight: Theme.switchSize
+        width: Theme.baseSize * 1.2
+        height: Theme.switchSize
         radius: height / 2
         flat: control.flat
         down: control.down
@@ -35,25 +35,18 @@ T.Switch {
         }
     }
 
-    Rectangle {
-        height: base.height
+    Handle {
+        id: handle
+        height: base.height - Theme.border * 4
         width: height
-        anchors.verticalCenter: base.verticalCenter
-        color: "transparent"
-        x: control.checked ? base.width - width : 0
+        x: control.checked ? base.width - width - Theme.border * 2 : Theme.border * 2
+        y: parent.height / 2 - height / 2
         Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
-
-        Handle {
-            height: Theme.switchSize - Theme.border * 4
-            width: height
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: {
-                if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
-                if (control.checked) return Theme.colors.highlight;
-                if (control.pressed) return Theme.colors.highlight;
-                return Theme.colors.control;
-            }
+        color: {
+            if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
+            if (control.checked) return Theme.colors.highlight;
+            if (control.pressed) return Theme.colors.highlight;
+            return Theme.colors.control;
         }
     }
 
