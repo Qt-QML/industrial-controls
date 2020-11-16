@@ -22,8 +22,8 @@ T.Switch {
         id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        width: Theme.switchSize * 3//Theme.baseSize * 1.2
-        height: Theme.switchSize * 3
+        width: Theme.baseSize * 1.2
+        height: Theme.switchSize
         radius: height / 2
         flat: control.flat
         down: control.down
@@ -37,12 +37,10 @@ T.Switch {
 
     Handle {
         id: handle
-        height: base.height - Theme.border * 6
+        height: base.height - Theme.border * 4
         width: height
-        //anchors.verticalCenter: parent.verticalCenter
-        x: control.checked ? base.width - width - Theme.border * 3 : Theme.border * 3
-        //y: base.height - height - Theme.border * 3
-        y: base.height / 2 - height / 2
+        x: control.checked ? base.width - width - Theme.border * 2 : Theme.border * 2
+        y: parent.height / 2 - height / 2
         Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
         color: {
             if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
@@ -51,8 +49,6 @@ T.Switch {
             return Theme.colors.control;
         }
     }
-
-    //Component.onCompleted: console.log(Theme.checkmarkSize)
 
     contentItem: Label {
         id: text
