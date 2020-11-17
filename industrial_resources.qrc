@@ -49,5 +49,7 @@
         <file>icons/load.svg</file>
         <file>icons/savenexit-2.svg</file>
         <file>icons/calendar.svg</file>
+        <file>icons/expand.svg</file>
+        <file>icons/collapse.svg</file>
     </qresource>
 </RCC>
