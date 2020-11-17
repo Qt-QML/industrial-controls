@@ -19,6 +19,7 @@ T.SpinBox {
     property string tipText
 
     property alias table: background.table
+    property alias underline: background.underline
     property alias text: input.text
     property alias caution: background.caution
     property alias backgroundColor: background.color
