@@ -65,10 +65,11 @@ Controls.TextField {
     Popup {
         id: popup
         y: control.height
+        padding: Theme.padding * 2
 
         ColorPicker {
             id: colorPicker
-
+            padding: 0
             backgroundColor: Theme.colors.raised
 
             onColorChange: {
