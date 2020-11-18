@@ -159,6 +159,25 @@ Pane {
             Layout.fillWidth: true
         }
 
+        Label { text: qsTr("Color input"); font.pixelSize: Theme.auxFontSize }
+
+        ColorField {
+            id: colorField
+            Layout.fillWidth: true
+        }
+
+        ColorField {
+            flat: true
+            text: "#ff00ff"
+            Layout.fillWidth: true
+        }
+
+        ColorField {
+            text: colorField.text
+            enabled: false
+            Layout.fillWidth: true
+        }
+
         Label {}
 
         //--
