@@ -63,3 +63,4 @@ Notification 1.0 Notification.qml
 NumericInput 1.0 NumericInput.qml
 DateTimeField 1.0 DateTimeField.qml
 ListButton 1.0 ListButton.qml
+ColorField 1.0 ColorField.qml
