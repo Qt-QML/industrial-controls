@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import QtQuick.Controls 2.2
-//import QtQuick.Controls.impl 2.11
 import QtQuick.Controls 2.2 as T
 
 T.Menu {
@@ -45,10 +44,19 @@ T.Menu {
             id: icon
             x: Theme.padding * 2
             anchors.verticalCenter: parent.verticalCenter
-            source: control.iconSource
+            source: {
+                if (!checkable) return menuItem.iconSource;
+                if (menuItem.checked) return menuItem.iconSource.length > 0 ? menuItem.iconSource: "qrc:/icons/ok.svg";
+                return "";
+            }
             height: Theme.iconSize
             width: height
-            color: arrow.color
+            color: {
+                if (!enabled) return Theme.colors.disabled;
+                if (menuItem.pressed) return Theme.colors.highlightedText;
+                if (checked) return Theme.colors.highlight;
+                return Theme.colors.description;
+            }
         }
 
         arrow: ColoredIcon {

@@ -2,7 +2,6 @@ import QtQuick 2.6
 import QtQuick.Controls 2.5
 import Industrial.Controls 1.0
 
-
 Pane {
     id: root
 
@@ -23,6 +22,11 @@ Pane {
          }
     }
 
+
+    ///*
+    //
+    //Example menu
+    //
     Menu {
         id: menu
         title: qsTr("Menu")
@@ -108,4 +112,46 @@ Pane {
             onTriggered: console.log(text)
         }
     }
+    //*/
+
+    /*
+    //
+    //Example menu 1
+    //
+    ListModel{
+        id: menuModel
+        ListElement{
+            text: "New..."
+        }
+        ListElement{
+            text: "Open..."
+        }
+        ListElement{
+            text: "Save"
+            icon: "qrc:/icons/info.svg"
+        }
+        ListElement{
+            text: "Check"
+            checkable: true
+        }
+        ListElement{
+            text: "Exit"
+            enabled: false
+        }
+    }
+
+    Menu {
+        id: menu
+        Repeater {
+            model: menuModel
+            MenuItem {
+                text: model.text //modelData
+                iconSource: model.icon !== undefined ? model.icon : ""
+                checkable: model.checkable !== undefined ? model.checkable : false
+                //enabled: model.enabled ? model.enabled : model.enabled
+                //onTriggered: model.onTriggered
+            }
+        }
+    }
+    */
 }

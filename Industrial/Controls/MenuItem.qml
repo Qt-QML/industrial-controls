@@ -41,7 +41,6 @@ T.MenuItem {
         }
         height: Theme.iconSize
         width: height
-        //color: label.color
         color: {
             if (!enabled) return Theme.colors.disabled;
             if (control.pressed) return Theme.colors.highlightedText;
