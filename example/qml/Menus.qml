@@ -1,5 +1,6 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.5
+//import QtQuick.Controls 2.2
+import QtQuick.Controls 2.4
 import Industrial.Controls 1.0
 
 Pane {
@@ -22,10 +23,9 @@ Pane {
          }
     }
 
-
     ///*
     //
-    //Example menu
+    //Example MenuItem
     //
     Menu {
         id: menu
@@ -66,6 +66,7 @@ Pane {
             MenuItem {
                 text: qsTr("Plugins")
                 iconSource: "qrc:/icons/plugins.svg"
+                selected: true
                 onTriggered: console.log(text)
             }
 
@@ -94,6 +95,7 @@ Pane {
             MenuItem {
                 text: qsTr("Check")
                 checkable: true
+                selected: true
                 onTriggered: console.log(text + " checked: " + checked)
             }
 
@@ -116,7 +118,7 @@ Pane {
 
     /*
     //
-    //Example menu 1
+    //Example MenuModel
     //
     ListModel{
         id: menuModel
@@ -136,7 +138,7 @@ Pane {
         }
         ListElement{
             text: "Exit"
-            enabled: false
+            //enable: false
         }
     }
 
@@ -148,9 +150,95 @@ Pane {
                 text: model.text //modelData
                 iconSource: model.icon !== undefined ? model.icon : ""
                 checkable: model.checkable !== undefined ? model.checkable : false
-                //enabled: model.enabled ? model.enabled : model.enabled
-                //onTriggered: model.onTriggered
+                //enabled: model.enable !== undefined ? model.enable : true
             }
+        }
+    }
+    */
+
+    /*
+    //
+    //Example Action
+    //
+    Menu {
+        id: menu
+        Action {
+            text: qsTr("New...")
+            onTriggered: console.log(text)
+        }
+        Action {
+            text: qsTr("Open...")
+            onTriggered: console.log(text)
+        }
+        Action {
+            text: qsTr("Save")
+            onTriggered: console.log(text)
+        }
+
+        MenuSeparator { }
+
+        Menu {
+            title: qsTr("Icons")
+
+            Action {
+                text: qsTr("Info")
+                icon.source: "qrc:/icons/info.svg"
+                onTriggered: console.log(text)
+            }
+
+            Action {
+                text: qsTr("Configure")
+                icon.source: "qrc:/icons/configure.svg"
+                onTriggered: console.log(text)
+            }
+
+            Action {
+                text: qsTr("Plugins")
+                icon.source: "qrc:/icons/plugins.svg"
+                onTriggered: console.log(text)
+            }
+
+            Action {
+                text: qsTr("Calendar")
+                icon.source: "qrc:/icons/calendar.svg"
+                onTriggered: console.log(text)
+            }
+        }
+
+        Menu {
+            title: qsTr("Checkable")
+
+            Action {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            Action {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            Action {
+                text: qsTr("Check")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+
+            Action {
+                text: qsTr("Check and some more text...")
+                checkable: true
+                onTriggered: console.log(text + " checked: " + checked)
+            }
+        }
+
+        MenuSeparator {}
+
+        Action {
+            text: qsTr("Exit")
+            enabled: false
+            onTriggered: console.log(text)
         }
     }
     */

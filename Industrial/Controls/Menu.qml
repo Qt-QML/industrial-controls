@@ -1,6 +1,6 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.2
-import QtQuick.Controls 2.2 as T
+import QtQuick.Templates 2.4
+import QtQuick.Controls 2.4 as T
 
 T.Menu {
     id: control
@@ -9,7 +9,8 @@ T.Menu {
     property alias backgroundColor: backgroundRect.color
 
     padding: 0
-    verticalPadding: Theme.padding
+    topPadding: Theme.padding
+    bottomPadding: Theme.padding
 
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
@@ -35,18 +36,19 @@ T.Menu {
 
         implicitWidth: label.implicitWidth + leftPadding + rightPadding
         implicitHeight: Theme.baseSize
+        //width: parent.width //
 
         padding: 0
-        leftPadding: icon.source == "" ? Theme.padding * 2 : icon.width + Theme.padding * 3
+        leftPadding: icon.source == "" ? Theme.padding * 2 : icon.x + icon.width + Theme.padding
         rightPadding: arrow.visible ? arrow.width + Theme.padding * 2 : Theme.padding * 2
 
         indicator: ColoredIcon {
             id: icon
-            x: Theme.padding * 2
+            x: Theme.padding
             anchors.verticalCenter: parent.verticalCenter
             source: {
-                if (!checkable) return menuItem.iconSource;
-                if (menuItem.checked) return menuItem.iconSource.length > 0 ? menuItem.iconSource: "qrc:/icons/ok.svg";
+                if (!checkable) return menuItem.iconSource ? menuItem.iconSource : menuItem.icon.source;
+                if (menuItem.checked) return menuItem.iconSource.length > 0 ? menuItem.iconSource : "qrc:/icons/ok.svg";
                 return "";
             }
             height: Theme.iconSize
@@ -54,6 +56,7 @@ T.Menu {
             color: {
                 if (!enabled) return Theme.colors.disabled;
                 if (menuItem.pressed) return Theme.colors.highlightedText;
+                if (menuItem.selected || (checked && menuItem.selected)) return Theme.colors.text;
                 if (checked) return Theme.colors.highlight;
                 return Theme.colors.description;
             }
@@ -70,6 +73,7 @@ T.Menu {
             color: {
                 if (!menuItem.enabled) return Theme.colors.disabled;
                 if (menuItem.pressed) return Theme.colors.highlightedText;
+                if (menuItem.selected) return Theme.colors.text;
                 return Theme.colors.description;
             }
         }
@@ -100,17 +104,23 @@ T.Menu {
         var iconView = false
         for (var i = 0; i < control.count; ++i) {
             if (control.contentData[i].text === undefined) continue; //skip menuSeparator
-            if (control.contentData[i].iconSource !== "" || control.contentData[i].checked === true) {
+            if (control.contentData[i].iconSource !== "" || String(control.contentData[i].icon.source) !== "" || control.contentData[i].checked === true) {
                 iconView = true;
                 break;
             }
         }
+
         var maxWidth = [];
         for (var j = 0; j < control.count; ++j) {
             if (control.contentData[j].text === undefined) continue; //skip menuSeparator
-            control.contentData[j].leftPadding = iconView ? Theme.iconSize + Theme.padding * 3 : Theme.padding * 2;
+            control.contentData[j].leftPadding = iconView ? Theme.iconSize + Theme.padding * 2 : Theme.padding * 2;
             maxWidth.push(control.contentData[j].implicitWidth);
         }
         backgroundRect.implicitWidth = Math.max.apply(null, maxWidth);
+
+        //width items
+        for (var k = 0; k < control.count; ++k) {
+            control.contentData[k].width = backgroundRect.implicitWidth;
+        }
     }
 }
