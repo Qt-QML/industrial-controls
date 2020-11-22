@@ -12,10 +12,11 @@ T.MenuItem {
 
     implicitWidth: label.implicitWidth + leftPadding + rightPadding
     implicitHeight: Theme.baseSize
+    //width: parent.width //
 
     focusPolicy: Qt.NoFocus
     padding: 0
-    leftPadding: icon.source == "" ? Theme.padding * 2 : icon.width + Theme.padding * 3
+    leftPadding: icon.source == "" ? Theme.padding * 2 : icon.x + icon.width + Theme.padding
     rightPadding: Theme.padding * 2
     font.pixelSize: Theme.mainFontSize
     hoverEnabled: true
@@ -32,7 +33,7 @@ T.MenuItem {
 
     indicator: ColoredIcon {
         id: icon
-        x: Theme.padding * 2
+        x: Theme.padding
         anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;
@@ -41,10 +42,10 @@ T.MenuItem {
         }
         height: Theme.iconSize
         width: height
-        //color: label.color
         color: {
             if (!enabled) return Theme.colors.disabled;
             if (control.pressed) return Theme.colors.highlightedText;
+            if (selected || (checked && selected)) return Theme.colors.text;
             if (checked) return Theme.colors.highlight;
             return Theme.colors.description;
         }

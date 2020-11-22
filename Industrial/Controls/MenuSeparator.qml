@@ -1,16 +1,16 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.2 as T
+import QtQuick.Templates 2.2 as T
 
 T.MenuSeparator {
     id: control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+    implicitWidth: Math.max(background ? background.implicitWidth : 0, contentItem.implicitWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(background ? background.implicitHeight : 0, contentItem.implicitHeight + topPadding + bottomPadding)
+    //width: parent.width //
 
     padding: 0
-    verticalPadding: Theme.padding
+    topPadding: Theme.padding
+    bottomPadding: Theme.padding
 
     contentItem: Rectangle {
         implicitHeight: 1
