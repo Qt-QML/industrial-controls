@@ -13,6 +13,8 @@ Controls.TextField {
     property alias caution: background.caution
     property alias isValid: background.isValid
 
+    signal editingFinished()
+
     implicitWidth: background.implicitWidth
     selectionColor: background.highlighterColor
 
@@ -29,7 +31,11 @@ Controls.TextField {
 
     onTextChanged: {
         button.color = control.text;
-        colorPicker.currentColor = button.color;
+        colorPicker.currentColor = button.color;        
+    }
+
+    onTextEdited: {
+        editingFinished();
     }
 
     Button {
@@ -66,6 +72,10 @@ Controls.TextField {
         id: popup
         y: control.height
         padding: Theme.padding * 2
+
+        onClosed: {
+            editingFinished();
+        }
 
         ColorPicker {
             id: colorPicker
