@@ -70,6 +70,7 @@ T.ComboBox {
     delegate: ItemDelegate {
         id: delegate
         width: control.width
+        horizontalAlignment: control.horizontalAlignment
         text: control.textRole === '' ?
                 modelData :
                   ((control.modelIsArray ? modelData[control.textRole] : model[control.textRole]) || '')
