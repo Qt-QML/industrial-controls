@@ -35,7 +35,6 @@ T.ComboBox {
     font.pixelSize: Theme.mainFontSize
     padding: Theme.padding
     clip: true
-    textRole: "text"
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
                      currentItem[control.textRole] : currentItem
 
