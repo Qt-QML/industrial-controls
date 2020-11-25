@@ -6,7 +6,7 @@ T.Frame {
 
     property color backgroundColor: Theme.colors.background
 
-    padding: Theme.margins
+    padding: Theme.padding * 2
 
     background: Rectangle {
         color: backgroundColor
