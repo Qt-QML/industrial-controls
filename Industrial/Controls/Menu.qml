@@ -12,8 +12,6 @@ T.Menu {
     topPadding: Theme.padding
     bottomPadding: Theme.padding
 
-    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-
     background: Rectangle {
         id: backgroundRect
 
