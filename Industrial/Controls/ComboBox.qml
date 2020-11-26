@@ -10,7 +10,6 @@ T.ComboBox {
     property string iconRole: "icon"
     property string displayIcon: currentItem && currentItem[control.iconRole] !== undefined ?
                                      currentItem[control.iconRole] : ""
-    property bool modelIsArray: model ? model.constructor === Array : false
 
     property alias table: background.table // табличный вид
     property alias isValid: background.isValid
@@ -70,11 +69,26 @@ T.ComboBox {
         id: delegate
         width: control.width
         horizontalAlignment: control.horizontalAlignment
-        text: control.textRole === '' ?
-                modelData :
-                  ((control.modelIsArray ? modelData[control.textRole] : model[control.textRole]) || '')
-        iconSource: modelData && modelData[control.iconRole] !== undefined ?
-                        modelData[control.iconRole] : ""
+        text: {
+            if (modelData !== undefined) {
+                return modelData[control.textRole] ? modelData[control.textRole] : modelData;
+            }
+            if (model !== undefined) {
+                return model[control.textRole] ? model[control.textRole] : model;
+            }
+            return ""
+        }
+
+        iconSource: {
+            if (modelData !== undefined) {
+                return modelData[control.iconRole] ? modelData[control.iconRole] : "";
+            }
+            if (model !== undefined) {
+                return model[control.iconRole] ? model[control.iconRole] : "";
+            }
+            return ""
+        }
+
         font: control.font
         highlighted: control.currentIndex === index
         isValid: control.isValid
