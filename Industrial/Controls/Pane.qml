@@ -7,7 +7,7 @@ T.Pane {
     property alias backgroundColor: rect.color
     property alias radius: rect.radius
 
-    padding: Theme.margins
+    padding: Theme.padding * 2
 
     background: Rectangle {
         id: rect

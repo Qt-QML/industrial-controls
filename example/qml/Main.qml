@@ -13,13 +13,11 @@ ApplicationWindow {
     Loader {
         id: loader
         anchors.fill: parent
-        anchors.margins: Theme.margins
         source: "Controls.qml"
     }
 
     Button {
         anchors.right: parent.right
-        anchors.top: parent.top
         anchors.margins: Theme.margins
         iconSource: "qrc:/icons/configure.svg"
         tipText: qsTr("Configure")
