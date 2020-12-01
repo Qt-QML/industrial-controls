@@ -5,11 +5,11 @@ T.TabButton {
     id: control
 
     property bool flat: false
+    property color backgroundColor: Theme.colors.background
 
     property alias iconSource: content.iconSource
     property alias iconColor: content.iconColor
     property alias textColor: content.textColor
-    property alias backgroundColor: backgroundItem.color
 
     // TODO: flat
     font.pixelSize: Theme.auxFontSize
@@ -26,7 +26,7 @@ T.TabButton {
         bottomCropping: radius
         borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: !control.checked && control.hovered
-        color: control.checked ? Theme.colors.background : "transparent"
+        color: control.checked ? backgroundColor : "transparent"
     }
 
     contentItem: ContentItem {
