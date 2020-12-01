@@ -29,6 +29,7 @@ T.Button {
     property alias hoverColor: backgroundItem.hoverColor
     property alias toolTipX: toolTip.x
     property alias toolTipY: toolTip.y
+    property alias toolTipWidth: toolTip.width
 
     implicitWidth: Math.max(implicitHeight, content.implicitWidth + control.padding * 2)
     implicitHeight: Theme.baseSize
