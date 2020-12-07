@@ -4,6 +4,10 @@ Button {
     id: control
 
     property int currentIndex: -1
+    property string textRole: "text"
+    property string iconRole: "icon"
+    property string checkableRole: "checkable"
+    property string checkedRole: "checked"
 
     property alias model: repeater.model
     property alias delegate: repeater.delegate
@@ -12,6 +16,7 @@ Button {
     property alias menuY: menu.y
 
     signal triggered(var modelData)
+    signal checked(var modelData, bool checked)
 
     enabled: repeater.count
     onClicked: menu.visible ? menu.close() : menu.open()
@@ -25,9 +30,13 @@ Button {
             id: repeater
 
             delegate: MenuItem {
-                text: modelData
+                text: modelData[control.textRole] ? modelData[control.textRole] : modelData
+                iconSource: modelData[control.iconRole] ? modelData[control.iconRole] : ""
+                checkable: modelData[control.checkableRole] ? modelData[control.checkableRole] : false
+                checked: modelData[control.checkedRole] ? modelData[control.checkedRole] : false
                 selected: index == control.currentIndex
                 onTriggered: control.triggered(modelData)
+                onCheckedChanged: control.checked(modelData, checked)
             }
         }
     }
