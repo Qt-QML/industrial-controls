@@ -44,7 +44,7 @@ Controls.TextField {
         highlightColor: color
         hoverColor: "transparent"
         width: Theme.baseSize
-        height: control.height - (table ? Theme.border : Theme.underline)
+        height: control.enabled ? control.height - Theme.border : control.height
         anchors.right: parent.right
 
         leftCropped: control.table ? 0 : radius

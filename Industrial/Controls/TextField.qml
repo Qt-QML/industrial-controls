@@ -4,8 +4,8 @@ import QtQuick.Templates 2.2 as T
 T.TextField {
     id: control
 
-    property alias table: background.table // табличный вид
-    property alias flat: background.flat // плоский вид
+    property alias table: background.table
+    property alias flat: background.flat
     property alias underline: background.underline
     property alias backgroundColor: background.color
     property alias isValid: background.isValid
@@ -13,7 +13,6 @@ T.TextField {
     property alias labelFontPixelSize: background.fontPixelSize
 
     implicitWidth: background.implicitWidth
-    //implicitHeight: Theme.baseSize * 1.25
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
     color: control.enabled ? Theme.colors.text : Theme.colors.disabled
@@ -22,8 +21,7 @@ T.TextField {
     selectByMouse: true
     leftPadding: Theme.padding
     rightPadding: Theme.padding
-    bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
-    //topPadding: Theme.border
+    bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
     horizontalAlignment: Text.AlignLeft
     verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
@@ -33,7 +31,7 @@ T.TextField {
 
     background: BackgroundInput {
         id: background
-        hovered: control.hovered //to hover
+        hovered: control.hovered
         anchors.fill: parent
         inputed: displayText.length > 0 || placeholderText.length > 0 || control.activeFocus
         highlighted: control.activeFocus
@@ -47,13 +45,10 @@ T.TextField {
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
         font.pixelSize: Theme.mainFontSize
-        color: control.enabled ? Theme.colors.description : Theme.colors.disabled
-        opacity: control.activeFocus ? 0.5 : 1
+        color: !control.activeFocus ? Theme.colors.description : Theme.colors.disabled
         leftPadding: Theme.padding
         rightPadding: Theme.padding
-        //bottomPadding: Theme.border
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
-
     }
 }

@@ -8,9 +8,8 @@ TextField {
     Button {
         id: button
         anchors.right: parent.right
-        height: parent.height - (table ? Theme.border : Theme.underline)
+        height: parent.height - Theme.border
         leftCropped: true
-        //rightCropped: table ? true : false
         bottomCropped: true
         iconSource: "qrc:/icons/erase.svg"
         iconColor: {

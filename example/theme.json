@@ -39,7 +39,7 @@
     },
     "factors": {
         "auxFontSize": 0.4,
-        "border": 0.0556,
+        "border": 0.0625,
         "checkmarkSize": 0.625,
         "floatSize": 1.25,
         "handleSize": 0.625,
