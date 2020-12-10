@@ -39,7 +39,7 @@ Item {
             selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
             verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
-            bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
+            bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
 
             onTextEdited: {
                 if (cursorPosition >= maximumLength) {
@@ -117,7 +117,7 @@ Item {
             font: input.font
             color: input.color
             verticalAlignment: input.verticalAlignment
-            bottomPadding: labelText.length > 0 ? Theme.border * 4 : 0
+            bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
         }
     }
 

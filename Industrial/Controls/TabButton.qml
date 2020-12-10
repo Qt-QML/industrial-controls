@@ -33,7 +33,7 @@ T.TabButton {
         id: content
         text: control.text
         font: control.font
-        textColor: control.checked ? Theme.colors.highlight : Theme.colors.text
-        opacity: (control.hovered || control.checked) ? 1 : 0.75
+        textColor: control.checked ? Theme.colors.highlight :
+                                     (control.hovered ? Theme.colors.text : Theme.colors.description)
     }
 }

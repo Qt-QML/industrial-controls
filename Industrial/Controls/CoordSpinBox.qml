@@ -27,7 +27,7 @@ T.Control {
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
 
-    property alias table: background.table // табличный вид
+    property alias table: background.table
     property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
@@ -111,13 +111,12 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(background.implicitWidth, row.height)
-    //implicitHeight: Theme.baseSize * 1.25 //TODO: delete
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
 
     background: BackgroundInput {
         id: background
-        hovered: control.hovered //to hover
+        hovered: control.hovered
         anchors.fill: parent
         textPadding: Theme.baseSize + Theme.padding
         highlighted: _focusedItem
@@ -279,19 +278,10 @@ T.Control {
     }
 
     Rectangle {
-        anchors.bottom: control.bottom
-        width: parent.width
-        x: 0
-        height: Theme.underline
-        color: Theme.colors.border;
-    }
-
-    //нижний маркер
-    Rectangle {
         id: highlighterback
         anchors.bottom: parent.bottom
         width: parent.width
-        height: table ? Theme.border : Theme.underline
+        height: Theme.border
         visible: control.enabled
         color: {
             if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
@@ -303,12 +293,11 @@ T.Control {
         }
     }
 
-    //плавающий маркер
     Rectangle {
         id: highlighter
         anchors.bottom: parent.bottom
         width: _focusedItem ? _focusedItem.width : 0
-        height: table ? Theme.border : Theme.underline
+        height: Theme.border
         x: _focusedItem ? _focusedItem.x : 0
         visible: _focusedItem       
         color: Theme.colors.text;

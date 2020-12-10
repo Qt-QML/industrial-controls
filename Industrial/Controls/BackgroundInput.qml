@@ -3,7 +3,7 @@ import QtQuick 2.6
 BackgroundItem {
     id: control
 
-    property bool hovered: true // если убрать, то подсветка будет идти и на фон
+    property bool hovered: true
     property bool inputed: true
     property bool table: false
     property bool spin: false
@@ -52,12 +52,11 @@ BackgroundItem {
         visible: !enabled
     }
 
-    // bottom marker
     Rectangle {
         id: highlighter
         anchors.bottom: parent.bottom
         width: parent.width
-        height: table ? Theme.border : Theme.underline
+        height: Theme.border
         visible: control.enabled || table
         color: {
             if (!control.enabled) return Theme.colors.background;
@@ -70,7 +69,6 @@ BackgroundItem {
         }
     }
 
-    // label & placeholder
     Text {
         id: textItem
         property real fontPixelSizeWhenInputed: Theme.auxFontSize / 1.2
@@ -81,8 +79,8 @@ BackgroundItem {
         anchors.horizontalCenter: spin ? parent.horizontalCenter : undefined
         anchors.left: spin ? undefined : parent.left
 
-        anchors.verticalCenter: inputed ? undefined : parent.verticalCenter //неактивный посередине
-        anchors.top: inputed ? parent.top : undefined //активный сверху
+        anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
+        anchors.top: inputed ? parent.top : undefined
         bottomPadding: inputed ? undefined : Theme.border
         topPadding: inputed ? Theme.border : undefined
         font.pixelSize: inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize

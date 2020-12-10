@@ -82,7 +82,7 @@ Controls.TextField {
             return Theme.colors.description;
         }
         width: Theme.baseSize
-        height: parent.height - (table ? Theme.border : Theme.underline)
+        height: parent.height - Theme.border
         anchors.right: parent.right
 
         leftCropped: control.table ? 0 : radius

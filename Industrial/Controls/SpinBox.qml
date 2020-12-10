@@ -37,7 +37,7 @@ T.SpinBox {
 
     leftPadding: !vertical ? down.indicator.width : 0
     rightPadding: !vertical ? up.indicator.width : 0
-    bottomPadding: !vertical ? (labelText.length > 0 ? Theme.border * 4 : 0) : down.indicator.width
+    bottomPadding: !vertical ? (labelText.length > 0 ? Theme.border * 3 : 0) : down.indicator.width
     topPadding: !vertical ? 0 : up.indicator.width
 
     font.pixelSize: Theme.mainFontSize
@@ -181,7 +181,7 @@ T.SpinBox {
         x: control.mirrored ? parent.width - width : 0
         y: !vertical ? 0 : parent.height - height
         width: !vertical ? Theme.baseSize : parent.width
-        height: !vertical ? (parent.height - (table ? Theme.border : Theme.underline)) : Theme.baseSize
+        height: !vertical ? (parent.height - Theme.border) : Theme.baseSize
         radius: {
             if (round) return Math.min(width, height) / 2
             if (table) return 0
@@ -217,7 +217,7 @@ T.SpinBox {
     up.indicator: BackgroundItem {
         x: control.mirrored ? 0 : parent.width - width
         width: !vertical ? Theme.baseSize : parent.width
-        height: !vertical ? (parent.height - (table ? Theme.border : Theme.underline)) : Theme.baseSize
+        height: !vertical ? (parent.height - Theme.border) : Theme.baseSize
         radius: {
             if (round) return Math.min(width, height) / 2
             if (table) return 0
