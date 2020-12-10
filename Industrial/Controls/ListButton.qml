@@ -6,10 +6,12 @@ Rectangle {
 
     property bool expanded: false
     property bool selected: false
+    property int amount: 0
     property color _selectedColor: Qt.hsla(Controls.Theme.colors.selection.hslHue,
                                          Controls.Theme.colors.selection.hslSaturation,
                                          Controls.Theme.colors.selection.hslLightness, 0.5)
     property alias text: label.text
+    property alias amountVisible: amountLabel.visible
 
     signal mouseAreaPressed()
 
@@ -60,5 +62,16 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: button.right
         anchors.leftMargin: Controls.Theme.margins
+    }
+
+    Controls.Label {
+        id: amountLabel
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: label.right
+        anchors.leftMargin: Controls.Theme.margins
+        font.pixelSize: Controls.Theme.auxFontSize
+        color: Controls.Theme.colors.description
+        text: "(" + amount + ")"
+        visible: false
     }
 }
