@@ -1,11 +1,23 @@
 # CMake version string
 cmake_minimum_required(VERSION 3.2.1)
 
-# Project
-project(iIndustrialControls)
+# Import path
+set(INDUSTRIAL_CONTROLS_IMPORT_PATH ${CMAKE_CURRENT_LIST_DIR})
 
-# QML compile resources
-file(GLOB_RECURSE QRC_QML_FILES "qml/qml.qrc")
-#qtquick_compiler_add_resources(QRC_QML_SOURCES ${QRC_QML_FILES})
-qt5_add_resources(QRC_QML_SOURCES ${QRC_QML_FILES})
-target_sources(${PROJECT_NAME} PRIVATE ${QRC_QML_SOURCES})
+# Qml import dirs
+list(APPEND QML_IMPORT_DIRS ${INDUSTRIAL_CONTROLS_IMPORT_PATH})
+
+# Industrial includes
+set(INDUSTRIAL_CONTROLS_INCLUDES "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/includes")
+
+# Industrial sources & resources
+file(GLOB_RECURSE INDUSTRIAL_CONTROLS_SOURCES
+    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/includes/*.h"
+    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/sources/*.h"
+    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/sources/*.cpp"
+)
+
+# Industrial resources
+file(GLOB_RECURSE INDUSTRIAL_CONTROLS_RESOURCES
+    "${INDUSTRIAL_CONTROLS_IMPORT_PATH}/*.qrc"
+)
