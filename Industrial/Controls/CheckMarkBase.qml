@@ -9,8 +9,8 @@ BackgroundItem {
 
     property color indicatorColor: {
         if (!enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
-
         if (flat) return Theme.colors.highlight
+        if (checked) return Theme.colors.selectedText;
         return Theme.colors.controlText;
     }
 
@@ -22,7 +22,7 @@ BackgroundItem {
         if (!flat) return "transparent";
         if (down) return Theme.colors.highlight;
         if (checked) return Theme.colors.selection;
-        return Theme.colors.control;
+        return Theme.colors.controlBorder;
     }
 
     color: {
@@ -30,7 +30,7 @@ BackgroundItem {
         if (flat) return "transparent";
         if (down) return Theme.colors.highlight;
         if (checked) return Theme.colors.selection;
-        return Theme.colors.sunken;
+        return Theme.colors.controlBorder;
     }
 
     Hatch {

@@ -36,7 +36,6 @@ Item {
             Rectangle {
                 id: hover
                 anchors.fill: parent
-                //color: Theme.colors.hover
                 color: Theme.colors.highlight
                 opacity: 0.20
                 radius: parent.radius

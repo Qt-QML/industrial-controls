@@ -30,7 +30,7 @@ T.Switch {
         hovered: control.hovered
         checked: control.checked
         opacity: {
-            if(!control.flat && control.enabled) { if (control.down || control.checked) return 0.5; }
+            if(!control.flat && control.enabled) { if (control.down || control.checked) return 1; }
             return 1
         }
     }
@@ -44,10 +44,11 @@ T.Switch {
         Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
         color: {
             if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
-            if (control.checked) return Theme.colors.highlight;
-            if (control.pressed) return Theme.colors.highlight;
-            return Theme.colors.control;
+            if (control.checked ||control.pressed) return flat ? Theme.colors.highlight : Theme.colors.selectedText;
+            return flat ? Theme.colors.controlBorder : Theme.colors.background;
         }
+        hoverEnabled: flat
+        shadowEnabled: false
     }
 
     contentItem: Label {
