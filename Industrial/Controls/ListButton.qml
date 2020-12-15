@@ -6,10 +6,14 @@ Rectangle {
 
     property bool expanded: false
     property bool selected: false
+    property bool hovered: false
     property int amount: 0
     property color _selectedColor: Qt.hsla(Controls.Theme.colors.selection.hslHue,
                                          Controls.Theme.colors.selection.hslSaturation,
                                          Controls.Theme.colors.selection.hslLightness, 0.5)
+    property color _hoveredColor: Qt.hsla(Controls.Theme.colors.highlight.hslHue,
+                                         Controls.Theme.colors.highlight.hslSaturation,
+                                         Controls.Theme.colors.highlight.hslLightness, 0.2)
     property alias text: label.text
     property alias amountVisible: amountLabel.visible
 
@@ -18,7 +22,7 @@ Rectangle {
     implicitHeight: button.implicitHeight
     implicitWidth: button.implicitWidth + label.implicitWidth + Controls.Theme.margins
 
-    color: selected ? _selectedColor : expanded ?
+    color: selected ? _selectedColor : hovered ? _hoveredColor : expanded ?
        Controls.Theme.colors.raised : "transparent"
 
     MouseArea {
