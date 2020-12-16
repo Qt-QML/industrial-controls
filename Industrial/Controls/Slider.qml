@@ -24,15 +24,19 @@ T.Slider {
         width: control.availableWidth
         height: Theme.sliderSize
         radius: height / 2
-        color: flat ? "transparent" : Theme.colors.sunken
-        border.width: 2
-        border.color: flat ? Theme.colors.control : "transparent"
+        color: {
+            if (!control.enabled) return Theme.colors.disabled;
+            if (flat) return Theme.colors.controlBorder;
+            return Theme.colors.sunken;
+        }
 
         Rectangle {
             width: control.visualPosition * parent.width
             height: parent.height
-            //color: !flat ? Theme.colors.selection : Theme.colors.control
-            color: Theme.colors.selection
+            color: {
+                if (!control.enabled) return Theme.colors.disabled;
+                return Theme.colors.selection;
+            }
             radius: height / 2
         }
 
@@ -47,7 +51,7 @@ T.Slider {
         id: handle
         x: control.leftPadding + control.visualPosition * (control.availableWidth - width)
         y: control.topPadding + control.availableHeight / 2 - height / 2
-
+        shadowEnabled: Theme.night
         Rectangle {
             anchors.centerIn: parent
             width: parent.width * 2

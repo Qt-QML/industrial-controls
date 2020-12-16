@@ -18,7 +18,7 @@ T.Menu {
         implicitWidth: Theme.baseSize //calculated in onOpened
         implicitHeight: Theme.baseSize
 
-        color: Theme.colors.sunken
+        color: Theme.colors.raised
         radius: Theme.rounding
 
         Shadow {
@@ -34,7 +34,6 @@ T.Menu {
 
         implicitWidth: label.implicitWidth + leftPadding + rightPadding
         implicitHeight: Theme.baseSize
-        //width: parent.width //
 
         padding: 0
         leftPadding: icon.source == "" ? Theme.padding * 2 : icon.x + icon.width + Theme.padding
@@ -71,7 +70,7 @@ T.Menu {
             color: {
                 if (!menuItem.enabled) return Theme.colors.disabled;
                 if (menuItem.pressed) return Theme.colors.highlightedText;
-                if (menuItem.selected) return Theme.colors.text;
+                if (menuItem.selected) return Theme.colors.selectedText;
                 return Theme.colors.description;
             }
         }
@@ -84,6 +83,7 @@ T.Menu {
             color: {
                 if (!menuItem.enabled) return Theme.colors.disabled;
                 if (menuItem.pressed) return Theme.colors.highlightedText;
+                if (menuItem.selected) return Theme.colors.selectedText;
                 return Theme.colors.text;
             }
         }

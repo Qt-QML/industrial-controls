@@ -10,8 +10,8 @@ QtObject {
 
     property color disabled: "#5C6970"          // Неактивный цвет (штриховка на контролах, отключенные элементы
 
-    property color control: "#5a717c"           // Фон кнопки, а так же хэндлов свичей и слайдеров
-    property color controlBorder: "#6c8693" //////////////////////////////////////////////////////////////////////////////////////
+    property color control: "#5a717c"           // Фон больших управляющих элементов (кнопки)
+    property color controlBorder: "#6c8693"     // Фон и обводка мелких управляющих элементов (хендлы, переключатели)
     property color line: "#805a717c"            // Линии, цвет control + 0.5 прозрачность
     property color controlText: "#ffffff"       // Текст кнопки
 

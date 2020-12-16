@@ -89,8 +89,11 @@ Calendar{
             Label {
                 text: styleData.date.getDate()
                 font.pixelSize: Theme.mainFontSize
-                anchors.centerIn: parent
-                color: styleData.visibleMonth && styleData.valid || styleData.hovered || styleData.selected ? Theme.colors.text : Theme.colors.description
+                anchors.fill: parent
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                color: styleData.visibleMonth && styleData.valid || styleData.hovered ?
+                           (styleData.selected ? Theme.colors.selectedText : Theme.colors.text) : Theme.colors.description
             }
         }
 

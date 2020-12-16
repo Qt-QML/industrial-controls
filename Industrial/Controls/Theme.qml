@@ -11,27 +11,26 @@ QtObject {
     property real animationTime: 200
 
     property ThemeColors dayColors: ThemeColors {
-       background: "#eff0f0" ////////////////
-       sunken: "#dcdee0" ///////////////////////////
-       raised: "#fafafa" ///////////////
-       text: "#181a1b" //////////////
-       description: "#627884" ////////////
+       background: "#eff0f0"
+       sunken: "#dfe1e2"
+       raised: "#fafafa"
+       text: "#181a1b"
+       description: "#627884"
+       disabled: "#bbc1c4"
 
-       border: "#2c393f"
+       control: "#c3cfd5"
+       controlBorder: "#a3b8c2"
+       line: "#80a3b8c2"
+       controlText: "#181a1b"
 
-       disabled: "#bbc1c4" /////////////////
-
-       control: "#C3CFD5" //////////////////
-       controlBorder: "#A3B8C2" //////////////////
-       line: "#8094acb8" ///////////////////
-       controlText: "#181a1b" ////////////////
-       tip: "#1AB2A6"
+       tip: "#00998c"
        tipText: "#ffffff"
 
-       selection: "#1AB2A6"
+       selection: "#00998c"
        selectedText: "#ffffff"
 
-       highlight: "#0BDAC9"
+       highlight: "#00c2b2"
+       hover: "#3300c2b2"
        highlightedText: "#ffffff"
     }
 

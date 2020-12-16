@@ -43,7 +43,7 @@ T.Switch {
         y: parent.height / 2 - height / 2
         Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
         color: {
-            if (!control.enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
+            if (!control.enabled) return flat ? Theme.colors.disabled : Theme.colors.background;
             if (control.checked ||control.pressed) return flat ? Theme.colors.highlight : Theme.colors.selectedText;
             return flat ? Theme.colors.controlBorder : Theme.colors.background;
         }

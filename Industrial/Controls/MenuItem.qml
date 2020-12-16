@@ -45,7 +45,7 @@ T.MenuItem {
         color: {
             if (!enabled) return Theme.colors.disabled;
             if (control.pressed) return Theme.colors.highlightedText;
-            if (selected || (checked && selected)) return Theme.colors.text;
+            if (selected || (checked && selected)) return Theme.colors.selectedText;
             if (checked) return Theme.colors.highlight;
             return Theme.colors.description;
         }
@@ -58,6 +58,7 @@ T.MenuItem {
         color: {
             if (!enabled) return Theme.colors.disabled;
             if (control.pressed) return Theme.colors.highlightedText;
+            if (selected || (checked && selected)) return Theme.colors.selectedText;
             return Theme.colors.text;
         }
     }

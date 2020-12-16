@@ -12,9 +12,17 @@ T.ProgressBar {
 
     background: Rectangle {
         radius: parent.height / 2
-        color: !flat ? Theme.colors.sunken : "transparent"
+        color: {
+            if (!control.enabled) return "transparent";
+            if (flat) return "transparent";
+            return Theme.colors.sunken;
+        }
         border.width: Theme.border
-        border.color: flat ? Theme.colors.control : "transparent"
+        border.color: {
+            if (!control.enabled) return Theme.colors.disabled;
+            if (flat) return Theme.colors.controlBorder;
+            return "transparent";
+        }
 
         Rectangle {
             id: mask
@@ -31,8 +39,10 @@ T.ProgressBar {
         Rectangle {
             width: control.visualPosition * (background.width - parent.anchors.margins * 2)
             height: parent.height
-            //color: !flat ? Theme.colors.selection : Theme.colors.control
-            color: Theme.colors.selection
+            color: {
+                if (!control.enabled) return Theme.colors.disabled;
+                return Theme.colors.selection;
+            }
         }
     }
 

@@ -8,10 +8,10 @@ Rectangle {
     implicitHeight: implicitWidth
     radius: width / 2
     color: {
-        if (!control.enabled) return Theme.colors.control;
+        if (!control.enabled) return Theme.colors.disabled;
         if (control.checked) return Theme.colors.highlight;
         if (control.pressed) return Theme.colors.highlight;
-        return Theme.colors.control;
+        return Theme.colors.controlBorder;
     }
 
     Rectangle {
