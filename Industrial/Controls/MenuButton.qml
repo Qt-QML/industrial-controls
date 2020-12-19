@@ -30,13 +30,46 @@ Button {
             id: repeater
 
             delegate: MenuItem {
-                text: modelData[control.textRole] ? modelData[control.textRole] : modelData
-                iconSource: modelData[control.iconRole] ? modelData[control.iconRole] : ""
-                checkable: modelData[control.checkableRole] ? modelData[control.checkableRole] : false
-                checked: modelData[control.checkedRole] ? modelData[control.checkedRole] : false
+                text: {
+                    if (typeof modelData !== "undefined") {
+                        return modelData[control.textRole] ? modelData[control.textRole] : modelData;
+                    }
+                    if (typeof model !== "undefined") {
+                        return model[control.textRole] ? model[control.textRole] : model;
+                    }
+                    return "";
+                }
+                iconSource: {
+                    if (typeof modelData !== "undefined") {
+                        return modelData[control.iconRole] ? modelData[control.iconRole] : "";
+                    }
+                    if (typeof model !== "undefined") {
+                        return model[control.iconRole] ? model[control.iconRole] : "";
+                    }
+                    return "";
+                }
+                checkable: {
+                    if (typeof modelData !== "undefined") {
+                        return modelData[control.checkableRole] ? modelData[control.checkableRole] : false;
+                    }
+                    if (typeof model !== "undefined") {
+                        return model[control.checkableRole] ? model[control.checkableRole] : false;
+                    }
+                    return false;
+                }
+                checked: {
+                    if (typeof modelData !== "undefined") {
+                        return modelData[control.checkedRole] ? modelData[control.checkedRole] : false;
+                    }
+                    if (typeof model !== "undefined") {
+                        return model[control.checkedRole] ? model[control.checkedRole] : false;
+                    }
+                    return false;
+                }
+
                 selected: index == control.currentIndex
-                onTriggered: control.triggered(modelData)
-                onCheckedChanged: control.checked(modelData, checked)
+                onTriggered: control.triggered(model)
+                onCheckedChanged: control.checked(model, checked)
             }
         }
     }
