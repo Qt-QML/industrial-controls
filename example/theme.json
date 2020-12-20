@@ -2,10 +2,6 @@
     "animation_time": 200,
     "base_size": 32,
     "colors_common": {
-        "link": "#51a0e7",
-        "negative": "#e53535",
-        "neutral": "#ff9800",
-        "positive": "#86c34a",
         "shadow": "#80000000"
     },
     "colors_day": {
@@ -21,15 +17,20 @@
         "line": "#80a3b8c2",
         "controlText": "#181a1b",
 
-        "tip": "#00998c",
+        "tip": "#00ad9f",
         "tipText": "#ffffff",
 
-        "selection": "#00998c",
+        "selection": "#00ad9f",
         "selectedText": "#ffffff",
 
-        "highlight": "#00c2b2",
-        "hover": "#3300c2b2",
-        "highlightedText": "#ffffff"
+        "highlight": "#0bd8c7",
+        "hover": "#330bd8c7",
+        "highlightedText": "#ffffff",
+
+        "link": "#51a0e7",
+        "negative": "#e53535",
+        "neutral": "#ff9800",
+        "positive": "#65c20a"
     },
     "colors_night": {
         "background": "#2c393f",
@@ -52,7 +53,12 @@
 
         "highlight": "#19d6c4",
         "hover": "#3319d6c4",
-        "highlightedText": "#000000"
+        "highlightedText": "#000000",
+
+        "link": "#51a0e7",
+        "negative": "#e53535",
+        "neutral": "#ff9800",
+        "positive": "#86c34a"
     },
     "factors": {
         "auxFontSize": 0.4,

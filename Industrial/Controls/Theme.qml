@@ -23,15 +23,20 @@ QtObject {
        line: "#80a3b8c2"
        controlText: "#181a1b"
 
-       tip: "#00998c"
+       tip: "#00ad9f"
        tipText: "#ffffff"
 
-       selection: "#00998c"
+       selection: "#00ad9f"
        selectedText: "#ffffff"
 
-       highlight: "#00c2b2"
-       hover: "#3300c2b2"
+       highlight: "#0bd8c7"
+       hover: "#330bd8c7"
        highlightedText: "#ffffff"
+
+       link: "#51a0e7"
+       negative: "#ee2c2c"
+       neutral: "#ffbf00"
+       positive: "#00c2b2"
     }
 
     property ThemeColors nightColors: ThemeColors {}
