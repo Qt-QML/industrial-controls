@@ -68,8 +68,18 @@ Button {
                 }
 
                 selected: index == control.currentIndex
-                onTriggered: control.triggered(model)
-                onCheckedChanged: control.checked(model, checked)
+                onTriggered: {
+                    if (typeof modelData !== "undefined")
+                        control.triggered(modelData)
+                    else if (typeof model !== "undefined")
+                        control.triggered(model)
+                }
+                onCheckedChanged: {
+                    if (typeof modelData !== "undefined")
+                        control.checked(modelData, checked)
+                    else if (typeof model !== "undefined")
+                        control.checked(model, checked)
+                }
             }
         }
     }
