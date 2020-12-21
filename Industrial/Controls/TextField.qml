@@ -45,7 +45,7 @@ T.TextField {
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
         font.pixelSize: Theme.mainFontSize
-        color: !control.activeFocus ? Theme.colors.description : Theme.colors.disabled
+        color: control.enabled ? (!control.activeFocus ? Theme.colors.description : Theme.colors.disabled) : Theme.colors.disabled
         leftPadding: Theme.padding
         rightPadding: Theme.padding
         horizontalAlignment: Text.AlignLeft

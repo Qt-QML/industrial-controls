@@ -2,40 +2,63 @@
     "animation_time": 200,
     "base_size": 32,
     "colors_common": {
-        "border": "#2c393f",
-        "disabled": "#5C6970",
-        "highlightedText": "#000000",
-        "hover": "#3319d6c4",
-        "link": "#51a0e7",
-        "negative": "#e53535",
-        "neutral": "#ff9800",
-        "positive": "#86c34a",
-        "selectedText": "#000000",
         "shadow": "#80000000"
     },
     "colors_day": {
-        "background": "#edeeef",
-        "control": "#e7e8e8",
-        "controlText": "#27333a",
-        "highlight": "#3eecd8",
-        "raised": "#fcfcfc",
-        "selection": "#33c5b4",
-        "sunken": "#e2e4e6",
-        "text": "#2c373a",
-        "tip": "#63e6d9",
-        "tipText": "#000000"
+        "background": "#eff0f0",
+        "sunken": "#dfe1e2",
+        "raised": "#fafafa",
+        "text": "#181a1b",
+        "description": "#627884",
+        "disabled": "#bbc1c4",
+
+        "control": "#c3cfd5",
+        "controlBorder": "#a3b8c2",
+        "line": "#80a3b8c2",
+        "controlText": "#181a1b",
+
+        "tip": "#00ad9f",
+        "tipText": "#ffffff",
+
+        "selection": "#00ad9f",
+        "selectedText": "#ffffff",
+
+        "highlight": "#0bd8c7",
+        "hover": "#330bd8c7",
+        "highlightedText": "#ffffff",
+
+        "link": "#51a0e7",
+        "negative": "#e53535",
+        "neutral": "#ff9800",
+        "positive": "#65c20a"
     },
     "colors_night": {
         "background": "#2c393f",
-        "control": "#5a717c",
-        "controlText": "#ffffff",
-        "highlight": "#19d6c4",
-        "raised": "#334248",
-        "selection": "#009688",
         "sunken": "#212c30",
+        "raised": "#334248",
         "text": "#ffffff",
+        "description": "#899ea9",
+        "disabled": "#5C6970",
+
+        "control": "#5a717c",
+        "controlBorder": "#6c8693",
+        "line": "#805a717c",
+        "controlText": "#ffffff",
+               
         "tip": "#009688",
-        "tipText": "#ffffff"
+        "tipText": "#ffffff",
+
+        "selection": "#009688",
+        "selectedText": "#ffffff",
+
+        "highlight": "#19d6c4",
+        "hover": "#3319d6c4",
+        "highlightedText": "#000000",
+
+        "link": "#51a0e7",
+        "negative": "#e53535",
+        "neutral": "#ff9800",
+        "positive": "#86c34a"
     },
     "factors": {
         "auxFontSize": 0.4,

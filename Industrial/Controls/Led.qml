@@ -10,7 +10,6 @@ Rectangle {
     implicitWidth: Controls.Theme.baseSize * 0.25
     implicitHeight: width
     radius: width / 2
-    opacity: 0.75
 
     Behavior on color { PropertyAnimation { duration: Controls.Theme.animationTime } }
 
