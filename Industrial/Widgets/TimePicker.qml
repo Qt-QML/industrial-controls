@@ -6,12 +6,8 @@ import Industrial.Controls 1.0
 Rectangle{
     id: control
 
-    property string selectedTime: hours.text + ":" + minutes.text
+    property string selectedTime: "00:00"
     property int valueMinOld
-
-    //TODO принимать параметры через selectedTime как в CalendarPicker
-    property alias hours: hours.value //
-    property alias minutes: minutes.value //
 
     signal timeChanged()
 
@@ -28,7 +24,7 @@ Rectangle{
             id: hours
             from: 0
             to: 23
-            //value: selectedTime.split(":")[0] * 1 //TODO
+            value: selectedTime.split(":")[0] * 1
             vertical: true
             wrap: true
             stepSizeShift: 1
@@ -61,7 +57,7 @@ Rectangle{
             id: minutes
             from: 0
             to: 59
-            //value: selectedTime.split(":")[1] * 1 //TODO
+            value: selectedTime.split(":")[1] * 1
             vertical: true
             wrap: true
             stepSizeShift: 5
