@@ -15,6 +15,7 @@ Controls.TextField {
     property alias caution: background.caution
     property alias isValid: background.isValid
 
+    property bool changed: false
     signal finished()
 
     implicitWidth: background.implicitWidth
@@ -99,15 +100,11 @@ Controls.TextField {
                     calendarPicker.selectedDate = inputStringToDate(control.text);
                     break;
                 case "time":
-                    //timePicker.selectedTime = inputStringToTime(control.text); //TODO отправлять параметры через selectedTime как в CalendarPicker
-                    timePicker.hours = inputStringToTime(control.text).split(":")[0] * 1;
-                    timePicker.minutes = inputStringToTime(control.text).split(":")[1] * 1;
+                    timePicker.selectedTime = inputStringToTime(control.text);
                     break;
                 case "dateTime":
                     calendarPicker.selectedDate =  inputStringToDateTime(control.text)[0];
-                    //timePicker.selectedTime = inputStringToDateTime(control.text)[1]; //TODO отправлять параметры через selectedTime как в CalendarPicker
-                    timePicker.hours = inputStringToDateTime(control.text)[1].split(":")[0] * 1;
-                    timePicker.minutes = inputStringToDateTime(control.text)[1].split(":")[1] * 1;
+                    timePicker.selectedTime = inputStringToDateTime(control.text)[1]; 
                     break;
             }
         }
@@ -141,7 +138,6 @@ Controls.TextField {
                 navigationBarVisible: true
                 weekNumbersVisible: false
                 visible: (mode == "date" || mode == "dateTime")
-                //selectedDate: inputStringToDate()//TODO удалить
                 onReleased: inputStringWrite()
             }
 
@@ -155,6 +151,7 @@ Controls.TextField {
     }
 
     function inputStringWrite() {
+        changed = true;
         switch (control.mode) {
             case "date":
                 control.text = calendarPicker.selectedDate.toLocaleDateString(dateMask);
@@ -163,7 +160,7 @@ Controls.TextField {
                 control.text = timePicker.selectedTime;
                 break;
             case "dateTime":
-                control.text = calendarPicker.selectedDate.toLocaleDateString(dateMask) + " " + timePicker.selectedTime;
+                control.text = calendarPicker.selectedDate.toLocaleDateString(dateMask) + " " + timePicker.selectedTime + ":00";
                 break;
         }
     }
