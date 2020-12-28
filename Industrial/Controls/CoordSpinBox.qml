@@ -118,7 +118,7 @@ T.Control {
         id: background
         hovered: control.hovered
         anchors.fill: parent
-        textPadding: Theme.baseSize + Theme.padding
+        textPadding: downButton.width + Theme.padding
         highlighted: _focusedItem
         highlighterColor: Theme.colors.control
         isValid: control.isValid

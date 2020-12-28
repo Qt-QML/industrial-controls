@@ -4,8 +4,9 @@ import QtQuick.Layouts 1.3
 Item {
     id: content
 
-    property color textColor: Theme.colors.textRaised
-    property color iconColor: textColor
+    property color textColor: Theme.colors.text
+    property color iconColor: Theme.colors.text
+    //property int padding //////////////////////////////////////////////////
 
     property alias spacing: row.spacing
     property alias iconSize: icon.width

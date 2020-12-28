@@ -12,11 +12,17 @@ Controls.TextField {
     property alias flat: background.flat
     property alias caution: background.caution
     property alias isValid: background.isValid
+    property alias labelText: background.text ////////////////////////////////////
 
     signal editingFinished()
 
-    implicitWidth: background.implicitWidth
+    implicitWidth: background.implicitWidth    
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize ///////////////////////////////////
+
     selectionColor: background.highlighterColor
+    rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
+    bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
+    verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
     validator: RegExpValidator {regExp: /#(?:[0-9a-f]{3}){1,2}/ }
 

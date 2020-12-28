@@ -65,7 +65,7 @@ T.SpinBox {
         hovered: control.hovered
         highlighted: control.activeFocus
         isValid: control.isValid
-        textPadding: Theme.baseSize + Theme.padding
+        textPadding: down.indicator.width + Theme.padding
         spin: true
         highlighterHeight: !vertical ? Theme.underline : 0
         bottomCropping: !vertical ? radius : 0
@@ -154,7 +154,7 @@ T.SpinBox {
         NumericInput {
             id: input
             anchors.fill: parent
-            anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 -background.underline) : 0
+            anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0
             verticalAlignment: Text.AlignVCenter
             overwriteMode: false
             Binding on text {

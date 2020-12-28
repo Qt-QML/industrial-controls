@@ -1,9 +1,10 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
-import Industrial.Controls 1.0 as Controls
+//import Industrial.Controls 1.0 as Controls
 import Industrial.Widgets 1.0
 
-Controls.TextField {
+//Controls.TextField {
+TextField {
     id: control
 
     property var mode: ["date", "time", "dateTime"]
@@ -14,11 +15,17 @@ Controls.TextField {
     property alias flat: background.flat
     property alias caution: background.caution
     property alias isValid: background.isValid
+    property alias labelText: background.text ////////////////////////////////////
 
     signal finished()
 
     implicitWidth: background.implicitWidth
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize ///////////////////////////////////
+
     selectionColor: background.highlighterColor
+    rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
+    bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
+    verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
     validator: RegExpValidator {regExp:
         switch (mode) {
@@ -89,10 +96,10 @@ Controls.TextField {
         bottomCropped: control.table ? 0 : radius
         radius: control.table ? 0 : Theme.rounding
 
-        onClicked: control.forceActiveFocus();
+        onClicked: control.forceActiveFocus()
 
         onReleased: {
-            popup.open();
+           popup.open();//////////////////////////////
 
             switch (mode) {
                 case "date":
