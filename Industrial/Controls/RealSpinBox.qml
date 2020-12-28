@@ -1,8 +1,8 @@
 import QtQuick 2.6
 import Industrial.Controls 1.0 as Controls
 
-//SpinBox { //////////////////////////////////
-Controls.SpinBox {
+SpinBox { //////////////////////////////////
+//Controls.SpinBox {
     id: control
 
     property real realValue: 0.0
@@ -111,7 +111,9 @@ Controls.SpinBox {
         NumericInput {
             id: input
             anchors.fill: parent
-            anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0
+            //anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0 ////////////////////////////////
+            //verticalAlignment: Text.AlignVCenter
+            topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             verticalAlignment: Text.AlignVCenter
             overwriteMode: false
             Binding on text {

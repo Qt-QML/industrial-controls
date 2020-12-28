@@ -216,7 +216,8 @@ T.Control {
 
             Button {
                 id: suffixButton
-                implicitWidth: Theme.baseSize
+                implicitWidth: Theme.switchSize
+                implicitHeight: Theme.checkmarkSize
                 flat: true
                 highlightColor: Theme.colors.selection
                 focusPolicy: Qt.NoFocus
@@ -229,16 +230,15 @@ T.Control {
                     if (!control.isValid) return Theme.colors.negative;
                     return Theme.colors.description;
                 }
-                rightCropped: true
-                leftCropped: true
                 text: suffix
                 onClicked: {
                     value = -value;
                     updateControlsFromValue();
                     valueModified(value);
                 }
-                Layout.fillHeight: true
-                Layout.bottomMargin: background.highlighterHeight
+                //Layout.fillHeight: true //////////////////////////////////////////////////////
+                //Layout.bottomMargin: background.highlighterHeight
+                Layout.topMargin: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             }
 
             Button {

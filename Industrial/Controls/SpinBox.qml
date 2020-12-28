@@ -37,8 +37,10 @@ T.SpinBox {
 
     leftPadding: !vertical ? down.indicator.width : 0
     rightPadding: !vertical ? up.indicator.width : 0
-    bottomPadding: !vertical ? (labelText.length > 0 ? Theme.border * 3 : 0) : down.indicator.width
-    topPadding: !vertical ? 0 : up.indicator.width
+    //bottomPadding: !vertical ? (labelText.length > 0 ? Theme.border * 3 : 0) : down.indicator.width ////////////////////////////////////////
+    //topPadding: !vertical ? 0 : up.indicator.width
+    bottomPadding: !vertical ? 0 : down.indicator.width
+    topPadding: !vertical ? (labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0) : up.indicator.width
 
     font.pixelSize: Theme.mainFontSize
     editable: true
@@ -154,7 +156,9 @@ T.SpinBox {
         NumericInput {
             id: input
             anchors.fill: parent
-            anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0
+            //anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0 /////////////////////////////////////
+            //verticalAlignment: Text.AlignVCenter
+            topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             verticalAlignment: Text.AlignVCenter
             overwriteMode: false
             Binding on text {

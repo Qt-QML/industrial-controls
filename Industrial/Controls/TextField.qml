@@ -22,9 +22,13 @@ T.TextField {
     selectByMouse: true
     leftPadding: Theme.padding
     rightPadding: Theme.padding
-    bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
     horizontalAlignment: Text.AlignLeft
-    verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+
+    //bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0 ////////////////////////////////////////////
+    //verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+    ////bottomPadding: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0
+    topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+    verticalAlignment: Text.AlignVCenter
 
     validator: RegExpValidator {
         regExp: /^[A-zЁёА-я0-9 !@#$&()\\-`.+,/\"]*$/
