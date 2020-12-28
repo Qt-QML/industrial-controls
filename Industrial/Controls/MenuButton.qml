@@ -4,6 +4,7 @@ Button {
     id: control
 
     property int currentIndex: -1
+    property bool allCheckable: false
     property string textRole: "text"
     property string iconRole: "icon"
     property string checkableRole: "checkable"
@@ -11,6 +12,7 @@ Button {
 
     property alias model: repeater.model
     property alias delegate: repeater.delegate
+    property alias closePolicy: menu.closePolicy
     property alias menuSize: menu.menuSize
     property alias menuX: menu.x
     property alias menuY: menu.y
@@ -55,7 +57,7 @@ Button {
                     if (typeof model !== "undefined") {
                         return model[control.checkableRole] ? model[control.checkableRole] : false;
                     }
-                    return false;
+                    return control.allCheckable;
                 }
                 checked: {
                     if (typeof modelData !== "undefined") {
@@ -69,16 +71,16 @@ Button {
 
                 selected: index == control.currentIndex
                 onTriggered: {
-                    if (typeof modelData !== "undefined")
-                        control.triggered(modelData)
-                    else if (typeof model !== "undefined")
-                        control.triggered(model)
-                }
-                onCheckedChanged: {
-                    if (typeof modelData !== "undefined")
-                        control.checked(modelData, checked)
-                    else if (typeof model !== "undefined")
-                        control.checked(model, checked)
+                    if (typeof modelData !== "undefined") {
+                        control.triggered(modelData);
+                        if (checkable)
+                            control.checked(modelData, checked);
+                    }
+                    else if (typeof model !== "undefined") {
+                        control.triggered(model);
+                        if (checkable)
+                            control.checked(model, checked);
+                    }
                 }
             }
         }
