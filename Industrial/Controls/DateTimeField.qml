@@ -99,10 +99,9 @@ TextField {
         bottomCropped: control.table ? 0 : radius
         radius: control.table ? 0 : Theme.rounding
 
-        onClicked: control.forceActiveFocus()
-
-        onReleased: {
-           popup.open();//////////////////////////////
+        onClicked: {
+            control.forceActiveFocus()
+            popup.visible = !popup.visible
 
             switch (mode) {
                 case "date":
@@ -135,10 +134,11 @@ TextField {
     Popup {
         id: popup
         y: control.height
-        backgroundColor: Theme.colors.background
+        backgroundColor: Theme.colors.raised
         width: row.width + Theme.padding * 2
         height: row.height + Theme.padding * 2
         padding: Theme.padding
+        closePolicy: Popup.CloseOnPressOutsideParent
         //visible: false
 
         Row {
@@ -157,6 +157,7 @@ TextField {
 
             TimePicker {
                 id: timePicker
+                color: Theme.colors.raised
                 anchors.verticalCenter: parent.verticalCenter
                 visible: (mode == "time" || mode == "dateTime")
                 onTimeChanged: inputStringWrite()

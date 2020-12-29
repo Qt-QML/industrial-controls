@@ -60,11 +60,9 @@ Controls.TextField {
         bottomCropped: control.table ? 0 : radius
         radius: control.table ? 0 : Theme.rounding
 
-        onClicked: control.forceActiveFocus();
-
-        onReleased: {
+        onClicked: {
+            control.forceActiveFocus();
             colorPicker.currentColor = button.color;
-            //popup.open();
             popup.visible = !popup.visible
         }
     }
@@ -82,6 +80,7 @@ Controls.TextField {
         id: popup
         y: control.height
         padding: Theme.padding * 2
+        closePolicy: Popup.CloseOnPressOutsideParent
 
         onClosed: {
             editingFinished();
