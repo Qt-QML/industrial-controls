@@ -16,7 +16,7 @@ BackgroundItem {
     property alias underline: highlighter.height
     property alias text: textItem.text
     property alias textColor: textItem.color
-    property alias textWidth: textItem.width
+    property alias textWidth: textItem.width //FIXME
 
     property alias fontPixelSize: textItem.fontPixelSizeWhenInputed
 
@@ -73,17 +73,19 @@ BackgroundItem {
         id: textItem
         property real fontPixelSizeWhenInputed: Theme.auxFontSize / 1.2
         height: implicitHeight
-        leftPadding: control.textPadding
-        rightPadding: control.textPadding
+        width: control.width
+        leftPadding: control.parent.leftPadding ? control.parent.leftPadding : control.textPadding
+        rightPadding: control.parent.rightPadding ? control.parent.rightPadding : control.textPadding
 
-        anchors.horizontalCenter: spin ? parent.horizontalCenter : undefined
-        anchors.left: spin ? undefined : parent.left
+        horizontalAlignment: spin ? Text.AlignHCenter : Text.AlignLeft
 
         anchors.verticalCenter: inputed ? undefined : parent.verticalCenter
         anchors.top: inputed ? parent.top : undefined
         bottomPadding: inputed ? undefined : Theme.border
         topPadding: inputed ? Theme.border : undefined
+
         font.pixelSize: inputed ? fontPixelSizeWhenInputed : Theme.mainFontSize
+        elide: Text.ElideRight
 
         color: {
             if (!control.enabled) return Theme.colors.disabled;

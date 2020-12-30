@@ -37,11 +37,6 @@ SpinBox {
     from: realFrom / precision
     isValid: !isNaN(realValue)
 
-    //TODO: убрать, getDecimals(num) одинаковые функции, а эта вроде не используется
-    function decimals(num) {
-        return (num.toString().split('.')[1] || []).length;
-    }
-
     validator: Controls.CustomDoubleValidator {
         decimals: getDecimals(precision)
         notation: DoubleValidator.StandardNotation
@@ -110,8 +105,8 @@ SpinBox {
         NumericInput {
             id: input
             anchors.fill: parent
-            anchors.bottomMargin: background.underline * 1.5 // FIXME: to theme
-            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+            topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+            verticalAlignment: Text.AlignVCenter
             overwriteMode: false
             Binding on text {
                 value: control.textFromValue(control.value, control.locale)

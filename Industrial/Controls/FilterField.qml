@@ -3,7 +3,7 @@ import QtQuick 2.6
 TextField {
     id: control
 
-    clip: true
+    rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
 
     Button {
         id: button

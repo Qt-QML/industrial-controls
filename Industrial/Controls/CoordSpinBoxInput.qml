@@ -37,9 +37,9 @@ Item {
             overwriteMode: false
             selectionColor: highlighter.visible ? highlighterback.color : Theme.colors.control
             selectedTextColor: highlighter.visible ? Theme.colors.selectedText : Theme.colors.text
-            verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
 
-            bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
+            topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+            verticalAlignment: Text.AlignVCenter
 
             onTextEdited: {
                 if (cursorPosition >= maximumLength) {
@@ -116,8 +116,8 @@ Item {
             height: root.height
             font: input.font
             color: input.color
+            topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             verticalAlignment: input.verticalAlignment
-            bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
         }
     }
 

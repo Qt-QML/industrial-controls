@@ -12,6 +12,7 @@ T.TextField {
     property alias labelText: background.text
     property alias labelFontPixelSize: background.fontPixelSize
 
+    clip: true
     implicitWidth: background.implicitWidth
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
@@ -21,9 +22,9 @@ T.TextField {
     selectByMouse: true
     leftPadding: Theme.padding
     rightPadding: Theme.padding
-    bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0
     horizontalAlignment: Text.AlignLeft
-    verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
+    topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+    verticalAlignment: Text.AlignVCenter
 
     validator: RegExpValidator {
         regExp: /^[A-zЁёА-я0-9 !@#$&()\\-`.+,/\"]*$/
@@ -40,14 +41,14 @@ T.TextField {
 
     Label {
         id: placeholderLabel
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: parent.left
+        anchors.fill: parent
         visible: control.displayText.length == 0 && control.placeholderText.length > 0
         text: control.placeholderText
         font.pixelSize: Theme.mainFontSize
         color: control.enabled ? (!control.activeFocus ? Theme.colors.description : Theme.colors.disabled) : Theme.colors.disabled
         leftPadding: Theme.padding
         rightPadding: Theme.padding
+        width: control.width
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter
     }

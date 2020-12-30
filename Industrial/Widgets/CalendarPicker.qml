@@ -15,7 +15,7 @@ Calendar{
 
         background: Rectangle {
             id: backgroundRect
-            color: Theme.colors.background
+            color: "transparent"
             implicitHeight: Theme.baseSize * 8
             implicitWidth: Theme.baseSize * 8
             radius: round ? Theme.rounding : 0
@@ -84,7 +84,7 @@ Calendar{
         dayDelegate: Rectangle {
             width: height
             radius: height / 2
-            color: styleData.selected ? Theme.colors.selection : (styleData.hovered ? Theme.colors.hover : Theme.colors.background);
+            color: styleData.selected ? Theme.colors.selection : (styleData.hovered ? Theme.colors.hover : "transparent");
 
             Label {
                 text: styleData.date.getDate()
@@ -93,13 +93,13 @@ Calendar{
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 color: styleData.visibleMonth && styleData.valid || styleData.hovered ?
-                           (styleData.selected ? Theme.colors.selectedText : Theme.colors.text) : Theme.colors.description
+                           (styleData.selected ? Theme.colors.selectedText : Theme.colors.text) : (styleData.selected ? Theme.colors.selectedText : Theme.colors.description)
             }
         }
 
         weekNumberDelegate: Rectangle {
             width: Theme.baseSize
-            color: Theme.colors.raised
+            color: "transparent"
 
             Label {
                 text:  styleData.weekNumber

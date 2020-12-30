@@ -1,9 +1,8 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
-import Industrial.Controls 1.0 as Controls
 import Industrial.Widgets 1.0
 
-Controls.TextField {
+TextField {
     id: control
 
     property var mode: ["date", "time", "dateTime"]
@@ -14,12 +13,19 @@ Controls.TextField {
     property alias flat: background.flat
     property alias caution: background.caution
     property alias isValid: background.isValid
+    property alias labelText: background.text
 
     property bool changed: false
     signal finished()
 
     implicitWidth: background.implicitWidth
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
+
     selectionColor: background.highlighterColor
+    rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
+
+    topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+    verticalAlignment: Text.AlignVCenter
 
     validator: RegExpValidator {regExp:
         switch (mode) {
@@ -90,10 +96,9 @@ Controls.TextField {
         bottomCropped: control.table ? 0 : radius
         radius: control.table ? 0 : Theme.rounding
 
-        onClicked: control.forceActiveFocus();
-
-        onReleased: {
-            popup.open();
+        onClicked: {
+            control.forceActiveFocus()
+            popup.visible = !popup.visible
 
             switch (mode) {
                 case "date":
@@ -122,11 +127,11 @@ Controls.TextField {
     Popup {
         id: popup
         y: control.height
-        backgroundColor: Theme.colors.background
+        backgroundColor: Theme.colors.raised
         width: row.width + Theme.padding * 2
         height: row.height + Theme.padding * 2
         padding: Theme.padding
-        //visible: false
+        closePolicy: Popup.CloseOnPressOutsideParent
 
         Row {
             id: row
@@ -143,6 +148,7 @@ Controls.TextField {
 
             TimePicker {
                 id: timePicker
+                color: Theme.colors.raised
                 anchors.verticalCenter: parent.verticalCenter
                 visible: (mode == "time" || mode == "dateTime")
                 onTimeChanged: inputStringWrite()

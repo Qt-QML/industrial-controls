@@ -1,9 +1,8 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
-import Industrial.Controls 1.0 as Controls
 import Industrial.Widgets 1.0
 
-Controls.TextField {
+TextField {
     id: control
 
     property color defaultColor: "#7d7d7d"
@@ -12,11 +11,18 @@ Controls.TextField {
     property alias flat: background.flat
     property alias caution: background.caution
     property alias isValid: background.isValid
+    property alias labelText: background.text
 
     signal editingFinished()
 
-    implicitWidth: background.implicitWidth
+    implicitWidth: background.implicitWidth    
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
+
     selectionColor: background.highlighterColor
+    rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
+
+    topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
+    verticalAlignment: Text.AlignVCenter
 
     validator: RegExpValidator {regExp: /#(?:[0-9a-f]{3}){1,2}/ }
 
@@ -51,11 +57,10 @@ Controls.TextField {
         bottomCropped: control.table ? 0 : radius
         radius: control.table ? 0 : Theme.rounding
 
-        onClicked: control.forceActiveFocus();
-
-        onReleased: {
+        onClicked: {
+            control.forceActiveFocus();
             colorPicker.currentColor = button.color;
-            popup.open();
+            popup.visible = !popup.visible
         }
     }
 
@@ -72,6 +77,7 @@ Controls.TextField {
         id: popup
         y: control.height
         padding: Theme.padding * 2
+        closePolicy: Popup.CloseOnPressOutsideParent
 
         onClosed: {
             editingFinished();

@@ -11,11 +11,11 @@ T.ComboBox {
     property string displayIcon: currentItem && currentItem[control.iconRole] !== undefined ?
                                      currentItem[control.iconRole] : ""
 
-    property alias table: background.table // табличный вид
+    property alias table: background.table
     property alias isValid: background.isValid
     property alias labelText: background.text
     property alias labelColor: background.textColor
-    property alias labelWidth: background.textWidth
+    property alias labelWidth: background.textWidth //FIXME
     property alias backgroundColor: background.color
     property alias contentColor: content.textColor
     property alias horizontalAlignment: content.horizontalAlignment
@@ -29,13 +29,15 @@ T.ComboBox {
     }
 
     implicitWidth: background.implicitWidth
-    //implicitHeight: Theme.baseSize * 1.25
     implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
     font.pixelSize: Theme.mainFontSize
-    padding: Theme.padding
     clip: true
+    textRole: "text"
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
                      currentItem[control.textRole] : currentItem
+
+    leftPadding: Theme.padding
+    rightPadding: Theme.padding + Theme.baseSize
 
     indicator: ColoredIcon {
         anchors.right: parent.right
@@ -56,7 +58,7 @@ T.ComboBox {
 
     background: BackgroundInput {
         id: background
-        hovered: control.hovered //to hover
+        hovered: control.hovered
         anchors.fill: parent
         flat: control.flat
         textPadding: Theme.padding
@@ -64,7 +66,6 @@ T.ComboBox {
         highlighted: control.activeFocus
     }
 
-    //Пункт меню выпадающего списка
     delegate: ItemDelegate {
         id: delegate
         width: control.width
@@ -103,27 +104,24 @@ T.ComboBox {
         }
     }
 
-    //пункт внутри инпута
     contentItem: ContentItem {
         id: content
         anchors.fill: control
         anchors.topMargin: background.textHeight - background.underline
         anchors.leftMargin: Theme.padding
+        anchors.rightMargin: Theme.padding + Theme.baseSize
         font: control.font
         text: displayText
         iconSource: displayIcon
         textColor: control.enabled ? Theme.colors.text : Theme.colors.disabled
         horizontalAlignment: Text.AlignLeft
-        verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
     }
 
     popup: Popup {
         y: control.height
-        //backgroundColor: background.color
-        backgroundColor: Theme.colors.sunken
+        backgroundColor: Theme.colors.raised
         width: control.width
         implicitHeight: contentItem.implicitHeight + Theme.padding * 2
-        //padding: 0
         leftPadding: 0
         rightPadding: 0
         topPadding: Theme.padding
