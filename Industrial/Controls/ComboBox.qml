@@ -36,7 +36,7 @@ T.ComboBox {
     displayText: currentItem && currentItem[control.textRole] !== undefined ?
                      currentItem[control.textRole] : currentItem
 
-    leftPadding: Theme.padding /////////////////////////////////////////////////
+    leftPadding: Theme.padding
     rightPadding: Theme.padding + Theme.baseSize
 
     indicator: ColoredIcon {
@@ -69,7 +69,6 @@ T.ComboBox {
     delegate: ItemDelegate {
         id: delegate
         width: control.width
-        //padding: 60 /////////////////////////////////////////////////////////////
         horizontalAlignment: control.horizontalAlignment
         text: {
             if (modelData !== undefined) {
@@ -120,7 +119,7 @@ T.ComboBox {
 
     popup: Popup {
         y: control.height
-        backgroundColor: Theme.colors.raised////////////////
+        backgroundColor: Theme.colors.raised
         width: control.width
         implicitHeight: contentItem.implicitHeight + Theme.padding * 2
         leftPadding: 0

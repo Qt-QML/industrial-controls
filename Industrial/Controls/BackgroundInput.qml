@@ -74,8 +74,8 @@ BackgroundItem {
         property real fontPixelSizeWhenInputed: Theme.auxFontSize / 1.2
         height: implicitHeight
         width: control.width
-        leftPadding: control.parent.leftPadding ? control.parent.leftPadding : control.textPadding /////////////////////////////////////////
-        rightPadding: control.parent.rightPadding ? control.parent.rightPadding : control.textPadding //control.textPadding ///////////////////////////////////////
+        leftPadding: control.parent.leftPadding ? control.parent.leftPadding : control.textPadding
+        rightPadding: control.parent.rightPadding ? control.parent.rightPadding : control.textPadding
 
         horizontalAlignment: spin ? Text.AlignHCenter : Text.AlignLeft
 

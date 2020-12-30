@@ -236,8 +236,6 @@ T.Control {
                     updateControlsFromValue();
                     valueModified(value);
                 }
-                //Layout.fillHeight: true //////////////////////////////////////////////////////
-                //Layout.bottomMargin: background.highlighterHeight
                 Layout.topMargin: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             }
 

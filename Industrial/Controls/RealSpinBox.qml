@@ -1,8 +1,7 @@
 import QtQuick 2.6
 import Industrial.Controls 1.0 as Controls
 
-SpinBox { //////////////////////////////////
-//Controls.SpinBox {
+SpinBox {
     id: control
 
     property real realValue: 0.0
@@ -37,11 +36,6 @@ SpinBox { //////////////////////////////////
     to: realTo / precision
     from: realFrom / precision
     isValid: !isNaN(realValue)
-
-    //TODO: убрать, getDecimals(num) одинаковые функции, а эта вроде не используется
-    //function decimals(num) {
-    //    return (num.toString().split('.')[1] || []).length;
-    //}
 
     validator: Controls.CustomDoubleValidator {
         decimals: getDecimals(precision)
@@ -111,8 +105,6 @@ SpinBox { //////////////////////////////////
         NumericInput {
             id: input
             anchors.fill: parent
-            //anchors.bottomMargin: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0 ////////////////////////////////
-            //verticalAlignment: Text.AlignVCenter
             topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             verticalAlignment: Text.AlignVCenter
             overwriteMode: false

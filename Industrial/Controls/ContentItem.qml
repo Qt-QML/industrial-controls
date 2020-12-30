@@ -6,7 +6,6 @@ Item {
 
     property color textColor: Theme.colors.text
     property color iconColor: Theme.colors.text
-    //property int padding //////////////////////////////////////////////////
 
     property alias spacing: row.spacing
     property alias iconSize: icon.width

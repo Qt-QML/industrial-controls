@@ -1,9 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
-//import Industrial.Controls 1.0 as Controls
 import Industrial.Widgets 1.0
 
-//Controls.TextField {
 TextField {
     id: control
 
@@ -15,18 +13,16 @@ TextField {
     property alias flat: background.flat
     property alias caution: background.caution
     property alias isValid: background.isValid
-    property alias labelText: background.text ////////////////////////////////////
+    property alias labelText: background.text
 
     signal finished()
 
     implicitWidth: background.implicitWidth
-    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize ///////////////////////////////////
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
 
     selectionColor: background.highlighterColor
     rightPadding: button.visible ? button.width + Theme.padding : Theme.padding
 
-    //bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0 //////////////////////////////
-    //verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
     topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
     verticalAlignment: Text.AlignVCenter
 
@@ -139,7 +135,6 @@ TextField {
         height: row.height + Theme.padding * 2
         padding: Theme.padding
         closePolicy: Popup.CloseOnPressOutsideParent
-        //visible: false
 
         Row {
             id: row

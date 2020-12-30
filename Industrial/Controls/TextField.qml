@@ -23,10 +23,6 @@ T.TextField {
     leftPadding: Theme.padding
     rightPadding: Theme.padding
     horizontalAlignment: Text.AlignLeft
-
-    //bottomPadding: labelText.length > 0 ? Theme.border * 3 : 0 ////////////////////////////////////////////
-    //verticalAlignment: labelText.length > 0 ? Text.AlignBottom : Text.AlignVCenter
-    ////bottomPadding: labelText.length > 0 ? -(Theme.auxFontSize / 1.2 - Theme.border) : 0
     topPadding: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
     verticalAlignment: Text.AlignVCenter
 
