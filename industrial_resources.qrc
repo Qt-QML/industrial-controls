@@ -52,5 +52,9 @@
         <file>icons/calendar.svg</file>
         <file>icons/expand.svg</file>
         <file>icons/collapse.svg</file>
+        <file>icons/export.svg</file>
+        <file>icons/folder_inline.svg</file>
+        <file>icons/import.svg</file>
+        <file>icons/more.svg</file>
     </qresource>
 </RCC>
