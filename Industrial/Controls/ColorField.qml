@@ -27,7 +27,7 @@ TextField {
     validator: RegExpValidator {regExp: /#(?:[0-9a-f]{3}){1,2}/ }
 
     function validate() {
-        (!acceptableInput && text.length) ? caution = true : caution = false;
+        caution = (!acceptableInput && text.length) ? true : false;
         control.deselect();
     }
 
@@ -37,7 +37,7 @@ TextField {
 
     onTextChanged: {
         button.color = control.text;
-        colorPicker.currentColor = button.color;        
+        colorPicker.currentColor = button.color;
     }
 
     onTextEdited: {

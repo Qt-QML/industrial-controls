@@ -5,7 +5,9 @@ cmake_minimum_required(VERSION 3.2.1)
 project(industrial_controls)
 
 # Find QtCore module
-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Qml LinguistTools)
+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS
+    Core Gui Qml Svg QuickControls2 LinguistTools
+)
 
 # Instruct CMake to run moc & rcc automatically when needed.
 set(CMAKE_AUTOMOC ON)
@@ -46,7 +48,9 @@ file(GLOB_RECURSE LOC_QRC_FILES "*.qrc")
 qt5_add_resources(QRC_SOURCES ${QRC_FILES} ${LOC_QRC_FILES})
 target_sources(${PROJECT_NAME} PRIVATE ${QRC_SOURCES})
 
-target_link_libraries(${PROJECT_NAME} PUBLIC Qt5::Core Qt5::Gui Qt5::Qml)
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC Qt5::Core Qt5::Gui Qt5::Qml Qt5::Svg Qt5::QuickControls2
+)
 
 # Example
 option(INDUSTRIAL_CONTROLS_EXAMPLE "Industrial Controls Example" TRUE)
