@@ -56,5 +56,7 @@
         <file>icons/folder_inline.svg</file>
         <file>icons/import.svg</file>
         <file>icons/more.svg</file>
+        <file>icons/in.svg</file>
+        <file>icons/out.svg</file>
     </qresource>
 </RCC>
