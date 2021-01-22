@@ -33,10 +33,10 @@ Item {
         x: control.width - width
         height: parent.height
         width: height
-        iconSource: menuButton.menuVisible ? "/icons/up.svg" : "/icons/down.svg"
-        iconColor: menuButton.menuVisible ? Theme.colors.selectedText : Theme.colors.description
+        iconSource: menuVisible ? "/icons/up.svg" : "/icons/down.svg"
+        iconColor: menuVisible || hovered || pressed ? Theme.colors.selectedText : Theme.colors.description
         tipText: qsTr("Collapsed tabs")
-        checked: menuButton.menuVisible ? true : false
+        checked: menuVisible ? true : false
         flat: true
         round: true
         visible: menuModel.count
@@ -74,5 +74,4 @@ Item {
             }
         }
     }
-
 }
