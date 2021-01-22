@@ -16,6 +16,7 @@ Button {
     property alias menuSize: menu.menuSize
     property alias menuX: menu.x
     property alias menuY: menu.y
+    property alias menuVisible: menu.visible
 
     signal triggered(var modelData)
     signal checked(var modelData, bool checked)
