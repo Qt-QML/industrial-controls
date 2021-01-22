@@ -3,7 +3,7 @@ import QtQuick 2.6
 Item {
     id: control
 
-    default property alias content: tabBar.contentData
+    default property alias contentData: tabBar.contentData
     property alias currentIndex: tabBar.currentIndex
     property alias spacing: tabBar.spacing
     property alias backgroundColor: background.color
