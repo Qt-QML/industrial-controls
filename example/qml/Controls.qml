@@ -7,7 +7,7 @@ ColumnLayout {
 
     spacing: 0
 
-    TabBar {
+    AutoTabBar {
         id: tabBar
         Layout.fillWidth: true
         Layout.rightMargin: Theme.baseSize + Theme.padding
