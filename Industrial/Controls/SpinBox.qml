@@ -84,6 +84,24 @@ T.SpinBox {
         validate();
     }
 
+    onFocusChanged: {
+        stepSize = stepSizeDefault;
+    }
+
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeControl;
+        else return;
+        event.accepted = true;
+    }
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeDefault;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeDefault;
+        else return;
+        event.accepted = true;
+    }
+
     MouseArea{
         id: mouseArea
         anchors.fill: contentItem
@@ -129,20 +147,6 @@ T.SpinBox {
             else control.decrease();
             control.valueModified();
         }
-    }
-
-    Keys.onPressed: {
-        if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
-        if (event.key === Qt.Key_Control) stepSize = stepSizeControl;
-        else return;
-        event.accepted = true;
-    }
-
-    Keys.onReleased: {
-        if (event.key === Qt.Key_Shift) stepSize = stepSizeDefault;
-        if (event.key === Qt.Key_Control) stepSize = stepSizeDefault;
-        else return;
-        event.accepted = true;
     }
 
     contentItem: Item {

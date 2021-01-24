@@ -302,6 +302,10 @@ T.Control {
         Behavior on x { NumberAnimation { duration: 150 } }
     }
 
+    onFocusedChanged: {
+        stepSize = stepSizeDefault;
+    }
+
     Keys.onPressed: {
         if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
         if (event.key === Qt.Key_Control) stepSize = stepSizeControl;

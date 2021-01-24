@@ -55,20 +55,20 @@ Pane {
 
         Label { text: qsTr("Passwords"); font.pixelSize: Theme.auxFontSize }
 
-        TextField {
+        PasswordField {
             labelText: qsTr("Password")
             echoMode: TextInput.Password
             Layout.fillWidth: true
         }
 
-        TextField {
+        PasswordField {
             labelText: qsTr("Password too short")
             echoMode: TextInput.PasswordEchoOnEdit
             isValid: false
             Layout.fillWidth: true
         }
 
-        TextField {
+        PasswordField {
             labelText: qsTr("Blocked text edit")
             text: qsTr("Example text")
             enabled: false
@@ -163,7 +163,7 @@ Pane {
                 color: Theme.colors.description
             }
 
-            TextField {
+            PasswordField {
                 table: true
                 echoMode: TextInput.Password
                 text: qsTr("Password")
@@ -240,7 +240,7 @@ Pane {
                 color: Theme.colors.description
             }
 
-            TextField {
+            PasswordField {
                 table: true
                 flat: true
                 echoMode: TextInput.Password
@@ -320,7 +320,7 @@ Pane {
                 color: Theme.colors.description
             }
 
-            TextField {
+            PasswordField {
                 table: true
                 enabled: false
                 echoMode: TextInput.Password
