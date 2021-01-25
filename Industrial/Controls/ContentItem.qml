@@ -5,7 +5,7 @@ Item {
     id: content
 
     property color textColor: Theme.colors.text
-    property color iconColor: Theme.colors.text
+    property color iconColor: textColor
 
     property alias spacing: row.spacing
     property alias iconSize: icon.width
