@@ -80,5 +80,6 @@
         <file>Industrial/Controls/ListButton.qml</file>
         <file>Industrial/Controls/MenuSeparator.qml</file>
         <file>Industrial/Controls/ColorField.qml</file>
+        <file>Industrial/Controls/AutoTabBar.qml</file>
     </qresource>
 </RCC>
