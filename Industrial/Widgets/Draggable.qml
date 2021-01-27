@@ -89,6 +89,10 @@ Rectangle {
                 anchors.fill: parent
                 drag.target: root.dragEnabled ? parent : null
                 drag.smoothed: false
+                drag.minimumX: -1
+                drag.maximumX: draggedItemParent.width - contentItem.width + 1
+                drag.minimumY: -1
+                drag.maximumY: draggedItemParent.height - contentItem.height + 1
                 hoverEnabled: true
                 onEntered: root.entered()
                 onExited: root.exited()
@@ -135,7 +139,7 @@ Rectangle {
 
     Loader {
         id: topDropAreaLoader
-        active: model.index === 0
+        active: model.index === 0 && dragEnabled
         anchors {
             left: parent.left
             right: parent.right
@@ -156,7 +160,7 @@ Rectangle {
             right: parent.right
             top: wrapperParent.verticalCenter
         }
-        enabled: !mouseArea.drag.active
+        enabled: !mouseArea.drag.active && dragEnabled
         property bool isLast: model.index === _listView.count - 1
         height: isLast ? _listView.contentHeight - y : contentItem.height
 
