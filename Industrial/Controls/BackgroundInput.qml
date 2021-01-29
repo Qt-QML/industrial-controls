@@ -18,6 +18,9 @@ BackgroundItem {
     property alias textColor: textItem.color
     property alias textWidth: textItem.width //FIXME
 
+    property alias labelLeftPadding: textItem.leftPadding
+    property alias labelRightPadding: textItem.rightPadding
+
     property alias fontPixelSize: textItem.fontPixelSizeWhenInputed
 
     property alias highlighterHeight: highlighter.height

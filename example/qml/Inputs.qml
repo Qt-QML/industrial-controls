@@ -95,6 +95,28 @@ Pane {
             Layout.fillWidth: true
         }
 
+        Label { text: qsTr("Coord field"); font.pixelSize: Theme.auxFontSize }
+
+        CoordField {
+            id: coordField
+            labelText: qsTr("Coordinates")
+            latitude: 55.737347
+            longitude: 37.482394
+            Layout.fillWidth: true
+        }
+
+        CoordField {
+            labelText: qsTr("Flat coordinates")
+            flat: true
+            Layout.fillWidth: true
+        }
+
+        CoordField {
+            labelText: qsTr("Disabled coordinates")
+            enabled: false
+            Layout.fillWidth: true
+        }
+
         Label { text: qsTr("Date input"); font.pixelSize: Theme.auxFontSize }
 
         DateTimeField {
