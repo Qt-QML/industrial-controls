@@ -65,3 +65,5 @@ DateTimeField 1.0 DateTimeField.qml
 ListButton 1.0 ListButton.qml
 ColorField 1.0 ColorField.qml
 AutoTabBar 1.0 AutoTabBar.qml
+BackgroundInput 1.0 BackgroundInput.qml
+CoordField 1.0 CoordField.qml
