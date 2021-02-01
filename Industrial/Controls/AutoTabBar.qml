@@ -8,8 +8,8 @@ Item {
     property alias spacing: tabBar.spacing
     property alias backgroundColor: background.color
 
-    width: Theme.baseSize * 6
-    height: Theme.baseSize
+    implicitWidth: Theme.baseSize * 6
+    implicitHeight: Theme.baseSize
     clip: true
 
     Component.onCompleted: collapseTabBar()
@@ -24,8 +24,8 @@ Item {
     TabBar {
         id: tabBar
         spacing: 1
-        width: parent.width - (menuButton.visible ? menuButton.width : 0)
-        height: parent.height
+        implicitWidth: parent.width - (menuButton.visible ? menuButton.width : 0)
+        implicitHeight: parent.height
     }
 
     MenuButton {

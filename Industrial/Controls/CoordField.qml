@@ -77,7 +77,7 @@ TextField {
     function validatorInput() {
         switch (dms) {
         case true:
-            return /[NS][\d]{1,2}([,][\d]{1,2})([,][\d]{1,2})([.][\d]{1,2})?\/[EW][\d]{1,3}([,][\d]{1,2})([,][\d]{1,2})([.][\d]{1,2})?/i.test(control.text);
+            return /[N|S][\d]{1,2}([,][\d]{1,2})([,][\d]{1,2})([.][\d]{1,2})?\/[E|W][\d]{1,3}([,][\d]{1,2})([,][\d]{1,2})([.][\d]{1,2})?/i.test(control.text);
         case false:
             return /-?[\d]{1,3}([.][\d]*)?\/-?[\d]{1,3}([.][\d]*)?/.test(control.text);
         }
