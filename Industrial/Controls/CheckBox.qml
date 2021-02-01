@@ -8,15 +8,15 @@ T.CheckBox {
     property string tipText
 
     property alias flat: base.flat
+    property alias iconSource: icon.source
     property alias horizontalAlignment: label.horizontalAlignment
 
-    font.pixelSize: industrial.mainFontSize
-    height: industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
     focusPolicy: Qt.NoFocus
-    leftPadding: 0
-    spacing: industrial.spacing
+    leftPadding: text.length ? 0 : (width - base.width) / 2
+    spacing: Theme.spacing
     implicitWidth: text.length > 0 ? contentItem.implicitWidth + spacing : indicator.implicitWidth
-    implicitHeight: contentItem.height
+    implicitHeight: Theme.baseSize
     hoverEnabled: true
 
     indicator: CheckMarkBase {
@@ -28,8 +28,10 @@ T.CheckBox {
         checked: control.checked
 
         ColoredIcon {
+            id: icon
+            height: Theme.baseSize
             anchors.fill: parent
-            anchors.margins: parent.width * 0.1
+            //anchors.margins: parent.width * 0.1
             source: "qrc:/icons/ok.svg"
             visible: control.checked || control.down
             color: base.indicatorColor

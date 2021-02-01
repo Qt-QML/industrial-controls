@@ -4,8 +4,14 @@ depends QtQuick.Controls 2.2
 designersupported
 
 Helper 1.0 helper.js
+
+singleton Theme 1.0 Theme.qml
+ThemeColors 1.0 ThemeColors.qml
+ThemeFactors 1.0 ThemeFactors.qml
+
 Shadow 1.0 Shadow.qml
 Hatch 1.0 Hatch.qml
+ColoredIcon 1.0 ColoredIcon.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
 Pane 1.0 Pane.qml
 Frame 1.0 Frame.qml
@@ -19,6 +25,7 @@ ButtonBar 1.0 ButtonBar.qml
 TabButton 1.0 TabButton.qml
 TabBar 1.0 TabBar.qml
 BottomBar 1.0 BottomBar.qml
+CheckMarkBase 1.0 CheckMarkBase.qml
 CheckBox 1.0 CheckBox.qml
 Switch 1.0 Switch.qml
 RadioButton 1.0 RadioButton.qml
@@ -30,20 +37,33 @@ Label 1.0 Label.qml
 Link 1.0 Link.qml
 Menu 1.0 Menu.qml
 MenuItem 1.0 MenuItem.qml
+MenuSeparator 1.0 MenuSeparator.qml
+MenuButton 1.0 MenuButton.qml 
+MouseArea 1.0 MouseArea.qml
 ProgressBar 1.0 ProgressBar.qml
+ClickBar 1.0 ClickBar.qml
 Slider 1.0 Slider.qml
 ComboBox 1.0 ComboBox.qml
 TextField 1.0 TextField.qml
 FilterField 1.0 FilterField.qml
+PasswordField 1.0 PasswordField.qml
 AddressField 1.0 AddressField.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Popup 1.0 Popup.qml
+Dialog 1.0 Dialog.qml
+DialogButtonBox 1.0 DialogButtonBox.qml
 SpinBox 1.0 SpinBox.qml
 RealSpinBox 1.0 RealSpinBox.qml
 CoordSpinBox 1.0 CoordSpinBox.qml
 ScrollBar 1.0 ScrollBar.qml
-ColoredIcon 1.0 ColoredIcon.qml
 ToolTip 1.0 ToolTip.qml
 Drawer 1.0 Drawer.qml
 Separator 1.0 Separator.qml
 Notification 1.0 Notification.qml
+NumericInput 1.0 NumericInput.qml
+DateTimeField 1.0 DateTimeField.qml
+ListButton 1.0 ListButton.qml
+ColorField 1.0 ColorField.qml
+AutoTabBar 1.0 AutoTabBar.qml
+BackgroundInput 1.0 BackgroundInput.qml
+CoordField 1.0 CoordField.qml

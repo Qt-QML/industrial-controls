@@ -7,10 +7,10 @@ ColumnLayout {
 
     spacing: 0
 
-    TabBar {
+    AutoTabBar {
         id: tabBar
         Layout.fillWidth: true
-        Layout.rightMargin: industrial.baseSize + industrial.padding
+        Layout.rightMargin: Theme.baseSize + Theme.padding
         z: 1
 
         TabButton { text: "Buttons" }
@@ -18,6 +18,7 @@ ColumnLayout {
         TabButton { text: "Inputs" }
         TabButton { text: "Misc" }
         TabButton { text: "Menu" }
+        TabButton { text: "Test" }
         TabButton { text: "Disabled"; enabled: false }
     }
 
@@ -31,5 +32,6 @@ ColumnLayout {
         Inputs {}
         Misc {}
         Menus {}
+        Test {}
     }
 }

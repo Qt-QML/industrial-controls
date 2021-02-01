@@ -5,43 +5,50 @@ T.Switch {
     id: control
 
     property bool inputChecked: checked
-    property bool flat: false
+    property bool flat: base.flat
     property string tipText
-
     property alias textColor: text.color
-    property alias backgroundColor: backgroundItem.color
+    property alias backgroundColor: base.color
 
     implicitWidth: contentItem.implicitWidth
-    implicitHeight: industrial.baseSize
-    spacing: industrial.spacing
+    implicitHeight: Theme.baseSize
+    spacing: Theme.spacing
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    font.pixelSize: industrial.mainFontSize
-
+    font.pixelSize: Theme.mainFontSize
     onInputCheckedChanged: if (checked != inputChecked) checked = inputChecked
 
-    indicator: Rectangle {
-        id: backgroundItem
+    indicator: CheckMarkBase {
+        id: base
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        implicitWidth: industrial.baseSize
-        implicitHeight: industrial.fillSize
+        width: Theme.baseSize * 1.2
+        height: Theme.switchSize
         radius: height / 2
-        color: control.checked ? industrial.colors.selection : control.flat ? industrial.colors.control :
-                                                                              industrial.colors.container
-
-        Hatch {
-            anchors.fill: parent
-            color: industrial.colors.surface
-            visible: !control.enabled
+        flat: control.flat
+        down: control.down
+        hovered: control.hovered
+        checked: control.checked
+        opacity: {
+            if(!control.flat && control.enabled) { if (control.down || control.checked) return 1; }
+            return 1
         }
+    }
 
-        Handle {
-            x: control.checked ? parent.width - width : 0
-            anchors.verticalCenter: parent.verticalCenter
-
-            Behavior on x { PropertyAnimation { duration: industrial.animationTime} }
+    Handle {
+        id: handle
+        height: base.height - Theme.border * 4
+        width: height
+        x: control.checked ? base.width - width - Theme.border * 2 : Theme.border * 2
+        y: parent.height / 2 - height / 2
+        Behavior on x { PropertyAnimation { duration: Theme.animationTime / 2} }
+        color: {
+            if (!control.enabled) return flat ? Theme.colors.disabled : Theme.colors.background;
+            if (control.checked ||control.pressed) return flat ? Theme.colors.highlight : Theme.colors.selectedText;
+            return flat ? Theme.colors.controlBorder : Theme.colors.background;
         }
+        hoverEnabled: flat
+        shadowEnabled: false
     }
 
     contentItem: Label {

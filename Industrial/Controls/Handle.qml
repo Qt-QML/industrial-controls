@@ -1,24 +1,35 @@
 import QtQuick 2.6
 
 Rectangle {
-    implicitWidth: industrial.handleSize
+    property bool hoverEnabled: true
+    property bool shadowEnabled: true
+
+    implicitWidth: Theme.handleSize
     implicitHeight: implicitWidth
     radius: width / 2
-    border.color: control.activeFocus ? industrial.colors.highlight : "transparent"
     color: {
-        if (!control.enabled) return industrial.colors.container;
-        if (control.pressed) return industrial.colors.highlight;
-
-        return industrial.colors.button;
+        if (!control.enabled) return Theme.colors.disabled;
+        if (control.checked) return Theme.colors.highlight;
+        if (control.pressed) return Theme.colors.highlight;
+        return Theme.colors.controlBorder;
     }
 
     Rectangle {
+        id: hover
         anchors.fill: parent
-        color: industrial.colors.onButton
+        color: Theme.colors.highlight
+        opacity: 0.20
         radius: parent.radius
-        opacity: 0.1
-        visible: hovered
+        visible: hoverEnabled ? hovered : false
     }
 
-    Shadow { source: parent }
+    Shadow {
+        source: parent
+        visible: {
+            if (!control.enabled) return false;
+            if (control.flat) return false;
+            if (!shadowEnabled) return false;
+            return true;
+        }
+    }
 }

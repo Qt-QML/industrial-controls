@@ -8,26 +8,35 @@ BackgroundItem {
     property bool checked: false
 
     property color indicatorColor: {
-        if (!enabled) return industrial.colors.disabled;
-        if (down) return flat || !checked ? industrial.colors.highlight : industrial.colors.onHighlight;
-
-        return industrial.colors.onButton;
+        if (!enabled) return flat ? Theme.colors.sunken : Theme.colors.background;
+        if (flat) return Theme.colors.highlight
+        if (down) return Theme.colors.highlightedText;
+        if (checked) return Theme.colors.selectedText;
+        return Theme.colors.controlText;
     }
 
-    implicitWidth: industrial.checkmarkSize
-    implicitHeight: industrial.checkmarkSize
-    borderColor: flat ? industrial.colors.control : "transparent"
-    color: {
-        if (flat) return "transparent";
+    implicitWidth: Theme.checkmarkSize
+    implicitHeight: Theme.checkmarkSize
 
-        return checked ? down ? industrial.colors.highlight :
-                                industrial.colors.selection :
-                                industrial.colors.container;
+    borderColor: {
+        if (!enabled) return Theme.colors.disabled;
+        if (!flat) return "transparent";
+        if (down) return Theme.colors.highlight;
+        if (checked) return Theme.colors.selection;
+        return Theme.colors.controlBorder;
+    }
+
+    color: {
+        if (!enabled) return flat ? "transparent" : Theme.colors.disabled;
+        if (flat) return "transparent";
+        if (down) return Theme.colors.highlight;
+        if (checked) return Theme.colors.selection;
+        return Theme.colors.controlBorder;
     }
 
     Hatch {
         anchors.fill: parent
-        color: industrial.colors.surface
+        color: Theme.colors.background
         visible: !enabled
     }
 }

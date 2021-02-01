@@ -2,22 +2,34 @@ import QtQuick 2.6
 import QtQuick.Templates 2.2 as T
 import QtQuick.Layouts 1.3
 
-ColumnLayout {
-    id: control
+Row {
+    id: row
+    
+    property bool setButtonWidth: true
+    
+    spacing: 1
 
-    property alias model: repeater.model
-    property int currentIndex: 0
+    onVisibleChildrenChanged: {
+        var buttons = [];
+        var buttonsCnt = 0;
 
-    spacing: industrial.padding / 2
+        for (var i = 0; i < visibleChildren.length; ++i) {
+            var item = visibleChildren[i];
 
-    Repeater {
-        id: repeater
+            if (item instanceof Button) {
+                buttons.push(item);
+                buttonsCnt++;
+            }
+        }
 
-        Button {
-            Layout.preferredWidth: industrial.baseSize * 7
-            text: modelData
-            onClicked: if (!highlighted) currentIndex = index
-            highlighted: currentIndex == index
+        for (var j = 0; j < buttonsCnt; ++j) {
+            var button = buttons[j];
+
+            if (row.setButtonWidth) {
+                button.width = Qt.binding(function () { return row.width / buttonsCnt - 1; });
+            }
+            button.leftCropped = j > 0;
+            button.rightCropped = j < buttonsCnt - 1;
         }
     }
 }

@@ -6,9 +6,11 @@ T.DelayButton {
 
     property string tipText
     property bool flat: false
-    property bool shadow: !flat
     property bool round: false
-
+    property bool topCropped: false
+    property bool bottomCropped: false
+    property bool leftCropped: false
+    property bool rightCropped: false
     property alias iconSource: content.iconSource
     property alias textColor: content.textColor
     property alias iconColor: content.iconColor
@@ -16,30 +18,29 @@ T.DelayButton {
 
     onActivated: progress = 0
 
-    font.pixelSize: industrial.mainFontSize
-    implicitWidth: Math.max(industrial.baseSize, content.implicitWidth + control.padding * 2)
-    implicitHeight: industrial.baseSize
+    font.pixelSize: Theme.mainFontSize
+    implicitWidth: Math.max(Theme.baseSize, content.implicitWidth + control.padding * 2)
+    implicitHeight: Theme.baseSize
     focusPolicy: Qt.NoFocus
     hoverEnabled: true
-    padding: industrial.padding
+    padding: Theme.padding
     delay: 1000
 
     background: BackgroundItem {
         id: backgroundItem
         anchors.fill: parent
-        borderColor: control.activeFocus ? industrial.colors.highlight : "transparent"
+        borderColor: control.activeFocus ? Theme.colors.highlight : "transparent"
         hovered: control.hovered
-        radius: round ? Math.min(width, height) / 2 : industrial.rounding
-        color: control.flat ? "transparent" : industrial.colors.button
-
-        Shadow {
-            visible: control.shadow && !control.flat
-            source: parent
-        }
+        radius: round ? Math.min(width, height) / 2 : Theme.rounding
+        topCropping: topCropped ? radius : 0
+        bottomCropping: bottomCropped ? radius : 0
+        leftCropping: leftCropped ? radius : 0
+        rightCropping: rightCropped ? radius : 0
+        color: control.flat ? "transparent" : Theme.colors.control
 
         Hatch {
             anchors.fill: parent
-            color: industrial.colors.surface
+            color: Theme.colors.background
             visible: !enabled
         }
     }
@@ -53,7 +54,7 @@ T.DelayButton {
             anchors.margins: control.padding
             text: control.text
             font: control.font
-            textColor: industrial.colors.onButton
+            textColor: Theme.colors.controlText
         }
 
         Item {
@@ -65,7 +66,7 @@ T.DelayButton {
                 radius: backgroundItem.radius
                 anchors.fill: parent
                 anchors.rightMargin: -backgroundItem.radius
-                color: industrial.colors.selection
+                color: Theme.colors.selection
                 clip: true
             }
 
@@ -82,7 +83,7 @@ T.DelayButton {
                     text: control.text
                     font: control.font
                     iconSource: control.iconSource
-                    textColor: industrial.colors.onSelection
+                    textColor: Theme.colors.selectedText
                 }
             }
         }

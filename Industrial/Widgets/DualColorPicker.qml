@@ -1,5 +1,5 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.0
+import QtQuick.Layouts 1.3
 import Industrial.Controls 1.0
 
 Item {
@@ -9,6 +9,7 @@ Item {
 
     property alias primaryColor: primary.color
     property alias secondaryColor: secondary.color
+    property color _tmpColor: "black"
 
     signal primaryColorPicked(color color)
     signal secondaryColorPicked(color color)
@@ -23,9 +24,12 @@ Item {
         flat: true
         iconSource: "qrc:/icons/swap.svg"
         onClicked: {
-            var tmp = primary.color;
-            primaryColorPicked(secondary.color);
-            secondaryColorPicked(tmp);
+            _tmpColor = primary.color;
+            primary.color = secondary.color;
+            secondary.color = _tmpColor;
+
+            primaryColorPicked(primary.color);
+            secondaryColorPicked(secondary.color)
         }
     }
 

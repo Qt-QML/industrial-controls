@@ -4,38 +4,51 @@ import QtQuick.Templates 2.2 as T
 T.MenuItem {
     id: control
 
-    property url iconSource: ""
-    property alias iconColor: icon.color
+    property string iconSource: ""
+    property bool selected: false
 
+    property alias iconColor: icon.color
     property alias horizontalAlignment: label.horizontalAlignment
 
-    implicitWidth: parent.width
-    implicitHeight: industrial.baseSize
+    implicitWidth: label.implicitWidth + leftPadding + rightPadding
+    implicitHeight: Theme.baseSize
+    //width: parent.width //
+
     focusPolicy: Qt.NoFocus
-    leftPadding: icon.visible ? icon.width + industrial.padding * 2 : industrial.padding
-    font.pixelSize: industrial.mainFontSize
+    padding: 0
+    leftPadding: icon.source == "" ? Theme.padding * 2 : icon.x + icon.width + Theme.padding
+    rightPadding: Theme.padding * 2
+    font.pixelSize: Theme.mainFontSize
     hoverEnabled: true
 
     background: BackgroundItem {
         radius: 0
         hovered: control.hovered
-        color: control.pressed ? industrial.colors.highlight : "transparent"
+        color: {
+            if (selected) return Theme.colors.selection;
+            if (control.pressed) return Theme.colors.highlight;
+            return "transparent";
+        }
     }
 
     indicator: ColoredIcon {
         id: icon
-        x: industrial.padding
-        color: label.color
+        x: Theme.padding
         anchors.verticalCenter: parent.verticalCenter
         source: {
             if (!checkable) return control.iconSource;
-
-            if (control.checked) return control.iconSource.length > 0 ? control.iconSource:
-                                                                        "qrc:/icons/ok.svg"
+            if (control.checked) return control.iconSource.length > 0 ? control.iconSource: "qrc:/icons/ok.svg";
             return "";
         }
-        width: industrial.baseSize - industrial.padding * 2
-        height: width
+        height: Theme.iconSize
+        width: height
+        color: {
+            if (!enabled) return Theme.colors.disabled;
+            if (control.pressed) return Theme.colors.highlightedText;
+            if (selected || (checked && selected)) return Theme.colors.selectedText;
+            if (checked) return Theme.colors.highlight;
+            return Theme.colors.description;
+        }
     }
 
     contentItem: Label {
@@ -43,9 +56,10 @@ T.MenuItem {
         font: control.font
         text: control.text
         color: {
-            if (!enabled) return industrial.colors.disabled;
-            if (control.pressed) return industrial.colors.onHighlight;
-            return industrial.colors.onContainer;
+            if (!enabled) return Theme.colors.disabled;
+            if (control.pressed) return Theme.colors.highlightedText;
+            if (selected || (checked && selected)) return Theme.colors.selectedText;
+            return Theme.colors.text;
         }
     }
 }
