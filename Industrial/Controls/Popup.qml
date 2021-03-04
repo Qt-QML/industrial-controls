@@ -4,17 +4,19 @@ import QtQuick.Controls 2.2 as T
 T.Popup {
     id: control
 
-    property color backgroundColor: industrial.colors.surface
+    property color backgroundColor: Theme.colors.raised
 
-    padding: industrial.padding
+    padding: Theme.padding * 2
     clip: false
 
-    background:  Rectangle {
+    background: Rectangle {
         color: backgroundColor
-        radius: 2
+        radius: Theme.baseSize / 8
 
         Shadow {
             source: parent
+            glowRadius: Theme.shadowSize * 4
+            anchors.verticalCenterOffset: Theme.baseSize / 8
         }
     }
 }

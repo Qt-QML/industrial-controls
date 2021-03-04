@@ -15,7 +15,11 @@
         <file>icons/up.svg</file>
         <file>icons/down.svg</file>
         <file>icons/left.svg</file>
+        <file>icons/left_2.svg</file>
+        <file>icons/left_3.svg</file>
         <file>icons/right.svg</file>
+        <file>icons/right_2.svg</file>
+        <file>icons/right_3.svg</file>
         <file>icons/cancel.svg</file>
         <file>icons/remove.svg</file>
         <file>icons/erase.svg</file>
@@ -24,6 +28,7 @@
         <file>icons/refresh.svg</file>
         <file>icons/save.svg</file>
         <file>icons/savenexit.svg</file>
+        <file>icons/copy.svg</file>
         <file>icons/connected.svg</file>
         <file>icons/disconnected.svg</file>
         <file>icons/restore.svg</file>
@@ -32,5 +37,24 @@
         <file>icons/edit.svg</file>
         <file>icons/plot.svg</file>
         <file>icons/north.svg</file>
+        <file>icons/send.svg</file>
+        <file>icons/password_show.svg</file>
+        <file>icons/password_hide.svg</file>
+        <file>icons/panel-show.svg</file>
+        <file>icons/panel-hide.svg</file>
+        <file>icons/file.svg</file>
+        <file>icons/folder.svg</file>
+        <file>icons/folder-2.svg</file>
+        <file>icons/image.svg</file>
+        <file>icons/clock.svg</file>
+        <file>icons/calendar.svg</file>
+        <file>icons/expand.svg</file>
+        <file>icons/collapse.svg</file>
+        <file>icons/export.svg</file>
+        <file>icons/folder_inline.svg</file>
+        <file>icons/import.svg</file>
+        <file>icons/more.svg</file>
+        <file>icons/in.svg</file>
+        <file>icons/out.svg</file>
     </qresource>
 </RCC>

@@ -1,11 +1,18 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.3
 import QtQuick.Templates 2.2 as T
-
-import "helper.js" as Helper
+import Industrial.Controls 1.0 as Controls
 
 T.Control {
     id: control
+
+    property int stepSizeDefault: 1
+    property int stepSizeShift: 10
+    property int stepSizeControl: 100
+    property int stepSize: stepSizeDefault
+
+    property bool mouseDown: false
+    property bool mouseSlide: true
 
     property bool isLongitude: false
     property bool isValid: !isNaN(value)
@@ -15,15 +22,17 @@ T.Control {
     property real value: 0
     property real from: 0
     property real to: isLongitude ? 180 : 90
-    property color color: industrial.colors.onContainer
+    property color color: Theme.colors.text
 
     property string suffix: _sign < 0 ? (isLongitude ? qsTr("W") : qsTr("S")) :
                                        (isLongitude ? qsTr("E") : qsTr("N"))
 
+    property alias table: background.table
     property alias caution: background.caution
     property alias backgroundColor: background.color
     property alias labelText: background.text
     property alias flat: background.flat
+    readonly property bool focused: _focusedItem && _focusedItem.visible
 
     property int _sign: 1
     readonly property bool _increaseEnabled: Math.abs(value) < to
@@ -31,17 +40,29 @@ T.Control {
 
     property Item _focusedItem
 
+    signal valueModified(real value)
+
     function updateValueFromControls() {
         var degs = Math.abs(dInput.input.text);
         var mins = Math.abs(mInput.input.text);
         var secs = Helper.stringToReal(sInput.input.text, locale.decimalPoint);
+        if (isNaN(secs)) {
+            secs = 0;
+        }
+
         var val = Helper.dmsToDegree(_sign, degs, mins, Math.min(secs, 60));
 
-        if (val > to) value = to;
-        else if (val < -to) value = -to;
-        else value = val;
+        if (isNaN(value) || Math.abs(value - val) >= Number.EPSILON) {
+            if (val > to) value = to;
+            else if (val < -to) value = -to;
+            else value = val;
 
-        updateControlsFromValue();
+            updateControlsFromValue();
+            valueModified(value);
+        }
+        else if (dInput.input.text === "" || mInput.input.text === "" || sInput.input.text === "") {
+            updateControlsFromValue();
+        }
     }
 
     function updateControlsFromValue() {
@@ -82,6 +103,7 @@ T.Control {
         } else {
             value = newValue;
         }
+        valueModified(value);
     }
 
     Component.onCompleted: updateControlsFromValue()
@@ -89,17 +111,18 @@ T.Control {
 
     clip: true
     implicitWidth: Math.max(background.implicitWidth, row.height)
-    implicitHeight: Math.max(background.textHeight +
-                             Math.max(dInput.implicitHeight, sInput.implicitHeight) +
-                             background.underline, industrial.baseSize)
-    font.pixelSize: industrial.mainFontSize
+    implicitHeight: labelText.length > 0 ? Theme.baseSize * 1.25 : Theme.baseSize
+    font.pixelSize: Theme.mainFontSize
 
     background: BackgroundInput {
         id: background
+        hovered: control.hovered
         anchors.fill: parent
-        textPadding: industrial.baseSize + industrial.padding
-        highlighterColor: industrial.colors.control
+        textPadding: downButton.width + Theme.padding
+        highlighted: _focusedItem
+        highlighterColor: Theme.colors.control
         isValid: control.isValid
+        spin: true
     }
 
     contentItem: FocusScope {
@@ -121,18 +144,28 @@ T.Control {
                 id: downButton
                 flat: true
                 round: control.round
-                color: background.color
+                highlightColor: Theme.colors.selection
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _decreaseEnabled
-                hatched: !enabled
                 rightCropped: true
                 bottomCropped: true
-                iconSource: "qrc:/icons/minus.svg"
+                iconSource: {
+                    if (stepSize == stepSizeControl) return "qrc:/icons/left_3.svg"
+                    if (stepSize == stepSizeShift) return "qrc:/icons/left_2.svg"
+                    return "qrc:/icons/left.svg"
+                }
+                iconColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
                 pressedImpl: _decreaseEnabled && _focusedItem && _focusedItem.down
                 onClicked: {
                     if (!_focusedItem) return;
-
                     updateValueFromControls();
                     _focusedItem.decreaseValue();
                 }
@@ -142,76 +175,93 @@ T.Control {
 
             CoordSpinBoxInput {
                 id: dInput
-                implicitWidth: industrial.baseSize * (isLongitude ? 1 : 0.75)
+                implicitWidth: Theme.baseSize * (isLongitude ? 1 : 0.75)
                 input.focus: true
                 input.maximumLength: isLongitude ? 3 : 2
                 input.validator: IntValidator { bottom: control.from; top: control.to }
                 nextItem: mInput.input
                 sign: "\u00B0"
-                onIncreaseValue: if (_increaseEnabled) changeValue(0, 1)
-                onDecreaseValue: if (_decreaseEnabled) changeValue(0, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(0, stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(0, -stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             CoordSpinBoxInput {
                 id: mInput
-                implicitWidth: industrial.baseSize * 0.75
+                implicitWidth: Theme.baseSize * 0.75
                 input.maximumLength: 2
                 input.validator: IntValidator { bottom: 0; top: 60 }
                 previousItem: dInput.input
                 nextItem: sInput.input
                 sign: "\'"
-                onIncreaseValue: if (_increaseEnabled) changeValue(1, 1)
-                onDecreaseValue: if (_decreaseEnabled) changeValue(1, -1)
+                onIncreaseValue: if (_increaseEnabled) changeValue(1, stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(1, -stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             CoordSpinBoxInput {
                 id: sInput
-                implicitWidth: industrial.baseSize * (0.75 + secondsPrecision / 5 * 2)
+                implicitWidth: Theme.baseSize * (0.75 + secondsPrecision / 5 * 2)
                 input.maximumLength: 3 + secondsPrecision
-                input.validator: DoubleValidator { bottom: 0; top: 60 }
+                input.validator: Controls.CustomDoubleValidator { bottom: 0; top: 60 }
                 previousItem: mInput.input
                 sign: "\""
-                onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision))
-                onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision))
+                onIncreaseValue: if (_increaseEnabled) changeValue(2, Math.pow(10, -secondsPrecision) * stepSize)
+                onDecreaseValue: if (_decreaseEnabled) changeValue(2, -Math.pow(10, -secondsPrecision) * stepSize)
                 Layout.fillWidth: true
                 Layout.fillHeight: true
             }
 
             Button {
                 id: suffixButton
-                implicitWidth: industrial.baseSize
+                implicitWidth: Theme.switchSize
+                implicitHeight: Theme.checkmarkSize
                 flat: true
-                font.bold: true
+                highlightColor: Theme.colors.selection
                 focusPolicy: Qt.NoFocus
                 enabled: value != 0
-                hatched: !enabled && control.enabled
-                rightCropped: true
-                leftCropped: true
+                textColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
                 text: suffix
                 onClicked: {
                     value = -value;
                     updateControlsFromValue();
+                    valueModified(value);
                 }
-                Layout.fillHeight: true
-                Layout.bottomMargin: background.highlighterHeight
+                Layout.topMargin: labelText.length > 0 ? (Theme.auxFontSize / 1.2 - Theme.border) : 0
             }
 
             Button {
                 id: upButton
-                color: background.color
+                highlightColor: Theme.colors.selection
                 flat: true
                 round: control.round
                 autoRepeat: true
                 focusPolicy: Qt.NoFocus
                 enabled: _focusedItem && _increaseEnabled
-                hatched: !enabled
                 leftCropped: true
                 bottomCropped: true
-                iconSource: "qrc:/icons/plus.svg"
+                iconSource: {
+                    if (stepSize == stepSizeControl) return "qrc:/icons/right_3.svg"
+                    if (stepSize == stepSizeShift) return "qrc:/icons/right_2.svg"
+                    return "qrc:/icons/right.svg"
+                }
+                iconColor: {
+                    if (pressed) return Theme.colors.highlightedText;
+                    if (hovered) return Theme.colors.text;
+                    if (!control.enabled) return Theme.colors.disabled;
+                    if (control.caution) return Theme.colors.neutral;
+                    if (!control.isValid) return Theme.colors.negative;
+                    return Theme.colors.description;
+                }
                 pressedImpl: _increaseEnabled && _focusedItem && _focusedItem.up
                 onClicked: {
                     if (!_focusedItem) return;
@@ -226,18 +276,46 @@ T.Control {
     }
 
     Rectangle {
-        id: highlighter
-        anchors.bottom: control.bottom
-        width: _focusedItem ? _focusedItem.width : 0
-        x: _focusedItem ? _focusedItem.x : 0
-        visible: _focusedItem
-        height: industrial.underline
+        id: highlighterback
+        anchors.bottom: parent.bottom
+        width: parent.width
+        height: Theme.border
+        visible: control.enabled
         color: {
-            if (caution) return industrial.colors.neutral;
-            if (!isValid) return industrial.colors.negative;
-
-            return industrial.colors.selection;
+            if (!control.isValid || !control.isValid && highlighted) return Theme.colors.negative;
+            if (control.caution || control.caution && highlighted) return Theme.colors.neutral;
+            if (background.highlighted) return Theme.colors.selection;
+            if (table && flat) return Theme.colors.controlBorder;
+            if (table) return Theme.colors.background;
+            return Theme.colors.controlBorder;
         }
+    }
+
+    Rectangle {
+        id: highlighter
+        anchors.bottom: parent.bottom
+        width: _focusedItem ? _focusedItem.width : 0
+        height: Theme.border
+        x: _focusedItem ? _focusedItem.x : 0
+        visible: _focusedItem       
+        color: Theme.colors.text;
         Behavior on x { NumberAnimation { duration: 150 } }
+    }
+
+    onFocusedChanged: {
+        stepSize = stepSizeDefault;
+    }
+
+    Keys.onPressed: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeShift;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeControl;
+        else return;
+        event.accepted = true;
+    }
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Shift) stepSize = stepSizeDefault;
+        if (event.key === Qt.Key_Control) stepSize = stepSizeDefault;
+        else return;
+        event.accepted = true;
     }
 }

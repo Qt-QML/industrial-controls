@@ -4,14 +4,14 @@ import QtQuick.Templates 2.2 as T
 T.ScrollBar {
     id: control
 
-    interactive: false
-    implicitWidth: industrial.scrollSize
-    implicitHeight: industrial.scrollSize
+    interactive: Theme.scrollInteractive
+    implicitWidth: Theme.scrollSize
+    implicitHeight: Theme.scrollSize
 
-    background: Item { }
+    background: Item {}
 
     contentItem: Rectangle {
-        color: active && enabled ? industrial.colors.highlight : "transparent"
-        radius: width / 2
+        color: active && enabled ? Theme.colors.selection : Theme.colors.control
+        radius: Theme.rounding
     }
 }

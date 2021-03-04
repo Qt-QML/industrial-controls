@@ -1,69 +1,89 @@
 import QtQuick 2.6
-import QtQuick.Layouts 1.0
 import Industrial.Controls 1.0 as Controls
 
-Item {
-    id: root
+Rectangle {
+    id: listRoot
 
-    property color backgroundColor: industrial.colors.surface
     property string emptyText: qsTr("No items")
+    property int offset: 2
+    property var faderColor: undefined
 
+    property alias list: list
+    property alias contentY: list.contentY
+    property alias spacing: list.spacing
     property alias model: list.model
     property alias header: list.header
+    property alias footer: list.footer
+    property alias highlight: list.highlight
     property alias delegate: list.delegate
+    property alias currentIndex: list.currentIndex
+    property alias count: list.count
+
+    property bool alwaysShowFooterFader: false
 
     function toBeginning() { list.positionViewAtBeginning() }
-    function toIndex(index) { list.positionViewAtIndex(index) }
+    function toIndex(index) { list.positionViewAtIndex(index, ListView.Visible) }
     function toEnd() { list.positionViewAtEnd() }
 
-    implicitWidth: list.contentWidth + industrial.shadowSize + 1
-    implicitHeight: Math.max(list.contentHeight + industrial.shadowSize + 1, industrial.baseSize * 5)
+    implicitWidth: list.contentWidth
+    implicitHeight: Math.max(list.contentHeight, Controls.Theme.baseSize)
+    color: Controls.Theme.colors.sunken
+    radius: Controls.Theme.rounding
     clip: true
 
     ListView {
         id: list
         anchors.fill: parent
-        anchors.leftMargin: 1
-        anchors.topMargin: 1
-        anchors.rightMargin: industrial.shadowSize
-        anchors.bottomMargin: industrial.shadowSize
-        spacing: industrial.spacing
-        headerPositioning: ListView.PullBackHeader
+        spacing: offset
+        headerPositioning: ListView.OverlayHeader
+        footerPositioning: ListView.OverlayFooter
         flickableDirection: Flickable.AutoFlickIfNeeded
         boundsBehavior: Flickable.StopAtBounds
+        highlightResizeDuration: 0
+        currentIndex: -1
+        highlightMoveDuration: Controls.Theme.animationTime
+        preferredHighlightBegin: Controls.Theme.baseSize * 2
+        preferredHighlightEnd: Controls.Theme.baseSize * 2
+        highlightRangeMode: ListView.ApplyRange
+        property bool showFooter: true
+
+        onContentYChanged: {
+            var currentBottomIndex = indexAt(1, contentY + height - Controls.Theme.baseSize)
+            list.showFooter = currentBottomIndex + 1 !== listRoot.count
+        }
 
         Controls.ScrollBar.vertical: Controls.ScrollBar {
             visible: list.contentHeight > list.height
+        }
+
+        header: ListFader {
+            width: parent.width
+            faderOffset: offset
+            faderHeight: list.contentY
+
+            Binding on faderColor {
+                when: listRoot.faderColor !== undefined
+                value: listRoot.faderColor
+            }
+        }
+
+        footer: ListFader {
+            visible: listRoot.alwaysShowFooterFader || list.showFooter
+            width: parent.width
+            faderOffset: offset
+            faderHeight: (list.contentHeight - list.height) - list.contentY
+            mirrored: true
+
+            Binding on faderColor {
+                when: listRoot.faderColor !== undefined
+                value: listRoot.faderColor
+            }
         }
 
         Controls.Label {
             anchors.centerIn: parent
             text: emptyText
             visible: list.count === 0
-        }
-    }
-
-    Rectangle {
-        x: 1
-        width: parent.width - industrial.shadowSize - 1
-        height: industrial.baseSize * 0.5
-        anchors.top: parent.top
-        visible: list.contentY > 0
-        gradient: Gradient {
-            GradientStop { color: "transparent"; position: 1.0 }
-            GradientStop { color: backgroundColor; position: 0.0 }
-        }
-    }
-
-    Rectangle {
-        x: 1
-        width: parent.width - industrial.shadowSize - 1
-        height: industrial.baseSize * 0.5
-        anchors.bottom: parent.bottom
-        visible: list.contentY < (list.contentHeight - list.height)
-        gradient: Gradient {
-            GradientStop { color: "transparent"; position: 0.0 }
-            GradientStop { color: backgroundColor; position: 1.0 }
         }
     }
 }

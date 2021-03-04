@@ -4,5 +4,5 @@ Rectangle {
     id: control
 
     implicitHeight: 1
-    color: industrial.colors.background
+    color: Theme.colors.background
 }

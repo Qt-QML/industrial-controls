@@ -4,8 +4,8 @@ import QtQuick.Templates 2.2 as T
 T.Label {
     id: control
 
-    font.pixelSize: industrial.mainFontSize
-    color: control.enabled ? industrial.colors.onSurface : industrial.colors.disabled
+    font.pixelSize: Theme.mainFontSize
+    color: control.enabled ? Theme.colors.text : Theme.colors.disabled
     verticalAlignment: Text.AlignVCenter
     elide: Text.ElideRight
 }

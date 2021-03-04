@@ -4,4 +4,14 @@ designersupported
 
 ColorPicker 1.0 ColorPicker.qml
 DualColorPicker 1.0 DualColorPicker.qml
+FileBrowser 1.0 FileBrowser.qml
 ListWrapper 1.0 ListWrapper.qml
+ListItem 1.0 ListItem.qml
+ListFader 1.0 ListFader.qml
+ListTable 1.0 ListTable.qml
+Draggable 1.0 Draggable.qml
+SplitView 1.0 SplitView.qml
+TableView 1.0 TableView.qml
+TableViewColumn 1.0 TableViewColumn.qml
+CalendarPicker 1.0 CalendarPicker.qml
+TimePicker 1.0 TimePicker.qml

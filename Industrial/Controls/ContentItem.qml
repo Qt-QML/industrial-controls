@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 Item {
     id: content
 
-    property color textColor: industrial.colors.onSurface
+    property color textColor: Theme.colors.text
     property color iconColor: textColor
 
     property alias spacing: row.spacing
@@ -16,34 +16,43 @@ Item {
     property alias horizontalAlignment: label.horizontalAlignment
     property alias verticalAlignment: label.verticalAlignment
 
-    implicitWidth: row.implicitWidth
-    implicitHeight: row.implicitHeight
+    implicitWidth: {
+        if (icon.visible) {
+            if (label.visible)
+                return icon.implicitWidth + label.implicitWidth + row.spacing;
+            return icon.implicitWidth;
+        }
+        else if (label.visible) {
+            return label.implicitWidth + 1;
+        }
+        return 0;
+    }
+    implicitHeight: Math.max(icon.implicitHeight, label.implicitHeight)
 
     RowLayout {
         id: row
-        anchors.fill: parent
-        spacing: industrial.spacing
+        anchors.centerIn: parent
+        width: parent.width
+        spacing: Theme.spacing
 
         ColoredIcon {
             id: icon
-            implicitWidth: industrial.iconSize
-            implicitHeight: industrial.iconSize
-            color: enabled ? iconColor : industrial.colors.disabled
+            implicitWidth: Theme.iconSize
+            implicitHeight: Theme.iconSize
+            color: enabled ? iconColor : Theme.colors.disabled
             visible: iconSource != ""
-            //Layout.alignment: Qt.AlignCenter
-            Layout.leftMargin: (content.height - width) / 2
+            Layout.leftMargin: text.length > 0 ? (Math.min(content.height, content.width) - width) / 2 : (content.width - width) / 2
         }
 
         Text {
             id: label
             elide: Text.ElideRight
-            font.pixelSize: industrial.mainFontSize
-            color: enabled ? textColor : industrial.colors.disabled
+            font.pixelSize: Theme.mainFontSize
+            color: enabled ? textColor : Theme.colors.disabled
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             visible: text.length > 0
             Layout.fillWidth: true
-            Layout.alignment: Qt.AlignCenter
         }
     }
 }
